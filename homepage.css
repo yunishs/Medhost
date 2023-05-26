@@ -56,7 +56,7 @@ label{
 }
 .enter-btn{
     margin: 40px auto 20px;
-    align= center;
+    text-align:center;
     width: 80%;
     display: block;
     outline: none;
