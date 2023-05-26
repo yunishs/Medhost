@@ -37,7 +37,7 @@ label{
 }
 .input[type=text] {
    
-        background-color: rgb(11, 21, 158);
+    background-color: rgb(11, 21, 158);
       
     width: 100%;
     padding: 12px 20px;
@@ -46,20 +46,22 @@ label{
   }
 .input-box input{
     width: 90%;
-    border:0;
+    padding: 10px 0;
+    border: 2px solid rgb(26, 63, 127);
     outline:0;
     background: transparent;
     color: black;
 }
 .enter-btn{
     margin: 40px auto 20px;
+    align= center;
     width: 80%;
     display: block;
     outline: none;
     padding: 10px 0;
-    border: 2px solid black;
+    border: 2px solid rgb(26, 63, 127);
     cursor: pointer;
-    background: rgb(30, 78, 115);
-    color: black;
+    background: rgb(92, 126, 151);
+    color: rgb(251, 252, 255);
     font-size: 16px;
 }
