@@ -5,6 +5,7 @@
 body
 {
     padding-left: 10%;
+    font-size: large;
     background-image:url('https://img.freepik.com/free-photo/pastel-blue-vignette-concrete-textured-background_53876-102637.jpg?w=1060&t=st=1685109733~exp=1685110333~hmac=5224c8411cc639be2e6b5bfa3dc6f6b04c8bcd1484218ff7e61492801510c75d');
     background-repeat:no-repeat;
     /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
@@ -16,8 +17,8 @@ body
 .form-box{
     width: 500px;
     background: rgba(122, 141, 180, 0.3);
-    margin: 12% auto;
-    padding: 30px 0;
+    margin: 12% 22%;
+    padding: 50px 50px;
     color: #0a0a0a;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
 }
@@ -32,25 +33,21 @@ label{
     margin: 31px auto ;
     width: 80%;
     border-bottom: 1px solid  #141313;
-    padding-top: 10%;
-    padding-bottom: 5px;
-    padding-left: 10%;
-    
-
+    padding:20 px;
 }
-::input[type=text] {
-   padding-left: 10%;
+.input[type=text] {
+   
     background-color: rgb(11, 21, 158);
-      
+    
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px;
     box-sizing: border-box;
   }
   
 .input-box input{
     width: 90%;
     padding: 10%;
+    padding:20 px;
     border: 2px solid rgb(26, 63, 127);
     outline:0;
     background: transparent;
@@ -58,11 +55,11 @@ label{
 }
 .enter-btn{
     margin: 40px auto 20px;
-   text-align: center;
+    text-align:center;
     width: 80%;
     display: block;
     outline: none;
-    padding: 10px 0;
+    padding: 10px;
     border: 2px solid rgb(26, 63, 127);
     cursor: pointer;
     background: rgb(92, 126, 151);
