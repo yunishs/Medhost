@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing:border-box;
 }
 body
 {
@@ -14,10 +15,26 @@ body
     background-size:100% 100%;
     /* background size ma cover garda chai aafai adjust hunxaa but 100% 100% garda chai purai picture nai background ma aauxa */
 }
-.form-box{
-    width: 500px;
+  
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  
+.container{
+    width: 600px;
+    border-radius:5px;
     background: rgba(122, 141, 180, 0.3);
-    margin: 12% 22%;
+    margin: 12% auto;
     padding: 50px 50px;
     color: #0a0a0a;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
@@ -26,33 +43,24 @@ h1{
     text-align: center;
     margin-bottom: 80px;
 }
-label{
-    text-align:center;
-}
-.input-box{
-    margin: 31px auto ;
-    width: 80%;
-    border-bottom: 1px solid  #141313;
-    padding:20 px;
-}
-.input[type=text] {
-   
-    background-color: rgb(11, 21, 158);
-    
-    width: 100%;
-    margin: 8px;
-    box-sizing: border-box;
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
   }
   
-.input-box input{
-    width: 90%;
-    padding: 10%;
-    padding:20 px;
-    border: 2px solid rgb(26, 63, 127);
-    outline:0;
-    background: transparent;
-    color: black;
-}
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 .enter-btn{
     margin: 40px auto 20px;
     text-align:center;
@@ -63,6 +71,5 @@ label{
     border: 2px solid rgb(26, 63, 127);
     cursor: pointer;
     background: rgb(92, 126, 151);
-    color: rgb(251, 252, 255);
     font-size: 16px;
 }
