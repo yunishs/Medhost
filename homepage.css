@@ -38,8 +38,8 @@ label{
     
 
 }
-.input[type=text] {
-   
+::input[type=text] {
+   padding-left: 10%;
     background-color: rgb(11, 21, 158);
       
     width: 100%;

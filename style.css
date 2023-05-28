@@ -4,7 +4,7 @@
 }
 body
 {
-    background-image:url('https://img.freepik.com/free-photo/pastel-blue-vignette-concrete-textured-background_53876-102637.jpg?w=1060&t=st=1685109733~exp=1685110333~hmac=5224c8411cc639be2e6b5bfa3dc6f6b04c8bcd1484218ff7e61492801510c75d');
+    background-image:url('https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/alt-5ae892611bf1a-5168-1472832016f2509f3889266323039a33@1x.jpg');
     background-repeat:no-repeat;
     /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
     background-attachment:fixed;
@@ -12,15 +12,40 @@ body
     background-size:100% 100%;
     /* background size ma cover garda chai aafai adjust hunxaa but 100% 100% garda chai purai picture nai background ma aauxa */
 }
+/*navbar ko status and condition */
+.navbar {
+    overflow: hidden;
+    background-color: #3468a3;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 10; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+  }
+  
+  /* decor inside the navbar */
+  .navbar  {
+    display: block;
+    color: #1a0856; /* navbar bhitra ko content ko color*/
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
 .form-box{
+    
     width: 500px;
-    background: rgba(122, 141, 180, 0.3);
+    background: rgba(84, 100, 132, 0.3);
     margin: 12% auto;
     padding: 50px 0;
     color: #0a0a0a;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
 }
+
+
 h1{
+    text-align: center;
+    
+}
+h2{
     text-align: center;
     margin-bottom: 40px;
 }
