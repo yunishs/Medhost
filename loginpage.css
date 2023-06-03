@@ -4,7 +4,7 @@
 }
 body
 {
-    background-image:url('https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/alt-5ae892611bf1a-5168-1472832016f2509f3889266323039a33@1x.jpg');
+    background-image:url('images\backround_login.jpg');
     background-repeat:no-repeat;
     /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
     background-attachment:fixed;
