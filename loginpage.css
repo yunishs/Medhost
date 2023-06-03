@@ -4,7 +4,8 @@
 }
 body
 {
-    background-image:url('images\backround_login.jpg');
+    background-image:url('../../images/backround_login.jpg');
+    /* put ../../ and then relative link to link images*/
     background-repeat:no-repeat;
     /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
     background-attachment:fixed;
