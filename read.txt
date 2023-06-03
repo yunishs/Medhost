@@ -1,1 +1,6 @@
 please put proper comments
+login- done
+homepage- done
+patient registration- done
+patient display for different modules 
+admin display
