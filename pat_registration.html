@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="images\MedHost.png">
 </head>
 <body>
-    <div class=".input-box">
+    <!-- <div class=".input-box"> -->
         <h3>Personal Information:</h3>
         <form action="/action_page.css"></form>
         <div class="row">
@@ -24,13 +24,14 @@
                     <input type="stext" id="lname" name="lname" size="10px" >
             </div>
         </div>
-        
         <div class="row">
             <div class="col-25">
-                <label for="age">Age:</label>
-            </div>
-            <div class="col-35">
-                <input type="integer" id="age" name="age" >
+                <div class="col-35"></div>
+                    <label for="dob">Date of birth:</label>
+                        <input type="date" id="dob" name="dob" >
+                    <label for="age">Age:</label>
+                        <input type="integer" id="age" name="age" >
+                </div>   
             </div>
         </div>
         <div class="row">
@@ -99,9 +100,15 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-25">
+                <label for=""></label>
+            </div>
+        </div>
+        <div class="row">
             <button type="button" class="enter-btn">ENTER</button>
         </div>
-    </div>
+    <!-- </div> -->
 </body>
 </html>
+
 
