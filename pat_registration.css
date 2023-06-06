@@ -42,10 +42,11 @@ input[type=text], select, textarea {
   input[type=integer], select, textarea {
     width: 10%;
     padding: 12px;
+    margin-left: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-    margin: inline-block;
+    
   }
   
   input[type=inti], select, textarea {
