@@ -7,7 +7,7 @@ body
 {
     text-align: left;
     padding-left: 10%;
-    background-image:url('../../images/default_background.webp');
+    background-image:url('https://img.freepik.com/free-photo/pastel-blue-vignette-concrete-textured-background_53876-102637.jpg?w=1060&t=st=1685109733~exp=1685110333~hmac=5224c8411cc639be2e6b5bfa3dc6f6b04c8bcd1484218ff7e61492801510c75d');
     background-repeat:no-repeat;
     /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
     background-attachment:fixed;
@@ -32,6 +32,7 @@ input[type=text], select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    margin-bottom: 8px;
   }
   input[type=stext], select, textarea {
     width: 15%; 
@@ -41,6 +42,7 @@ input[type=text], select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    margin-bottom: 8px;
   }
   .mname,.lname{
     margin-left: 30px;
@@ -58,6 +60,7 @@ input[type=text], select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    margin-bottom: 8px;
     
   }
   /*yo matrei mileko xaina*/
@@ -67,6 +70,7 @@ input[type=text], select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    margin-bottom: 8px;
   }
   input[type=txt], select, textarea {
     width: 15%;
@@ -75,6 +79,7 @@ input[type=text], select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    margin-bottom: 8px;
     
   }
   
@@ -85,7 +90,7 @@ input[type=text], select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-    
+    margin-bottom: 8px;
   }
   
 label {
@@ -125,7 +130,6 @@ h3{
     display: table;
     clear: both;
   }
-  
 
 .enter-btn{
     margin: 40px auto 20px;
