@@ -13,7 +13,14 @@
     <div class="navbar">
         <h1>MED-Host</h1>
         </div>
-    
+    <!-- <header>
+        <div class="logo">MED-Host</div>
+        <!-- <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Login</a></li>
+        </ul> -->
+    </header> -->
+
     <div class="form-box">
         <h2>LOGIN</h2>
         <div class="input-box">
@@ -31,6 +38,10 @@
     </div>
 
     <script>
+        Window.addEventaListener("scroll",function(){
+        var header= document.querySelector("header");
+        header.classList.toggle("sticky",window.scrollY>0);
+        })
         function myFunction(){
             var x = document.getElementById("myInput");
             var y = document.getElementById("hide1");

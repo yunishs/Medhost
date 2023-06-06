@@ -3,6 +3,27 @@
     padding: 0;
     box-sizing: border-box;
 }
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #3468a3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 90px;
+    
+}
+header .logo
+{
+    position: relative;
+    font-weight: 700;
+    font-size: 30px;
+    color: #1a0856; 
+    letter-spacing: 2px;
+    z-index: 100000;
+}
 body
 {
     text-align: left;
@@ -15,82 +36,88 @@ body
     background-size:100% 100%;
     /* background size ma cover garda chai aafai adjust hunxaa but 100% 100% garda chai purai picture nai background ma aauxa */
 }
-input[type=text], select, textarea {
-    width: 40%;
+input[type=text], select, textarea 
+{
+    width: 25%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-  }
-  input[type=stext], select, textarea {
-    width: 15%;
+    margin-bottom: 8px;
+}
+input[type=stext], select, textarea 
+{
+    width: 20%;
     padding: 12px;
     /* padding:0px 12px 12px 12px; */
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-  }
-  input[type=integer], select, textarea {
+    margin-bottom: 8px;
+}
+input[type=integer], select, textarea 
+{
     width: 10%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-  }
-  input[type=inti], select, textarea {
-    width: 40%;
+    margin-bottom: 8px;
+}
+input[type=inti], select, textarea 
+{
+    width: 18%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-  }
-  input[type=sty], select, textarea {
+    margin-bottom: 8px;
+}
+input[type=sty], select, textarea 
+{
     width: 15%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-  }
-  
-label {
-    padding: 12px 0px 0px 0;
-   
-  }
-
-
+    margin-bottom: 8px;
+}
+label 
+{
+    padding: 12px 0px 0px 0px; 
+}
 .input-box{
-    width: 60px;
+    width: 1100px;
     border-radius:5px;
     background: rgba(122, 141, 180, 0.3);
-    margin: 12% auto;
+    margin:10% 5%;
     color: #0a0a0a;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
+    padding: 50px 50px 50px 50px;
 }
-
-h3{
-    text-align: left;
-    margin-bottom: 40px;
-    
+.mname,.lname
+{
+    margin-left: 40px;
 }
-.col-25 {
+.h1
+{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+.col-25 
+{
     float: left;
     width: 100%;
     margin-top: 6px;
-  }
-  
-  .col-35 {
-    float: left;
-    width: 50%;
-    margin-top: 6px;
-  }
-  /* Clear floats after the columns */
-  .row::after {
+}
+/* Clear floats after the columns */
+.row::after 
+{
     content: "";
     display: table;
     clear: both;
-  }
-  
-
+}
 .enter-btn{
     margin: 40px auto 20px;
     text-align:center;
@@ -102,4 +129,13 @@ h3{
     cursor: pointer;
     background: rgb(92, 126, 151);
     font-size: 16px;
+}
+.container{
+    width: 600px;
+    border-radius:5px;
+    background: rgba(122, 141, 180, 0.3);
+    margin: 12% auto;
+    padding: 50px 50px;
+    color: #0a0a0a;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
 }

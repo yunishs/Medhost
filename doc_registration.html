@@ -9,36 +9,31 @@
     <link rel="icon" type="image/png" href="images\MedHost.png">
 </head>
 <body>
-    <!-- <div class=".input-box"> -->
-        <h3>Doctors Information:</h3>
+    <header>
+        <div class="logo">MED-Host</div>
+    </header>
+    <div class="input-box">
+        <h1 class="h1">Doctors Information</h1>
         <form action="/action_page.css"></form>
         <div class="row">
             <div class="col-25">
-                <label for="fname">First name:</label>
+                <label class="fname">First name:</label>
                     <input type="stext" id="fname" name="fname" size="10px" >
-            </div>
-            <div class="col-25"></div>
-                <label for="mname">Middle name:</label>
+                <label class="mname">Middle name:</label>
                     <input type="stext" id="mname" name="mname" size="10px" >
-            </div>
-            <div class="col-25">
-                <label for="lname">Last name:</label>
+                <label class="lname">Last name:</label>
                     <input type="stext" id="lname" name="lname" size="10px" >
             </div>
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="nmc_id">NMC ID: </label>
-            </div>
-            <div class="col-35">
-                <input type="number" id="nmc_id" name="nmc_id" >
+                <label class="nmc_id">NMC ID: </label>
+                    <input type="inti" id="nmc_id" name="nmc_id" >
             </div>
         </div>
         <div class="row">
             <div class="col-25">
                 <label for="specialization">Specialization: </label>
-            </div>
-            <div class="col-35">
                 <input type="text" id="specialization" name="specialization" >
             </div>
         </div>
@@ -51,8 +46,6 @@
         <div class="row">
             <div class="col-25">
                 <label for="gender">Gender:</label>
-            </div>
-            <div class="col-35">
                 <select name="gender" id="gender" type="sty">
                     <option>---</option>
                     <option value="male">Male</option>
@@ -64,17 +57,12 @@
         <div class="row">
             <div class="col-25">
                 <label for="contact_no">Contact: </label>
-
-            </div>
-            <div class="col-35">
                 <input type="inti" id="contact_no" name="contact_no">
             </div>
         </div>
         <div class="row">
             <div class="col-25">
                 <label for="email">Email: </label>
-            </div>
-            <div class="col-35">
                 <input type="text" id="email" name="email" >
             </div>
         </div>
@@ -86,7 +74,13 @@
         <div class="row">
             <button type="button" class="enter-btn">ENTER</button>
         </div>
-    <!-- </div> -->
+    </div>
+    <script>
+        Window.addEventaListener("scroll",function(){
+        var header= document.querySelector("header");
+        header.classList.toggle("sticky",window.scrollY>0);
+        })
+    </script>
 </body>
 </html>
 
