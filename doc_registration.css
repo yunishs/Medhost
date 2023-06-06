@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    text-align: left;
+    padding-left: 10%;
+    background-image:url('https://img.freepik.com/free-photo/pastel-blue-vignette-concrete-textured-background_53876-102637.jpg?w=1060&t=st=1685109733~exp=1685110333~hmac=5224c8411cc639be2e6b5bfa3dc6f6b04c8bcd1484218ff7e61492801510c75d');
+    background-repeat:no-repeat;
+    /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
+    background-attachment:fixed;
+    /* yesle fixed huda chai background chai move hudainaa */
+    background-size:100% 100%;
+    /* background size ma cover garda chai aafai adjust hunxaa but 100% 100% garda chai purai picture nai background ma aauxa */
+}
+input[type=text], select, textarea {
+    width: 40%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  input[type=stext], select, textarea {
+    width: 15%;
+    padding: 12px;
+    /* padding:0px 12px 12px 12px; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  input[type=integer], select, textarea {
+    width: 10%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  input[type=inti], select, textarea {
+    width: 40%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  input[type=sty], select, textarea {
+    width: 15%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+label {
+    padding: 12px 0px 0px 0;
+   
+  }
+
+
+.input-box{
+    width: 60px;
+    border-radius:5px;
+    background: rgba(122, 141, 180, 0.3);
+    margin: 12% auto;
+    color: #0a0a0a;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
+}
+
+h3{
+    text-align: left;
+    margin-bottom: 40px;
+    
+}
+.col-25 {
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+  }
+  
+  .col-35 {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+  }
+  /* Clear floats after the columns */
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+
+.enter-btn{
+    margin: 40px auto 20px;
+    text-align:center;
+    width: 20%;
+    display: block;
+    outline: none;
+    padding: 10px;
+    border: 2px solid rgb(26, 63, 127);
+    cursor: pointer;
+    background: rgb(92, 126, 151);
+    font-size: 16px;
+}
