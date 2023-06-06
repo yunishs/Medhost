@@ -17,17 +17,26 @@ body
 }
 input[type=text], select, textarea {
     width: 20%;
-    padding: 12px;
+    margin-left: 60px; /*yo cha*/
+    padding: 12px 12px 12px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    
+  }
+  input[type=date], select, textarea {
+    width: 15%; 
+    padding: 12px 12px 12px 12px;
     margin-left: 20px;
-    margin: inline-block;
+    /* padding:0px 12px 12px 12px; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
   }
   input[type=stext], select, textarea {
-    width: 15%;
-    padding: 12px;
-    margin-left: 20px;
+    width: 15%; 
+    padding: 12px 12px 12px 12px;
+    margin-left: 35px;
     /* padding:0px 12px 12px 12px; */
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -36,34 +45,47 @@ input[type=text], select, textarea {
   .mname,.lname{
     margin-left: 30px;
   }
-  .age{
+  .age,.mobile{
+    margin-left: 140px;
+  }
+  .nationality{
     margin-left: 80px;
   }
   input[type=integer], select, textarea {
-    width: 10%;
-    padding: 12px;
-    margin-left: 20px;
+    width: 20%;
+    padding: 12px 12px 12px 12px;
+    margin-left: 35px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    
+  }
+  /*yo matrei mileko xaina*/
+  input[type=exc], select, textarea {
+    width: 35%;
+    padding: 12px 12px 12px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  input[type=txt], select, textarea {
+    width: 15%;
+    margin-left: 47.5px;
+    padding: 12px 12px 12px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
     
   }
   
-  input[type=inti], select, textarea {
-    width: 20%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    margin: inline-block;
-  }
   input[type=sty], select, textarea {
-    width: 15%;
-    padding: 12px;
+    width: 10%;
+    margin-left: 20px;
+    padding: 12px 12px 12px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-    margin: inline-block;
+    
   }
   
 label {
