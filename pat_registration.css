@@ -3,6 +3,27 @@
     padding: 0;
     box-sizing: border-box;
 }
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #3468a3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 90px;
+  
+}
+header .logo
+{
+  position: relative;
+  font-weight: 700;
+  font-size: 30px;
+  color: #1a0856; 
+  letter-spacing: 2px;
+  z-index: 100000;
+}
 body
 {
     text-align: left;

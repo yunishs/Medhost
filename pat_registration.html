@@ -78,6 +78,11 @@
             <button type="button" class="enter-btn">ENTER</button>
         </div>
     <!-- </div> -->
+    <script>
+        Window.addEventaListener("scroll",function(){
+        var header= document.querySelector("header");
+        header.classList.toggle("sticky",window.scrollY>0);
+        })
+    </script>
 </body>
 </html>
-
