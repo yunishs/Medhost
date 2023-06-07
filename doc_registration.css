@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-header{
+/* header{
     position: fixed;
     top: 0;
     left: 0;
@@ -23,7 +23,7 @@ header .logo
     color: #1a0856; 
     letter-spacing: 2px;
     z-index: 100000;
-}
+} */
 body
 {
     text-align: left;
@@ -38,7 +38,7 @@ body
 }
 input[type=text], select, textarea 
 {
-    width: 25%;
+    width: 30%;
     padding: 12px 12px 12px;
     margin-left:10px;
     border: 1px solid #ccc;
@@ -103,10 +103,10 @@ label
     padding: 12px 0px 0px 0px; 
 }
 .input-box{
-    width: 1100px;
+    width: 950px;
     border-radius:5px;
     background: rgba(122, 141, 180, 0.3);
-    margin:10% 5%;
+    margin:10px 10px 0px 0px;
     color: #0a0a0a;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
     padding: 50px 50px 50px 50px;
