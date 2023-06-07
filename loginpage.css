@@ -4,7 +4,7 @@
 }
 body
 {
-    background-image:url('../../images/backround_login.jpg');
+    background-image:url('../../images/default_background.webp');
     /* put ../../ and then relative link to link images*/
     background-repeat:no-repeat;
     /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
@@ -20,22 +20,30 @@ header{
     top: 0;
     left: 0;
     width: 100%;
+    height:20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 100px;
-    background-color: #3468a3;
+    padding: 40px 40px;
+    background-color: #fafaff;
 }
-header .logo
-{
-    position: relative;
-    font-weight: 700;
+.logo {
     font-size: 30px;
-    
-    color: #1a0856; 
-    letter-spacing: 2px;
-    z-index: 100000;
-}
+    font-weight: 600;
+    color: rgb(16, 47, 184);
+    }
+    .icn {
+    height: 45px;
+    }
+    .menuicn {
+    cursor: pointer;
+    }
+    .logosec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    }
 /*navbar ko status and condition */
 .navbar {
     overflow: hidden;
