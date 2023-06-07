@@ -91,6 +91,7 @@ input[type=text], select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    margin-left: 35px;
     margin-bottom: 8px;
   }
   input[type=txt], select, textarea {
@@ -112,7 +113,17 @@ input[type=text], select, textarea {
     border-radius: 4px;
     resize: vertical;
     margin-bottom: 8px;
-  }
+}
+  
+  input[type=ltext], select, textarea {
+    width: 10%;
+    margin-left: 20px;
+    padding: 12px 12px 12px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-bottom: 8px;
+}
   
 label {
     padding: 12px 0px 0px 0;
@@ -142,8 +153,8 @@ h3{
   
   .col-35 {
     float: left;
-    width: 50%;
-    margin-top: 6px;
+    width: 100%;
+    margin-top: 0px;
   }
   /* Clear floats after the columns */
   .row::after {
