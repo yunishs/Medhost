@@ -159,7 +159,7 @@ h3{
   .col-35 {
     float: left;
     width: 100%;
-    margin-top: 0px;
+    margin-top: 10px;
   }
   /* Clear floats after the columns */
   .row::after {
@@ -167,7 +167,10 @@ h3{
     display: table;
     clear: both;
   }
-
+.pat_des
+{
+  margin-top: 8px;
+}
 .enter-btn{
     margin: 40px auto 20px;
     text-align:center;
