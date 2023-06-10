@@ -4,9 +4,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login_page</title> 
-    <link rel="stylesheet" href="../../public/loginpage.css">
+    <link rel="stylesheet" href="../public/loginpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="icon" type="image/png" href="../../images/MedHost.png">
+    <link rel="icon" type="image/png" href="../images/MedHost.png">
     
 </head>
 <body>
@@ -15,7 +15,7 @@
         </div> -->
     <header>
         <div class="logosec">
-			<img src="../../images/MedHost.png"
+			<img src="../images/MedHost.png"
 				class="icn menuicn"
 				id="menuicn">
                 <div class="logo">MED-Host</div>
@@ -25,23 +25,23 @@
             <li><a href="#">Login</a></li>
         </ul> -->
     </header>
-
-    <div class="form-box">
-        <h2>LOGIN</h2>
-        <div class="input-box">
-            <i class="fa-regular fa-envelope"></i>
-            <input type="email" id="email" name="email" placeholder="E-mail Id">
+    <form>
+        <div class="form-box">
+            <h2>LOGIN</h2>
+            <div class="input-box">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="E-mail Id">
+            </div>
+            <div class="input-box">
+                <i class="fa-sharp fa-solid fa-key"></i>
+            <input type="Password" placeholder="Password" id="myInput">
+            <span class="eye" onclick="myFunction()">
+            <i  id="hide1" class="fa fa-eye"></i>
+            </span>
+            </div>
+            <button type="button" class="login-btn" onclick="document.location='homepage.html'">LOGIN</button>
         </div>
-        <div class="input-box">
-            <i class="fa-sharp fa-solid fa-key"></i>
-        <input type="Password" placeholder="Password" id="myInput">
-        <span class="eye" onclick="myFunction()">
-        <i  id="hide1" class="fa fa-eye"></i>
-        </span>
-        </div>
-        <button type="button" class="login-btn" onclick="document.location='homepage.html'">LOGIN</button>
-    </div>
-
+    </form>
     <script>
         Window.addEventaListener("scroll",function(){
         var header= document.querySelector("header");
@@ -59,9 +59,6 @@
             else{
                 x.type ="password";
                 y.style.display = "none";
-               
-            
-
             }
         }
     </script>
