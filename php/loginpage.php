@@ -18,7 +18,6 @@
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $user= $stmt->fetchALL()[0];        
             $_SESSION['user']=$user;
-            
             //"SELECT login_information.role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password'";
 
             // $query = "SELECT role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password';";
@@ -31,13 +30,7 @@
         }
         else $error_message= 'Incorrect E-mail/Password';
     }
-
-
-
 ?>
-
-
-
 
 
 <html lang="en">
