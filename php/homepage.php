@@ -20,43 +20,21 @@
     <div class="container">
         <h1>SEARCH PATIENT'S INFO</h1>
         <form action="">
-            <div class="row">
-                <div class="col-25" >
-                    <label for="fname">First name:</label>
-                </div>
-                <div class="col-75">
-                    <input type="text" id="fname" name="fname">
-                </div>
-            </div>
              <div class="row">
                 <div class="col-25">
-                    <label for="lname">Last name:</label>
+                    <label for="name">Name:</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="lname" name="lname">
+                    <input type="text" id="name" name="name">
                 </div>
              </div>
              <div class="row">
                 <div class="col-25">
-                    <label for="age">Age:</label>
+                <label class="mobile">Mobile no: </label>
+                    <input type="integer" id="mobile" name="mobile">
                 </div>
-                <div class="col-75">
-                    <input type="number" id="age" name="age">
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label for="gender">Gender:</label>
-                </div>
-                <div class="col-75">
-                    <select name="gender" id="gender">
-                        <option>---</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-            </div>
+   
             <br>
             <div class="row">
                 <button type="button" class="enter-btn">ENTER</button>
