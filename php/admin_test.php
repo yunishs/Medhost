@@ -89,7 +89,7 @@
 					<h1 class="recent-Articles">Recent Record</h1>
 				</div>
 
-			</div>
+			</div>-->
 		</div>
 	</div>
 	<!--<script src="./index.js"></script>-->
