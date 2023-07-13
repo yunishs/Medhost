@@ -19,9 +19,9 @@
         </div>
     </header>
 
-      <div class="btn">
+      <!-- <div class="btn">
          <span class="fas fa-bars"></span>
-      </div>
+      </div> -->
       <nav class="sidebar">
          <div class="text">
             Admin Panel
@@ -65,10 +65,10 @@
         </div>
 
       <script>
-         $('.btn').click(function(){
-           $(this).toggleClass("click");
-           $('.sidebar').toggleClass("show");
-         });
+        //  $('.btn').click(function(){
+        //    $(this).toggleClass("click");
+        //    $('.sidebar').toggleClass("show");
+        //  });
            $('.feat-btn').click(function(){
              $('nav ul .feat-show').toggleClass("show");
              $('nav ul .first').toggleClass("rotate");
