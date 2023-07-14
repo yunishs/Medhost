@@ -11,6 +11,7 @@
      
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>Admin Dashboard Panel</title>
 </head>
 <body>
@@ -53,18 +54,23 @@
                 </div>
                 <div class="boxes">
                     <div class="box box1">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span class="text">Total Likes</span>
+                    <i class="fa-sharp fa-light fa-stethoscope"></i>
+                        <span class="text">Doctor</span>
                         <span class="number">50,120</span>
                     </div>
                     <div class="box box2">
-                        <i class="uil uil-comments"></i>
-                        <span class="text">Comments</span>
+                    <i class="fa-brands fa-hire-a-helper"></i>
+                        <span class="text">Front-Desk</span>
                         <span class="number">20,120</span>
                     </div>
                     <div class="box box3">
-                        <i class="uil uil-share"></i>
-                        <span class="text">Total Share</span>
+                    <i class="fa-regular fa-staff-snake"></i>
+                        <span class="text">Medical-Staff</span>
+                        <span class="number">10,120</span>
+                    </div>
+                    <div class="box box4">
+                    <i class="fa-regular fa-bed-pulse"></i>
+                        <span class="text">Patients</span>
                         <span class="number">10,120</span>
                     </div>
                 </div>
