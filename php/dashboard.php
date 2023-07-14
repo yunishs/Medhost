@@ -41,7 +41,7 @@
                <span class="fas fa-caret-down second"></span>
                </a>
                <ul class="serv-show1">
-                    <li><a href="#" onclick="document.getElementById('if1').src = 'frontdesk.php'">Register</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'frontdesk_reg.php'">Register</a></li>
                     <li><a href="#">View</a></li>
                </ul>
             </li>

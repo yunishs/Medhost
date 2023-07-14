@@ -81,6 +81,13 @@ label
 {
     padding: 12px 0px 0px 0px; 
 }
+h5 
+{
+    text-align: center;
+    color:#a33434;
+    font-size: 15px;
+    font-family: sans-serif;
+}
 .input-box{
     width: 950px;
     max-height: 525px;
@@ -91,7 +98,7 @@ label
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
     padding: 100px 50px 50px 50px;
 }
-.mname,.lname,.age,.email
+.mname,.lname,.age,.email,.specialization
 {
     margin-left: 40px;
 }

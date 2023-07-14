@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
     $servername= 'localhost';
     $username= 'root';
     $password= '';
@@ -13,4 +13,4 @@
         $error_message=$e->getMessage();
     }
 
-?>
+?> -->
