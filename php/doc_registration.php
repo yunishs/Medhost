@@ -1,3 +1,33 @@
+<?php
+
+    include '..\database\connect.php';
+// try{
+    if(isset($_POST['enter']))
+    {
+        $fname=$_POST['fname'];
+        $mname=$_POST['mname'];
+        $lname=$_POST['lname'];
+        $nmc_id=$_POST['nmc_id'];
+        $specialization=$_POST['specialization'];
+        $gender=$_POST['gender'];
+        $age=$_POST['age'];
+        $contact=$_POST['contact'];
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+
+        $sql="insert into doctor_reg(fname,mname,lname,nmc_id,specialization,gender,age,contact,email,password) values ('$fname','$mname','$lname','$nmc_id','$specialization','$gender','$age','$contact','$email','$password')";
+        $result=mysqli_query($con,$sql);
+        if($result){
+            echo "Data inserted successfully";
+        }
+        else
+        {
+            die(mysqli_error($con));
+        }
+    }
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +42,7 @@
     <!-- <header>
         <div class="logo">MED-Host</div>
     </header> -->
-    <form action="">
+    <form method="post">
         <div class="input-box">
             <h1 class="h1">Doctors Information</h1>
             <!-- <form action="/action_page.css"></form> -->
@@ -30,9 +60,10 @@
                 <div class="col-25">
                     <label class="nmc_id">NMC ID: </label>
                         <input type="inti" id="nmc_id" name="nmc_id" >
+                    <label class="specialization">Specialization: </label>
+                        <input type="stext" id="specialization" name="specialization">
                 </div>
             </div>
-           
             <div class="row">
                 <div class="col-25">
                     <label for="gender">Gender:</label>
@@ -43,26 +74,31 @@
                         <option value="other">Other</option>
                     </select> 
                     <label class="age">Age:</label>
-                                    <input type="integer" id="age" name="age" >
+                        <input type="integer" id="age" name="age" >
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="contact_no">Contact: </label>
-                    <input type="ini" id="contact_no" name="contact_no">
+                    <label for="contact">Contact: </label>
+                    <input type="ini" id="contact" name="contact">
                     <label class="email">Email: </label>
                     <input type="text" id="email" name="email" >
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-25">
                     <label for="specialization">Specialization: </label>
                     <input type="text" id="specialization" name="specialization" >
                 </div>
-            </div>
-           
+            </div> -->
             <div class="row">
-                <button type="button" class="enter-btn">ENTER</button>
+                <div class="col-25">
+                    <label for="password">Password: </label>
+                    <input type="stext" id="password" name="password" >
+                </div>
+            </div>
+            <div class="row">
+                <button type="enter" class="enter-btn" name="enter">ENTER</button>
             </div>
         </div>
     </form>

@@ -1,3 +1,32 @@
+<?php
+
+    include '..\database\connect.php';
+    if(isset($_POST['enter']))
+    {
+        $fname=$_POST['fname'];
+        $mname=$_POST['mname'];
+        $lname=$_POST['lname'];
+        $reg_id=$_POST['reg_id'];
+        $gender=$_POST['gender'];
+        $age=$_POST['age'];
+        $contact=$_POST['contact'];
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+
+        $sql="insert into frontdesk_reg(fname,mname,lname,reg_id,gender,age,contact,email,password) values ('$fname','$mname','$lname','$reg_id','$gender','$age','$contact','$email','$password')";
+        $result=mysqli_query($con,$sql);
+        if($result){
+            echo "Data inserted successfully";
+        }
+        else
+        {
+            die(mysqli_error($con));
+        }
+    }
+
+?>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +41,7 @@
     <!-- <header>
         <div class="logo">MED-Host</div>
     </header> -->
-    <form action="">
+    <form method="post">
         <div class="input-box">
             <h1 class="h1">Front-Desk Information</h1>
             <!-- <form action="/action_page.css"></form> -->
@@ -29,14 +58,14 @@
             <div class="row">
                 <div class="col-25">
                     <label class="reg_id">REG ID  : </label>
-                        <input type="inti" id="nmc_id" name="nmc_id" >
+                        <input type="inti" id="reg_id" name="reg_id" >
                 </div>
             </div>
            
             <div class="row">
                 <div class="col-25">
                     <label for="gender">Gender:</label>
-                    <select name="gender" id="gender" type="sty">
+                    <select name="gender" id="gender" type="gender">
                         <option>---</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -48,23 +77,29 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label class="contact_no">Contact: </label>
-                    <input type="ini" id="contact_no" name="contact_no">
+                    <label class="contact">Contact: </label>
+                    <input type="ini" id="contact" name="contact">
                     <label class="email">Email: </label>
                     <input type="text" id="email" name="email" >
                 </div>
             </div>
             <div class="row">
-                <button type="button" class="enter-btn">ENTER</button>
+                <div class="col-25">
+                    <label for="password">Password: </label>
+                    <input type="stext" id="password" name="password" >
+                </div>
+            </div>
+            <div class="row">
+                <button type="enter" class="enter-btn" name="enter">ENTER</button>
             </div>
         </div>
     </form>
-    <script>
+    <!-- <script>
         Window.addEventaListener("scroll",function(){
         var header= document.querySelector("header");
         header.classList.toggle("sticky",window.scrollY>0);
         })
-    </script>
+    </script> -->
 </body>
 </html>
 
