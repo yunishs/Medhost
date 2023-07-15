@@ -39,22 +39,22 @@
                 $lnameErr = "Only letters allowed";
             }    
         }
-        // /^[1-9][0-9]*$/
+    
         if (empty($_POST["nmc_id"])) 
         {
             $nmc_idErr = "nmc id is required";
         } 
         else {
             $nmc_id=test_input($_POST['nmc_id']);
-            if (!preg_match("/^[1-9][0-9]*$/",$nmc_id)) {
-                $nmc_idErr = "Only numbers and not starting with zero allowed";
+            if (!preg_match("/([0-9]+(-[0-9]+)+)/",$nmc_id)) {
+                $nmc_idErr = "Only numbers and '-' allowed";
             }    
-        }
+        }//for nmc_id"/^[1-9][0-9]*$/"
         
         {
             $specialization=test_input($_POST['specialization']);
-            if (!preg_match("/^[a-zA-Z]$/",$specialization)) {
-                $specializationErr = "Only letters allowed";
+            if (!preg_match("/^[a-zA-Z-' ]$/",$specialization)) {
+                $specializationErr = "Only letters and whitespace allowed";
             }    
         }  
 
@@ -73,23 +73,51 @@
         } 
         else {
             $age=test_input($_POST['age']);
-            if (!preg_match("/^[1-9][0-9]*$/",$age)) {
+            if (!preg_match("/^[0-9]{1,2}$/",$age)) {
                 $ageErr = "Only numbers and not starting with zero allowed";
             }    
         }
-
+        //only 0-99 age
         if (empty($_POST["contact"])) 
         {
             $contactErr = "Contact is required";
         } 
         else {
             $contact=test_input($_POST['contact']);
-            if (!preg_match("/^[0-9]{10,}$/",$contact)) {
+            if (!preg_match("/^[0-9]{10,10}$/",$contact)) {
                 $contactErr = "Only numbers and not starting with zero allowed";
             }    
         }
+        //alternate for email '/^\\S+@\\S+\\.\\S+$/'
+        if (empty($_POST["email"])) 
+        {
+            $emailErr = "Email is required";
+        } 
+        else {
+            $email = test_input($_POST["email"]);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+              $emailErr = "Invalid email format";
+            }
+        }
+
+        if (empty($_POST["password"])) 
+        {
+            $passwordErr = "Password is required";
+        } 
+        else {
+            $password=test_input($_POST['password']);
+            if (!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",$password)) {
+                $passwordErr = "Password must have 8 characters with one uppercase, one lowercase, one digit and one special character";
+            }    
+        }
+        //for password
+        // Has minimum 8 characters in length. {8,}
+        // At least one uppercase English letter.(?=.*?[A-Z])
+        // At least one lowercase English letter.(?=.*?[a-z])
+        // At least one digit. (?=.*?[0-9])
+        // At least one special character,(?=.*?[#?!@$%^&*-])
+        //https://stackoverflow.com/questions/43919606/i-could-not-seem-to-understand-a-z-this-expression
         
-            
         // $fname=$_POST['fname'];
         // $mname=$_POST['mname'];
         // $lname=$_POST['lname'];
