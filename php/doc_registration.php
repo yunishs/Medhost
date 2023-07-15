@@ -1,19 +1,84 @@
 <?php
 
     include '..\database\connect.php';
+    //initializing variables
+    $fname=$mname=$lname=$nmc_id=$specialization=$gender=$age=$contact=$email=$password="";
+    $fnameErr=$mnameErr=$lnameErr=$nmc_idErr=$specializationErr=$genderErr=$ageErr=$contactErr=$emailErr=$passwordErr="";
 // try{
     if(isset($_POST['enter']))
     {
-        $fname=$_POST['fname'];
-        $mname=$_POST['mname'];
-        $lname=$_POST['lname'];
-        $nmc_id=$_POST['nmc_id'];
-        $specialization=$_POST['specialization'];
-        $gender=$_POST['gender'];
-        $age=$_POST['age'];
-        $contact=$_POST['contact'];
-        $email=$_POST['email'];
-        $password=$_POST['password'];
+        if (empty($_POST["fname"])) 
+        {
+            $fnameErr = "First Name is required";
+        } 
+        else {
+            $fname=test_input($_POST['fname']);
+            if (!preg_match("/^[a-zA-Z]$/",$fname)) {
+                $fnameErr = "Only letters allowed";
+            }    
+        }
+        //preg_match finds match in a-Z
+        if (empty($_POST["mname"])) 
+        {
+            $mnameErr = "First Name is required";
+        } 
+        else {
+            $mname=test_input($_POST['mname']);
+            if (!preg_match("/^[a-zA-Z]$/",$fname)) {
+                $mnameErr = "Only letters allowed";
+            }    
+        }
+
+        if (empty($_POST["lname"])) 
+        {
+            $lnameErr = "First Name is required";
+        } 
+        else {
+            $lname=test_input($_POST['lname']);
+            if (!preg_match("/^[a-zA-Z]$/",$lname)) {
+                $lnameErr = "Only letters allowed";
+            }    
+        }
+        // /^[1-9][0-9]*$/
+        if (empty($_POST["nmc_id"])) 
+        {
+            $nmc_idErr = "nmc id is required";
+        } 
+        else {
+            $nmc_id=test_input($_POST['nmc_id']);
+            if (!preg_match("/^[1-9][0-9]*$/",$nmc_id)) {
+                $nmc_idErr = "Only numbers and not starting with zero allowed";
+            }    
+        }
+        
+        {
+            $specialization=test_input($_POST['specialization']);
+            if (!preg_match("/^[a-zA-Z]$/",$specialization)) {
+                $specializationErr = "Only letters allowed";
+            }    
+        }  
+
+
+        
+            
+        // $fname=$_POST['fname'];
+        // $mname=$_POST['mname'];
+        // $lname=$_POST['lname'];
+        // $nmc_id=$_POST['nmc_id'];
+        // $specialization=$_POST['specialization'];
+        // $gender=$_POST['gender'];
+        // $age=$_POST['age'];
+        // $contact=$_POST['contact'];
+        // $email=$_POST['email'];
+        // $password=$_POST['password'];
+
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+          }
+
 
         $sql="insert into doctor_reg(fname,mname,lname,nmc_id,specialization,gender,age,contact,email,password) values ('$fname','$mname','$lname','$nmc_id','$specialization','$gender','$age','$contact','$email','$password')";
         $result=mysqli_query($con,$sql);
