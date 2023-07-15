@@ -20,7 +20,7 @@
         //preg_match finds match in a-Z
         if (empty($_POST["mname"])) 
         {
-            $mnameErr = "First Name is required";
+            $mnameErr = "Middle Name is required";
         } 
         else {
             $mname=test_input($_POST['mname']);
@@ -31,7 +31,7 @@
 
         if (empty($_POST["lname"])) 
         {
-            $lnameErr = "First Name is required";
+            $lnameErr = "Last Name is required";
         } 
         else {
             $lname=test_input($_POST['lname']);
@@ -58,7 +58,36 @@
             }    
         }  
 
+        if (empty($_POST["gender"])) 
+        {
+            $genderErr = "Gender is required";
+        } 
+        else
+        {
+            $gender=test_input($_POST['gender']);   
+        }  
 
+        if (empty($_POST["age"])) 
+        {
+            $ageErr = "age is required";
+        } 
+        else {
+            $age=test_input($_POST['age']);
+            if (!preg_match("/^[1-9][0-9]*$/",$age)) {
+                $ageErr = "Only numbers and not starting with zero allowed";
+            }    
+        }
+
+        if (empty($_POST["contact"])) 
+        {
+            $contactErr = "Contact is required";
+        } 
+        else {
+            $contact=test_input($_POST['contact']);
+            if (!preg_match("/^[0-9]{10,}$/",$contact)) {
+                $contactErr = "Only numbers and not starting with zero allowed";
+            }    
+        }
         
             
         // $fname=$_POST['fname'];
@@ -167,7 +196,9 @@
             </div>
         </div>
     </form>
-    
+    <script>
+        alert($ageErr)
+    </script>
     <!-- <script>
         Window.addEventaListener("scroll",function(){
         var header= document.querySelector("header");
