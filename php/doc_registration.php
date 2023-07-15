@@ -3,10 +3,17 @@
     include '..\database\connect.php';
     //initializing variables
     $fname=$mname=$lname=$nmc_id=$specialization=$gender=$age=$contact=$email=$password="";
-    $fnameErr=$mnameErr=$lnameErr=$nmc_idErr=$specializationErr=$genderErr=$ageErr=$contactErr=$emailErr=$passwordErr="";
+    $fnameErr=$mnameErr=$lnameErr=$nmc_idErr=$specializationErr=$genderErr=$ageErr=$contactErr=$emailErr=$passwordErr=null;
 // try{
     if(isset($_POST['enter']))
     {
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+          }
+
         if (empty($_POST["fname"])) 
         {
             $fnameErr = "First Name is required";
@@ -84,8 +91,8 @@
         } 
         else {
             $contact=test_input($_POST['contact']);
-            if (!preg_match("/^[0-9]{10,10}$/",$contact)) {
-                $contactErr = "Only numbers and not starting with zero allowed";
+            if (!preg_match("/^[0-9]{10,}$/",$contact)) {
+                $contactErr = "Only numbers allowed";
             }    
         }
         //alternate for email '/^\\S+@\\S+\\.\\S+$/'
@@ -129,25 +136,46 @@
         // $email=$_POST['email'];
         // $password=$_POST['password'];
 
-        function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-          }
+        
+        
+        if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($nmc_idErr) &&empty($specializationErr) 
+            &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
+        {
 
-
-        $sql="insert into doctor_reg(fname,mname,lname,nmc_id,specialization,gender,age,contact,email,password) values ('$fname','$mname','$lname','$nmc_id','$specialization','$gender','$age','$contact','$email','$password')";
-        $result=mysqli_query($con,$sql);
-        if($result){
-            echo "Data inserted successfully";
+            
+            $sql="insert into doctor_reg(fname,mname,lname,nmc_id,specialization,gender,age,contact,email,password) values ('$fname','$mname','$lname','$nmc_id','$specialization','$gender','$age','$contact','$email','$password')";
+            $result=mysqli_query($con,$sql);
+            if($result){
+                echo "Data inserted successfully";
+            }
+            else
+            {
+                die(mysqli_error($con));
+            }
         }
         else
         {
-            die(mysqli_error($con));
+            // $script = <<< JS
+            // $(function() {
+                //var data = <?php echo json_encode("42", JSON_HEX_TAG);
+                echo"<script>  const fnameErr = <?php echo json_encode($fnameErr); ?>;
+                    const mnameErr = <?php echo json_encode($mnameErr); ?>;
+                    const lnameErr = <?php echo json_encode($lnameErr); ?>;
+                    const nmc_idErr = <?php echo json_encode($nmc_idErr); ?>;
+                    const specializationErr = <?php echo json_encode($specializationErr); ?>;
+                    const genderErr = <?php echo json_encode($genderErr); ?>;
+                    const ageErr = <?php echo json_encode($ageErr); ?>;
+                    const contactErr = <?php echo json_encode($contactErr); ?>;
+                    const emailErr = <?php echo json_encode($emailErr); ?>;
+                    const passwordErr = <?php echo json_encode($passwordErr); ?>;
+                    alert(fnameErr + mnameErr +lnameErr + nmc_idErr + specializationErr + genderErr + ageErr + contactErr + emailErr + passwordErr);
+                    alert(hi); </script>";
+            // });
+
+            // JS;
         }
     }
-
+// data push hudaina condn na milesamma tara error dekauna milena
 ?>
 
 <html lang="en">
@@ -224,15 +252,14 @@
             </div>
         </div>
     </form>
-    <script>
-        alert($ageErr)
-    </script>
-    <!-- <script>
-        Window.addEventaListener("scroll",function(){
-        var header= document.querySelector("header");
-        header.classList.toggle("sticky",window.scrollY>0);
-        })
-    </script> -->
+    
+    //  <!-- <script>
+    // //     Window.addEventaListener("scroll",function(){
+    // //     var header= document.querySelector("header");
+    // //     header.classList.toggle("sticky",window.scrollY>0);
+    // //     })
+    // // </script> -->
+    // <script><?= $script ?></script>
 </body>
 </html>
 
