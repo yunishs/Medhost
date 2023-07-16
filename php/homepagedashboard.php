@@ -15,7 +15,7 @@
     <title>Admin Dashboard Panel</title>
 </head>
 <body>
-    <nav>
+ <!--  <nav>
         <div>
              <ul class="logout-mode">
                 <li><a href="#">
@@ -33,17 +33,17 @@
             </li>
             </ul>
         </div>
-    </nav>
+    </nav>--->
     <section class="dashboard">
         <div class="top">
             <i class="uil uil-bars sidebar-toggle"></i>
-        <!--
+        
             <div class="search-box">
                 <i class="uil uil-search"></i>
                 <input type="text" placeholder="Search here...">
             </div>
             
-            <img src="images/profile.jpg" alt="">-->
+            <img src="images/profile.jpg" alt="">
         </div>
         
         <div class="dash-content">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="boxes">
                     <div class="box box1">
-                    <i class="fa-sharp fa-light fa-stethoscope"></i>
+                    <i class="fa-sharp fa-solid fa-stethoscope"></i>
                         <span class="text">Doctor</span>
                         <span class="number">50,120</span>
                     </div>
@@ -64,12 +64,12 @@
                         <span class="number">20,120</span>
                     </div>
                     <div class="box box3">
-                    <i class="fa-regular fa-staff-snake"></i>
+                    <i class="fa-solid fa-staff-snake"></i>
                         <span class="text">Medical-Staff</span>
                         <span class="number">10,120</span>
                     </div>
                     <div class="box box4">
-                    <i class="fa-regular fa-bed-pulse"></i>
+                    <i class="fa-solid fa-bed-pulse"></i>
                         <span class="text">Patients</span>
                         <span class="number">10,120</span>
                     </div>
