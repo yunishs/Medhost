@@ -148,16 +148,17 @@
             $result=mysqli_query($con,$sql);
             if($result){
                 function_alert("Data inserted successfully");
+                header('Location: doctorview_admin.php');
             }
             else
             {
-                die(mysqli_error($con));
                 function_alert("Data couldn't be inserted successfully");
+                die(mysqli_error($con));
+                
             }
         }
         else
         {
-            
             if (!empty($fnameErr)){
                 function_alert($fnameErr);
             }
@@ -190,7 +191,6 @@
             }            
         }
     }
-
     ?>
     
 <!-- data push hudaina condn na milesamma tara error dekauna milena -->
