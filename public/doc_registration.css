@@ -93,10 +93,10 @@ h5
     max-height: 525px;
     border-radius:5px;
     background: rgba(122, 141, 180, 0.3);
-    margin:60px 700px 0px 0px;
+    margin:60px 70px 0px 0px;
     color: #0a0a0a;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
-    padding: 100px 50px 50px 50px;
+    padding: 50px 50px 50px 50px;
 }
 .mname,.lname,.age,.email,.specialization
 {

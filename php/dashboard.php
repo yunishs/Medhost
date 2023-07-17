@@ -26,14 +26,14 @@
             Admin Panel
          </div>
          <ul>
-            <li class="active"><a href="#">Dashboard</a></li>
+            <li class="active"><a href="#" onclick="document.getElementById('if1').src = 'homepagedashboard.php'">Dashboard</a></li>
             <li>
                <a href="#" class="feat-btn">Doctor
                <span class="fas fa-caret-down first"></span>
                </a>
                <ul class="feat-show">
                     <li><a href="#" onclick="document.getElementById('if1').src = 'doc_registration.php'">Register</a></li>
-                    <li><a href="#">View</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'doctorview_admin.php'">View</a></li>
                </ul>
             </li>
             <li>
@@ -60,7 +60,7 @@
       </nav>
 
         <div class="main">
-		    <iframe id="if1" name="iframe_a" style="height:100%; width:100%; border: none;" ></iframe>
+		    <iframe id="if1" name="iframe_a" style="height:100%; width:100%; border: none;" src="homepagedashboard.php"></iframe>
         </div>
 
       <script>
