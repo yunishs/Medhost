@@ -95,11 +95,11 @@
                         <span class="data-title">Email</span>
                         <span class="data-list">premshahi@gmail.com</span>
                         <span class="data-list">deepachand@gmail.com</span>
-                        <span class="data-list">prakashhai@gmail.com</span>
                         <span class="data-list">manishachand@gmail.com</span>
                         <span class="data-list">pratimashhai@gmail.com</span>
                         <span class="data-list">manshahi@gmail.com</span>
                         <span class="data-list">ganeshchand@gmail.com</span>
+                        <span class="data-list">bikashchand@gmail.com</span>
                     </div>
                     <div class="data joined">
                         <span class="data-title">Joined</span>
@@ -113,23 +113,23 @@
                     </div>
                     <div class="data type">
                         <span class="data-title">Type</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
+                        <span class="data-list">Doctor</span>
+                        <span class="data-list">sister</span>
+                        <span class="data-list">Doctor</span>
+                        <span class="data-list">Patient</span>
+                        <span class="data-list">FrontDesk</span>
+                        <span class="data-list">Patient</span>
+                        <span class="data-list">Nurse</span>
                     </div>
                     <div class="data status">
                         <span class="data-title">Status</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
+                        <span class="data-list">On Duty</span>
+                        <span class="data-list">On Duty</span>
+                        <span class="data-list">Leave</span>
+                        <span class="data-list">Discharged</span>
+                        <span class="data-list">On Duty</span>
+                        <span class="data-list">Admitted</span>
+                        <span class="data-list">Leave</span>
                     </div>
                 </div>
             </div>

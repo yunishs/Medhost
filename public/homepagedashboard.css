@@ -8,7 +8,7 @@
 :root{
     /* ===== Colors ===== */
     --primary-color: #cacbce;
-    --panel-color: #b6f1f5;
+    --panel-color: rgb(255, 255, 255);
     --text-color: #000;
     --black-light-color: #707070;
     --border-color: #e6e5e5;
@@ -93,7 +93,7 @@ body.dark li a:hover:before{
     left: 200px;
     background-color: var(--panel-color);
     min-height: 100vh;
-    width: calc(100% - 250px);
+    width: calc(100% - 200px);
     padding: 10px 14px;
     transition: var(--tran-05);
 }
@@ -114,10 +114,10 @@ nav.close ~ .dashboard{
     transition: var(--tran-05);
     z-index: 10;
 }
-nav.close ~ .dashboard .top{
+/*nav.close ~ .dashboard .top{
     left: 73px;
     width: calc(100% - 73px);
-}
+}*/
 .dashboard .top .sidebar-toggle{
     font-size: 26px;
     color: var(--text-color);
@@ -201,6 +201,7 @@ nav.close ~ .dashboard .top{
 .boxes .box i{
     font-size: 35px;
     color: var(--text-color);
+  
 }
 .boxes .box .text{
     white-space: nowrap;
@@ -214,6 +215,9 @@ nav.close ~ .dashboard .top{
     font-weight: 500;
     color: var(--text-color);
 }
+.boxes .box.box1{
+    background-color: var(--box1-color);
+}
 .boxes .box.box2{
     background-color: var(--box2-color);
 }
@@ -222,8 +226,6 @@ nav.close ~ .dashboard .top{
 }
 .boxes .box.box4{
     background-color: var(--box4-color);
-    border-top: 10px;
-    padding-top: 10px;
 }
 .dash-content .activity .activity-data{
     display: flex;
@@ -231,9 +233,6 @@ nav.close ~ .dashboard .top{
     align-items: center;
     width: 100%;
 }
-/*.activity .activity-data{
-    display: flex;
-}*/
 .activity-data .data{
     display: flex;
     flex-direction: column;
