@@ -161,31 +161,31 @@
             if (!empty($fnameErr)){
                 function_alert($fnameErr);
             }
-            elseif(!empty($mnameErr)){
+            if(!empty($mnameErr)){
                 function_alert($mnameErr);
             }
-            elseif(!empty($lnameErr)){
+            if(!empty($lnameErr)){
                 function_alert($lnameErr);
             }
-            elseif(!empty($nmc_idErr)){
+            if(!empty($nmc_idErr)){
                 function_alert($nmc_idErr);
             }
-            elseif(!empty($specializationErr)){
+            if(!empty($specializationErr)){
                 function_alert($specializationErr);
             }
-            elseif(!empty($genderErr)){
+            if(!empty($genderErr)){
                 function_alert($genderErr);
             }
-            elseif(!empty($ageErr)){
+            if(!empty($ageErr)){
                 function_alert($ageErr);
             }
-            elseif(!empty($contactErr)){
+            if(!empty($contactErr)){
                 function_alert($contactErr);
             }
-            elseif(!empty($emailErr)){
+            if(!empty($emailErr)){
                 function_alert($emailErr);
             }
-            elseif(!empty($passwordErr)){
+            if(!empty($passwordErr)){
                 function_alert($passwordErr);
             }            
         }
