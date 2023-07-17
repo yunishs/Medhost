@@ -90,10 +90,10 @@ body.dark li a:hover:before{
 
 .dashboard{
     position: relative;
-    left: 200px;
+    
     background-color: var(--panel-color);
     min-height: 100vh;
-    width: calc(100% - 200px);
+    
     padding: 10px 14px;
     transition: var(--tran-05);
 }
@@ -197,11 +197,12 @@ nav.close ~ .dashboard{
     padding: 15px 20px;
     background-color: var(--box1-color);
     transition: var(--tran-05);
+    margin-top: 15px;
 }
 .boxes .box i{
     font-size: 35px;
     color: var(--text-color);
-  
+    
 }
 .boxes .box .text{
     white-space: nowrap;
