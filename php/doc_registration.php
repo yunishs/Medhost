@@ -20,8 +20,8 @@
         } 
         else {
             $fname=test_input($_POST['fname']);
-            if (!preg_match("/^[a-zA-Z]$/",$fname)) {
-                $fnameErr = "Only letters allowed";
+            if (!preg_match("/^[a-zA-Z]*$/",$fname)) {
+                $fnameErr = "Only letters allowed in first name";
             }    
         }
         //preg_match finds match in a-Z
@@ -31,8 +31,8 @@
         } 
         else {
             $mname=test_input($_POST['mname']);
-            if (!preg_match("/^[a-zA-Z]$/",$fname)) {
-                $mnameErr = "Only letters allowed";
+            if (!preg_match("/^[a-zA-Z]*$/",$fname)) {
+                $mnameErr = "Only letters allowed in first name";
             }    
         }
 
@@ -42,8 +42,8 @@
         } 
         else {
             $lname=test_input($_POST['lname']);
-            if (!preg_match("/^[a-zA-Z]$/",$lname)) {
-                $lnameErr = "Only letters allowed";
+            if (!preg_match("/^[a-zA-Z]*$/",$lname)) {
+                $lnameErr = "Only letters allowed in first name";
             }    
         }
     
@@ -54,14 +54,14 @@
         else {
             $nmc_id=test_input($_POST['nmc_id']);
             if (!preg_match("/([0-9]+(-[0-9]+)+)/",$nmc_id)) {
-                $nmc_idErr = "Only numbers and '-' allowed";
+                $nmc_idErr = "Only numbers and '-' allowed in nmc id";
             }    
         }//for nmc_id"/^[1-9][0-9]*$/"
         
         {
             $specialization=test_input($_POST['specialization']);
-            if (!preg_match("/^[a-zA-Z-' ]$/",$specialization)) {
-                $specializationErr = "Only letters and whitespace allowed";
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$specialization)) {
+                $specializationErr = "Only letters and whitespace allowed in specialization";
             }    
         }  
 
@@ -81,7 +81,7 @@
         else {
             $age=test_input($_POST['age']);
             if (!preg_match("/^[0-9]{1,2}$/",$age)) {
-                $ageErr = "Only numbers and not starting with zero allowed";
+                $ageErr = "Only numbers and not starting with zero allowed in age";
             }    
         }
         //only 0-99 age
@@ -92,7 +92,7 @@
         else {
             $contact=test_input($_POST['contact']);
             if (!preg_match("/^[0-9]{10,}$/",$contact)) {
-                $contactErr = "Only numbers allowed";
+                $contactErr = "Only numbers allowed in contact";
             }    
         }
         //alternate for email '/^\\S+@\\S+\\.\\S+$/'
@@ -136,47 +136,65 @@
         // $email=$_POST['email'];
         // $password=$_POST['password'];
 
+        function function_alert($message) {
+            echo "<script>alert('$message');</script>";
+        }
         
         
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($nmc_idErr) &&empty($specializationErr) 
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
-
-            
             $sql="insert into doctor_reg(fname,mname,lname,nmc_id,specialization,gender,age,contact,email,password) values ('$fname','$mname','$lname','$nmc_id','$specialization','$gender','$age','$contact','$email','$password')";
             $result=mysqli_query($con,$sql);
             if($result){
-                echo "Data inserted successfully";
+                function_alert("Data inserted successfully");
             }
             else
             {
                 die(mysqli_error($con));
+                function_alert("Data couldn't be inserted successfully");
             }
         }
         else
         {
-            // $script = <<< JS
-            // $(function() {
-                //var data = <?php echo json_encode("42", JSON_HEX_TAG);
-                echo"<script>  const fnameErr = <?php echo json_encode($fnameErr); ?>;
-                    const mnameErr = <?php echo json_encode($mnameErr); ?>;
-                    const lnameErr = <?php echo json_encode($lnameErr); ?>;
-                    const nmc_idErr = <?php echo json_encode($nmc_idErr); ?>;
-                    const specializationErr = <?php echo json_encode($specializationErr); ?>;
-                    const genderErr = <?php echo json_encode($genderErr); ?>;
-                    const ageErr = <?php echo json_encode($ageErr); ?>;
-                    const contactErr = <?php echo json_encode($contactErr); ?>;
-                    const emailErr = <?php echo json_encode($emailErr); ?>;
-                    const passwordErr = <?php echo json_encode($passwordErr); ?>;
-                    alert(fnameErr + mnameErr +lnameErr + nmc_idErr + specializationErr + genderErr + ageErr + contactErr + emailErr + passwordErr);
-                    alert(hi); </script>";
-            // });
-
-            // JS;
+            
+            if (!empty($fnameErr)){
+                function_alert($fnameErr);
+            }
+            if(!empty($mnameErr)){
+                function_alert($mnameErr);
+            }
+            if(!empty($lnameErr)){
+                function_alert($lnameErr);
+            }
+            if(!empty($nmc_idErr)){
+                function_alert($nmc_idErr);
+            }
+            if(!empty($specializationErr)){
+                function_alert($specializationErr);
+            }
+            if(!empty($genderErr)){
+                function_alert($genderErr);
+            }
+            if(!empty($ageErr)){
+                function_alert($ageErr);
+            }
+            if(!empty($contactErr)){
+                function_alert($contactErr);
+            }
+            if(!empty($emailErr)){
+                function_alert($emailErr);
+            }
+            if(!empty($passwordErr)){
+                function_alert($passwordErr);
+            }            
         }
     }
-// data push hudaina condn na milesamma tara error dekauna milena
-?>
+
+    ?>
+    
+<!-- data push hudaina condn na milesamma tara error dekauna milena -->
+
 
 <html lang="en">
 <head>
@@ -253,13 +271,31 @@
         </div>
     </form>
     
-    //  <!-- <script>
-    // //     Window.addEventaListener("scroll",function(){
+    // <!-- <script>
+     //     Window.addEventaListener("scroll",function(){
     // //     var header= document.querySelector("header");
     // //     header.classList.toggle("sticky",window.scrollY>0);
     // //     })
-    // // </script> -->
-    // <script><?= $script ?></script>
+    // // </script> 
+            -->
+            <!-- <script>
+                function code(){
+                var fnameErr = <?= json_encode($fnameErr) ?>;
+                var mnameErr = <?= json_encode($mnameErr); ?>;
+                var lnameErr = <?= json_encode($lnameErr); ?>;
+                var nmc_idErr = <?= json_encode($nmc_idErr); ?>;
+                var specializationErr = <?= json_encode($specializationErr); ?>;
+                var genderErr = <?= json_encode($genderErr); ?>;
+                var ageErr = <?= json_encode($ageErr); ?>;
+                var contactErr = <?= json_encode($contactErr); ?>;
+                var emailErr = <?= json_encode($emailErr); ?>;
+                var passwordErr = <?= json_encode($passwordErr); ?>;
+                allErr =[fnameErr + mnameErr +lnameErr + nmc_idErr + specializationErr + genderErr + ageErr + contactErr + emailErr + passwordErr];
+                alert(allErr);
+                }
+                </script>"; -->
+            </script>
+    
 </body>
 </html>
 
