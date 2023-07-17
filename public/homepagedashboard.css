@@ -90,10 +90,10 @@ body.dark li a:hover:before{
 
 .dashboard{
     position: relative;
-    
+    left: 30px;
     background-color: var(--panel-color);
     min-height: 100vh;
-    
+    width: calc(100% - 30px);
     padding: 10px 14px;
     transition: var(--tran-05);
 }
@@ -125,10 +125,10 @@ nav.close ~ .dashboard{
 }
 .dashboard .top .search-box{
     position: relative;
-    height: 45px;
+    height: 30px;
     max-width: 600px;
     width: 100%;
-    margin: 0 30px;
+    margin: 30px 30px;
 }
 .top .search-box input{
     position: absolute;
