@@ -57,9 +57,14 @@ include '..\database\connect.php';
 					<td>'.$contact.'</td>
 					<td>'.$email.'</td>
 					<td>'.$password.'</td>
+					<td>
+					<button class=""><a href="update_doctor.php?updateid='.$id.'">Update</a></button>
+					<button class=""><a href="delete_doctor.php?deleteid='.$id.'">Delete</a></button>
+					</td>
 					</tr>';
 				}
 			}	
+			
 			?>
 		</tbody>
 </body>
