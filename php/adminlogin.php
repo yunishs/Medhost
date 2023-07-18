@@ -3,33 +3,85 @@
     session_start();
 
     $error_message='';
+    $emailErr=$passwordErr=null;
+    $email=$password="";
 
     if($_POST){
         include('..\database\connection.php');
 
-        $email= $_POST['email'];
-        $password= $_POST['password'];
-        
-        $query = 'Select * From admin_login WHERE admin_login.email="'. $email .'" AND admin_login.password="'. $password .'" LIMIT 1';
-        $stmt = $conn->prepare($query);
-        $stmt->execute();
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+          }
 
-        if($stmt->rowCount()>0){
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $user= $stmt->fetchALL()[0];        
-            $_SESSION['user']=$user;
-            
-            //"SELECT login_information.role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password'";
-
-            // $query = "SELECT role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password';";
-            // // $row = $query->fetch(PDO::FETCH_OBJ);
-            // if($result->fetch('$role')=='0') {
-            //     header('Location: admin_test.php');
-            // } else {
-                header('Location: admin_test.php');
-            // }
+        if (empty($_POST["email"])) 
+        {
+            $emailErr = "Email is required";
+        } 
+        else {
+            $email = test_input($_POST["email"]);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+              $emailErr = "Invalid email format";
+            }
         }
-        else $error_message= 'Incorrect E-mail/Password';
+        if (empty($_POST["password"])) 
+        {
+            $passwordErr = "Password is required";
+        } 
+        else {
+            $password=test_input($_POST['password']);
+            if (!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",$password)) {
+                $passwordErr = "Password must have 8 characters with one uppercase, one lowercase, one digit and one special character";
+            }    
+        }
+        // $email= $_POST['email'];
+        // $password= $_POST['password'];
+        function function_alert($message) {
+            echo "<script>alert('$message');</script>";
+        }
+        
+        
+        if(empty($emailErr) && empty($passwordErr) )
+        {
+        
+            $query = 'Select * From admin_login WHERE admin_login.email="'. $email .'" AND admin_login.password="'. $password .'" LIMIT 1';
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+
+            if($stmt->rowCount()>0){
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                $user= $stmt->fetchALL()[0];   
+                if(isset($_SESSION["username"])) {
+
+                }    
+                else{// check username and pass correct
+                    $_SESSION["username"]=$email;
+                    $_SESSION["password"]=$password;
+                }
+                
+                //"SELECT login_information.role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password'";
+
+                // $query = "SELECT role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password';";
+                // // $row = $query->fetch(PDO::FETCH_OBJ);
+                // if($result->fetch('$role')=='0') {
+                //     header('Location: admin_test.php');
+                // } else {
+                    header('Location: admin_test.php');
+                // }
+            }
+            else $error_message= 'Incorrect E-mail/Password';
+        }
+        else
+        {
+            if(!empty($emailErr)){
+                function_alert($emailErr);
+            }
+            if(!empty($passwordErr)){
+                function_alert($passwordErr);
+            } 
+        }
     }
 
 
