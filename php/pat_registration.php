@@ -1,3 +1,187 @@
+<?php
+
+    include '..\database\connect.php';
+    //initializing variables
+    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$pat_description="";
+    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=null;
+// try{
+    if(isset($_POST['enter']))
+    {
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+          }
+
+        if (empty($_POST["fname"])) 
+        {
+            $fnameErr = "First Name is required";
+        } 
+        else {
+            $fname=test_input($_POST['fname']);
+            if (!preg_match("/^[a-zA-Z]*$/",$fname)) {
+                $fnameErr = "Only letters allowed in first name";
+            }    
+        }
+        //preg_match finds match in a-Z
+        if (empty($_POST["mname"])) 
+        {
+            $mnameErr = "Middle Name is required";
+        } 
+        else {
+            $mname=test_input($_POST['mname']);
+            if (!preg_match("/^[a-zA-Z]*$/",$mname)) {
+                $mnameErr = "Only letters allowed in first name";
+            }    
+        }
+
+        if (empty($_POST["lname"])) 
+        {
+            $lnameErr = "Last Name is required";
+        } 
+        else {
+            $lname=test_input($_POST['lname']);
+            if (!preg_match("/^[a-zA-Z]*$/",$lname)) {
+                $lnameErr = "Only letters allowed in first name";
+            }    
+        }
+        
+        if (empty($_POST["contact"])) 
+        {
+            $contactErr = "Contact is required";
+        } 
+        else {
+            $contact=test_input($_POST['contact']);
+            if (!preg_match("/^[0-9]{10,}$/",$contact)) {
+                $contactErr = "Only numbers allowed in contact";
+            }    
+        }//for nmc_id"/^[1-9][0-9]*$/"
+
+        
+        if (empty($_POST["age"])) 
+        {
+            $ageErr = "age is required";
+        } 
+        else {
+            $age=test_input($_POST['age']);
+            if (!preg_match("/^[0-9]{1,2}$/",$age)) {
+                $ageErr = "Only numbers and not starting with zero allowed in age";
+            }    
+        }
+        //only 0-99 age
+
+        if (empty($_POST["bloodgroup"])) 
+        {
+            $bloodgroupErr = "Bloodgroup is required";
+        } 
+        else
+        {
+            $bloodgroup=test_input($_POST['bloodgroup']);   
+        }  
+
+        {
+            $nationality=test_input($_POST['nationality']);
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$nationality)) {
+                $nationalityErr = "Only letters and whitespace allowed in nationality";
+            }    
+        } 
+
+        {
+            $address=test_input($_POST['address']);
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$address)) {
+                $addressErr = "Only letters and whitespace allowed in address";
+            }    
+        } 
+
+        //alternate for email '/^\\S+@\\S+\\.\\S+$/'
+        if (empty($_POST["email"])) 
+        {
+            $emailErr = "Email is required";
+        } 
+        else {
+            $email = test_input($_POST["email"]);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+              $emailErr = "Invalid email format";
+            }
+        }
+
+        {
+            $pat_description=test_input($_POST['pat_description']);
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$pat_description)) {
+                $pat_descriptionErr = "Only letters and whitespace allowed in specialization";
+            }    
+        }  
+        //for password
+        // Has minimum 8 characters in length. {8,}
+        // At least one uppercase English letter.(?=.*?[A-Z])
+        // At least one lowercase English letter.(?=.*?[a-z])
+        // At least one digit. (?=.*?[0-9])
+        // At least one special character,(?=.*?[#?!@$%^&*-])
+        //https://stackoverflow.com/questions/43919606/i-could-not-seem-to-understand-a-z-this-expression
+        
+        function function_alert($message) {
+            echo "<script>alert('$message');</script>";
+        }
+        
+        
+        if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($contactErr) &&empty($ageErr) 
+            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr) && empty($pat_descriptionErr))
+        {
+            $sql="insert into patient_reg(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,contact,email,pat_description) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description')";
+            $result=mysqli_query($con,$sql);
+            if($result){
+                // function_alert("Data inserted successfully");
+                header('Location: pat_view.php');
+            }
+            else
+            {
+                function_alert("Data couldn't be inserted successfully");
+                die(mysqli_error($con));
+                
+            }
+        }
+        else
+        {
+            if (!empty($fnameErr)){
+                function_alert($fnameErr);
+            }
+            if(!empty($mnameErr)){
+                function_alert($mnameErr);
+            }
+            if(!empty($lnameErr)){
+                function_alert($lnameErr);
+            }
+            if(!empty($contactErr)){
+                function_alert($contactErr);
+            }
+            if(!empty($ageErr)){
+                function_alert($ageErr);
+            }
+            if(!empty($genderErr)){
+                function_alert($genderErr);
+            }
+            if(!empty($nationalityErr)){
+                function_alert($nationalityErr);
+            }
+            if(!empty($bloodgroupErr)){
+                function_alert($bloodgroupErr);
+            }
+            if(!empty($adressErr)){
+                function_alert($addressErr);
+            }
+            if(!empty($emailErr)){
+                function_alert($emailErr);
+            }     
+            if(!empty($pat_descriptionErr)){
+                function_alert($pat_descriptionErr);
+            }         
+        }
+    }
+    ?>
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,10 +201,10 @@
                 <div class="logo">MED-Host</div>
         </div>
     </header>
-    <form action="">
+    <form method="post">
         <div class="input-box">
             <h3>Personal Information:</h3>
-            <form action="/action_page.css"></form>
+            <!-- <form action="" method="post"></form> -->
             <div class="row">
                 <div class="col-25" >
                     <label class="fname">First name:</label>
@@ -33,9 +217,9 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                        <label class="dob">Date of birth:</label>
-                            <input type="date" id="dob" name="dob">
-                        <label class="age">Age:</label>
+                    <label class="mobile">Mobile no: </label>
+                        <input type="integer" id="mobile" name="mobile">
+                    <label class="age">Age:</label>
                             <input type="sty" id="age" name="age" >
                 </div>
             </div>
@@ -44,9 +228,9 @@
                     <label class="gender">Gender:</label>
                     <select class="exc" name="gender" id="gender"> <!--YO WALA--->
                         <option>---</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Other</option>
                     </select>
                     <label class="nationality">Nationality:</label>
                     <input type="stext" id="nationality" name="nationality" >
@@ -72,8 +256,7 @@
                 <div class="col-25">
                     <label for="address">Address: </label>
                     <input type="txt" id="address" name="address" >
-                    <label class="mobile">Mobile no: </label>
-                    <input type="integer" id="mobile" name="mobile">
+                    
                 </div>
             </div>
     
@@ -85,23 +268,23 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label class="pat_des">Patient's Description: </label>
+                    <label class="pat_description">Patient's Description: </label>
                 </div>
                 <div class="col-35">
-                    <input type="text" class="pat_des" id="pat_desc" name="pat_desc" placeholder="Enter the patient's initial condition">
+                    <input type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition">
                 </div>
             </div>
             <div class="row">
-                <button type="button" class="enter-btn">ENTER</button>
+                <button type="enter" class="enter-btn" name="enter">ENTER</button>
             </div>
             
         </div>
     </form>
-    <script>
+    <!-- <script>
         Window.addEventaListener("scroll",function(){
         var header= document.querySelector("header");
         header.classList.toggle("sticky",window.scrollY>0);
         })
-    </script>
+    </script> -->
 </body>
 </html>
