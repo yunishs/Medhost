@@ -9,7 +9,8 @@
     /* ===== Colors ===== */
     --primary-color: #cacbce;
     --panel-color: rgb(255, 255, 255);
-    --pan-color: hwb(0 100% 00.3s);
+    --pan-color: rgb(255, 255, 255,0.3);
+    --nel-color:#e0d7d7b0;
     --text-color: #000;
     --black-light-color: #707070;
     --border-color: #e6e5e5;
@@ -32,6 +33,8 @@ body{
 body.dark{
     --primary-color: #3A3B3C;
     --panel-color: #242526;
+    --pan-color:#242526;
+    --nel-color:#242526;
     --text-color: #CCC;
     --black-light-color: #CCC;
     --border-color: #4D4C4C;
@@ -39,6 +42,7 @@ body.dark{
     --box1-color: #3A3B3C;
     --box2-color: #3A3B3C;
     --box3-color: #3A3B3C;
+    --box4-color:#3A3B3C;
     --title-icon-color: #CCC;
 }
 /* === Custom Scroll Bar CSS === */
@@ -92,7 +96,7 @@ body.dark li a:hover:before{
 .dashboard{
     position: relative;
     left: 30px;
-    background-color: var(--pan-color);
+    background-color: var(--panel-color);
     min-height: 100vh;
     width: calc(100% - 30px);
     padding: 10px 14px;
@@ -110,8 +114,7 @@ nav.close ~ .dashboard{
     width: calc(100% - 250px);
     justify-content: space-between;
     align-items: center;
-    /*padding: 10px 14px;*/
-    background-color: var(--panel-color);
+    background-color: var(--pan-color);
     transition: var(--tran-05);
    /* z-index: 10;*/
 }
@@ -134,7 +137,7 @@ nav.close ~ .dashboard{
 .top .search-box input{
     position: absolute;
     border: 1px solid var(--border-color);
-    background-color: var(--panel-color);
+    background-color: var(--nel-color);
     padding: 0 25px 0 50px;
     border-radius: 5px;
     height: 100%;
