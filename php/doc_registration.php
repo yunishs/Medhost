@@ -125,17 +125,6 @@
         // At least one special character,(?=.*?[#?!@$%^&*-])
         //https://stackoverflow.com/questions/43919606/i-could-not-seem-to-understand-a-z-this-expression
         
-        // $fname=$_POST['fname'];
-        // $mname=$_POST['mname'];
-        // $lname=$_POST['lname'];
-        // $nmc_id=$_POST['nmc_id'];
-        // $specialization=$_POST['specialization'];
-        // $gender=$_POST['gender'];
-        // $age=$_POST['age'];
-        // $contact=$_POST['contact'];
-        // $email=$_POST['email'];
-        // $password=$_POST['password'];
-
         function function_alert($message) {
             echo "<script>alert('$message');</script>";
         }
@@ -148,16 +137,17 @@
             $result=mysqli_query($con,$sql);
             if($result){
                 function_alert("Data inserted successfully");
+                header('Location: doctorview_admin.php');
             }
             else
             {
-                die(mysqli_error($con));
                 function_alert("Data couldn't be inserted successfully");
+                die(mysqli_error($con));
+                
             }
         }
         else
         {
-            
             if (!empty($fnameErr)){
                 function_alert($fnameErr);
             }
@@ -190,7 +180,6 @@
             }            
         }
     }
-
     ?>
     
 <!-- data push hudaina condn na milesamma tara error dekauna milena -->
@@ -207,9 +196,6 @@
     <link rel="icon" type="image/png" href="..\images\MedHost.png">
 </head>
 <body>
-    <!-- <header>
-        <div class="logo">MED-Host</div>
-    </header> -->
     <form method="post">
         <div class="input-box">
             <h1 class="h1">Doctors Information</h1>
@@ -253,12 +239,6 @@
                     <input type="text" id="email" name="email" >
                 </div>
             </div>
-            <!-- <div class="row">
-                <div class="col-25">
-                    <label for="specialization">Specialization: </label>
-                    <input type="text" id="specialization" name="specialization" >
-                </div>
-            </div> -->
             <div class="row">
                 <div class="col-25">
                     <label for="password">Password: </label>
@@ -271,29 +251,13 @@
         </div>
     </form>
     
-    // <!-- <script>
+    <!-- <script>
      //     Window.addEventaListener("scroll",function(){
     // //     var header= document.querySelector("header");
     // //     header.classList.toggle("sticky",window.scrollY>0);
     // //     })
     // // </script> 
             -->
-            <!-- <script>
-                function code(){
-                var fnameErr = <?= json_encode($fnameErr) ?>;
-                var mnameErr = <?= json_encode($mnameErr); ?>;
-                var lnameErr = <?= json_encode($lnameErr); ?>;
-                var nmc_idErr = <?= json_encode($nmc_idErr); ?>;
-                var specializationErr = <?= json_encode($specializationErr); ?>;
-                var genderErr = <?= json_encode($genderErr); ?>;
-                var ageErr = <?= json_encode($ageErr); ?>;
-                var contactErr = <?= json_encode($contactErr); ?>;
-                var emailErr = <?= json_encode($emailErr); ?>;
-                var passwordErr = <?= json_encode($passwordErr); ?>;
-                allErr =[fnameErr + mnameErr +lnameErr + nmc_idErr + specializationErr + genderErr + ageErr + contactErr + emailErr + passwordErr];
-                alert(allErr);
-                }
-                </script>"; -->
             </script>
     
 </body>
