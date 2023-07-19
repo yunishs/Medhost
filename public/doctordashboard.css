@@ -24,6 +24,7 @@ nav.close ~ .dashboard{
 .dashboard .top{
     position: fixed;
     top: 0;
+    height:20px; 
     left: 250px;
     display: flex;
     width: calc(100% - 250px);
@@ -37,6 +38,7 @@ nav.close ~ .dashboard{
 }
 .dashboard .dash-content{
     padding-top: 50px;
+    width:calc(100% / 2);
 }
 .dash-content .title{
     display: flex;
@@ -72,7 +74,7 @@ nav.close ~ .dashboard{
     flex-direction: column;
     align-items: center;
     border-radius: 12px;
-    width: calc(100% / 2 - 15px);
+   /* width: calc(100% / 2 - 15px);
     padding: 15px 20px;
     background-color: #e9b2d9;
     margin-top: 15px;
@@ -101,7 +103,7 @@ nav.close ~ .dashboard{
     background-color: #FFE6AC;
 }
 .boxes .box.box3{
-    background-color: #ebc1e2;
+    background-color: #afbbed;
 }
 .boxes .box.box4{
     background-color:#f0c0c0;

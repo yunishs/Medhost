@@ -22,6 +22,8 @@
 </div>
             <img src="images/profile.jpg" alt="">
         </div>
+        <div class="dash-content">
+        <div class="overview">
                 <div class="boxes">
                     <div class="box box1">
                     <i class="fa-sharp fa-solid fa-stethoscope"></i>
@@ -39,6 +41,7 @@
                     <i class="fa-solid fa-bed-pulse"></i>
                         <span class="text">Patients</span>
                     </div>
+</div>
                 </div>
             </div>
             </section>
