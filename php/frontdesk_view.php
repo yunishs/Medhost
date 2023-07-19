@@ -35,7 +35,7 @@ include '..\database\connect.php';
 		<tbody>
 			<?php
 
-			$sql="Select * from medicals_reg";
+			$sql="Select * from frontdesk_reg";
 			$result=mysqli_query($con,$sql);
 			if($result)
 			{
