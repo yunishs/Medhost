@@ -68,7 +68,7 @@
                 // if($result->fetch('$role')=='0') {
                 //     header('Location: admin_test.php');
                 // } else {
-                    header('Location: admin_test.php');
+                    header('Location: dashboard.php');
                 // }
             }
             else $error_message= 'Incorrect E-mail/Password';
