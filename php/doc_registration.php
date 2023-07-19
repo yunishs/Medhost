@@ -25,11 +25,7 @@
             }    
         }
         //preg_match finds match in a-Z
-        if (empty($_POST["mname"])) 
         {
-            $mnameErr = "Middle Name is required";
-        } 
-        else {
             $mname=test_input($_POST['mname']);
             if (!preg_match("/^[a-zA-Z]*$/",$fname)) {
                 $mnameErr = "Only letters allowed in first name";
@@ -91,8 +87,8 @@
         } 
         else {
             $contact=test_input($_POST['contact']);
-            if (!preg_match("/^[0-9]{10,}$/",$contact)) {
-                $contactErr = "Only numbers allowed in contact";
+            if (!preg_match("/^[0-9]{8,}$/",$contact)) {
+                $contactErr = "Only numbers allowed in contact and the contact must be atleast 8 digits";
             }    
         }
         //alternate for email '/^\\S+@\\S+\\.\\S+$/'
@@ -203,19 +199,19 @@
             <div class="row">
                 <div class="col-25">
                     <label class="fname">First name:</label>
-                        <input type="stext" id="fname" name="fname">
+                        <input type="stext" id="fname" name="fname" value=<?php echo $fname; ?>>
                     <label class="mname">Middle name:</label>
-                        <input type="stext" id="mname" name="mname">
+                        <input type="stext" id="mname" name="mname" value=<?php echo $mname; ?>>
                     <label class="lname">Last name:</label>
-                        <input type="stext" id="lname" name="lname">
+                        <input type="stext" id="lname" name="lname" value=<?php echo $lname; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
                     <label class="nmc_id">NMC ID: </label>
-                        <input type="inti" id="nmc_id" name="nmc_id" >
+                        <input type="inti" id="nmc_id" name="nmc_id" value=<?php echo $nmc_id; ?> >
                     <label class="specialization">Specialization: </label>
-                        <input type="stext" id="specialization" name="specialization">
+                        <input type="stext" id="specialization" name="specialization" value=<?php echo $specialization; ?>>
                 </div>
             </div>
             <div class="row">
@@ -223,26 +219,26 @@
                     <label for="gender">Gender:</label>
                     <select name="gender" id="gender" type="sty">
                         <option>---</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
+                        <option VALUE="Male" <?php if($gender=="Male") echo 'selected="selected"'; ?>>Male</option>
+                        <option VALUE="Female" <?php if($gender=="Female") echo 'selected="selected"'; ?>>Female</option>
+                        <option VALUE="Others" <?php if($gender=="Others") echo 'selected="selected"'; ?>>Others</option>
                     </select> 
                     <label class="age">Age:</label>
-                        <input type="integer" id="age" name="age" >
+                        <input type="integer" id="age" name="age" value=<?php echo $age; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
                     <label for="contact">Contact: </label>
-                    <input type="ini" id="contact" name="contact">
+                    <input type="ini" id="contact" name="contact" value=<?php echo $contact; ?>>
                     <label class="email">Email: </label>
-                    <input type="text" id="email" name="email" >
+                    <input type="text" id="email" name="email" value=<?php echo $email; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
                     <label for="password">Password: </label>
-                    <input type="stext" id="password" name="password" >
+                    <input type="stext" id="password" name="password" value=<?php echo $password; ?>>
                 </div>
             </div>
             <div class="row">
