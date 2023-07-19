@@ -128,10 +128,10 @@
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($contactErr) &&empty($ageErr) 
             &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr) && empty($pat_descriptionErr))
         {
-            $sql="insert into patient_reg(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,contact,email,pat_description) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description')";
+            $sql="insert into patient_reg(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description')";
             $result=mysqli_query($con,$sql);
             if($result){
-                // function_alert("Data inserted successfully");
+                function_alert("Data inserted successfully");
                 header('Location: pat_view.php');
             }
             else
@@ -218,7 +218,7 @@
             <div class="row">
                 <div class="col-25">
                     <label class="mobile">Mobile no: </label>
-                        <input type="integer" id="mobile" name="mobile">
+                        <input type="integer" id="contact" name="contact">
                     <label class="age">Age:</label>
                             <input type="sty" id="age" name="age" >
                 </div>
@@ -239,7 +239,7 @@
             <div class="row">
                 <div class="col-25">
                     <label for="bloodgroup">Blood group:</label>
-                    <select name="bloodg" id="bloodg" type="sty">
+                    <select name="bloodgroup" id="bloodgroup" type="sty">
                         <option>---</option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>

@@ -116,24 +116,20 @@
     </header>
     
     <form action="adminlogin.php" method="POST">
-         <div class="form-box">
-            <h2>ADMIN LOGIN</h2>
-            <div class="input-box">
-                <i class="fa-regular fa-envelope"></i>
-                <input type="email" id="email" name="email" placeholder="E-mail Id" />
+    <div class="container">
+        <h2>Login</h2>
+        <form>
+            <div class="clearfix">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
             </div>
-            <div class="input-box">
-                <i class="fa-sharp fa-solid fa-key"></i>
-            <input type="password" placeholder="Password" id="password" name="password" />
-            <span class="eye" onclick="myFunction()">
-            <i  id="hide1" class="fa fa-eye"></i>
-            </span>
+            <div class="clearfix">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
             </div>
-            <button class="login-btn">LOGIN</button>
-            <div>
-                <h5><?= $error_message ?></h5>
-            </div>  
-        </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
     </form>
     
     <!-- <script>
