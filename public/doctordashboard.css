@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -11,7 +12,7 @@ body{
 .dashboard{
     position: relative;
     left: 30px;
-    background-color: rgb(255, 255, 255);;
+    background-color: rgb(255, 255, 255);
     min-height: 100vh;
     width: calc(100% - 30px);
     padding: 10px 14px;
