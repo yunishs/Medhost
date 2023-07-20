@@ -45,7 +45,6 @@
                 </div>
                 <div class="box box4">
                     <i class="fa-solid fa-bed-pulse"></i>
-<<<<<<< HEAD
                         <span class="text">Update </span>
                     </div>
 </div>
@@ -58,10 +57,7 @@
     <h3 id="date"></h3>
   </div>
                
-    <script src="script.js">
-// Function to update the time, day, and date
-function updateTime() {
-=======
+
                     <span class="text">Update </span>
                 </div>
             </div>
