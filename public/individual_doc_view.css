@@ -36,8 +36,6 @@ header {
   }
 body
 {
-    /* padding-left: 10%; */
-    /* font-size: large; */
     background-image:url('../images/default_background.webp');
     background-repeat:no-repeat;
     /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
@@ -49,8 +47,6 @@ body
 h3{
     text-align: left;
     margin-top: 30px;
-    padding-top: 80px;
-    margin-right: 20px;
     
   }
 .main {

@@ -45,23 +45,6 @@
                 </div>
                 <div class="box box4">
                     <i class="fa-solid fa-bed-pulse"></i>
-<<<<<<< HEAD
-                        <span class="text">Update </span>
-                    </div>
-</div>
-</section>
-</div>
-            </div>
-<div class="DAT">
-    <h2 id="time"></h2>
-    <h3 id="day"></h3>
-    <h3 id="date"></h3>
-  </div>
-               
-    <script src="script.js">
-// Function to update the time, day, and date
-function updateTime() {
-=======
                     <span class="text">Update </span>
                 </div>
             </div>
@@ -69,12 +52,9 @@ function updateTime() {
     </div>
 </section>
 <!-- <script src="script.js"> -->
-
-
 <script>
     // Function to update the time, day, and date
     function updateTime() {
->>>>>>> 23027dcfbae2fe4452a7f998aaa18fc5728e5abb
       const now = new Date();
 
       // Get the current time (hours, minutes, and seconds)
