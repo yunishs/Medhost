@@ -3,85 +3,33 @@
     session_start();
 
     $error_message='';
-    $emailErr=$passwordErr=null;
-    $email=$password="";
 
     if($_POST){
         include('..\database\connection.php');
 
-        function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-          }
-
-        if (empty($_POST["email"])) 
-        {
-            $emailErr = "Email is required";
-        } 
-        else {
-            $email = test_input($_POST["email"]);
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-              $emailErr = "Invalid email format";
-            }
-        }
-        if (empty($_POST["password"])) 
-        {
-            $passwordErr = "Password is required";
-        } 
-        else {
-            $password=test_input($_POST['password']);
-            if (!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",$password)) {
-                $passwordErr = "Password must have 8 characters with one uppercase, one lowercase, one digit and one special character";
-            }    
-        }
-        // $email= $_POST['email'];
-        // $password= $_POST['password'];
-        function function_alert($message) {
-            echo "<script>alert('$message');</script>";
-        }
+        $email= $_POST['email'];
+        $password= $_POST['password'];
         
-        
-        if(empty($emailErr) && empty($passwordErr) )
-        {
-        
-            $query = 'Select * From admin_login WHERE admin_login.email="'. $email .'" AND admin_login.password="'. $password .'" LIMIT 1';
-            $stmt = $conn->prepare($query);
-            $stmt->execute();
+        $query = 'Select * From admin_login WHERE admin_login.email="'. $email .'" AND admin_login.password="'. $password .'" LIMIT 1';
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
 
-            if($stmt->rowCount()>0){
-                $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                $user= $stmt->fetchALL()[0];   
-                if(isset($_SESSION["username"])) {
+        if($stmt->rowCount()>0){
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $user= $stmt->fetchALL()[0];        
+            $_SESSION['user']=$user;
+            
+            //"SELECT login_information.role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password'";
 
-                }    
-                else{// check username and pass correct
-                    $_SESSION["username"]=$email;
-                    $_SESSION["password"]=$password;
-                }
-                
-                //"SELECT login_information.role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password'";
-
-                // $query = "SELECT role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password';";
-                // // $row = $query->fetch(PDO::FETCH_OBJ);
-                // if($result->fetch('$role')=='0') {
-                //     header('Location: admin_test.php');
-                // } else {
-                    header('Location: dashboard.php');
-                // }
-            }
-            else $error_message= 'Incorrect E-mail/Password';
+            // $query = "SELECT role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password';";
+            // // $row = $query->fetch(PDO::FETCH_OBJ);
+            // if($result->fetch('$role')=='0') {
+            //     header('Location: admin_test.php');
+            // } else {
+                header('Location: admin_test.php');
+            // }
         }
-        else
-        {
-            if(!empty($emailErr)){
-                function_alert($emailErr);
-            }
-            if(!empty($passwordErr)){
-                function_alert($passwordErr);
-            } 
-        }
+        else $error_message= 'Incorrect E-mail/Password';
     }
 
 
@@ -116,24 +64,28 @@
     </header>
     
     <form action="adminlogin.php" method="POST">
-    <div class="container">
-        <h2>Login</h2>
-        <form>
-            <div class="clearfix">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+         <div class="form-box">
+            <h2>ADMIN LOGIN</h2>
+            <div class="input-box">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="E-mail Id" />
             </div>
-            <div class="clearfix">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+            <div class="input-box">
+                <i class="fa-sharp fa-solid fa-key"></i>
+            <input type="password" placeholder="Password" id="password" name="password" />
+            <span class="eye" onclick="myFunction()">
+            <i  id="hide1" class="fa fa-eye"></i>
+            </span>
             </div>
-            <input type="submit" value="Login">
-        </form>
-    </div>
+            <button class="login-btn">LOGIN</button>
+            <div>
+                <h5><?= $error_message ?></h5>
+            </div>  
+        </div>
     </form>
     
     <!-- <script>
-        Window.addEventaListener("scroll",function(){
+        Window.addEventListener("scroll",function(){
         var header= document.querySelector("header");
         header.classList.toggle("sticky",window.scrollY>0);
         })
