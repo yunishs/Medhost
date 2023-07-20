@@ -18,7 +18,7 @@ include '..\database\connect.php';
     <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
 </head>
 <body>
-	<table class="table">
+	<table class="tbl">
 		<thread>
 			<tr>
 				<th scope="col">S.N.</th>
