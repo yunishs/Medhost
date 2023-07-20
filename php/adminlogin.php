@@ -4,7 +4,7 @@
 
     $error_message='';
     $emailErr=$passwordErr=null;
-    $email=$password="";
+    $email=$password=$role="";
 
     if($_POST){
         include('..\database\connection.php');
@@ -54,11 +54,37 @@
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 $user= $stmt->fetchALL()[0];   
                 if(isset($_SESSION["username"])) {
-
+                    //fetch role
+                    //timeout after 12hrs 12*60*60
+                    if(time()-$_SESSION["login_timestamp"]>43200)
+                    {
+                        session_unset();
+                        session_destroy();
+                        
+                    }
+                    else{
+                        echo "<style>alert('Welcome ".$_SESSION["username"]."')</style>";
+                        if($_SESSION["role"]==0){
+                            header("Location:dashboard.php");
+                        }
+                        elseif($_SESSION["role"]==1){
+                            header("Location:searchpatient.php");
+                        }
+                        elseif($_SESSION["role"]==0){
+                            header("Location:individual_doc_view.php");
+                        }
+                        elseif($_SESSION["role"]==3){
+                            header("Location:pat_registration.php");
+                        }
+                    
+                    }
                 }    
                 else{// check username and pass correct
                     $_SESSION["username"]=$email;
                     $_SESSION["password"]=$password;
+                    $_SESSION["login_timestamp"]=time();
+                    $_SESSION["role"]=$role;
+                    
                 }
                 
                 //"SELECT login_information.role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password'";
@@ -82,7 +108,9 @@
                 function_alert($passwordErr);
             } 
         }
+        //header("Location:login.php");
     }
+
 
 
 
