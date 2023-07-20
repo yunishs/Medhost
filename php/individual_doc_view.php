@@ -5,7 +5,7 @@ include '..\database\connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-   <head>
+   <head
       <meta charset="utf-8">
       <title>Individual Panel</title>
       <link rel="stylesheet" href="..\public\individual_doc_view.css"> <!-- change garnu parcha -->
