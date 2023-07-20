@@ -42,15 +42,16 @@
                         <span class="text">Update </span>
                     </div>
 </div>
+</section>
+</div>
+            </div>
 <div class="DAT">
     <h2 id="time"></h2>
     <h3 id="day"></h3>
     <h3 id="date"></h3>
   </div>
-                </div>
-            </div>
-            </section>
-            <script src="script.js">
+               
+    <script src="script.js">
 // Function to update the time, day, and date
 function updateTime() {
       const now = new Date();
