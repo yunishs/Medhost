@@ -25,6 +25,12 @@ body{
     min-height: 100vh;
     background-color: var(--primary-color);
 }
+.dash-content.DAT{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f2f2f2;
+    margin-top: 50px;
+}
 .dashboard{
     position: relative;
     left: 30px;
@@ -161,3 +167,15 @@ nav.close ~ .dashboard{
 .boxes .box.box4{
     background-color: var(--box4-color);
 }
+h2, h3 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
