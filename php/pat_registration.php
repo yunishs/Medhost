@@ -131,7 +131,7 @@
             $sql="insert into patient_reg(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description')";
             $result=mysqli_query($con,$sql);
             if($result){
-                function_alert("Data inserted successfully");
+                // function_alert("Data inserted successfully");
                 header('Location: pat_view.php');
             }
             else
