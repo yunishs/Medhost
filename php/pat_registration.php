@@ -25,14 +25,10 @@
             }    
         }
         //preg_match finds match in a-Z
-        if (empty($_POST["mname"])) 
         {
-            $mnameErr = "Middle Name is required";
-        } 
-        else {
             $mname=test_input($_POST['mname']);
             if (!preg_match("/^[a-zA-Z]*$/",$mname)) {
-                $mnameErr = "Only letters allowed in first name";
+                $mnameErr = "Only letters allowed in middle name";
             }    
         }
 
@@ -43,7 +39,7 @@
         else {
             $lname=test_input($_POST['lname']);
             if (!preg_match("/^[a-zA-Z]*$/",$lname)) {
-                $lnameErr = "Only letters allowed in first name";
+                $lnameErr = "Only letters allowed in last name";
             }    
         }
         
@@ -79,10 +75,17 @@
         {
             $bloodgroup=test_input($_POST['bloodgroup']);   
         }  
-
+        if (empty($_POST["gender"])) 
+        {
+            $genderErr = "Gender is required";
+        } 
+        else
+        {
+            $gender=test_input($_POST['gender']);   
+        } 
         {
             $nationality=test_input($_POST['nationality']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$nationality)) {
+            if (!preg_match("/^[a-zA-Z]*$/",$nationality)) {
                 $nationalityErr = "Only letters and whitespace allowed in nationality";
             }    
         } 
@@ -131,12 +134,12 @@
             $sql="insert into patient_reg(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description')";
             $result=mysqli_query($con,$sql);
             if($result){
-                function_alert("Data inserted successfully");
+                // function_alert("Data inserted successfully");
                 header('Location: pat_view.php');
             }
             else
             {
-                function_alert("Data couldn't be inserted successfully");
+                // function_alert("Data couldn't be inserted successfully");
                 die(mysqli_error($con));
                 
             }
@@ -201,39 +204,39 @@
                 <div class="logo">MED-Host</div>
         </div>
     </header>
-    <form method="post">
+    <form method="POST">
         <div class="input-box">
             <h3>Personal Information:</h3>
             <!-- <form action="" method="post"></form> -->
             <div class="row">
                 <div class="col-25" >
                     <label class="fname">First name:</label>
-                        <input type="stext" id="fname" name="fname" size="10px">
+                        <input type="stext" id="fname" name="fname" size="10px" value=<?php echo $fname; ?>>
                     <label class="mname">Middle name:</label>
-                        <input type="stext" id="mname" name="mname" size="10px" >
+                        <input type="stext" id="mname" name="mname" size="10px" value=<?php echo $mname; ?>>
                     <label class="lname">Last name:</label>
-                        <input type="stext" id="lname" name="lname" size="10px" >
+                        <input type="stext" id="lname" name="lname" size="10px" value=<?php echo $lname; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label class="mobile">Mobile no: </label>
-                        <input type="integer" id="contact" name="contact">
+                    <label class="contact">Contact: </label>
+                        <input type="integer" id="contact" name="contact" value=<?php echo $contact; ?>>
                     <label class="age">Age:</label>
-                            <input type="sty" id="age" name="age" >
+                            <input type="sty" id="age" name="age" value=<?php echo $age; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
                     <label class="gender">Gender:</label>
-                    <select class="exc" name="gender" id="gender"> <!--YO WALA--->
+                    <select name="gender" id="gender" type="sty">
                         <option>---</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Others">Other</option>
-                    </select>
+                        <option VALUE="Male" <?php if($gender=="Male") echo 'selected="selected"'; ?>>Male</option>
+                        <option VALUE="Female" <?php if($gender=="Female") echo 'selected="selected"'; ?>>Female</option>
+                        <option VALUE="Others" <?php if($gender=="Others") echo 'selected="selected"'; ?>>Others</option>
+                    </select> 
                     <label class="nationality">Nationality:</label>
-                    <input type="stext" id="nationality" name="nationality" >
+                    <input type="stext" id="nationality" name="nationality" value=<?php echo $nationality; ?>>
                 </div>
             </div>
             <div class="row">
@@ -241,21 +244,21 @@
                     <label for="bloodgroup">Blood group:</label>
                     <select name="bloodgroup" id="bloodgroup" type="sty">
                         <option>---</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
+                        <option value="A+" <?php if($bloodgroup=="A+") echo 'selected="selected"'; ?>>A+</option>
+                        <option value="A-" <?php if($bloodgroup=="A-") echo 'selected="selected"'; ?>>A-</option>
+                        <option value="O+" <?php if($bloodgroup=="O+") echo 'selected="selected"'; ?>>O+</option>
+                        <option value="O-" <?php if($bloodgroup=="O-") echo 'selected="selected"'; ?>>O-</option>
+                        <option value="B+" <?php if($bloodgroup=="B+") echo 'selected="selected"'; ?>>B+</option>
+                        <option value="B-" <?php if($bloodgroup=="B-") echo 'selected="selected"'; ?>>B-</option>
+                        <option value="AB+" <?php if($bloodgroup=="AB+") echo 'selected="selected"'; ?>>AB+</option>
+                        <option value="AB-" <?php if($bloodgroup=="AB-") echo 'selected="selected"'; ?>>AB-</option>
                     </select><br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
                     <label for="address">Address: </label>
-                    <input type="txt" id="address" name="address" >
+                    <input type="txt" id="address" name="address" value=<?php echo $address; ?>>
                     
                 </div>
             </div>
@@ -263,7 +266,7 @@
             <div class="row">
                 <div class="col-25">
                     <label for="email">Email: </label>
-                    <input type="text" id="email" name="email" >  
+                    <input type="text" id="email" name="email" value=<?php echo $email; ?>>  
                 </div>
             </div>
             <div class="row">
@@ -271,7 +274,7 @@
                     <label class="pat_description">Patient's Description: </label>
                 </div>
                 <div class="col-35">
-                    <input type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition">
+                    <input type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value=<?php echo $pat_description; ?>>
                 </div>
             </div>
             <div class="row">

@@ -58,35 +58,6 @@ body.dark::-webkit-scrollbar-thumb:hover,
 body.dark .activity-data::-webkit-scrollbar-thumb:hover{
     background: #3A3B3C;
 }
-/*.menu-items li{
-    list-style: none;
-}
-.menu-items li a{
-    display: flex;
-    align-items: center;
-    height: 50px;
-    text-decoration: none;
-    position: relative;
-}
-body.dark li a:hover:before{
-    background-color: var(--text-color);
-}
-.menu-items li a i{
-    font-size: 24px;
-    min-width: 45px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--black-light-color);
-}
-.menu-items li a .link-name{
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--black-light-color);    
-    transition: var(--tran-05);
-}*/
-
 .dashboard{
     position: relative;
     left: 30px;
@@ -110,10 +81,6 @@ nav.close ~ .dashboard{
     background-color: var(--pan-color);
    /* z-index: 10;*/
 }
-/*nav.close ~ .dashboard .top{
-    left: 73px;
-    width: calc(100% - 73px);
-}*/
 .dashboard .top .sidebar-toggle{
     font-size: 26px;
     color: var(--text-color);

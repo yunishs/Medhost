@@ -1,10 +1,22 @@
 <?php
 
     include '..\database\connect.php';
-    //initializing variables
-    $fname=$mname=$lname=$nmc_id=$specialization=$gender=$age=$contact=$email=$password="";
-    $fnameErr=$mnameErr=$lnameErr=$nmc_idErr=$specializationErr=$genderErr=$ageErr=$contactErr=$emailErr=$passwordErr=null;
-// try{
+    
+    $id=$_GET['updateid'];
+    $sql="SELECT * from medicalstaff_reg WHERE mid=$id";
+    $result=mysqli_query($con,$sql);
+    $row=mysqli_fetch_assoc($result);
+
+    $fname=$row['fname'];
+    $mname=$row['mname'];
+    $lname=$row['lname'];
+    $reg_id=$row['reg_id'];
+    $gender=$row['gender'];
+    $age=$row['age'];
+    $contact=$row['contact'];
+    $email=$row['email'];
+    $password=$row['password'];
+
     if(isset($_POST['enter']))
     {
         function test_input($data) {
@@ -25,9 +37,13 @@
             }    
         }
         //preg_match finds match in a-Z
+        if (empty($_POST["mname"])) 
         {
+            $mnameErr = "Middle Name is required";
+        } 
+        else {
             $mname=test_input($_POST['mname']);
-            if (!preg_match("/^[a-zA-Z]*$/",$fname)) {
+            if (!preg_match("/^[a-zA-Z]*$/",$mname)) {
                 $mnameErr = "Only letters allowed in first name";
             }    
         }
@@ -43,23 +59,17 @@
             }    
         }
     
-        if (empty($_POST["nmc_id"])) 
+        if (empty($_POST["reg_id"])) 
         {
-            $nmc_idErr = "nmc id is required";
+            $reg_idErr = "reg id is required";
         } 
         else {
-            $nmc_id=test_input($_POST['nmc_id']);
-            if (!preg_match("/([0-9]+(-[0-9]+)+)/",$nmc_id)) {
-                $nmc_idErr = "Only numbers and '-' allowed in nmc id";
+            $reg_id=test_input($_POST['reg_id']);
+            if (!preg_match("/([0-9]+(-[0-9]+)+)/",$reg_id)) {
+                $reg_idErr = "Only numbers and '-' allowed in nmc id";
             }    
         }//for nmc_id"/^[1-9][0-9]*$/"
-        
-        {
-            $specialization=test_input($_POST['specialization']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$specialization)) {
-                $specializationErr = "Only letters and whitespace allowed in specialization";
-            }    
-        }  
+         
 
         if (empty($_POST["gender"])) 
         {
@@ -87,8 +97,8 @@
         } 
         else {
             $contact=test_input($_POST['contact']);
-            if (!preg_match("/^[0-9]{8,}$/",$contact)) {
-                $contactErr = "Only numbers allowed in contact and the contact must be atleast 8 digits";
+            if (!preg_match("/^[0-9]{10,}$/",$contact)) {
+                $contactErr = "Only numbers allowed in contact";
             }    
         }
         //alternate for email '/^\\S+@\\S+\\.\\S+$/'
@@ -126,14 +136,14 @@
         }
         
         
-        if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($nmc_idErr) &&empty($specializationErr) 
+        if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($reg_idErr)
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
-            $sql="insert into doctor_reg(fname,mname,lname,nmc_id,specialization,gender,age,contact,email,password) values ('$fname','$mname','$lname','$nmc_id','$specialization','$gender','$age','$contact','$email','$password')";
+            $sql="UPDATE medicalstaff_reg SET mid=$id,fname='$fname',mname='$mname',lname='$lname',reg_id='$reg_id',gender='$gender',age='$age',contact='$contact',email='$email',password='$password' WHERE mid=$id";
             $result=mysqli_query($con,$sql);
             if($result){
-                function_alert("Data inserted successfully");
-                header('Location: doctorview_admin.php');
+                // function_alert("Data updated successfully");
+                header('Location: medicalstaff_view.php');
             }
             else
             {
@@ -153,11 +163,8 @@
             if(!empty($lnameErr)){
                 function_alert($lnameErr);
             }
-            if(!empty($nmc_idErr)){
-                function_alert($nmc_idErr);
-            }
-            if(!empty($specializationErr)){
-                function_alert($specializationErr);
+            if(!empty($reg_idErr)){
+                function_alert($reg_idErr);
             }
             if(!empty($genderErr)){
                 function_alert($genderErr);
@@ -176,7 +183,7 @@
             }            
         }
     }
-?>
+    ?>
     
 <!-- data push hudaina condn na milesamma tara error dekauna milena -->
 
@@ -194,7 +201,7 @@
 <body>
     <form method="post">
         <div class="input-box">
-            <h1 class="h1">Doctors Information</h1>
+            <h1 class="h1">MedicalStaff Information</h1>
             <!-- <form action="/action_page.css"></form> -->
             <div class="row">
                 <div class="col-25">
@@ -208,15 +215,13 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label class="nmc_id">NMC ID: </label>
-                        <input type="inti" id="nmc_id" name="nmc_id" value=<?php echo $nmc_id; ?> >
-                    <label class="specialization">Specialization: </label>
-                        <input type="stext" id="specialization" name="specialization" value=<?php echo $specialization; ?>>
+                    <label class="reg_id">REG ID: </label>
+                        <input type="inti" id="reg_id" name="reg_id" value=<?php echo $reg_id; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="gender">Gender:</label>
+                    <label class="gender">Gender:</label>
                     <select name="gender" id="gender" type="sty">
                         <option>---</option>
                         <option VALUE="Male" <?php if($gender=="Male") echo 'selected="selected"'; ?>>Male</option>
@@ -254,7 +259,6 @@
     // //     })
     // // </script> 
             -->
-            <!-- </script> -->
     
 </body>
 </html>

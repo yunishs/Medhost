@@ -1,10 +1,23 @@
 <?php
 
     include '..\database\connect.php';
-    //initializing variables
-    $fname=$mname=$lname=$nmc_id=$specialization=$gender=$age=$contact=$email=$password="";
-    $fnameErr=$mnameErr=$lnameErr=$nmc_idErr=$specializationErr=$genderErr=$ageErr=$contactErr=$emailErr=$passwordErr=null;
-// try{
+    
+    $id=$_GET['updateid'];
+    $sql="SELECT * from doctor_reg WHERE did=$id";
+    $result=mysqli_query($con,$sql);
+    $row=mysqli_fetch_assoc($result);
+
+    $fname=$row['fname'];
+    $mname=$row['mname'];
+    $lname=$row['lname'];
+    $contact=$row['contact'];
+    $age=$row['age'];
+    $gender=$row['gender'];
+    $nationality=$row['nationality'];
+    $bloodgroup=$row['bloodgroup'];
+    $address=$row[''];
+    $email=$row['email'];
+
     if(isset($_POST['enter']))
     {
         function test_input($data) {
@@ -25,9 +38,13 @@
             }    
         }
         //preg_match finds match in a-Z
+        if (empty($_POST["mname"])) 
         {
+            $mnameErr = "Middle Name is required";
+        } 
+        else {
             $mname=test_input($_POST['mname']);
-            if (!preg_match("/^[a-zA-Z]*$/",$fname)) {
+            if (!preg_match("/^[a-zA-Z]*$/",$mname)) {
                 $mnameErr = "Only letters allowed in first name";
             }    
         }
@@ -87,8 +104,8 @@
         } 
         else {
             $contact=test_input($_POST['contact']);
-            if (!preg_match("/^[0-9]{8,}$/",$contact)) {
-                $contactErr = "Only numbers allowed in contact and the contact must be atleast 8 digits";
+            if (!preg_match("/^[0-9]{10,}$/",$contact)) {
+                $contactErr = "Only numbers allowed in contact";
             }    
         }
         //alternate for email '/^\\S+@\\S+\\.\\S+$/'
@@ -129,10 +146,10 @@
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($nmc_idErr) &&empty($specializationErr) 
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
-            $sql="insert into doctor_reg(fname,mname,lname,nmc_id,specialization,gender,age,contact,email,password) values ('$fname','$mname','$lname','$nmc_id','$specialization','$gender','$age','$contact','$email','$password')";
+            $sql="UPDATE doctor_reg SET did=$id,fname='$fname',mname='$mname',lname='$lname',nmc_id='$nmc_id',specialization='$specialization',gender='$gender',age='$age',contact='$contact',email='$email',password='$password' WHERE did=$id";
             $result=mysqli_query($con,$sql);
             if($result){
-                function_alert("Data inserted successfully");
+                // function_alert("Data updated successfully");
                 header('Location: doctorview_admin.php');
             }
             else
@@ -176,7 +193,7 @@
             }            
         }
     }
-?>
+    ?>
     
 <!-- data push hudaina condn na milesamma tara error dekauna milena -->
 
@@ -209,14 +226,14 @@
             <div class="row">
                 <div class="col-25">
                     <label class="nmc_id">NMC ID: </label>
-                        <input type="inti" id="nmc_id" name="nmc_id" value=<?php echo $nmc_id; ?> >
+                        <input type="inti" id="nmc_id" name="nmc_id" value=<?php echo $nmc_id; ?>>
                     <label class="specialization">Specialization: </label>
                         <input type="stext" id="specialization" name="specialization" value=<?php echo $specialization; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="gender">Gender:</label>
+                    <label class="gender">Gender:</label>
                     <select name="gender" id="gender" type="sty">
                         <option>---</option>
                         <option VALUE="Male" <?php if($gender=="Male") echo 'selected="selected"'; ?>>Male</option>
@@ -254,7 +271,7 @@
     // //     })
     // // </script> 
             -->
-            <!-- </script> -->
+            </script>
     
 </body>
 </html>

@@ -1,18 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 *{
     margin: 0;
-    padding: 0;
+    padding: 10;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+:root{
+    /* ===== Colors ===== */
+    --primary-color: #cacbce;
+    --panel-color: rgb(255, 255, 255);
+    --pan-color: rgb(255, 255, 255,0.3);
+    --nel-color:#e0d7d7b0;
+    --text-color: #000;
+    --black-light-color: #707070;
+    --border-color: #e6e5e5;
+    --toggle-color: #DDD;
+    --box1-color: #e9b2d9;
+    --box2-color: #FFE6AC;
+    --box3-color: #afbbed;
+    --box4-color: #f0c0c0;
+    --title-icon-color: #fff;
+}
 body{
     min-height: 100vh;
-    background-color:#cacbce;
+    background-color: var(--primary-color);
 }
 .dashboard{
     position: relative;
     left: 30px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--panel-color);
     min-height: 100vh;
     width: calc(100% - 30px);
     padding: 10px 14px;
@@ -29,14 +45,52 @@ nav.close ~ .dashboard{
     width: calc(100% - 250px);
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(255, 255, 255,0.3);
+    background-color: var(--pan-color);
+   /* z-index: 10;*/
+}
+.dashboard .top .sidebar-toggle{
+    font-size: 26px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+.dashboard .top .search-box{
+    position: relative;
+    height: 30px;
+    max-width: 600px;
+    width: 100%;
+    margin: 30px 30px;
+}
+.top .search-box input{
+    position: absolute;
+    border: 1px solid var(--border-color);
+    background-color: var(--nel-color);
+    padding: 0 25px 0 50px;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+}
+.top .search-box i{
+    position: absolute;
+    left: 15px;
+    font-size: 22px;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--black-light-color);
 }
 .top img{
     width: 40px;
     border-radius: 50%;
 }
 .dashboard .dash-content{
-    padding-top: 50px;
+    padding-top: 80px;
+}
+.dash-content{
+    width:calc(100%/2);
 }
 .dash-content .title{
     display: flex;
@@ -47,9 +101,9 @@ nav.close ~ .dashboard{
     position: relative;
     height: 35px;
     width: 35px;
-    background-color:#cacbce;
+    background-color: var(--primary-color);
     border-radius: 6px;
-    color: #fff;
+    color: var(--title-icon-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,7 +112,7 @@ nav.close ~ .dashboard{
 .dash-content .title .text{
     font-size: 24px;
     font-weight: 500;
-    color:#000;
+    color: var(--text-color);
     margin-left: 10px;
 }
 .dash-content .boxes{
@@ -74,7 +128,8 @@ nav.close ~ .dashboard{
     border-radius: 12px;
     width: calc(100% / 2 - 15px);
     padding: 15px 20px;
-    background-color: #e9b2d9;
+    background-color: var(--box1-color);
+    transition: var(--tran-05);
     margin-top: 15px;
 }
 .boxes .box i{
@@ -86,23 +141,23 @@ nav.close ~ .dashboard{
     white-space: nowrap;
     font-size: 18px;
     font-weight: 500;
-    color: #000;
+    color: var(--text-color);
 }
 /*yo box ko lagi ho*/
 .boxes .box .number{
     font-size: 40px;
     font-weight: 500;
-    color:#000;
+    color: var(--text-color);
 }
 .boxes .box.box1{
-    background-color:#e9b2d9;
+    background-color: var(--box1-color);
 }
 .boxes .box.box2{
-    background-color: #FFE6AC;
+    background-color: var(--box2-color);
 }
 .boxes .box.box3{
-    background-color: #ebc1e2;
+    background-color: var(--box3-color);
 }
 .boxes .box.box4{
-    background-color:#f0c0c0;
+    background-color: var(--box4-color);
 }
