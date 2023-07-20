@@ -64,7 +64,7 @@
                 // }
             }
             else $error_message= 'Incorrect E-mail/Password';
-        }
+    }
         else
         {
             if(!empty($emailErr)){
@@ -75,7 +75,6 @@
             } 
         }
         //header("Location:login.php");
-    }
 
 
 
