@@ -4,30 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Current Date and Time</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f2f2f2;
-    }
-
-    div {
-      margin-top: 50px;
-    }
-
-    h2, h3 {
-      margin-bottom: 10px;
-      color: #333;
-    }
-
-    h2 {
-      font-size: 28px;
-    }
-
-    h3 {
-      font-size: 20px;
-    }
-  </style>
 </head>
 <body>
   <div>
