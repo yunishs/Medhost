@@ -27,19 +27,19 @@
                 <div class="boxes">
                     <div class="box box1">
                     <i class="fa-sharp fa-solid fa-stethoscope"></i>
-                        <span class="text">Doctor</span>
+                        <span class="text">view infromation</span>
                     </div>
                     <div class="box box2">
                     <i class="fa-brands fa-hire-a-helper"></i>
-                        <span class="text">Front-Desk</span>
+                        <span class="text">update prognosis</span>
                     </div>
                     <div class="box box3">
                     <i class="fa-solid fa-staff-snake"></i>
-                        <span class="text">Medical-Staff</span>
+                        <span class="text">Prescribe Medication</span>
                     </div>
                     <div class="box box4">
                     <i class="fa-solid fa-bed-pulse"></i>
-                        <span class="text">Patients</span>
+                        <span class="text">Update </span>
                     </div>
 </div>
                 </div>
