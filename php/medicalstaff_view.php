@@ -12,39 +12,39 @@ include '..\database\connect.php';
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible"content="IE=edge">
 	<meta name="viewport"	content="width=device-width, initial-scale=1.0">
-	<title>Doctor view</title>
+	<title>MedicalStaff view</title>
 	<link rel="stylesheet"  href="..\public\doctorview_admin.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
 </head>
 <body>
-	<table class="tbl">
+	<table class="table">
 		<thread>
 			<tr>
-				<th>S.N.</th>
-				<th>Fname</th>
-				<th>Mname</th>
-				<th>Lname</th>
-				<th>NMC ID</th>
-				<th>Contact</th>
-				<th>Email</th>
-				<th>Password</th>
-				<th>Operation</th>
+				<th scope="col">S.N.</th>
+				<th scope="col">Fname</th>
+				<th scope="col">Mname</th>
+				<th scope="col">Lname</th>
+				<th scope="col">REG ID</th>
+				<th scope="col">Contact</th>
+				<th scope="col">Email</th>
+				<th scope="col">Password</th>
+				<th scope="col">Operation</th>
 			</tr>
 		</thread>
 		<tbody>
 			<?php
 
-			$sql="Select * from doctor_reg";
+			$sql="Select * from medicalstaff_reg";
 			$result=mysqli_query($con,$sql);
 			if($result)
 			{
 					while($row=mysqli_fetch_assoc($result)){
-					$id=$row['did'];
+					$id=$row['mid'];
 					$fname=$row['fname'];
 					$mname=$row['mname'];
 					$lname=$row['lname'];
-					$nmc_id=$row['nmc_id'];
+					$reg_id=$row['reg_id'];
 					$contact=$row['contact'];
 					$email=$row['email'];
 					$password=$row['password'];
@@ -53,13 +53,13 @@ include '..\database\connect.php';
 					<td>'.$fname.'</td>
 					<td>'.$mname.'</td>
 					<td>'.$lname.'</td>
-					<td>'.$nmc_id.'</td>
+					<td>'.$reg_id.'</td>
 					<td>'.$contact.'</td>
 					<td>'.$email.'</td>
 					<td>'.$password.'</td>
 					<td>
-					<button class=""><a href="update_doctor.php?updateid='.$id.'">Update</a></button>
-					<button class=""><a href="delete_doctor.php?deleteid='.$id.'">Delete</a></button>
+					<button class=""><a href="update_medicalstaff.php?updateid='.$id.'">Update</a></button>
+					<button class=""><a href="delete_medicalstaff.php?deleteid='.$id.'">Delete</a></button>
 					</td>
 					</tr>';
 				}
@@ -67,6 +67,5 @@ include '..\database\connect.php';
 			
 			?>
 		</tbody>
-	</table>
 </body>
 </html>

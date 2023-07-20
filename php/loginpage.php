@@ -25,7 +25,7 @@
             // if($result->fetch('$role')=='0') {
             //     header('Location: admin_test.php');
             // } else {
-                header('Location: homepage.php');
+                header('Location: searchpatient.php');
             // }
         }
         else $error_message= 'Incorrect E-mail/Password';

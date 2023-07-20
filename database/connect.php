@@ -7,3 +7,5 @@ if($con){
 else{
     die(mysqli_error($con));
 }
+
+?>

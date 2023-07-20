@@ -42,7 +42,7 @@
                </a>
                <ul class="serv-show1">
                     <li><a href="#" onclick="document.getElementById('if1').src = 'frontdesk_reg.php'">Register</a></li>
-                    <li><a href="#">View</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'frontdesk_view.php'">View</a></li>
                </ul>
             </li>
             <li><a href="#" onclick="document.getElementById('if1').src = 'pat_view.php'">Patient</a></li>
@@ -52,10 +52,10 @@
                </a>
                <ul class="serv-show2">
                     <li><a href="#" onclick="document.getElementById('if1').src = 'medicalstaff_reg.php'">Register</a></li>
-                    <li><a href="#">View</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'medicalstaff_view.php'">View</a></li>
                </ul>
             </li>
-            <li><a href="#">Feedback</a></li>
+            <li><a href="#">Logout</a></li>
          </ul>
       </nav>
 
