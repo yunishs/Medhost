@@ -52,6 +52,8 @@
     </div>
 </section>
 <!-- <script src="script.js"> -->
+
+
 <script>
     // Function to update the time, day, and date
     function updateTime() {
