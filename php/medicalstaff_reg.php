@@ -45,14 +45,14 @@
     
         if (empty($_POST["reg_id"])) 
         {
-            $nmc_idErr = "reg_id is required";
+            $reg_idErr = "reg_id is required";
         } 
         else {
-            $nmc_id=test_input($_POST['reg_id']);
+            $reg_id=test_input($_POST['reg_id']);
             if (!preg_match("/([0-9]+(-[0-9]+)+)/",$reg_id)) {
-                $nmc_idErr = "Only numbers and '-' allowed in nmc id";
+                $reg_idErr = "Only numbers and '-' allowed in reg id";
             }    
-        }//for nmc_id"/^[1-9][0-9]*$/"
+        }//for reg_id"/^[1-9][0-9]*$/"
         
         if (empty($_POST["gender"])) 
         {
@@ -190,45 +190,45 @@
             <div class="row">
                 <div class="col-25">
                     <label class="fname">First name:</label>
-                        <input type="stext" id="fname" name="fname">
+                        <input type="stext" id="fname" name="fname" value=<?php echo $fname; ?>>
                     <label class="mname">Middle name:</label>
-                        <input type="stext" id="mname" name="mname">
+                        <input type="stext" id="mname" name="mname" value=<?php echo $mname; ?>>
                     <label class="lname">Last name:</label>
-                        <input type="stext" id="lname" name="lname">
+                        <input type="stext" id="lname" name="lname" value=<?php echo $lname; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
                     <label class="reg_id">REG ID: </label>
-                        <input type="inti" id="reg_id" name="reg_id" >
+                        <input type="inti" id="reg_id" name="reg_id" value=<?php echo $reg_id; ?>>
                 </div>
             </div>
            
             <div class="row">
                 <div class="col-25">
                     <label for="gender">Gender:</label>
-                    <select name="gender" id="gender" type="gender">
+                    <select name="gender" id="gender" type="sty">
                         <option>---</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
+                        <option VALUE="Male" <?php if($gender=="Male") echo 'selected="selected"'; ?>>Male</option>
+                        <option VALUE="Female" <?php if($gender=="Female") echo 'selected="selected"'; ?>>Female</option>
+                        <option VALUE="Others" <?php if($gender=="Others") echo 'selected="selected"'; ?>>Others</option>
                     </select> 
                     <label class="age">Age:</label>
-                                    <input type="integer" id="age" name="age" >
+                                    <input type="integer" id="age" name="age" value=<?php echo $age; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
                     <label class="contact">Contact: </label>
-                    <input type="ini" id="contact" name="contact">
+                    <input type="ini" id="contact" name="contact" value=<?php echo $contact; ?>>
                     <label class="email">Email: </label>
-                    <input type="text" id="email" name="email" >
+                    <input type="text" id="email" name="email" value=<?php echo $email; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
                     <label for="password">Password: </label>
-                    <input type="stext" id="password" name="password" >
+                    <input type="stext" id="password" name="password" value=<?php echo $password; ?>>
                 </div>
             </div>
             <div class="row">
