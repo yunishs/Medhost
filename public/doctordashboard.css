@@ -27,7 +27,7 @@ body{
 }
 .DAT{
     font-family: Arial, sans-serif;
-    text-align: center;
+    text-align:right;
     background-color: #f2f2f2;
     margin-top: 50px;
 }
@@ -95,9 +95,6 @@ nav.close ~ .dashboard{
 .dashboard .dash-content{
     padding-top: 80px;
 }
-.dash-content{
-    width:calc(100%/2);
-}
 .dash-content .title{
     display: flex;
     align-items: center;
@@ -123,7 +120,8 @@ nav.close ~ .dashboard{
 }
 .dash-content .boxes{
     display: flex;
-    align-items: center;
+    align-items: left;
+    width:calc(100%/2);
     justify-content: space-between;
     flex-wrap: wrap;
 }

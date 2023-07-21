@@ -22,7 +22,7 @@
         </div>
         <img src="images/profile.jpg" alt="">
     </div>
-    <div>
+    <div class="DAT">
         <h1>Hello, Prasi<h1>
         <h2 id="time"></h2>
         <h3 id="day"></h3>
