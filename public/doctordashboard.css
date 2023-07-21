@@ -25,11 +25,15 @@ body{
     min-height: 100vh;
     background-color: var(--primary-color);
 }
+h1
+{
+    font-size:40px;
+}
 .DAT{
-    font-family: Arial, sans-serif;
-    text-align:right;
+    font-family: sans-serif;
+    text-align:left;
     background-color: #f2f2f2;
-    margin-top: 50px;
+    align-content: center;
 }
 .dashboard{
     position: relative;
@@ -165,7 +169,9 @@ nav.close ~ .dashboard{
 .boxes .box.box4{
     background-color: var(--box4-color);
 }
+
 h2, h3 {
+    font-family: "Baloo 2", "Fjalla One", sans-serif;
     margin-bottom: 10px;
     color: #333;
   }

@@ -11,7 +11,6 @@
     <h3 id="day"></h3>
     <h3 id="date"></h3>
   </div>
-
   <script>
     // Function to update the time, day, and date
     function updateTime() {
