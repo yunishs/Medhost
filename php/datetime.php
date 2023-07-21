@@ -1,17 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Current Date and Time</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="..\public\dateandtime.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Dashboard Panel</title>
+    <title>Doctor Dashboard Panel</title>
 </head>
 <body>
-  <div>
-    <h2 id="time"></h2>
-    <h3 id="day"></h3>
-    <h3 id="date"></h3>
-  </div>
-  <script>
+    <header>
+        <div class="logosec">
+            <img src="..\images\MedHost.png"
+            class="icn menuicn"
+            id="menuicn">
+            <div class="logo">MedHost</div>
+        </div>
+    </header>
+    <section class="dashboard">
+    <div class="top">
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here...">
+        </div>
+        <img src="images/profile.jpg" alt="">
+    </div>
+    <div class="float">
+        <div class="float1">
+            <div class="DAT">
+                <h1>Hello, Prasi</h1>
+                <h2 id="time"></h2>
+                <h3 id="day"></h3>
+                <h3 id="date"></h3>
+            </div>
+        </div>
+        <div class="float1">
+            <div class="dash-content">
+                <div class="overview">
+                    <div class="boxes">
+                        <div class="box box1">
+                            <i class="fa-sharp fa-solid fa-stethoscope"></i>
+                            <span class="text">View Information</span>
+                        </div>
+                        <div class="box box2">
+                            <i class="fa-brands fa-hire-a-helper"></i>
+                            <span class="text">Update prognosis</span>
+                        </div>
+                        <div class="box box3">
+                            <i class="fa-solid fa-staff-snake"></i>
+                            <span class="text">Prescribe Medication</span>
+                        </div>
+                        <div class="box box4">
+                            <i class="fa-solid fa-bed-pulse"></i>
+                            <span class="text">Update </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</section>
+<!-- <script src="script.js"> -->
+<script>
     // Function to update the time, day, and date
     function updateTime() {
       const now = new Date();
@@ -33,9 +90,9 @@
       const dateString = `${date}/${month}/${year}`;
 
       // Update the HTML content
-      document.getElementById('time').textContent = `Current Time: ${timeString}`;
-      document.getElementById('day').textContent = `Current Day: ${dayString}`;
-      document.getElementById('date').textContent = `Current Date: ${dateString}`;
+      document.getElementById('time').textContent = `${timeString}`;
+      document.getElementById('day').textContent = `${dayString}`;
+      document.getElementById('date').textContent = `${dateString}`;
     }
 
     // Update the time every second
