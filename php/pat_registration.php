@@ -220,7 +220,7 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label class="contact">Contact: </label>
+                    <label>Contact: </label>
                         <input type="integer" id="contact" name="contact" value=<?php echo $contact; ?>>
                     <label class="age">Age:</label>
                             <input type="sty" id="age" name="age" value=<?php echo $age; ?>>
