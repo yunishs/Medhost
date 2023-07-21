@@ -40,8 +40,8 @@ include '..\database\connect.php';
                     }
             }
         ?>
-        <div class=row>
-            <h3>Patient information</h3>
+        <div class="row">
+            <h2>Patient Detail's</h2>
             <ul>First Name:     <span><?= $fname?></span></ul>
             <ul>Middle Name:    <span><?= $mname?></span></ul>
             <ul>Last Name:      <span><?= $lname?></span></ul>

@@ -3,7 +3,7 @@
     include '..\database\connect.php';
     
     $id=$_GET['updateid'];
-    $sql="SELECT * from doctor_reg WHERE did=$id";
+    $sql="SELECT * from patient_reg WHERE pid=$id";
     $result=mysqli_query($con,$sql);
     $row=mysqli_fetch_assoc($result);
 
@@ -15,8 +15,9 @@
     $gender=$row['gender'];
     $nationality=$row['nationality'];
     $bloodgroup=$row['bloodgroup'];
-    $address=$row[''];
+    $address=$row['address'];
     $email=$row['email'];
+    $pat_description=$row['pat_description'];
 
     if(isset($_POST['enter']))
     {
@@ -27,109 +28,107 @@
             return $data;
           }
 
-        if (empty($_POST["fname"])) 
-        {
-            $fnameErr = "First Name is required";
-        } 
-        else {
-            $fname=test_input($_POST['fname']);
-            if (!preg_match("/^[a-zA-Z]*$/",$fname)) {
-                $fnameErr = "Only letters allowed in first name";
-            }    
-        }
-        //preg_match finds match in a-Z
-        if (empty($_POST["mname"])) 
-        {
-            $mnameErr = "Middle Name is required";
-        } 
-        else {
-            $mname=test_input($_POST['mname']);
-            if (!preg_match("/^[a-zA-Z]*$/",$mname)) {
-                $mnameErr = "Only letters allowed in first name";
-            }    
-        }
-
-        if (empty($_POST["lname"])) 
-        {
-            $lnameErr = "Last Name is required";
-        } 
-        else {
-            $lname=test_input($_POST['lname']);
-            if (!preg_match("/^[a-zA-Z]*$/",$lname)) {
-                $lnameErr = "Only letters allowed in first name";
-            }    
-        }
-    
-        if (empty($_POST["nmc_id"])) 
-        {
-            $nmc_idErr = "nmc id is required";
-        } 
-        else {
-            $nmc_id=test_input($_POST['nmc_id']);
-            if (!preg_match("/([0-9]+(-[0-9]+)+)/",$nmc_id)) {
-                $nmc_idErr = "Only numbers and '-' allowed in nmc id";
-            }    
-        }//for nmc_id"/^[1-9][0-9]*$/"
-        
-        {
-            $specialization=test_input($_POST['specialization']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$specialization)) {
-                $specializationErr = "Only letters and whitespace allowed in specialization";
-            }    
-        }  
-
-        if (empty($_POST["gender"])) 
-        {
-            $genderErr = "Gender is required";
-        } 
-        else
-        {
-            $gender=test_input($_POST['gender']);   
-        }  
-
-        if (empty($_POST["age"])) 
-        {
-            $ageErr = "age is required";
-        } 
-        else {
-            $age=test_input($_POST['age']);
-            if (!preg_match("/^[0-9]{1,2}$/",$age)) {
-                $ageErr = "Only numbers and not starting with zero allowed in age";
-            }    
-        }
-        //only 0-99 age
-        if (empty($_POST["contact"])) 
-        {
-            $contactErr = "Contact is required";
-        } 
-        else {
-            $contact=test_input($_POST['contact']);
-            if (!preg_match("/^[0-9]{10,}$/",$contact)) {
-                $contactErr = "Only numbers allowed in contact";
-            }    
-        }
-        //alternate for email '/^\\S+@\\S+\\.\\S+$/'
-        if (empty($_POST["email"])) 
-        {
-            $emailErr = "Email is required";
-        } 
-        else {
-            $email = test_input($_POST["email"]);
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-              $emailErr = "Invalid email format";
-            }
-        }
-
-        if (empty($_POST["password"])) 
-        {
-            $passwordErr = "Password is required";
-        } 
-        else {
-            $password=test_input($_POST['password']);
-            if (!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",$password)) {
-                $passwordErr = "Password must have 8 characters with one uppercase, one lowercase, one digit and one special character";
-            }    
-        }
+          if (empty($_POST["fname"])) 
+          {
+              $fnameErr = "First Name is required";
+          } 
+          else {
+              $fname=test_input($_POST['fname']);
+              if (!preg_match("/^[a-zA-Z]*$/",$fname)) {
+                  $fnameErr = "Only letters allowed in first name";
+              }    
+          }
+          //preg_match finds match in a-Z
+          {
+              $mname=test_input($_POST['mname']);
+              if (!preg_match("/^[a-zA-Z]*$/",$mname)) {
+                  $mnameErr = "Only letters allowed in middle name";
+              }    
+          }
+  
+          if (empty($_POST["lname"])) 
+          {
+              $lnameErr = "Last Name is required";
+          } 
+          else {
+              $lname=test_input($_POST['lname']);
+              if (!preg_match("/^[a-zA-Z]*$/",$lname)) {
+                  $lnameErr = "Only letters allowed in last name";
+              }    
+          }
+          
+          if (empty($_POST["contact"])) 
+          {
+              $contactErr = "Contact is required";
+          } 
+          else {
+              $contact=test_input($_POST['contact']);
+              if (!preg_match("/^[0-9]{10,}$/",$contact)) {
+                  $contactErr = "Only numbers allowed in contact";
+              }    
+          }//for nmc_id"/^[1-9][0-9]*$/"
+  
+          
+          if (empty($_POST["age"])) 
+          {
+              $ageErr = "age is required";
+          } 
+          else {
+              $age=test_input($_POST['age']);
+              if (!preg_match("/^[0-9]{1,2}$/",$age)) {
+                  $ageErr = "Only numbers and not starting with zero allowed in age";
+              }    
+          }
+          //only 0-99 age
+  
+          if (empty($_POST["bloodgroup"])) 
+          {
+              $bloodgroupErr = "Bloodgroup is required";
+          } 
+          else
+          {
+              $bloodgroup=test_input($_POST['bloodgroup']);   
+          }  
+          if (empty($_POST["gender"])) 
+          {
+              $genderErr = "Gender is required";
+          } 
+          else
+          {
+              $gender=test_input($_POST['gender']);   
+          } 
+          {
+              $nationality=test_input($_POST['nationality']);
+              if (!preg_match("/^[a-zA-Z]*$/",$nationality)) {
+                  $nationalityErr = "Only letters and whitespace allowed in nationality";
+              }    
+          } 
+  
+          {
+              $address=test_input($_POST['address']);
+              if (!preg_match("/^[a-zA-Z-' ]*$/",$address)) {
+                  $addressErr = "Only letters and whitespace allowed in address";
+              }    
+          } 
+  
+          //alternate for email '/^\\S+@\\S+\\.\\S+$/'
+          if (empty($_POST["email"])) 
+          {
+              $emailErr = "Email is required";
+          } 
+          else {
+              $email = test_input($_POST["email"]);
+              if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Invalid email format";
+              }
+          }
+  
+          {
+              $pat_description=test_input($_POST['pat_description']);
+              if (!preg_match("/^[a-zA-Z-' ]*$/",$pat_description)) {
+                  $pat_descriptionErr = "Only letters and whitespace allowed in specialization";
+              }    
+          }  
         //for password
         // Has minimum 8 characters in length. {8,}
         // At least one uppercase English letter.(?=.*?[A-Z])
@@ -146,7 +145,7 @@
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($nmc_idErr) &&empty($specializationErr) 
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
-            $sql="UPDATE doctor_reg SET did=$id,fname='$fname',mname='$mname',lname='$lname',nmc_id='$nmc_id',specialization='$specialization',gender='$gender',age='$age',contact='$contact',email='$email',password='$password' WHERE did=$id";
+            $sql="UPDATE patient_reg SET pid=$id,fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',pat_description='$pat_description' WHERE pid=$id";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data updated successfully");
@@ -203,32 +202,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor_reg</title>
+    <title>Patient_reg</title>
     <link rel="stylesheet" href="..\public\doc_registration.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="icon" type="image/png" href="..\images\MedHost.png">
 </head>
 <body>
-    <form method="post">
+<form method="POST">
         <div class="input-box">
-            <h1 class="h1">Doctors Information</h1>
-            <!-- <form action="/action_page.css"></form> -->
+            <h3>Personal Information:</h3>
+            <!-- <form action="" method="post"></form> -->
             <div class="row">
-                <div class="col-25">
+                <div class="col-25" >
                     <label class="fname">First name:</label>
-                        <input type="stext" id="fname" name="fname" value=<?php echo $fname; ?>>
+                        <input type="stext" id="fname" name="fname" size="10px" value=<?php echo $fname; ?>>
                     <label class="mname">Middle name:</label>
-                        <input type="stext" id="mname" name="mname" value=<?php echo $mname; ?>>
+                        <input type="stext" id="mname" name="mname" size="10px" value=<?php echo $mname; ?>>
                     <label class="lname">Last name:</label>
-                        <input type="stext" id="lname" name="lname" value=<?php echo $lname; ?>>
+                        <input type="stext" id="lname" name="lname" size="10px" value=<?php echo $lname; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label class="nmc_id">NMC ID: </label>
-                        <input type="inti" id="nmc_id" name="nmc_id" value=<?php echo $nmc_id; ?>>
-                    <label class="specialization">Specialization: </label>
-                        <input type="stext" id="specialization" name="specialization" value=<?php echo $specialization; ?>>
+                    <label class="contact">Contact: </label>
+                        <input type="integer" id="contact" name="contact" value=<?php echo $contact; ?>>
+                    <label class="age">Age:</label>
+                            <input type="sty" id="age" name="age" value=<?php echo $age; ?>>
                 </div>
             </div>
             <div class="row">
@@ -240,27 +239,52 @@
                         <option VALUE="Female" <?php if($gender=="Female") echo 'selected="selected"'; ?>>Female</option>
                         <option VALUE="Others" <?php if($gender=="Others") echo 'selected="selected"'; ?>>Others</option>
                     </select> 
-                    <label class="age">Age:</label>
-                        <input type="integer" id="age" name="age" value=<?php echo $age; ?>>
+                    <label class="nationality">Nationality:</label>
+                    <input type="stext" id="nationality" name="nationality" value=<?php echo $nationality; ?>>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="contact">Contact: </label>
-                    <input type="ini" id="contact" name="contact" value=<?php echo $contact; ?>>
-                    <label class="email">Email: </label>
-                    <input type="text" id="email" name="email" value=<?php echo $email; ?>>
+                    <label for="bloodgroup">Blood group:</label>
+                    <select name="bloodgroup" id="bloodgroup" type="sty">
+                        <option>---</option>
+                        <option value="A+" <?php if($bloodgroup=="A+") echo 'selected="selected"'; ?>>A+</option>
+                        <option value="A-" <?php if($bloodgroup=="A-") echo 'selected="selected"'; ?>>A-</option>
+                        <option value="O+" <?php if($bloodgroup=="O+") echo 'selected="selected"'; ?>>O+</option>
+                        <option value="O-" <?php if($bloodgroup=="O-") echo 'selected="selected"'; ?>>O-</option>
+                        <option value="B+" <?php if($bloodgroup=="B+") echo 'selected="selected"'; ?>>B+</option>
+                        <option value="B-" <?php if($bloodgroup=="B-") echo 'selected="selected"'; ?>>B-</option>
+                        <option value="AB+" <?php if($bloodgroup=="AB+") echo 'selected="selected"'; ?>>AB+</option>
+                        <option value="AB-" <?php if($bloodgroup=="AB-") echo 'selected="selected"'; ?>>AB-</option>
+                    </select><br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="password">Password: </label>
-                    <input type="stext" id="password" name="password" value=<?php echo $password; ?>>
+                    <label for="address">Address: </label>
+                    <input type="txt" id="address" name="address" value=<?php echo $address; ?>>
+                    
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-25">
+                    <label for="email">Email: </label>
+                    <input type="text" id="email" name="email" value=<?php echo $email; ?>>  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label class="pat_description">Patient's Description: </label>
+                </div>
+                <div class="col-35">
+                    <input type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value=<?php echo $pat_description; ?>>
                 </div>
             </div>
             <div class="row">
                 <button type="enter" class="enter-btn" name="enter">ENTER</button>
             </div>
+            
         </div>
     </form>
     

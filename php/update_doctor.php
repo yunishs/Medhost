@@ -38,14 +38,10 @@
             }    
         }
         //preg_match finds match in a-Z
-        if (empty($_POST["mname"])) 
         {
-            $mnameErr = "Middle Name is required";
-        } 
-        else {
             $mname=test_input($_POST['mname']);
             if (!preg_match("/^[a-zA-Z]*$/",$mname)) {
-                $mnameErr = "Only letters allowed in first name";
+                $mnameErr = "Only letters allowed in middle name";
             }    
         }
 

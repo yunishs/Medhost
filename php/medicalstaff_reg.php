@@ -28,7 +28,7 @@
         {
             $mname=test_input($_POST['mname']);
             if (!preg_match("/^[a-zA-Z]*$/",$fname)) {
-                $mnameErr = "Only letters allowed in first name";
+                $mnameErr = "Only letters allowed in middle name";
             }    
         }
 
@@ -39,7 +39,7 @@
         else {
             $lname=test_input($_POST['lname']);
             if (!preg_match("/^[a-zA-Z]*$/",$lname)) {
-                $lnameErr = "Only letters allowed in first name";
+                $lnameErr = "Only letters allowed in last name";
             }    
         }
     

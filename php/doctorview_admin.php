@@ -58,8 +58,8 @@ include '..\database\connect.php';
 					<td>'.$email.'</td>
 					<td>'.$password.'</td>
 					<td>
-					<button class="button"><a href="update_doctor.php?updateid='.$id.'">Update</a></button>
-					<button class="button"><a href="delete_doctor.php?deleteid='.$id.'">Delete</a></button>
+					<button class="button1"><a href="update_doctor.php?updateid='.$id.'" class="link1">Update</a></button>
+					<button class="button2"><a href="delete_doctor.php?deleteid='.$id.'" class="link2">Delete</a></button>
 					</td>
 					</tr>';
 				}

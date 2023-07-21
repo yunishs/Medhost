@@ -77,7 +77,7 @@ input[type=stext], select, textarea {
 .mname,.lname{
   margin-left: 30px;
 }
-.age,.contact{
+.age{
   margin-left: 140px;
 }
 .nationality{

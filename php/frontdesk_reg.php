@@ -27,8 +27,8 @@
         //preg_match finds match in a-Z
         {
             $mname=test_input($_POST['mname']);
-            if (!preg_match("/^[a-zA-Z]*$/",$lname)) {
-                $mnameErr = "Only letters allowed in first name";
+            if (!preg_match("/^[a-zA-Z]*$/",$mname)) {
+                $mnameErr = "Only letters allowed in middle name";
             }    
         }
 
