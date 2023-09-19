@@ -1,0 +1,84 @@
+*{
+    margin-top: 0px;
+    margin-left: 10px;
+    padding: 0;
+}
+body
+{
+    background-image:url('../images/default_background.webp');
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size:100% 100%;
+}
+.main {
+    height: calc(100vh);
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-left: 100px;
+    
+}
+.tbl {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tbl td, .tbl th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tbl tr:nth-child(even){background-color: #f2f2f2;}
+
+.tbl tr:hover {background-color: #ddd;}
+
+.tbl th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #38bc8c;
+  color: white;
+}
+.button1
+{
+  margin-right: 5px;
+  text-align: center;
+  background-color: rgb(14, 57, 173);
+  border-radius: 3px;
+  padding: 3px;
+}
+.button2
+{
+  margin-right: 5px;
+  text-align: center;
+  background-color: rgb(185, 49, 49);
+  border-radius: 5px;
+  padding: 3px;
+}
+.button1:hover,.button2:hover
+{
+  background-color: rgb(95, 185, 100);
+}
+.link1
+{
+  margin:0px;
+  text-align: center;
+  cursor: pointer;
+  color:rgb(250, 245, 245);
+  text-underline-offset: 0px;
+  text-underline-position: unset;
+}
+.link2
+{
+  margin:0px;
+  text-align: center;
+  cursor: pointer;
+  color:rgb(224, 215, 215);
+  text-underline-offset: 0px;
+  text-underline-position: unset;
+}
+.link1:hover, .link2:hover
+{
+  color:rgb(100, 16, 13);
+}
