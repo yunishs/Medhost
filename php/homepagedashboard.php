@@ -1,3 +1,9 @@
+<?php
+
+    include '..\database\connect.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,22 +38,49 @@
                     <div class="box box1">
                     <i class="fa-sharp fa-solid fa-stethoscope"></i>
                         <span class="text">Doctor</span>
-                        <span class="number">50,120</span>
+                        <span class="number">
+                            <?php
+                                $sql="SELECT * FROM doctor_reg";
+                                $result=mysqli_query($con,$sql);
+                                $totalCount=mysqli_num_rows($result);
+                                echo $totalCount;
+                            ?>
+                        </span>
                     </div>
                     <div class="box box2">
                     <i class="fa-brands fa-hire-a-helper"></i>
                         <span class="text">Front-Desk</span>
-                        <span class="number">20,120</span>
+                        <span class="number"><?php
+                                $sql="select * from frontdesk_reg";
+                                $result=mysqli_query($con,$sql);
+                                $totalCount=mysqli_num_rows($result);
+                                echo $totalCount;
+                            ?>
+                        </span>
                     </div>
                     <div class="box box3">
                     <i class="fa-solid fa-staff-snake"></i>
                         <span class="text">Medical-Staff</span>
-                        <span class="number">10,120</span>
+                        <span class="number">
+                            <?php
+                                $sql="select * from medicalstaff_reg";
+                                $result=mysqli_query($con,$sql);
+                                $totalCount=mysqli_num_rows($result);
+                                echo $totalCount;
+                            ?>
+                        </span>
                     </div>
                     <div class="box box4">
                     <i class="fa-solid fa-bed-pulse"></i>
                         <span class="text">Patients</span>
-                        <span class="number">10,120</span>
+                        <span class="number">
+                            <?php
+                                $sql="select * from patient_reg";
+                                $result=mysqli_query($con,$sql);
+                                $totalCount=mysqli_num_rows($result);
+                                echo $totalCount;
+                            ?>
+                        </span>
                     </div>
                 </div>
             </div>
