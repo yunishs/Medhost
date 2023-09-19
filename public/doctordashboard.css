@@ -124,7 +124,7 @@ nav.close ~ .dashboard{
 }
 .dash-content .boxes{
     display: flex;
-    align-items: left;
+    align-items: right;
     width:calc(100%/2);
     justify-content: space-between;
     flex-wrap: wrap;
@@ -156,6 +156,7 @@ nav.close ~ .dashboard{
     font-size: 40px;
     font-weight: 500;
     color: var(--text-color);
+    align-items: right;
 }
 .boxes .box.box1{
     background-color: var(--box1-color);
