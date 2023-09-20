@@ -2,7 +2,7 @@
 *{
   margin: 0;
   padding: 0;
-  user-select: none;
+  userselect: none;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
