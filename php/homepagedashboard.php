@@ -21,13 +21,13 @@
 </head>
 <body>
     <section class="dashboard">
-        <div class="top">
+        <!-- <div class="top">
             <div class="search-box">
                 <i class="uil uil-search"></i>
                 <input type="text" placeholder="Search here...">
             </div>
           <img src="images/profile.jpg" alt="">
-        </div>
+        </div> -->
       <div class="dash-content">
             <div class="overview">
                 <div class="title">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="activity">
+            <!-- <div class="activity">
                 <div class="title">
                     <i class="uil uil-clock-three"></i>
                     <span class="text">Recent Activity</span>
@@ -141,7 +141,7 @@
                         <span class="data-list">Leave</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <script src="script.js">
