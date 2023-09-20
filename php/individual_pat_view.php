@@ -108,12 +108,9 @@
                 <th>Patient Description During Admission</th>
                 <td><?= $pat_description ?></td>
             </tr>  
-            <tr>    
-                
-            </tr>
-            
         </table>
-        
+        <table>
+            
     </div>
 </body>
 </html>
