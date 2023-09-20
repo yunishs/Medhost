@@ -131,7 +131,7 @@
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($contactErr) &&empty($ageErr) 
             &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr) && empty($pat_descriptionErr))
         {
-            $sql="insert into patient_reg(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description')";
+            $sql="insert into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description')";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");

@@ -23,7 +23,7 @@ include '..\database\connect.php';
         </div>
     </header>
         <?php
-            $sql="Select * from doctor_reg LIMIT 1";
+            $sql="Select * from doctor_info LIMIT 1";
 			$result=mysqli_query($con,$sql);
 			if($result)
 			{

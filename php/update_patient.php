@@ -3,7 +3,7 @@
     include '..\database\connect.php';
     
     $id=$_GET['updateid'];
-    $sql="SELECT * from patient_reg WHERE pid=$id";
+    $sql="SELECT * from patient_info WHERE pid=$id";
     $result=mysqli_query($con,$sql);
     $row=mysqli_fetch_assoc($result);
 
@@ -145,7 +145,7 @@
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($nmc_idErr) &&empty($specializationErr) 
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
-            $sql="UPDATE patient_reg SET pid=$id,fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',pat_description='$pat_description' WHERE pid=$id";
+            $sql="UPDATE patient_info SET pid=$id,fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',pat_description='$pat_description' WHERE pid=$id";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data updated successfully");

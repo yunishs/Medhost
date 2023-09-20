@@ -3,7 +3,7 @@
     include '..\database\connect.php';
     
     $id=$_GET['updateid'];
-    $sql="SELECT * from doctor_reg WHERE did=$id";
+    $sql="SELECT * from doctor_info WHERE did=$id";
     $result=mysqli_query($con,$sql);
     $row=mysqli_fetch_assoc($result);
 
@@ -142,7 +142,7 @@
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($nmc_idErr) &&empty($specializationErr) 
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
-            $sql="UPDATE doctor_reg SET did=$id,fname='$fname',mname='$mname',lname='$lname',nmc_id='$nmc_id',specialization='$specialization',gender='$gender',age='$age',contact='$contact',email='$email',password='$password' WHERE did=$id";
+            $sql="UPDATE doctor_info SET did=$id,fname='$fname',mname='$mname',lname='$lname',nmc_id='$nmc_id',specialization='$specialization',gender='$gender',age='$age',contact='$contact',email='$email',password='$password' WHERE did=$id";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data updated successfully");
