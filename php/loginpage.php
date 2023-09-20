@@ -1,35 +1,8 @@
 <?php
     //Start the session.
     session_start();
-
-    $error_message='';
-
-    if($_POST){
-        include('..\database\connection.php');
-
-        $email= $_POST['email'];
-        $password= $_POST['password'];
         
-        $query = 'Select * From login_information WHERE login_information.email="'. $email .'" AND login_information.password="'. $password .'" LIMIT 1';
-        $stmt = $conn->prepare($query);
-        $stmt->execute();
-
-        if($stmt->rowCount()>0){
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $user= $stmt->fetchALL()[0];        
-            $_SESSION['user']=$user;
-            //"SELECT login_information.role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password'";
-
-            // $query = "SELECT role FROM `login_information` WHERE login_information.email= '$email' AND login_information.password='$password';";
-            // // $row = $query->fetch(PDO::FETCH_OBJ);
-            // if($result->fetch('$role')=='0') {
-            //     header('Location: admin_test.php');
-            // } else {
-                header('Location: searchpatient.php');
-            // }
-        }
-        else $error_message= 'Incorrect E-mail/Password';
-    }
+    include ("..\database\connect.php");
 ?>
 
 
@@ -56,29 +29,53 @@
 		</div>
     </header>
     
-    <form action="loginpage.php" method="POST">
+    <form name="form" action="login.php" method="POST" onsubmit="return isvalid()">
          <div class="form-box">
             <h2>LOGIN</h2>
             <div class="input-box">
                 <i class="fa-regular fa-envelope"></i>
-                <input type="email" id="email" name="email" placeholder="E-mail Id" />
+                <input type="email" id="email" name="email" placeholder="E-mail Id">
             </div>
             <div class="input-box">
                 <i class="fa-sharp fa-solid fa-key"></i>
-            <input type="password" placeholder="Password" id="password" name="password" />
+            <input type="password" placeholder="Password" id="password" name="password">
             <span class="eye" onclick="myFunction()">
             <i  id="hide1" class="fa fa-eye"></i>
             </span>
             </div>
-            <button class="login-btn">LOGIN</button>
-            <div>
-                <h5><?= $error_message ?></h5>
-            </div>  
+            <button class="login-btn" id="login" name="login">LOGIN</button>
             <div>
                 <h3 onclick="document.location='adminlogin.php'">For Admin Login</h3>
             </div>
+            
         </div>
     </form>
+    <script>
+        function isvalid()
+        {
+            var email = document.form.email.value;
+            var password = document.form.password.value;
+
+            if(email.length=="" && password.length=="")
+            {
+                alert("Username and password field is empty!");
+                return false
+            }
+            else
+            {
+                if(email.length=="")
+                {
+                    alert("Username field is empty!");
+                    return false
+                }
+                if(password.length=="")
+                {
+                    alert("Password field is empty!");
+                    return false
+                }
+            }
+        }
+    </script>
     
     <!-- <script>
         Window.addEventaListener("scroll",function(){
