@@ -12,11 +12,10 @@
     // }catch(\Exception $e){
     //     $error_message=$e->getMessage();
     // }
-    $con = mysqli_connect('localhost','root','','login-info');
+    $con = mysqli_connect('localhost','root','','medhost');
     if (mysqli_connect_errno())
     {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     ?>
-
 ?>

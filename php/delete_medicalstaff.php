@@ -6,7 +6,7 @@ include '..\database\connect.php';
 if(isset($_GET['deleteid'])){
     $id=$_GET['deleteid'];
 
-    $sql="DELETE FROM medicalstaff_reg WHERE mid=$id";
+    $sql="DELETE FROM medicalstaff_info WHERE mid=$id";
     $result=mysqli_query($con,$sql);
     if($result)
     {

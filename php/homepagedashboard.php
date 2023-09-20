@@ -40,7 +40,7 @@
                         <span class="text">Doctor</span>
                         <span class="number">
                             <?php
-                                $sql="SELECT * FROM doctor_reg";
+                                $sql="SELECT * FROM doctor_info";
                                 $result=mysqli_query($con,$sql);
                                 $totalCount=mysqli_num_rows($result);
                                 echo $totalCount;
@@ -51,7 +51,7 @@
                     <i class="fa-brands fa-hire-a-helper"></i>
                         <span class="text">Front-Desk</span>
                         <span class="number"><?php
-                                $sql="select * from frontdesk_reg";
+                                $sql="select * from frontdesk_info";
                                 $result=mysqli_query($con,$sql);
                                 $totalCount=mysqli_num_rows($result);
                                 echo $totalCount;
@@ -63,7 +63,7 @@
                         <span class="text">Medical-Staff</span>
                         <span class="number">
                             <?php
-                                $sql="select * from medicalstaff_reg";
+                                $sql="select * from medicalstaff_info";
                                 $result=mysqli_query($con,$sql);
                                 $totalCount=mysqli_num_rows($result);
                                 echo $totalCount;
@@ -75,7 +75,7 @@
                         <span class="text">Patients</span>
                         <span class="number">
                             <?php
-                                $sql="select * from patient_reg";
+                                $sql="select * from patient_info";
                                 $result=mysqli_query($con,$sql);
                                 $totalCount=mysqli_num_rows($result);
                                 echo $totalCount;

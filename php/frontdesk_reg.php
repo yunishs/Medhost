@@ -123,7 +123,7 @@
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($reg_idErr)
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
-            $sql="insert into frontdesk_reg(fname,mname,lname,reg_id,gender,age,contact,email,password) values ('$fname','$mname','$lname','$reg_id','$gender','$age','$contact','$email','$password')";
+            $sql="insert into frontdesk_info(fname,mname,lname,reg_id,gender,age,contact,email,password) values ('$fname','$mname','$lname','$reg_id','$gender','$age','$contact','$email','$password')";
             $result=mysqli_query($con,$sql);
             if($result){
                 function_alert("Data inserted successfully");

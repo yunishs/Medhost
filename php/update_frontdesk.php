@@ -3,7 +3,7 @@
     include '..\database\connect.php';
     
     $id=$_GET['updateid'];
-    $sql="SELECT * from frontdesk_reg WHERE fid=$id";
+    $sql="SELECT * from frontdesk_info WHERE fid=$id";
     $result=mysqli_query($con,$sql);
     $row=mysqli_fetch_assoc($result);
 
@@ -135,7 +135,7 @@
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($reg_idErr)
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
-            $sql="UPDATE frontdesk_reg SET fid=$id,fname='$fname',mname='$mname',lname='$lname',reg_id='$reg_id',gender='$gender',age='$age',contact='$contact',email='$email',password='$password' WHERE fid=$id";
+            $sql="UPDATE frontdesk_info SET fid=$id,fname='$fname',mname='$mname',lname='$lname',reg_id='$reg_id',gender='$gender',age='$age',contact='$contact',email='$email',password='$password' WHERE fid=$id";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data updated successfully");
