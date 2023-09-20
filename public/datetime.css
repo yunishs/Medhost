@@ -191,6 +191,8 @@ nav.close ~ .dashboard{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+   /*padding-left: 20px;
+    padding-right: 20px;*/
     align-items: left;
     width:calc(100%/2);
     justify-content: space-around;
