@@ -47,10 +47,10 @@
              </div>
              <div class="row">
                 <div class="col-25">
-                    <label class="mobile">Mobile no: </label>
+                    <label class="mobile">Mobile no:</label>
                 </div>
                 <div class="col-75">
-                    <input type="number" id="mobile" name="mobile">
+                    <input type="text" id="mobile" name="mobile">
                 </div>
             </div>
    

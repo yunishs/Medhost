@@ -61,18 +61,19 @@ header{
   }
   
   label {
-    padding: 12px 12px 12px 0;
+    padding: 12px 12px 12px 0px;
     display: inline-block;
   }
   
 .container{
-    width: 600px;
+    width: 40%;
     border-radius:5px;
     background: rgba(122, 141, 180, 0.3);
-    margin: 10% 20%;
+    margin: 10% 20% 0% 20%;
     padding: 50px 50px;
     color: #0a0a0a;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
+    min-height: 60%;
 }
 h1{
     text-align: center;
@@ -88,19 +89,19 @@ h1{
   }
   
   .col-75 {
-    float: left;
+    float: right;
     width: 75%;
     margin-top: 6px;
   }
   
   /* Clear floats after the columns */
-  /* .row::after {
+  .row::after {
     content: "";
     display: table;
     clear: both;
-  } */
+  }
 .enter-btn{
-    margin: 40px auto 20px;
+    margin: 0px auto 20px;
     text-align:center;
     width: 30%;
     display: block;
@@ -114,5 +115,6 @@ h1{
 }
 .reg-btn
 {
+  text-align: center;
   color:navy;
 }
