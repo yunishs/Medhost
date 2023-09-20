@@ -135,6 +135,13 @@
                 die(mysqli_error($con));
                 
             }
+
+            $sql2="SELECT MAX(fid) FROM frontdesk_info";
+            $result2=mysqli_query($con,$sql2);
+            $fid_fk=mysqli_fetch_array($result2);
+            
+            $sql1="insert into login_information(email,password,role,fid_fk) values ('$email','$password','3','$fid_fk[0]')";
+            $result1=mysqli_query($con,$sql1);
         }
         else
         {

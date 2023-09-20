@@ -34,7 +34,7 @@ include '..\database\connect.php';
 		<tbody>
 			<?php
 
-			$sql="Select * from patient_view";
+			$sql="SELECT * from patient_info";
 			$result=mysqli_query($con,$sql);
 			if($result)
 			{

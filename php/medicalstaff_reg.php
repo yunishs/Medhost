@@ -2,7 +2,7 @@
 
     include '..\database\connect.php';
     //initializing variables
-    $fname=$mname=$lname=$reg_id=$gender=$age=$contact=$email=$password="";
+    $fname=$mname=$lname=$reg_id=$gender=$age=$contact=$email=$password=$role="";
     $fnameErr=$mnameErr=$lnameErr=$reg_idErr=$genderErr=$ageErr=$contactErr=$emailErr=$passwordErr=null;
 // try{
     if(isset($_POST['enter']))
@@ -122,9 +122,7 @@
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($reg_idErr)
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
-            $sql="insert into medicalstaff_info(fname,mname,lname,reg_id,gender,age,contact,email,password) values ('$fname','$mname','$lname','$reg_id','$gender','$age','$contact','$email','$password')";
-            $sql1="insert into login_information(email,password,role) values ('$email','$password','2')";
-            $result1=mysqli_query($con,$sql1);
+            $sql="INSERT into medicalstaff_info(fname,mname,lname,reg_id,gender,age,contact,email,password) values ('$fname','$mname','$lname','$reg_id','$gender','$age','$contact','$email','$password')";
             $result=mysqli_query($con,$sql);
             if($result){
                 function_alert("Data inserted successfully");
@@ -136,6 +134,13 @@
                 die(mysqli_error($con));
                 
             }
+            $sql2="SELECT MAX(mid) FROM medicalstaff_info";
+            $result2=mysqli_query($con,$sql2);
+            $mid_fk=mysqli_fetch_array($result2);
+            
+            $sql1="insert into login_information(email,password,role,mid_fk) values ('$email','$password','2','$mid_fk[0]')";
+            $result1=mysqli_query($con,$sql1);
+            
         }
         else
         {

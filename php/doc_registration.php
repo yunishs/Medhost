@@ -141,6 +141,13 @@
                 die(mysqli_error($con));
                 
             }
+
+            $sql2="SELECT MAX(did) FROM doctor_info";
+            $result2=mysqli_query($con,$sql2);
+            $did_fk=mysqli_fetch_array($result2);
+            
+            $sql1="insert into login_information(email,password,role,did_fk) values ('$email','$password','1','$did_fk[0]')";
+            $result1=mysqli_query($con,$sql1);
         }
         else
         {
