@@ -1,7 +1,7 @@
 <?php 
    session_start();
    // require_once (realpath(dirname(__FILE__) . '/../php/session_admin.php'));
-   echo( $_SESSION["username"]);
+   // echo( $_SESSION["username"]);
       
 
 ?>
