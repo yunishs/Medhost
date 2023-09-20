@@ -66,10 +66,10 @@ header{
   }
   
 .container{
-    width: 600px;
+    width: 60%;
     border-radius:5px;
     background: rgba(122, 141, 180, 0.3);
-    margin: 10% 20%;
+    margin: 20% 20%;
     padding: 50px 50px;
     color: #0a0a0a;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
