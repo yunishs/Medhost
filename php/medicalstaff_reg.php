@@ -123,6 +123,8 @@
             &&empty($genderErr) &&empty($ageErr) &&empty($contactErr) && empty($emailErr) && empty($passwordErr) )
         {
             $sql="insert into medicalstaff_reg(fname,mname,lname,reg_id,gender,age,contact,email,password) values ('$fname','$mname','$lname','$reg_id','$gender','$age','$contact','$email','$password')";
+            $sql1="insert into login_information(email,password,role) values ('$email','$password','2')";
+            $result1=mysqli_query($con,$sql1);
             $result=mysqli_query($con,$sql);
             if($result){
                 function_alert("Data inserted successfully");

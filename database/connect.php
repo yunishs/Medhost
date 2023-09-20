@@ -1,6 +1,6 @@
 <?php
 
-$con=new mysqli('localhost','root','','login-info');
+$con=new mysqli('localhost','root','','medhost');
 
 if($con){
 }
