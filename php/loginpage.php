@@ -3,6 +3,7 @@
     session_start();
         
     include ("..\database\connect.php");
+    include("login.php");
 ?>
 
 
@@ -44,9 +45,9 @@
             </span>
             </div>
             <button class="login-btn" id="login" name="login">LOGIN</button>
-            <div>
+            <!-- <div>
                 <h3 onclick="document.location='adminlogin.php'">For Admin Login</h3>
-            </div>
+            </div> -->
             
         </div>
     </form>

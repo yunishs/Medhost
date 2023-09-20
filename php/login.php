@@ -1,6 +1,7 @@
 <?php
-
     include ("..\database\connect.php");
+    $role='';
+    // $_SESSION["username"]=$_SESSION["password"]=$_SESSION["role"]=$role;
     if(isset($_POST['login']))
     {
             $email= $_POST['email'];
@@ -19,7 +20,61 @@
             // if($result->fetch('$role')=='0') {
             //     header('Location: admin_test.php');
             // } else {
-            header("Location: searchpatient.php");
+            // header("Location: searchpatient.php");
+            if(!isset($_SESSION["username"] )) { //check if there is session of the user 
+                //fetch role
+                //timeout after 12hrs 12*60*60
+                        // if(time()-$_SESSION["login_timestamp"]>43200)
+                        // {
+                        //     session_unset();
+                        //     session_destroy();
+                            
+                        // }
+                // else
+                // {
+
+                //     echo "<script>alert('Welcome ".$_SESSION["username"]."')</script>";
+                //     if($_SESSION["role"]==0){
+                //         header('Location:dashboard.php');
+                //     }
+                //     elseif($_SESSION["role"]==1){
+                //         header("Location:searchpatient.php");
+                //     }
+                //     elseif($_SESSION["role"]==2){
+                //         header("Location:individual_doc_view.php");
+                //     }
+                //     elseif($_SESSION["role"]==3){
+                //         header("Location:pat_registration.php");
+                //     }
+                
+                // }
+            // }    
+            // else{// check username and pass correct
+					$email=$row['email'];
+					$password=$row['password'];
+                    $role=$row['role'];
+                    $_SESSION["username"]=$email;
+                    $_SESSION["password"]=$password;
+                    $_SESSION["login_timestamp"]=time();
+                    $_SESSION["role"]=$role;
+                    echo "<script>alert('Welcome ".$_SESSION["username"],$_SESSION["password"],$_SESSION["login_timestamp"]
+                        ,$_SESSION["role"]."')</script>";
+
+                    echo "<script>alert('Welcome ".$_SESSION["username"]."')</script>";
+                    if($_SESSION["role"]==0){
+                        header("Location:dashboard.php");
+                    }
+                    elseif($_SESSION["role"]==1){
+                        header("Location:searchpatient.php");
+                    }
+                    elseif($_SESSION["role"]==2){
+                        header("Location:individual_doc_view.php");
+                    }
+                    elseif($_SESSION["role"]==3){
+                        header("Location:pat_registration.php");
+                    }
+                
+            }
         }
         else
         {
