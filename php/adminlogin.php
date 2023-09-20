@@ -4,10 +4,11 @@
 
     $error_message='';
     $emailErr=$passwordErr=null;
-    $email=$password=$role="";
+    $email=$password="";
+    $role=4;
 
     if($_POST){
-        include('..\database\connection.php');
+        require('..\database\connect.php');
 
         $email= $_POST['email'];
         $password= $_POST['password'];
@@ -19,7 +20,7 @@
             if($stmt->rowCount()>0){
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 $user= $stmt->fetchALL()[0];   
-                if(isset($_SESSION["username"])) {
+                if(isset($_SESSION["username"] )) { //check if there is session of the user 
                     //fetch role
                     //timeout after 12hrs 12*60*60
                     if(time()-$_SESSION["login_timestamp"]>43200)
@@ -60,7 +61,7 @@
                 // if($result->fetch('$role')=='0') {
                 //     header('Location: admin_test.php');
                 // } else {
-                    header('Location: dashboard.php');
+                    // header('Location: dashboard.php');
                 // }
             }
             else $error_message= 'Incorrect E-mail/Password';
