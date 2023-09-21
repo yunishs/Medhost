@@ -244,7 +244,7 @@
         </div>
     </header>
     <section class="container">
-      <h2>Registration Form</h2>
+      <h1>Registration Form</h1>
       <form class="form" method="POST">
       <div class="column">
           <div class="input-box">
