@@ -66,9 +66,6 @@
   width: 100%;
   margin-top: 20px;
 }
-.h3{
-    padding-top: 40px;
-}
 .input-box label {
   color: #333;
 }
@@ -122,57 +119,24 @@
   }
  /* input[type=text], select, textarea {
     width: 20%;
-    margin-left: 60px;/* yo cha
+    margin-left: 60px; /*yo cha
     padding: 12px 12px 12px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
     
-  }
-  input[type=date], select, textarea {
-    width: 15%; 
-    padding: 12px 12px 12px 12px;
-    margin-left: 20px;
-    /* padding:0px 12px 12px 12px; 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    margin-bottom: 8px;
-  }
-  input[type=stext], select, textarea {
-    width: 15%; 
-    padding: 12px 12px 12px 12px;
-    margin-left: 35px;
-    /* padding:0px 12px 12px 12px; 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    margin-bottom: 8px;
-  }
-  .dateandtime{
-    margin-left: 30px;
-  }
-  input[type=integer], select, textarea {
-    width: 20%;
-    padding: 12px 12px 12px 12px;
-    margin-left: 35px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    margin-bottom: 8px;
-    
-  }
+  }*/
   label {
-    padding: 12px 0px 0px 0;
+    padding: 6px 0px 0px 6px;
    
   }
   .input-box{
     border:none;
-    margin: 8% 0%;
+    margin: 4% 0%;
   }
   
   h3{
-    text-align: left;
+    text-align: center;
     margin-bottom: 40px;
     
   }
@@ -187,17 +151,6 @@
     width: 100%;
     margin-top: 10px;
   }
-  .col-75 {
-    float: left;
-    width: 100%;
-    margin-top: 10px;
-  }
-  .col-60 {
-    float:left;
-    width: 100%;
-    margin-top: 10px;
-  }*/
-
 
 table 
 {
