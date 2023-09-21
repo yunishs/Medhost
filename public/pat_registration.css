@@ -154,7 +154,7 @@ h1{
   background: rgb(95, 185, 100);
 }
 /*Responsive*/
-@media screen and (max-width:900px) {
+@media screen and (max-width:500px) {
   .form .column {
     flex-wrap: wrap;
   }

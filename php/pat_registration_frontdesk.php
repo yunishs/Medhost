@@ -39,7 +39,7 @@
         else {
             $lname=test_input($_POST['lname']);
             if (!preg_match("/^[a-zA-Z]*$/",$lname)) {
-                $lnameErr = "Only letters allowed in last name";
+                $lnameErr = "Only letters are allowed in last name";
             }    
         }
         
