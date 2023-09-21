@@ -1,7 +1,7 @@
 <?php 
     session_start();
     // (!isset($_SESSION['username']) || 
-    if($_SESSION['role']!=1)
+    if(($_SESSION['role']!=1) || (empty($_SESSION['username'])))
     {
         header("Location:loginpage.php"); }
 ?>

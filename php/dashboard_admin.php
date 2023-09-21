@@ -2,7 +2,7 @@
    session_start();
    // require_once (realpath(dirname(__FILE__) . '/../php/session_admin.php'));
    // require_once('session_admin.php');
-   if($_SESSION['role']!=0){
+   if(($_SESSION['role']!=0) || (empty($_SESSION['username']))){
       header("Location:loginpage.php"); }
       
 
