@@ -13,14 +13,14 @@
       <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
    </head>
 <body>
-    <header>
+    <!-- <header>
         <div class="logosec">
             <img src="..\images\MedHost.png"
             class="icn menuicn"
             id="menuicn">
             <div class="logo">MedHost</div>
         </div>
-    </header>
+    </header> -->
     
     <?php
         $sql="SELECT * from patient_info where fname='Ram' AND contact='9844656849' LIMIT 1";
@@ -51,11 +51,11 @@
                 $date_of_admission=$row['date_of_admission'];
                 $discharge_date=$row['discharge_date'];
                 $pat_description=$row['pat_description'];
-                $illness=$row['illness'];
-                $diagnosis=$row['diagnosis'];
-                $treatment=$row['treatment'];
+                // $illness=$row['illness'];
+                // $diagnosis=$row['diagnosis'];
+                // $treatment=$row['treatment'];
                 $doctor_assigned=$row['doctor_assigned'];
-                $remarks=$row['remarks'];
+                // $remarks=$row['remarks'];
             }
         }
     ?>
@@ -109,8 +109,6 @@
                 <td><?= $pat_description ?></td>
             </tr>  
         </table>
-        <table>
-            
     </div>
 </body>
 </html>
