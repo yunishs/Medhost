@@ -347,7 +347,7 @@
                 <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
             </div>
         </div>
-        <div class="input-box">
+        <div class="in-box">
           <label>Patient description during admission</label>
           <input type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value=<?php echo $pat_description; ?>>
         </div>

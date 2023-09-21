@@ -70,6 +70,14 @@ header{
 .input-box label {
   color: #333;
 }
+.in-box{
+  width: 100%;
+  margin-top: 20px;
+  height: 100px;
+  padding: 50px;
+  border: 1px 
+
+}
 .form :where(.input-box input, .select-box, .input-option select) {
   /*position: relative;*/
   height: 50px;
