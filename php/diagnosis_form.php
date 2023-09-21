@@ -1,33 +1,31 @@
 <?php
 
     include '..\database\connect.php';
-    $name='';
+    //initializing variables
+    $symptoms=$test_conducted=$medication=$date="";
+    $symptomsErr=$test_conductedErr=$medicationErr=$dateErr=null;
 
-    $id=$_GET['updateid'];
-    $sql="SELECT * from pat_diagnosis WHERE diag_id=$id";
-    $result=mysqli_query($con,$sql);
-    $row=mysqli_fetch_assoc($result);
-    $symptoms=$row['symptoms'];
-    $test_conducted=$row['test_conducted'];
-    $medication=$row['medication'];
-    $date=$row['date'];
-    $pid_fk=$row['pid_fk'];
-
-    $sql1="SELECT * from patient_info as p JOIN pat_diagnosis as d on d.pid_fk=p.pid WHERE p.pid=$pid_fk";
-    $result1=mysqli_query($con,$sql1);
-    $row=mysqli_fetch_assoc($result1);
-    $fname=$row['fname'];
-	$mname=$row['mname'];
-	$lname=$row['lname'];
-    if($mname=="")
-    {
-        $name=$fname." ".$lname;
-    }
-    else
-    {
-        $name=$fname." ".$mname." ".$lname;
-    }
-
+    $sql="SELECT * from patient_info where fname='Ram' AND contact='9844656849' LIMIT 1";
+		$result=mysqli_query($con,$sql);
+		if($result)
+		{
+			while($row=mysqli_fetch_assoc($result))
+            {
+                $pid=$row['pid'];
+				$fname=$row['fname'];
+				$mname=$row['mname'];
+				$lname=$row['lname'];
+                if($mname=="")
+                {
+                    $name=$fname." ".$lname;
+                }
+                else
+                {
+                    $name=$fname." ".$mname." ".$lname;
+                }
+            }
+        }
+// try{
     if(isset($_POST['enter']))
     {
         function test_input($data) {
@@ -105,7 +103,8 @@
             // $sec1 = date_create($discharge_date);
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
-            $sql="UPDATE pat_diagnosis SET diag_id=$id,symptoms='$symptoms',test_conducted='$test_conducted',medication='$medication',date='$date' WHERE diag_id=$id";
+
+            $sql="insert into pat_diagnosis(symptoms,test_conducted,medication,date,pid_fk) values ('$symptoms','$test_conducted','$medication','$date','$pid')";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -135,8 +134,6 @@
         }
     }
     ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -152,7 +149,7 @@
         <table>
             <tr>
                 <th>Patient ID</th>
-                <td><?= $pid_fk?></td>
+                <td><?= $pid?></td>
                 <th>Patient Name</th>
                 <td><?= $name?></td>
             </tr>
@@ -165,15 +162,15 @@
                 </div>
                 <div class="input-box">
                     <label>Symptoms</label><br>
-                    <textarea type="text" class="symptoms" id="symptoms" name="symptoms" placeholder="Enter the symptoms patient currently has.." ><?php echo $symptoms;?></textarea>
+                    <textarea type="text" class="symptoms" id="symptoms" name="symptoms" placeholder="Enter the symptoms patient currently has.." value="<?php echo $symptoms; ?>"></textarea>
                 </div>
                 <div class="input-box">
                     <label>Test Conducted</label><br>
-                    <textarea type="text" class="test_conducted" id="test_conducted" name="test_conducted" placeholder="Enter the tests conducted.." ><?php echo $test_conducted;?></textarea>
+                    <textarea type="text" class="test_conducted" id="test_conducted" name="test_conducted" placeholder="Enter the tests conducted.." value="<?php echo $test_conducted; ?>"></textarea>
                 </div>
                 <div class="input-box">
                     <label>Medication</label><br>
-                    <textarea type="text" class="medication" id="medication" name="medication" placeholder="Enter the prescribe medications.." ><?php echo $medication;?></textarea>
+                    <textarea type="text" class="medication" id="medication" name="medication" placeholder="Enter the prescribe medications.." value="<?php echo $medication; ?>""></textarea>
                 </div>
                 <button type="enter" class="enter-btn" name="enter">ENTER</button>
             </form>

@@ -1,31 +1,30 @@
 <?php
 
-
     include '..\database\connect.php';
     //initializing variables
-    $id=$_GET['updateid'];
-    $sql="SELECT * from pat_prognosis WHERE prog_id=$id";
-    $result=mysqli_query($con,$sql);
-    $row=mysqli_fetch_assoc($result);
-    $condition_of_pat=$row['condition_of_pat'];
-    $remarks=$row['remarks'];
-    $date=$row['date'];
-    $pid_fk=$row['pid_fk'];
+    $condition_of_pat=$remarks=$date="";
+    $condition_of_patErr=$remarksErr=$dateErr=null;
 
-    $sql1="SELECT * from patient_info as p JOIN pat_prognosis as d on d.pid_fk=p.pid WHERE p.pid=$pid_fk";
-    $result1=mysqli_query($con,$sql1);
-    $row=mysqli_fetch_assoc($result1);
-    $fname=$row['fname'];
-	$mname=$row['mname'];
-	$lname=$row['lname'];
-    if($mname=="")
-    {
-        $name=$fname." ".$lname;
-    }
-    else
-    {
-        $name=$fname." ".$mname." ".$lname;
-    }
+    $sql="SELECT * from patient_info where fname='Ram' AND contact='9844656849' LIMIT 1";
+		$result=mysqli_query($con,$sql);
+		if($result)
+		{
+			while($row=mysqli_fetch_assoc($result))
+            {
+                $pid=$row['pid'];
+				$fname=$row['fname'];
+				$mname=$row['mname'];
+				$lname=$row['lname'];
+                if($mname=="")
+                {
+                    $name=$fname." ".$lname;
+                }
+                else
+                {
+                    $name=$fname." ".$mname." ".$lname;
+                }
+            }
+        }
 // try{
     if(isset($_POST['enter']))
     {
@@ -94,7 +93,7 @@
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
 
-            $sql="UPDATE pat_prognosis SET prog_id=$id,condition_of_pat='$condition_of_pat',remarks='$remarks',date='$date' WHERE prog_id=$id";
+            $sql="insert into pat_prognosis(condition_of_pat,remarks,date,pid_fk) values ('$condition_of_pat','$remarks','$date','$pid')";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -136,7 +135,7 @@
     <table>
         <tr>
             <th>Patient ID</th>
-            <td><?= $pid_fk?></td>
+            <td><?= $pid?></td>
             <th>Patient Name</th>
             <td><?= $name?></td>
         </tr>
@@ -149,11 +148,11 @@
             </div>
             <div class="input-box">
                 <label>Condition of Patient</label><br>
-                <textarea type="text" class="condition_of_pat" id="condition_of_pat" name="condition_of_pat" placeholder="Enter the medical condition of patient.." ><?php echo $condition_of_pat; ?></textarea>
+                <textarea type="text" class="condition_of_pat" id="condition_of_pat" name="condition_of_pat" placeholder="Enter the medical condition of patient.." value="<?php echo $condition_of_pat; ?>"></textarea>
             </div>
             <div class="input-box">
                 <label>Remarks</label><br>
-                <textarea type="text" class="remarks" id="remarks" name="remarks" placeholder="Enter the remarks.." ><?php echo $remarks; ?></textarea>
+                <textarea type="text" class="remarks" id="remarks" name="remarks" placeholder="Enter the remarks.." value="<?php echo $remarks; ?>"></textarea>
             </div>
             <button type="enter" class="enter-btn" name="enter">ENTER</button>
         </form>

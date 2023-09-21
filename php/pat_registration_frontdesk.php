@@ -3,7 +3,7 @@
     include '..\database\connect.php';
     //initializing variables
     $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned="";
-    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admission=$discharge_date=$doctor_assigned=null;
+    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admissionErr=$discharge_dateErr=$doctor_assignedErr=null;
 // try{
     if(isset($_POST['enter']))
     {

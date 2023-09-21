@@ -270,7 +270,7 @@
             <div class="row">
                 <div class="col-25">
                     <label for="email">Email: </label>
-                    <input type="text" id="email" name="email" value=<?php echo $email; ?>>  
+                    <input type="text" id="email" name="email" value="<?php echo $email; ?>">  
                 </div>
             </div>
             <div class="row">
@@ -278,7 +278,7 @@
                     <label class="pat_description">Patient's Description: </label>
                 </div>
                 <div class="col-35">
-                    <input type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value=<?php echo $pat_description; ?>>
+                    <input type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value="<?php echo $pat_description; ?>">
                 </div>
             </div>
             <div class="row">
