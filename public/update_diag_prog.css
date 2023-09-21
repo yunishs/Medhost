@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  header{
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 40px;
+  background-color: #fafaff;
+  }
+  .logo {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(16, 47, 184);
+  }
+  .icn {
+  height: 45px;
+  }
+  .menuicn {
+  cursor: pointer;
+  }
+  .logosec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  }
+  body
+  {
+    text-align: left;
+    padding-left: 10%;
+    background-image:url('../images/default_background.webp');
+    background-repeat:no-repeat;
+    /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
+    background-attachment:fixed;
+    /* yesle fixed huda chai background chai move hudainaa */
+    background-size:100% 100%;
+    /* background size ma cover garda chai aafai adjust hunxaa but 100% 100% garda chai purai picture nai background ma aauxa */
+  }
+  input[type=text], select, textarea {
+    width: 20%;
+    margin-left: 60px; /*yo cha*/
+    padding: 12px 12px 12px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    
+  }
+  input[type=date], select, textarea {
+    width: 15%; 
+    padding: 12px 12px 12px 12px;
+    margin-left: 20px;
+    /* padding:0px 12px 12px 12px; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-bottom: 8px;
+  }
+  input[type=stext], select, textarea {
+    width: 15%; 
+    padding: 12px 12px 12px 12px;
+    margin-left: 35px;
+    /* padding:0px 12px 12px 12px; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-bottom: 8px;
+  }
+  .dateandtime{
+    margin-left: 30px;
+  }
+  input[type=integer], select, textarea {
+    width: 20%;
+    padding: 12px 12px 12px 12px;
+    margin-left: 35px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-bottom: 8px;
+    
+  }
+  label {
+    padding: 12px 0px 0px 0;
+   
+  }
+  .input-box{
+    border:none;
+    margin: 8% 0%;
+  }
+  
+  h3{
+    text-align: left;
+    margin-bottom: 40px;
+    
+  }
+  .col-25 {
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+  }
+  
+  .col-35 {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .col-75 {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .col-60 {
+    float:left;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+
+table 
+{
+    
+    border: 1px solid #796e6e;
+    border-collapse:initial;
+    width: 80%;
+    padding:15px;
+    box-shadow:5px 5px 10px rgba(0, 0, 0, 0.25);;
+}
+.pid
+{
+    background-color: aliceblue;
+}
+  th{
+    text-align: left;
+    padding: 8px 8px 8px 8px;
+    border-bottom: 1px solid #8f8c8c;
+  }
+  td {
+    text-align: left;
+    padding: 8px 8px 8px 20px;
+    border-bottom: 1px solid #8f8c8c;
+  }
