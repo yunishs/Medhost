@@ -2,8 +2,8 @@
 
     include '..\database\connect.php';
     //initializing variables
-    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$pat_description=$date_of_admission="";
-    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admission=null;
+    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned="";
+    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admission=$discharge_date=null;
 // try{
     if(isset($_POST['enter']))
     {
@@ -124,6 +124,21 @@
         {
             $date_of_admission=test_input($_POST['date_of_admission']);   
         } 
+
+        {
+            $date_of_admission=test_input($_POST['date_of_admission']);   
+        } 
+
+        if (empty($_POST["doctor_assigned"])) 
+        {
+            $ageErr = "Doctor assigned is required";
+        } 
+        else {
+            $age=test_input($_POST['age']);
+            if (!preg_match("/^[0-9]{1,2}$/",$age)) {
+                $ageErr = "Only numbers and not starting with zero allowed in doctor assigned";
+            }    
+        }
         //for password
         // Has minimum 8 characters in length. {8,}
         // At least one uppercase English letter.(?=.*?[A-Z])
@@ -138,9 +153,9 @@
         
         
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($contactErr) &&empty($ageErr) 
-            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr) && empty($pat_descriptionErr) && empty($date_of_admission))
+            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr) && empty($pat_descriptionErr) && empty($date_of_admission) && empty($discharge_date) && empty($doctor_assigned))
         {
-            $sql="insert into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description,date_of_admission) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description','$date_of_admission')";
+            $sql="insert into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description,date_of_admission,discharge_date,doctor_assigned) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned')";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -191,6 +206,12 @@
             if(!empty($date_of_admission)){
                 function_alert($date_of_admission);
             }  
+            if(!empty($discharge_date)){
+                function_alert($discharge_date);
+            }  
+            if(!empty($doctor_assigned)){
+                function_alert($doctor_assigned);
+            }  
         }
     }
     ?>
@@ -207,8 +228,16 @@
     <link rel="stylesheet" href="..\public\aaaaa.css">
   </head>
   <body>
+    <header>
+        <div class="logosec" class="header" id="myHeader">
+            <img src="..\images\MedHost.png"
+                class="icn menuicn"
+                id="menuicn">
+                <div class="logo">MED-Host</div>
+        </div>
+    </header>
     <section class="container">
-      <header>Registration Form</header>
+      <h2>Registration Form</h2>
       <form action="#" class="form">
       <div class="column">
           <div class="input-box">
@@ -280,8 +309,18 @@
                 <input type="text" id="email" name="email" value=<?php echo $email; ?>>
             </div>
             <div class="input-box">
+                <label>Doctor Assigned</label>
+                <input type="text" id="email" name="email" value=<?php echo $email; ?>>
+            </div>
+        </div>
+        <div class="column">
+            <div class="input-box">
                 <label>Date of Admission</label>
                 <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
+            </div>
+            <div class="input-box">
+                <label>Date of Discharge</label>
+                <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
             </div>
         </div>
         <div class="input-box">
@@ -291,6 +330,18 @@
         <button type="enter" class="enter-btn" name="enter">ENTER</button>
       </form>
     </section>
+    <script>
+    window.onscroll = function() {myFunction()};
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;function myFunction() 
+    {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+    </script>
   </body>
 </html>
         

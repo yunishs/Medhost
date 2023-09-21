@@ -105,9 +105,9 @@
                 {
                     $name=$fname." ".$mname." ".$lname;
                 }
-                $dateandtime=$row['dateandtime'];
-                $condition_of_patient=$row['condition_of_patient'];
-                $remarks=$row['remarks'];
+                // $dateandtime=$row['dateandtime'];
+                // $condition_of_patient=$row['condition_of_patient'];
+                // $remarks=$row['remarks'];
                 
             }
         }
@@ -162,12 +162,12 @@
                 </div>
     </div>
                 <div class="row">
-                <div class="col-60" >
-                <label class="remarks">Remark: </label>
+                    <div class="col-60" >
+                        <label class="remarks">Remark: </label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" class="remarks" id="remarks" name="remarks" placeholder="Enter the remarks" value=<?php echo $remarks; ?>>
+                    </div>
                 </div>
-                <div class="col-75">
-                    <input type="text" class="remarks" id="remarks" name="remarks" placeholder="Enter the remarks" value=<?php echo $remarks; ?>>
-                </div>
-    </div>
 </body>
 </html>
