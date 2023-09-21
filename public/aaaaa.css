@@ -6,7 +6,6 @@
 }
 
 body {
-  width:80%;
   min-height: 100vh;
   /* display: flex; */
   align-items:normal;
@@ -21,6 +20,29 @@ body {
   /* yesle fixed huda chai background chai move hudainaa */
   background-size:100% 100%;
 }
+table
+{    
+    
+    border-collapse:initial;
+    width: 98%;
+    padding:15px;
+}
+th
+{
+    text-align: left;
+    padding: 8px 8px 8px 8px;
+    border-bottom: 1px solid #8f8c8c;
+    ;background-color: #dddddd;
+
+}
+td {
+    text-align: left;
+    padding: 8px 8px 8px 20px;
+    border-bottom: 1px solid #8f8c8c;
+    background-color: #f2f2f2
+}
+tr:nth-child(even){background-color: #96f08a;}
+
 header{
   position: fixed;
   top: 0;
@@ -51,8 +73,7 @@ header{
   gap: 60px;
 }
 .container {
-  margin-top: 100px;
-  align-items: centre;
+  margin-top: 50px;
 }
 .container header {
   font-size: 1.5rem;
@@ -64,33 +85,47 @@ header{
   margin-top: 30px;
 }
 .form .input-box {
-  width: 100%;
+  width: 75%;
   margin-top: 20px;
 }
 .input-box label {
   color: #333;
+  margin-bottom:50px;
 }
-.in-box{
-  width: 100%;
-  margin-top: 20px;
+.form :where(.input-box textarea) {
+  /* position: relative; */
+  
   height: 100px;
-  padding: 50px;
-  border: 1px 
-
-}
-.form :where(.input-box input, .select-box, .input-option select) {
-  /*position: relative;*/
-  height: 50px;
-  width: 100%;
+  width: 70%;
   outline: none;
   font-size: 1rem;
   color: #707070;
   margin-top: 8px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  padding: 0 15px;
+  padding: 20px 20px 20px 20px;
+  text-wrap:wrap;
 }
-.input-box input:focus {
+.form :where(.input-box input) 
+{
+  /* position: relative; */
+  height: 30px;
+  width: 30%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px 20px 20px 20px;
+  text-wrap:wrap;
+}
+textarea
+{
+  resize: none;
+  
+}
+.input-box textarea:focus,input:focus {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 .form .column {
@@ -137,7 +172,7 @@ header{
 }
 .form button {
   height: 55px;
-  width: 100%;
+  width: 50%;
   color: #fff;
   font-size: 1rem;
   font-weight: 400;
@@ -151,7 +186,7 @@ header{
   background: rgb(88, 56, 250);
 }
 /*Responsive*/
-@media screen and (max-width:900px) {
+@media screen and (max-width:500px) {
   .form .column {
     flex-wrap: wrap;
   }
