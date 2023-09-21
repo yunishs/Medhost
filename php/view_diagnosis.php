@@ -92,7 +92,6 @@
 					    <td>
 					        <button class="button1"><a href="update_diagnosis.php?updateid='.$diag_id.'" class="link1">Update</a></button>
 					        <button class="button2"><a href="delete_diagnosis.php?deleteid='.$diag_id.'" class="link2">Delete</a></button>
-                            <button class="button1"><a href="view_diagnosis.php?viewid='.$diag_id.'" class="link1">View</a></button>
 					    </td>
 					</tr>';
 				}
