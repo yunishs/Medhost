@@ -1,4 +1,5 @@
 <?php
+//page not needed!!!!!!!!!!!!!!!!!!
     //Start the session.
     session_start();
 

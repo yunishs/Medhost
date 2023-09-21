@@ -1,4 +1,5 @@
 <?php
+//page not needed!!!!!!!!!!!!!!!!!!
     include ("..\database\connect.php");
     $role='';
     // $_SESSION["username"]=$_SESSION["password"]=$_SESSION["role"]=$role;
@@ -35,7 +36,7 @@
 
                 //     echo "<script>alert('Welcome ".$_SESSION["username"]."')</script>";
                 //     if($_SESSION["role"]==0){
-                //         header('Location:dashboard.php');
+                //         header('Location:dashboard_admin.php');
                 //     }
                 //     elseif($_SESSION["role"]==1){
                 //         header("Location:searchpatient.php");

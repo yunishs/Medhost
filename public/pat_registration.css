@@ -1,40 +1,17 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-header{
-position: fixed;
-display: block;
-top: 0;
-left: 0;
-width: 100%;
-height:20px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 40px 40px;
-background-color: #fafaff;
-}
-.logo {
-font-size: 30px;
-font-weight: 600;
-color: rgb(16, 47, 184);
-}
-.icn {
-height: 45px;
-}
-.menuicn {
-cursor: pointer;
-}
-.logosec {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 60px;
-}
-body
-{
+
+body {
+  width:80%;
+  min-height: 100vh;
+  /* display: flex; */
+  align-items:normal;
+  justify-content: left;
+  padding: 20px;
   text-align: left;
   padding-left: 10%;
   background-image:url('../images/default_background.webp');
@@ -43,147 +20,134 @@ body
   background-attachment:fixed;
   /* yesle fixed huda chai background chai move hudainaa */
   background-size:100% 100%;
-  /* background size ma cover garda chai aafai adjust hunxaa but 100% 100% garda chai purai picture nai background ma aauxa */
 }
-input[type=text], select, textarea {
-  width: 20%;
-  margin-left: 60px; /*yo cha*/
-  padding: 12px 12px 12px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  
-}
-input[type=date], select, textarea {
-  width: 15%; 
-  padding: 12px 12px 12px 12px;
-  margin-left: 20px;
-  /* padding:0px 12px 12px 12px; */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-bottom: 8px;
-}
-input[type=stext], select, textarea {
-  width: 15%; 
-  padding: 12px 12px 12px 12px;
-  margin-left: 35px;
-  /* padding:0px 12px 12px 12px; */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-bottom: 8px;
-}
-.mname,.lname{
-  margin-left: 30px;
-}
-.age{
-  margin-left: 140px;
-}
-.nationality{
-  margin-left: 80px;
-}
-input[type=integer], select, textarea {
-  width: 20%;
-  padding: 12px 12px 12px 12px;
-  margin-left: 35px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-bottom: 8px;
-  
-}
-/*yo matrei mileko xaina*/
-input[type=exc], select, textarea {
-  width: 35%;
-  padding: 12px 12px 12px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-left: 35px;
-  margin-bottom: 8px;
-}
-input[type=txt], select, textarea {
-  width: 15%;
-  margin-left: 47.5px;
-  padding: 12px 12px 12px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-bottom: 8px;
-  
-}
-
-input[type=sty], select, textarea {
-  width: 10%;
-  margin-left: 20px;
-  padding: 12px 12px 12px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-bottom: 8px;
-}
-
-input[type=ltext], select, textarea {
-  width: 10%;
-  margin-left: 20px;
-  padding: 12px 12px 12px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-bottom: 8px;
-}
-
-label {
-  padding: 12px 0px 0px 0;
- 
-}
-
-
-.input-box{
-  border:none;
-  margin-top: 8%;
-  width:100%;
-}
-
-h3{
-  text-align: left;
-  margin-bottom: 20px;
-  
-}
-.col-25 {
-  float: left;
+header{
+  position: fixed;
+  top: 0;
   width: 100%;
-  margin-top: 6px;
-}
-
-.col-35 {
-  float: left;
-  width: 100%;
-  margin-top: 10px;
-}
-/* Clear floats after the columns */
-.row::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.pat_description
-{
-  margin-top: 8px;
-  width:10%;
-  height:15%;
-  
-}
-.enter-btn{
-  margin: 40px auto 20px;
-  text-align:center;
-  width: 20%;
-  display: block;
-  outline: none;
-  padding: 10px;
-  border: 2px solid rgb(26, 63, 127);
+  left: 0;
+  height:20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 40px;
+  background-color: #fafaff;
+  }
+  .logo {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(16, 47, 184);
+  }
+  .icn {
+  height: 45px;
+  }
+  .menuicn {
   cursor: pointer;
-  background: rgb(92, 126, 151);
-  font-size: 16px;
+  }
+  .logosec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+.container {
+  margin-top: 100px;
+  align-items: centre;
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box, .input-option select) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+}
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+/*Responsive*/
+@media screen and (max-width:900px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
 }
