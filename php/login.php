@@ -62,16 +62,16 @@
 
                     echo "<script>alert('Welcome ".$_SESSION["username"]."')</script>";
                     if($_SESSION["role"]==0){
-                        header("Location:dashboard.php");
+                        header("Location:dashboard_admin.php");
                     }
                     elseif($_SESSION["role"]==1){
-                        header("Location:searchpatient.php");
+                        header("Location:dashboard_doctor.php");
                     }
                     elseif($_SESSION["role"]==2){
-                        header("Location:individual_doc_view.php");
+                        header("Location:dashboard_medical.php");
                     }
                     elseif($_SESSION["role"]==3){
-                        header("Location:pat_registration.php");
+                        header("Location:dashboard_frontdesk.php");
                     }
                 
             }
