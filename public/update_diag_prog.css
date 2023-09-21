@@ -132,6 +132,8 @@
   }
   .input-box{
     border:none;
+  /*  width: 30px;
+    height:30px;*/
     margin: 4% 0%;
   }
   
@@ -140,7 +142,7 @@
     margin-bottom: 40px;
     
   }
-  .col-25 {
+  /*.col-25 {
     float: left;
     width: 100%;
     margin-top: 6px;
@@ -150,7 +152,7 @@
     float: left;
     width: 100%;
     margin-top: 10px;
-  }
+  }*/
 
 table 
 {
