@@ -71,7 +71,7 @@ header{
   color: #333;
 }
 .form :where(.input-box input, .select-box, .input-option select) {
-  position: relative;
+  /*position: relative;*/
   height: 50px;
   width: 100%;
   outline: none;
