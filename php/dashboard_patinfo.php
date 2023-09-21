@@ -39,8 +39,8 @@
                <span class="fas fa-caret-down first"></span>
                </a>
                <ul class="feat-show">
-                    <li><a href="#" onclick="document.getElementById('if1').src = ''">Register</a></li>
-                    <li><a href="#" onclick="document.getElementById('if1').src = ''">View</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'update_diagnosis.php'">Update</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'view_diagnosis.php'">View</a></li>
                </ul>
             </li>
             <li>
@@ -48,8 +48,8 @@
                <span class="fas fa-caret-down second"></span>
                </a>
                <ul class="serv-show1">
-                    <li><a href="#" onclick="document.getElementById('if1').src = ''">Register</a></li>
-                    <li><a href="#" onclick="document.getElementById('if1').src = ''">View</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'update_prognosis.php'">Update</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'view_prognosis.php'">View</a></li>
                </ul>
             </li>
             <!-- <li><a href="#" onclick="document.getElementById('if1').src = 'pat_view.php'">Patient</a></li>
