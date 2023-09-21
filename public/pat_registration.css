@@ -50,6 +50,10 @@ header{
   justify-content: center;
   gap: 60px;
 }
+h1{
+ text-align: center;
+ color:rgb(29, 36, 112);
+}
 .container {
   margin-top: 100px;
   align-items: centre;
@@ -70,6 +74,13 @@ header{
 .input-box label {
   color: #333;
 }
+/*.container .form .input{
+  width: 100%;
+  margin-top: 20px;
+  height: 100px;
+  padding: 50px;
+  
+}*/
 .form :where(.input-box input, .select-box, .input-option select) {
   /* position: relative; */
   height: 50px;
@@ -137,10 +148,10 @@ header{
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: rgb(130, 106, 251);
+  background: rgb(95, 185, 100);
 }
 .form button:hover {
-  background: rgb(88, 56, 250);
+  background: rgb(95, 185, 100);
 }
 /*Responsive*/
 @media screen and (max-width:900px) {
