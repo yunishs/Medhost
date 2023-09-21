@@ -1,10 +1,28 @@
 <?php
 
     include '..\database\connect.php';
-    //initializing variables
-    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned="";
-    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admission=$discharge_date=$doctor_assigned=null;
-// try{
+    
+    $id=$_GET['updateid'];
+    $sql="SELECT * from patient_info WHERE pid=$id";
+    $result=mysqli_query($con,$sql);
+    $row=mysqli_fetch_assoc($result);
+
+    $fname=$row['fname'];
+    $mname=$row['mname'];
+    $lname=$row['lname'];
+    $contact=$row['contact'];
+    $age=$row['age'];
+    $gender=$row['gender'];
+    $nationality=$row['nationality'];
+    $bloodgroup=$row['bloodgroup'];
+    $address=$row['address'];
+    $email=$row['email'];
+    $doctor_assigned=$row['doctor_assigned'];
+    $date_of_admission=$row['date_of_admission'];
+    $discharge_date=$row['discharged_date'];
+    $pat_description=$row['pat_description'];
+
+
     if(isset($_POST['enter']))
     {
         function test_input($data) {
@@ -161,8 +179,7 @@
             // $sec1 = date_create($discharge_date);
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
-
-            $sql="insert into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description,date_of_admission,discharge_date,doctor_assigned) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned')";
+            $sql="UPDATE patient_info SET pid=$id,fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',pat_description='$pat_description' WHERE pid=$id";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
