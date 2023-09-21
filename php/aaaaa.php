@@ -3,7 +3,7 @@
     include '..\database\connect.php';
     //initializing variables
     $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned="";
-    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admission=$discharge_date=null;
+    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admission=$discharge_date=$doctor_assigned=null;
 // try{
     if(isset($_POST['enter']))
     {
@@ -74,7 +74,8 @@
         else
         {
             $bloodgroup=test_input($_POST['bloodgroup']);   
-        }  
+        }
+
         if (empty($_POST["gender"])) 
         {
             $genderErr = "Gender is required";
@@ -83,6 +84,7 @@
         {
             $gender=test_input($_POST['gender']);   
         } 
+
         {
             $nationality=test_input($_POST['nationality']);
             if (!preg_match("/^[a-zA-Z]*$/",$nationality)) {
@@ -103,7 +105,7 @@
             $emailErr = "Email is required";
         } 
         else {
-            $email = test_input($_POST["email"]);
+            $email = test_input($_POST['email']);
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
               $emailErr = "Invalid email format";
             }
@@ -116,7 +118,7 @@
             }    
         }  
 
-        if (empty($_POST["date_of_admission"])) 
+        if (empty($_POST['date_of_admission'])) 
         {
             $date_of_admissionErr = "Date of admission is required";
         } 
@@ -125,19 +127,16 @@
             $date_of_admission=test_input($_POST['date_of_admission']);   
         } 
 
-        {
-            $date_of_admission=test_input($_POST['date_of_admission']);   
-        } 
-
         if (empty($_POST["doctor_assigned"])) 
         {
-            $ageErr = "Doctor assigned is required";
+            $doctor_assigned = "Doctor assigned is required";
         } 
-        else {
-            $age=test_input($_POST['age']);
-            if (!preg_match("/^[0-9]{1,2}$/",$age)) {
-                $ageErr = "Only numbers and not starting with zero allowed in doctor assigned";
-            }    
+        else
+        {
+            $doctor_assigned=test_input($_POST['doctor_assigned']);
+            if (!preg_match("/^[a-zA-Z]*$/",$doctor_assigned)) {
+                $doctor_assignedErr = "Only letters allowed in Doctor assigned name";
+            }     
         }
         //for password
         // Has minimum 8 characters in length. {8,}
@@ -153,8 +152,16 @@
         
         
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($contactErr) &&empty($ageErr) 
-            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr) && empty($pat_descriptionErr) && empty($date_of_admission) && empty($discharge_date) && empty($doctor_assigned))
+            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr) && empty($pat_descriptionErr) && empty($date_of_admissionErr) && empty($discharge_dateErr) && empty($doctor_assignedErr))
         {
+            
+            // $sec = date_create($date_0f_admission);
+            // $newdate = date_format($sec,"Y-m-d H:i");
+
+            // $sec1 = date_create($discharge_date);
+            // $newdate1 = date_format($sec,"Y-m-d H:i");
+
+
             $sql="insert into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description,date_of_admission,discharge_date,doctor_assigned) values ('$fname','$mname','$lname','$contact','$age','$gender','$nationality','$bloodgroup','$address','$email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned')";
             $result=mysqli_query($con,$sql);
             if($result){
@@ -203,14 +210,14 @@
             if(!empty($pat_descriptionErr)){
                 function_alert($pat_descriptionErr);
             }         
-            if(!empty($date_of_admission)){
-                function_alert($date_of_admission);
+            if(!empty($date_of_admissionErr)){
+                function_alert($date_of_admissionErr);
             }  
-            if(!empty($discharge_date)){
-                function_alert($discharge_date);
+            if(!empty($discharge_dateErr)){
+                function_alert($discharge_dateErr);
             }  
-            if(!empty($doctor_assigned)){
-                function_alert($doctor_assigned);
+            if(!empty($doctor_assignedErr)){
+                function_alert($doctor_assignedErr);
             }  
         }
     }
@@ -238,7 +245,7 @@
     </header>
     <section class="container">
       <h2>Registration Form</h2>
-      <form action="#" class="form">
+      <form class="form" method="POST">
       <div class="column">
           <div class="input-box">
             <label>First-name</label>
@@ -310,7 +317,7 @@
             </div>
             <div class="input-box">
                 <label>Doctor Assigned</label>
-                <input type="text" id="email" name="email" value=<?php echo $email; ?>>
+                <input type="text" id="doctor_assigned" name="doctor_assigned" value=<?php echo $doctor_assigned; ?>>
             </div>
         </div>
         <div class="column">
@@ -331,16 +338,10 @@
       </form>
     </section>
     <script>
-    window.onscroll = function() {myFunction()};
-    var header = document.getElementById("myHeader");
-    var sticky = header.offsetTop;function myFunction() 
-    {
-        if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
-        } else {
-            header.classList.remove("sticky");
-        }
-    }
+        Window.addEventaListener("scroll",function(){
+        var header= document.querySelector("header");
+        header.classList.toggle("sticky",window.scrollY>0);
+        })
     </script>
   </body>
 </html>
