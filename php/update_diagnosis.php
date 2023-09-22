@@ -43,8 +43,8 @@
         } 
         else {
             $symptoms=test_input($_POST['symptoms']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$symptoms)) {
-                $symptomsErr = "Only letters and whitespace allowed in Symptoms";
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$symptoms)) {
+                $symptomsErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in Symptoms";
             }    
         }
 
@@ -54,8 +54,8 @@
         } 
         else {
             $test_conducted=test_input($_POST['test_conducted']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$test_conducted)) {
-                $test_conductedErr = "Only letters and whitespace allowed in test conducted";
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$test_conducted)) {
+                $test_conductedErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in test conducted";
             }    
         }
 
@@ -65,8 +65,8 @@
         } 
         else {
             $medication=test_input($_POST['medication']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$medication)) {
-                $medicationErr = "Only letters and whitespace allowed in medication";
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$medication)) {
+                $medicationErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in medication";
             }    
         }
 
