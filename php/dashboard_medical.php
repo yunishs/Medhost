@@ -7,17 +7,7 @@
     {
         header("Location:loginpage.php"); 
     }
-    $id1=$_SESSION['id_fk'];
-    $email1=$_SESSION['username'];
-    $sql2 = "SELECT * From medicalstaff_info WHERE mid='$id1' AND email='$email1'";
-    $result2 = mysqli_query($con,$sql2);
-    if($result2)
-	{
-		while($row=mysqli_fetch_assoc($result2))
-        {
-			$fname=$row['fname'];
-        }
-    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +44,7 @@
     <div class="float">
         <div class="float1">
             <div class="DAT">
-                <h1>Hello, <?php echo $fname ?></h1>
+                <h1>Hello, <?php $fname=$_SESSION['fname']; echo"$fname"; ?></h1>
                 <h2 id="time"></h2>
                 <h3 id="day"></h3>
                 <h3 id="date"></h3>
