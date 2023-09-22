@@ -18,13 +18,14 @@
    <body>
     <header>
         <div class="logosec">
-            <img src="..\images\MedHost.png"
-            class="icn menuicn"
-            id="menuicn">
-            <div class="logo">MedHost</div>
+            <a href="dashboard_doctor.php">
+               <img src="..\images\MedHost.png"
+               class="icn menuicn"
+               id="menuicn"></a>
+               <a href="dashboard_doctor.php" style="text-decoration:none;"><div class="logo">MedHost</div></a>
             <div class="logout">
-               <i class="fa-solid fa-right-from-bracket"></i>
-               <span class="log">Logout</span>
+               <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+               <a href="logout.php" style="text-decoration:none;"><span class="log">Logout</span><a>
             </div>
         </div>
     </header>
