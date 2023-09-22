@@ -42,9 +42,12 @@
         } 
         else {
             $condition_of_pat=test_input($_POST['condition_of_pat']);
-            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$condition_of_pat)) {
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$condition_of_pat))
+            // alternate regex where ". " ie dow followed by space is required ^[A-Za-z0-9]*\s*,*(. )*'*$ 
+            {
                 $condition_of_patErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in condition_of_pat";
             }    
+            
         }
 
         if (empty($_POST["remarks"])) 
