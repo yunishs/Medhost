@@ -32,8 +32,8 @@
             id="menuicn">
             <div class="logo">MedHost</div>
             <div class="logout">
-               <i class="fa-solid fa-right-from-bracket"></i>
-               <span class="log">Logout</span>
+                <a href="logout.php""><i class="fa-solid fa-right-from-bracket"></i></a>
+                <a href="logout.php" style="text-decoration:none;"><span class="log">Logout</span></a>
             </div>
 
         </div>
