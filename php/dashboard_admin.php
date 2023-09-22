@@ -1,11 +1,11 @@
 <?php 
    session_start();
+   require ("..\database\connect.php");
    // require_once (realpath(dirname(__FILE__) . '/../php/session_admin.php'));
    // require_once('session_admin.php');
    if(($_SESSION['role']!=0) || (empty($_SESSION['username']))){
       header("Location:loginpage.php"); }
       
-
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -64,7 +64,8 @@
                     <li><a href="#" onclick="document.getElementById('if1').src = 'medicalstaff_view.php'">View</a></li>
                </ul>
             </li>
-            <li><a href="#" onclick="document.getElementById('if1').src = ''">Logout</a></li>
+            <li><a href="logout.php">Logout</a></li>
+            <!-- #" onclick="document.getElementById('if1').src =' -->
          </ul>
       </nav>
 
