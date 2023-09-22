@@ -12,7 +12,7 @@
       <title>User Panel</title>
       <link rel="stylesheet" href="..\public\dashboard.css">
       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
       <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
    </head>
    <body>
@@ -26,7 +26,6 @@
                <i class="fa-solid fa-right-from-bracket"></i>
                <span class="log">Logout</span>
             </div>
-
         </div>
     </header>
     
@@ -57,6 +56,7 @@
                   <li><a href="#" onclick="document.getElementById('if1').src = 'prognosis_form.php'">Add</a></li>  
                </ul>
             </li>
+            
             <!-- <li><a href="#" onclick="document.getElementById('if1').src = 'pat_view.php'">Patient</a></li>
             <li>
                <a href="#" class="serv-btn2">Medical Staff

@@ -35,6 +35,11 @@
             class="icn menuicn"
             id="menuicn">
             <div class="logo">MedHost</div>
+            <div class="logout">
+               <i class="fa-solid fa-right-from-bracket"></i>
+               <span class="log">Logout</span>
+            </div>
+
         </div>
     </header>
     <section class="dashboard">
