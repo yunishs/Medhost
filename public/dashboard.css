@@ -9,14 +9,14 @@
 header {
   height: 70px;
   width: 100%;
-  padding: 0 30px;
+  padding: 15px 30px;
   background-color: #ffffff;
   position: fixed;
   z-index: 100;
   box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
-  display: flex;
-  /* justify-content: space-between; */
-  /* align-items: center; */
+  display:block;
+  justify-content: space-between;
+  align-items: center;
   }
 .logo {
   font-size: 30px;
@@ -37,18 +37,25 @@ header {
   align-items: center;
   justify-content: center;
   }
-  
-  
   .logosec {
-  gap: 60px;
-  }
+    gap: 60px;
+    }
 .logout
 {
-  float: right;
+  margin-left: auto;
 }
-.logout .log
+.logosec .logout .log
 {
-  text-decoration: none;
+  align-content: center;
+  padding-left: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  color: rgb(7, 57, 118);
+}
+i
+{
+  
+  font-size:30px;
 }
 body
 {
