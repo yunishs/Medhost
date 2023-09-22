@@ -1,8 +1,25 @@
 <?php 
+    $fname='';
+    
+    include '..\database\connect.php';
+
     session_start();
     if(($_SESSION['role']!=3) || (empty($_SESSION['username'])))
     {
-        header("Location:loginpage.php"); }
+        header("Location:loginpage.php"); 
+    }
+        
+    $id1=$_SESSION['id_fk'];
+    $email1=$_SESSION['username'];
+    $sql2 = "SELECT * From frontdesk_info WHERE fid='$id1' AND email='$email1'";
+    $result2 = mysqli_query($con,$sql2);
+    if($result2)
+	{
+		while($row=mysqli_fetch_assoc($result2))
+        {
+			$fname=$row['fname'];
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +33,8 @@
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <title>Dashboard Panel</title>
-    <title>Doctor Dashboard Panel</title>
+    <title>Frontdesk Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
 </head>
 <body>
     <header>
@@ -39,7 +56,7 @@
     <div class="float">
         <div class="float1">
             <div class="DAT">
-                <h1>Hello, <?php $fname=$_SESSION['fname']; echo"$fname" ?></h1>
+                <h1>Hello, <?php echo $fname ?></h1>
                 <h2 id="time"></h2>
                 <h3 id="day"></h3>
                 <h3 id="date"></h3>
@@ -49,18 +66,24 @@
             <div class="dash-content">
                 <div class="overview">
                     <div class="boxes">
-                        <div class="box box1">
-                        <i class="fa-solid fa-eye"></i>
-                            <span class="text">View Information</span>
-                        </div>
-                        <div class="box box2">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                            <span class="text">Search </span>
-                        </div>
-                        <div class="box box3">
-                        <i class="fa-solid fa-circle-plus"></i>
-                            <span class="text">Create Patient's Profile</span>
-                        </div>
+                        <a href="searchpatient.php" class="link">
+                            <div class="box box1">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <span class="text">Search </span>
+                            </div>
+                        </a>
+                        <a href="pat_view.php" class="link">
+                            <div class="box box2">
+                                <i class="fa-solid fa-eye"></i>
+                                <span class="text">View Information</span>
+                            </div>
+                        </a>
+                        <a href="pat_registration_frontdesk.php" class="link">
+                            <div class="box box3">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <span class="text">Create Patient's Profile</span>
+                            </div>
+                        </a>    
                         <!-- <div class="box box4">
                             <i class="fa-solid fa-bed-pulse"></i>
                             <span class="text">Update </span>

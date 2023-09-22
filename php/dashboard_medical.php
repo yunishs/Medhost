@@ -1,8 +1,23 @@
 <?php 
+    $fname='';
+    
+    include '..\database\connect.php';
     session_start();
     if(($_SESSION['role']!=2) || (empty($_SESSION['username'])))
     {
-        header("Location:loginpage.php"); }
+        header("Location:loginpage.php"); 
+    }
+    $id1=$_SESSION['id_fk'];
+    $email1=$_SESSION['username'];
+    $sql2 = "SELECT * From medicalstaff_info WHERE mid='$id1' AND email='$email1'";
+    $result2 = mysqli_query($con,$sql2);
+    if($result2)
+	{
+		while($row=mysqli_fetch_assoc($result2))
+        {
+			$fname=$row['fname'];
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +31,8 @@
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <title>Dashboard Panel</title>
-    <title>Doctor Dashboard Panel</title>
+    <title>Medical Staff Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
 </head>
 <body>
     <header>
@@ -39,7 +54,7 @@
     <div class="float">
         <div class="float1">
             <div class="DAT">
-                <h1>Hello, <?php $fname=$_SESSION['fname']; echo"$fname" ?></h1>
+                <h1>Hello, <?php echo $fname ?></h1>
                 <h2 id="time"></h2>
                 <h3 id="day"></h3>
                 <h3 id="date"></h3>
@@ -49,22 +64,29 @@
             <div class="dash-content">
                 <div class="overview">
                     <div class="boxes">
-                        <div class="box box1">
-                        <i class="fa-solid fa-eye"></i>
-                            <span class="text">View Information</span>
-                        </div>
-                        <div class="box box2">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                            <span class="text">Search Patient</span>
-                        </div>
+                        
+                        <a href="searchpatient.php" class="link">
+                            <div class="box box2">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <span class="text">Search Patient</span>
+                            </div>
+                        </a>
+                        <a href="pat_view.php" class="link">
+                            <div class="box box1">
+                                <i class="fa-solid fa-eye"></i>
+                                <span class="text">View Information</span>
+                            </div>
+                        </a>
                        <!-- <div class="box box3">
                             <i class="fa-solid fa-staff-snake"></i>
                             <span class="text">Prescribe Medication</span>
                         </div> -->
-                        <div class="box box4">
-                        <i class="fa-solid fa-square-pen"></i>
-                            <span class="text">Update Prognosis details</span>
-                        </div>
+                        <a href="prognosis_form.php" class="link">
+                            <div class="box box4">
+                                <i class="fa-solid fa-square-pen"></i>
+                                <span class="text">Update Prognosis details</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
