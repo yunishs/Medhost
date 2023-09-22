@@ -39,6 +39,7 @@
                <i class="fa-solid fa-right-from-bracket"></i>
                <span class="log">Logout</span>
             </div>
+
         </div>
     </header>
     <section class="dashboard">
