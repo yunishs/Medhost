@@ -1,5 +1,6 @@
 <?php
 
+
 include '..\database\connect.php';
 
 ?>
@@ -55,8 +56,8 @@ include '..\database\connect.php';
                     <td>'.$bloodgroup.'</td>
 					<td>'.$email.'</td>
 					<td>
-					<button class="button1"><a href="update_pat_frontdesk.php?updateid='.$id.'" class="link1">Update</a></button>
-					<button class="button2"><a href="delete_patient.php?deleteid='.$id.'" class="link2">Delete</a></button>
+					<button class="button1"><a href="update_pat_frontdesk.php" class="link1">Update</a></button>
+					<button class="button2"><a href="delete_patient.php" class="link2">Delete</a></button>
 					</td>
 					</tr>';
 				}

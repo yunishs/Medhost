@@ -172,7 +172,7 @@
                 </div>
                 <div class="input-box">
                     <label>Medication</label><br>
-                    <textarea type="text" class="medication" id="medication" name="medication" placeholder="Enter the prescribe medications.." value="<?php echo $medication; ?>""></textarea>
+                    <textarea type="text" class="medication" id="medication" name="medication" placeholder="Enter the prescribe medications.." value="<?php echo $medication; ?>"></textarea>
                 </div>
                 <button type="enter" class="enter-btn" name="enter">ENTER</button>
             </form>

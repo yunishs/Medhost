@@ -231,8 +231,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
     <link rel="stylesheet" href="..\public\pat_registration.css">
+    <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
+    <title>Patient Registration</title>
   </head>
   <body>
     <header>
@@ -331,8 +332,8 @@
             </div>
         </div>
         <div class="input-box">
-          <label>Patient description during admission</label>
-          <input type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value=<?php echo $pat_description; ?>>
+          <label>Patient description during admission</label><br>
+          <textarea type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value="<?php echo $pat_description; ?>"></textarea>
         </div>
         <button type="enter" class="enter-btn" name="enter">ENTER</button>
       </form>

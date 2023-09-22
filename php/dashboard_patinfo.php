@@ -34,13 +34,22 @@
          </div>
          <ul>
             <li class="active"><a href="#" onclick="document.getElementById('if1').src = 'individual_pat_view.php'">User Info</a></li>
+            <!-- <li>
+               <a href="#" class="serv-btn1">User Info
+               <span class="fas fa-caret-down first"></span>
+               </a>
+               <ul class="serv-show1">
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'view_prognosis.php'">View</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'prognosis_form.php'">Update</a></li>
+               </ul>
+            </li> -->
             <li>
                <a href="#" class="feat-btn">Diagnosis
                <span class="fas fa-caret-down first"></span>
                </a>
                <ul class="feat-show">
-                    <li><a href="#" onclick="document.getElementById('if1').src = 'diagnosis_form.php'">Update</a></li>
                     <li><a href="#" onclick="document.getElementById('if1').src = 'view_diagnosis.php'">View</a></li>
+                    <li><a href="#" onclick="document.getElementById('if1').src = 'diagnosis_form.php'">Add</a></li>
                </ul>
             </li>
             <li>
@@ -48,8 +57,8 @@
                <span class="fas fa-caret-down second"></span>
                </a>
                <ul class="serv-show1">
-                    <li><a href="#" onclick="document.getElementById('if1').src = 'prognosis_form.php'">Update</a></li>
-                    <li><a href="#" onclick="document.getElementById('if1').src = 'view_prognosis.php'">View</a></li>
+                  <li><a href="#" onclick="document.getElementById('if1').src = 'view_prognosis.php'">View</a></li>
+                  <li><a href="#" onclick="document.getElementById('if1').src = 'prognosis_form.php'">Add</a></li>  
                </ul>
             </li>
             <!-- <li><a href="#" onclick="document.getElementById('if1').src = 'pat_view.php'">Patient</a></li>
