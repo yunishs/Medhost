@@ -3,7 +3,7 @@
     session_start();
 
     require ("..\database\connect.php");
-    include("login.php");
+    // include("login.php");
 
     //test code does not work
     // function function_alert($message) {
@@ -168,6 +168,18 @@
                             $_SESSION["fname"]=$fname;
                             $_SESSION["mname"]=$mname;
                             $_SESSION["lname"]=$lname;
+                            $id1=$_SESSION['id_fk'];
+                            //alternative code
+                                // $email1=$_SESSION['username'];
+                                // $sql2 = "SELECT * From doctor_info WHERE did='$id1' AND email='$email1'";
+                                // $result2 = mysqli_query($con,$sql2);
+                                // if($result2)
+                                // {
+                                // 	while($row=mysqli_fetch_assoc($result2))
+                                //     {
+                                // 		$fname=$row['fname'];
+                                //     }
+                                // }
                         // }
                         // else
                         // {
@@ -243,8 +255,8 @@
                 //the following code does not work
                 // function_alert('Welcome ".$_SESSION["username"]."');
                 //     sleep(5);
-                // echo "<script>alert('Welcome ".$_SESSION["username"],$_SESSION["password"],$_SESSION["login_timestamp"]
-                //     ,$_SESSION["role"]."')</script>";
+                echo "<script>alert('Welcome ".$_SESSION["username"],$_SESSION["password"],$_SESSION["login_timestamp"]
+                    ,$_SESSION["role"]."')</script>";
 
                 // echo "<script>alert('Welcome ".$_SESSION["username"]."')</script>";
                 if($_SESSION["role"]==0){
