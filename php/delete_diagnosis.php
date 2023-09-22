@@ -1,5 +1,7 @@
 <?php
+    session_start();
 
+    $id=$_SESSION['pid'];
 include '..\database\connect.php';
 
 

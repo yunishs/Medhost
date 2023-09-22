@@ -1,17 +1,36 @@
-
 <?php
+    session_start();
+    
+    $name='';   
+    $contact=''; 
 
-   // $key=$_GET['key'];
-   // $array = array();
-   // $con=mysqli_connect("localhost","root","","demos");
-    //$query=mysqli_query($con, "select * from cfg_demos where title LIKE '%{$key}%'");
-    //while($row=mysqli_fetch_assoc($query))
-    //{
-     // $array[] = $row['title'];
-    //}
-   // echo json_encode($array);
-   // mysqli_close($con);
+    include '..\database\connect.php';
 
+    
+
+    if(isset($_POST['enter']))
+    {
+            $name= $_POST['name'];
+            $contact= $_POST['contact'];
+
+            $sql="SELECT * FROM patient_info WHERE contact='$contact' AND  (concat(fname,' ',mname,' ',lname)='$name' OR concat(fname,' ',lname)='$name')";
+            $result = mysqli_query($con,$sql);
+            $row=mysqli_fetch_array($result,  MYSQLI_ASSOC);
+            $count= mysqli_num_rows($result);
+            if($count==1)
+            {
+                $_SESSION['pid']=$row['pid'];
+                header('Location:dashboard_patinfo.php');
+            }
+            else
+            {
+                echo '<script>
+                    window.location.href="searchpatient.php";
+                    alert("Search failed. Invalid Name or Contact")
+                </script>';
+            } 
+        
+    }
 ?>
 
 
@@ -36,7 +55,7 @@
     </header>
     <div class="container">
         <h1>SEARCH PATIENT'S INFO</h1>
-        <form action="">
+        <form action="searchpatient.php" method="POST">
              <div class="row">
                 <div class="col-25">
                     <label for="name">Name:</label>
@@ -47,21 +66,47 @@
              </div>
              <div class="row">
                 <div class="col-25">
-                    <label class="mobile">Mobile no:</label>
+                    <label class="mobile">Contact:</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="mobile" name="mobile">
+                    <input type="text" id="contact" name="contact">
                 </div>
             </div>
    
             <br>
             <div class="row">
-                <button type="button" class="enter-btn">ENTER</button>
+                <button class="enter-btn" id="enter" name="enter">Search</button>
             </div>
             <div class="reg-btn">
-                <h3 onclick="document.location='pat_registration.php'">Click to register new patient</h3>
+                <h3 onclick="document.location='pat_registration_frontdesk.php'">Click to register new patient</h3>
             </div>
         </form>
+        <script>
+        function isvalid()
+        {
+            var name = document.form.name.value;
+            var contact = document.form.password.value;
+
+            if(name.length=="" && name.length=="")
+            {
+                alert("Name and Contact field is empty!");
+                return false
+            }
+            else
+            {
+                if(name.length=="")
+                {
+                    alert("Name field is empty!");
+                    return false
+                }
+                if(contact.length=="")
+                {
+                    alert("Contact field is empty!");
+                    return false
+                }
+            }
+        }
+    </script>
     </div>
 </body>
 </html>

@@ -1,11 +1,13 @@
 <?php
+    session_start();
+    $id=$_SESSION['pid'];
 
     include '..\database\connect.php';
     //initializing variables
     $symptoms=$test_conducted=$medication=$date="";
     $symptomsErr=$test_conductedErr=$medicationErr=$dateErr=null;
 
-    $sql="SELECT * from patient_info where fname='Ram' AND contact='9844656849' LIMIT 1";
+    $sql="SELECT * from patient_info where pid=$id";
 		$result=mysqli_query($con,$sql);
 		if($result)
 		{

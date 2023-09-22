@@ -2,7 +2,7 @@
    session_start();
    // require_once (realpath(dirname(__FILE__) . '/../php/session_admin.php'));
    // echo( $_SESSION["username"]);
-      
+   $id=$_SESSION['pid'];
 
 ?>
 <!DOCTYPE html>
@@ -67,7 +67,7 @@
       </nav>
 
         <div class="main">
-		    <iframe id="if1" name="iframe_a" style="height:100%; width:100%; border: none;" src="individual_pat_view.php"></iframe>
+		    <iframe id="if1" name="iframe_a" style="height:100%; width:100%; border: none;" src="individual_pat_view.php?patient_id='<?= $id ?>'"></iframe>
         </div>
 
       <script>

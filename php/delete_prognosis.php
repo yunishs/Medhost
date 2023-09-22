@@ -1,9 +1,10 @@
 <?php
+    session_start();
 
-include '..\database\connect.php';
+    include '..\database\connect.php';
 
 
-if(isset($_GET['deleteid'])){
+    if(isset($_GET['deleteid'])){
     $id=$_GET['deleteid'];
 
     $sql="DELETE FROM pat_prognosis WHERE prog_id=$id";
