@@ -22,9 +22,14 @@
             class="icn menuicn"
             id="menuicn">
             <div class="logo">MedHost</div>
+            <div class="logout">
+               <i class="fa-solid fa-right-from-bracket"></i>
+               <span class="log">Logout</span>
+            </div>
+
         </div>
     </header>
-
+    
       <!-- <div class="btn">
          <span class="fas fa-bars"></span>
       </div> -->
@@ -34,15 +39,6 @@
          </div>
          <ul>
             <li class="active"><a href="#" onclick="document.getElementById('if1').src = 'individual_pat_view.php'">User Info</a></li>
-            <!-- <li>
-               <a href="#" class="serv-btn1">User Info
-               <span class="fas fa-caret-down first"></span>
-               </a>
-               <ul class="serv-show1">
-                    <li><a href="#" onclick="document.getElementById('if1').src = 'view_prognosis.php'">View</a></li>
-                    <li><a href="#" onclick="document.getElementById('if1').src = 'prognosis_form.php'">Update</a></li>
-               </ul>
-            </li> -->
             <li>
                <a href="#" class="feat-btn">Diagnosis
                <span class="fas fa-caret-down first"></span>

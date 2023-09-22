@@ -42,6 +42,14 @@ header {
   .logosec {
   gap: 60px;
   }
+.logout
+{
+  float: right;
+}
+.logout .log
+{
+  text-decoration: none;
+}
 body
 {
     /* padding-left: 10%; */

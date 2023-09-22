@@ -74,11 +74,8 @@
             </div>
    
             <br>
-            <div class="row">
+            <div class="row" class="btn">
                 <button class="enter-btn" id="enter" name="enter">Search</button>
-            </div>
-            <div class="reg-btn">
-                <h3 onclick="document.location='pat_registration_frontdesk.php'">Click to register new patient</h3>
             </div>
         </form>
         <script>
