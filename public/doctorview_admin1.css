@@ -45,7 +45,7 @@ body
 {
   margin-right: 5px;
   text-align: center;
-  background-color: rgb(14, 57, 173);
+  background-color: rgb(81, 117, 215);
   border-radius: 3px;
   padding: 3px;
 }
@@ -53,7 +53,7 @@ body
 {
   margin-right: 5px;
   text-align: center;
-  background-color: rgb(185, 49, 49);
+  background-color: rgb(125, 214, 108);
   border-radius: 5px;
   padding: 3px;
 }
@@ -61,7 +61,7 @@ body
 {
   margin-right: 5px;
   text-align: center;
-  background-color: rgb(163, 150, 33);
+  background-color: rgb(198, 8, 8);
   border-radius: 5px;
   padding: 3px;
 }
@@ -75,7 +75,7 @@ body
 }
 .button1:hover,.button2:hover,.button3:hover
 {
-  background-color: #38bc8c;
+  background-color: #2c1cdc;
 }
 
 .link1:hover, .link2:hover, .link3:hover

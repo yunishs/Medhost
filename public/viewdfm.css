@@ -19,7 +19,7 @@ body
 }
 header{
   position: fixed;
-  display: block;
+  display: flex;
   top: 0;
   left: 0;
   width: 100%;
@@ -48,9 +48,9 @@ header{
   justify-content: center;
   gap: 60px;
 }
-.container
-{
-  margin-top:10px;
+.cpntainer{
+  align-items: center;
+  margin-top:30px;
 }
 .tbl {
   font-family: Arial, Helvetica, sans-serif;
@@ -79,13 +79,16 @@ h3
 {
     margin-top:40px;
     margin-bottom: 10px;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 table 
 {
     border: 1px solid #796e6e;
     border-collapse:initial;
     width: 80%;
-    padding:15px;
+    padding:35px;
     box-shadow:5px 5px 10px rgba(0, 0, 0, 0.25);;
 }
 .pid,.did,.mid,.fid
@@ -103,5 +106,4 @@ table
     border-bottom: 1px solid #8f8c8c;
   }
   
-  tr:nth-child(even){background-color: #44dda57e;}
-  
+  tr:nth-child(odd){background-color: #44dda57e;}

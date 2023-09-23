@@ -10,7 +10,7 @@
    <head>
       <meta charset="utf-8">
       <title>Individual Doctor View</title>
-      <link rel="stylesheet" href="..\public\individual_pat_view.css">
+      <link rel="stylesheet" href="..\public\viewdfm.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
    </head>
@@ -44,11 +44,10 @@
             }
         }
     ?>
+    <h3>Doctor's Personal Information:</h3>
     <div class="container">
-        <table>
-            <tr>
-                <h3>Doctor's Personal Information:</h3>
-            </tr>
+    
+        <table> 
             <tr>
                 <th>Doctor-ID</th>
                 <td class="did"><?= $did?></td>
@@ -81,7 +80,8 @@
                 <th>Email</th>
                 <td><?= $email?></td>
             </tr>
-    		</div>
+    
 	    </table>
+    </div>
 </body>
 </html>

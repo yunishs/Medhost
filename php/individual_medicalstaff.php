@@ -10,7 +10,7 @@
    <head>
       <meta charset="utf-8">
       <title>Individual Medical Staff View</title>
-      <link rel="stylesheet" href="..\public\individual_pat_view.css">
+      <link rel="stylesheet" href="..\public\viewdfm.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
    </head>
@@ -44,10 +44,8 @@
         }
     ?>
     <div class="container">
-        <table>
-            <tr>
                 <h3>Medical Staff's Personal Information:</h3>
-            </tr>
+        <table>
             <tr>
                 <th>Medical Staff-ID</th>
                 <td class="mid"><?= $mid?></td>
@@ -75,7 +73,7 @@
                 <th>Email</th>
                 <td><?= $email?></td>
             </tr>
-    		</div>
 	    </table>
+    </div>
 </body>
 </html>
