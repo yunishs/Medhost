@@ -3,6 +3,7 @@
     include '..\database\connect.php';
     
     $id=$_GET['updateid'];
+    // $id=$_SESSION['update_id'];
     $sql="SELECT * from patient_info WHERE pid=$id";
     $result=mysqli_query($con,$sql);
     $row=mysqli_fetch_assoc($result);
