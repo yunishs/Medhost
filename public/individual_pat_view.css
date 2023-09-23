@@ -51,6 +51,29 @@ header{
 {
     margin-top:10px;
 }
+.tbl {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  /* margin-left: 20px; */
+}
+
+.tbl td, .tbl th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tbl tr:nth-child(even){background-color: #f2f2f2;}
+
+.tbl tr:hover {background-color: #ddd;}
+
+.tbl th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #38bc8c;
+  color: white;
+}
 h3
 {
     margin-top:40px;
@@ -80,4 +103,5 @@ table
     border-bottom: 1px solid #8f8c8c;
   }
   
-  tr:nth-child(even){background-color: #96f08a;}
+  tr:nth-child(even){background-color: #44dda57e;}
+  
