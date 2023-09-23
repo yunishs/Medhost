@@ -56,11 +56,15 @@ body
   border-radius: 5px;
   padding: 3px;
 }
-.button1:hover,.button2:hover
+.button3
 {
-  background-color: #38bc8c;
+  margin-right: 5px;
+  text-align: center;
+  background-color: rgb(163, 150, 33);
+  border-radius: 5px;
+  padding: 3px;
 }
-.link1
+.link1, .link2, .link3
 {
   margin:0px;
   text-align: center;
@@ -68,15 +72,12 @@ body
   color:rgb(250, 245, 245);
   text-decoration: none;
 }
-.link2
+.button1:hover,.button2:hover,.button3:hover
 {
-  margin:0px;
-  text-align: center;
-  cursor: pointer;
-  color:rgb(224, 215, 215);
-  text-decoration: none;
+  background-color: #38bc8c;
 }
-.link1:hover, .link2:hover
+
+.link1:hover, .link2:hover, .link3:hover
 {
   color:rgb(100, 16, 13);
 }
