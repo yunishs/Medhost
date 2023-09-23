@@ -95,6 +95,7 @@
             </tr>
             <tr>
         </table>
+
         <table class="admission_details">
             <tr>
                 <h3>Admission Details</h3>
@@ -112,6 +113,85 @@
                 <td><?= $pat_description ?></td>
             </tr>  
         </table>
+
+        <table class="tbl">
+		    <div class="table">
+                <tr>
+                    <h3>Diagnosis Details</h3>
+                </tr>
+			    <thread>
+			        <tr>
+        				<th>S.N.</th>
+	        			<th>Date</th>
+		        		<th>Symptoms</th>
+			        	<th>Test Conducted</th>
+    			    	<th>Medication</th>
+	    		    </tr>
+		        </thread>
+    		    <tbody>
+    	    		<?php
+    	    		    $sql="SELECT * FROM pat_diagnosis WHERE pid_fk=$id ORDER BY diag_id DESC LIMIT 5";
+	    	    	    $result=mysqli_query($con,$sql);
+		    	        if($result)
+			            {
+				    	    while($row=mysqli_fetch_assoc($result)){
+    				    	    $diag_id=$row['diag_id'];
+	    				        $date=$row['date'];
+    		    			    $symptoms=$row['symptoms'];
+	    		    		    $test_conducted=$row['test_conducted'];
+		    		    	    $medication=$row['medication'];
+			    		        echo " <tr>
+				    	        <th>$diag_id</th>
+    				    	    <td>$date</td>
+	    				        <td>$symptoms</td>
+		    			        <td>$test_conducted</td>
+        		    			<td>$medication</td>
+        			    		</tr>";
+	        			    }
+		        	    }
+                    ?>	
+		        </tbody>
+    		</div>
+	    </table>
+
+        <table class="tbl">
+		    <div class="table">
+                <tr>
+                    <h3>Prognosis Details</h3>
+                </tr>
+			    <thread>
+			        <tr>
+        				<th>S.N.</th>
+	        			<th>Date</th>
+		        		<th>Conditin of Patient</th>
+			        	<th>Remarks</th>
+	    		    </tr>
+		        </thread>
+    		    <tbody>
+    	    		<?php
+    	    		    $sql="SELECT * FROM pat_prognosis WHERE pid_fk=$id ORDER BY prog_id DESC LIMIT 5";
+	    	    	    $result=mysqli_query($con,$sql);
+		    	        if($result)
+			            {
+				    	    while($row=mysqli_fetch_assoc($result)){
+    				    	    $prog_id=$row['prog_id'];
+	    				        $date=$row['date'];
+    		    			    $condition_of_pat=$row['condition_of_pat'];
+	    		    		    $remarks=$row['remarks'];
+			    		        echo " <tr>
+				    	        <th>$prog_id</th>
+    				    	    <td>$date</td>
+	    				        <td>$condition_of_pat</td>
+		    			        <td>$remarks</td>
+        			    		</tr>";
+	        			    }
+		        	    }
+                    ?>	
+		        </tbody>
+    		</div>
+	    </table>
+
+
     </div>
 </body>
 </html>
