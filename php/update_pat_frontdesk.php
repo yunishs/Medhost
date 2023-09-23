@@ -4,6 +4,8 @@
     
     $id=$_GET['updateid'];
     // $id=$_SESSION['update_id'];
+    // header("update_pat_frontdesk.php","update_pat_frontdesk.php",FALSE);
+
     $sql="SELECT * from patient_info WHERE pid=$id";
     $result=mysqli_query($con,$sql);
     $row=mysqli_fetch_assoc($result);
