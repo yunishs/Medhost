@@ -15,7 +15,8 @@
 	<meta name="viewport"	content="width=device-width, initial-scale=1.0">
 	<title>Patient view</title>
 	<link rel="stylesheet"  href="..\public\pat_view.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
 </head>
 <body>
@@ -32,10 +33,21 @@
             </div>
         </div>
     </header>
+	<br>
+	<div class="top">
+        <form method="POST">
+			<div class="search-box">
+            	<i class="uil uil-search"></i>
+            	<input type="text" placeholder="Search here...">
+        	</div>
+		</form>
+        <img src="images/profile.jpg" alt="">
+    </div>
+	<br>
 	<table class="tbl">
 		<div class="table">
 			<thread>
-			<tr>
+			<tr class="tabletop">
 				<th>S.N.</th>
 				<th>Fname</th>
 				<th>Mname</th>
