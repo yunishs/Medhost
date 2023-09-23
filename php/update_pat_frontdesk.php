@@ -130,8 +130,8 @@
 
         {
             $pat_description=test_input($_POST['pat_description']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$pat_description)) {
-                $pat_descriptionErr = "Only letters and whitespace allowed in specialization";
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$pat_description)) {
+                $pat_descriptionErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed allowed in specialization";
             }    
         }  
 
