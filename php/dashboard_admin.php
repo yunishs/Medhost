@@ -11,7 +11,7 @@
    <head>
       <meta charset="utf-8">
       <title>Admin Panel</title>
-      <link rel="stylesheet" href="..\public\dashboard.css">
+      <link rel="stylesheet" href="..\public\dashboard_admin.css">
       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
@@ -53,7 +53,7 @@
                     <li><a href="#" onclick="document.getElementById('if1').src = 'frontdesk_view.php'">View</a></li>
                </ul>
             </li>
-            <li><a href="#" onclick="document.getElementById('if1').src = 'pat_view.php'">Patient</a></li>
+            <li><a href="#" onclick="document.getElementById('if1').src = 'pat_view_admin.php'">Patient</a></li>
             <li>
                <a href="#" class="serv-btn2">Medical Staff
                <span class="fas fa-caret-down third"></span>
