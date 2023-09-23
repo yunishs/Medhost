@@ -13,35 +13,35 @@
       <link rel="stylesheet" href="..\public\viewdfm.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
-   </head>
-<body>
-    <?php
+    </head>
+    <body>
+        <?php
 
-        $sql="SELECT * from doctor_info where did=$id";
-		$result=mysqli_query($con,$sql);
-		if($result)
-		{
-			while($row=mysqli_fetch_assoc($result))
-            {
-                $did=$row['did'];
-				$fname=$row['fname'];
-				$mname=$row['mname'];
-				$lname=$row['lname'];
-                if($mname=="")
+            $sql="SELECT * from doctor_info where did=$id";
+		    $result=mysqli_query($con,$sql);
+		    if($result)
+		    {
+                while($row=mysqli_fetch_assoc($result))
                 {
-                    $name=$fname." ".$lname;
+                    $did=$row['did'];
+                    $fname=$row['fname'];
+                    $mname=$row['mname'];
+                    $lname=$row['lname'];
+                    if($mname=="")
+                    {
+                        $name=$fname." ".$lname;
+                    }
+                    else
+                    {
+                        $name=$fname." ".$mname." ".$lname;
+                    }
+                    $contact=$row['contact'];
+                    $age=$row['age'];
+                    $gender=$row['gender'];
+                    $nmc_id=$row['nmc_id'];
+                    $specialization=$row['specialization'];
+                    $email=$row['email'];
                 }
-                else
-                {
-                    $name=$fname." ".$mname." ".$lname;
-                }
-				$contact=$row['contact'];
-                $age=$row['age'];
-                $gender=$row['gender'];
-				$nmc_id=$row['nmc_id'];
-				$specialization=$row['specialization'];
-                $email=$row['email'];
-            }
         }
     ?>
     <h3>Doctor's Personal Information:</h3>
@@ -80,8 +80,15 @@
                 <th>Email</th>
                 <td><?= $email?></td>
             </tr>
+<<<<<<< HEAD
     
 	    </table>
     </div>
 </body>
+=======
+    	</table>
+    </div>
+	    
+    </body>
+>>>>>>> ee4c9e88221042152a885181869c5502ac38e688
 </html>

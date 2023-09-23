@@ -70,16 +70,16 @@
                                 <span class="text">View Patient List</span>
                             </div>
                         </a>
-                        <a href="searchpatient.php" class="link">
+                        <a href="searchpatient_diagnosis.php" class="link">
                             <div class="box box3">
                                 <i class="fa-solid fa-file-pen"></i>
                                 <span class="text">Update Diagnosis</span>
                             </div>
                         </a>
-                        <a href="searchpatient.php" class="link">
+                        <a href="searchpatient_prognosis.php" class="link">
                             <div class="box box4">
                                 <i class="fa-solid fa-square-pen"></i>
-                                <span class="text">Update prognosis</span>
+                                <span class="text">Update Prognosis</span>
                             </div>
                         </a>
                     </div>

@@ -1,8 +1,7 @@
 <?php
     session_start();
 
-    $id=$_SESSION['pid'];
-include '..\database\connect.php';
+    include '..\database\connect.php';
 
 
 if(isset($_GET['deleteid'])){
