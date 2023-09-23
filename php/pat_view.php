@@ -1,6 +1,8 @@
 <?php
-
+	session_start();
 	include '..\database\connect.php';
+
+ 
 ?>
 
 
@@ -47,6 +49,11 @@
 		</thread>
 		<tbody>
 			<?php
+			$up_id=$dl_id='';
+			function fn_val($up_id,$dl_id){
+				$_SESSION['update_id']=$up_id;
+				$_SESSION['delete_id']=$dl_id;
+			}
 
 			$sql="SELECT * from patient_info";
 			$result=mysqli_query($con,$sql);
@@ -78,8 +85,16 @@
 					</tr>";
 				}
 			}	
+			//  ".fn_val($id,$id);"
+			//  ".fn_val($id,$id);"
+			//call a function and send data there
 			// ".$_SESSION["u_id"].=$id."
 			?>
+			<!-- <script> javascript:JavaScript_Function()
+			function js_assign(){
+				<?php // $_SESSION['update_id']=$id;
+				// $_SESSION['delete_id']=$dl_id; ?>
+			}	</script> -->
 		</tbody>
 		</div>
 	</table>

@@ -3,6 +3,9 @@
     include '..\database\connect.php';
     
     $id=$_GET['updateid'];
+    // $id=$_SESSION['update_id'];
+    // header("update_pat_frontdesk.php","update_pat_frontdesk.php",FALSE);
+
     $sql="SELECT * from patient_info WHERE pid=$id";
     $result=mysqli_query($con,$sql);
     $row=mysqli_fetch_assoc($result);
@@ -130,8 +133,8 @@
 
         {
             $pat_description=test_input($_POST['pat_description']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$pat_description)) {
-                $pat_descriptionErr = "Only letters and whitespace allowed in specialization";
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$pat_description)) {
+                $pat_descriptionErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed allowed in specialization";
             }    
         }  
 

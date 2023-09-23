@@ -43,8 +43,8 @@
         } 
         else {
             $condition_of_pat=test_input($_POST['condition_of_pat']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$condition_of_pat)) {
-                $condition_of_patErr = "Only letters and whitespace allowed in condition_of_pat";
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$condition_of_pat)) {
+                $condition_of_patErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in condition_of_pat";
             }    
         }
 
@@ -54,8 +54,8 @@
         } 
         else {
             $remarks=test_input($_POST['remarks']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$remarks)) {
-                $remarksErr = "Only letters and whitespace allowed in remarks";
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$remarks)) {
+                $remarksErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in remarks";
             }    
         }
 
