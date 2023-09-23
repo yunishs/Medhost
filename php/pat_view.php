@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	$_SESSION['searchid']=null;
-	$_SESSION['sid']=$_SESSION['pid'];
 	$_SESSION['pid']=null;
 
 	include '..\database\connect.php';

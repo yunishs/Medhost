@@ -48,7 +48,7 @@
     </div>
     <div class="float">
         <div class="float1">
-            <div class="DAT">
+            <div class="DAT1">
                 <h1>Hello, <?php $fname=$_SESSION['fname']; echo"$fname"; ?></h1>
                 <h2 id="time"></h2>
                 <h3 id="day"></h3>
