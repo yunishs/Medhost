@@ -1,19 +1,17 @@
 <?php 
    session_start();
    require ("..\database\connect.php");
-   // require_once (realpath(dirname(__FILE__) . '/../php/session_admin.php'));
    // require_once('session_admin.php');
    if(($_SESSION['role']!=0) || (empty($_SESSION['username']))){
       header("Location:loginpage.php"); }
       
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
    <head>
       <meta charset="utf-8">
       <title>Admin Panel</title>
-      <link rel="stylesheet" href="..\public\dashboard_admin.css">
+      <link rel="stylesheet" href="..\public\dashboard.css">
       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
@@ -55,7 +53,7 @@
                     <li><a href="#" onclick="document.getElementById('if1').src = 'frontdesk_view.php'">View</a></li>
                </ul>
             </li>
-            <li><a href="#" onclick="document.getElementById('if1').src = 'pat_view_admin.php'">Patient</a></li>
+            <li><a href="#" onclick="document.getElementById('if1').src = 'pat_view.php'">Patient</a></li>
             <li>
                <a href="#" class="serv-btn2">Medical Staff
                <span class="fas fa-caret-down third"></span>
