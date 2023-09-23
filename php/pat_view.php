@@ -35,19 +35,17 @@
     </header>
 	<br>
 	<div class="top">
-        <form method="POST">
-			<div class="search-box">
-            	<i class="uil uil-search"></i>
-            	<input type="text" placeholder="Search here...">
-        	</div>
-		</form>
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here...">
+        </div>
         <img src="images/profile.jpg" alt="">
     </div>
 	<br>
 	<table class="tbl">
 		<div class="table">
 			<thread>
-			<tr class="tabletop">
+			<tr>
 				<th>S.N.</th>
 				<th>Fname</th>
 				<th>Mname</th>
