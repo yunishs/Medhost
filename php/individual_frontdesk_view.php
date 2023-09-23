@@ -9,7 +9,7 @@
 <html lang="en" dir="ltr">
    <head>
       <meta charset="utf-8">
-      <title>Individual Doctor View</title>
+      <title>Individual Front-Desk View</title>
       <link rel="stylesheet" href="..\public\individual_pat_view.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
@@ -17,13 +17,13 @@
 <body>
     <?php
 
-        $sql="SELECT * from doctor_info where did=$id";
+        $sql="SELECT * from frontdesk_info where fid=$id";
 		$result=mysqli_query($con,$sql);
 		if($result)
 		{
 			while($row=mysqli_fetch_assoc($result))
             {
-                $did=$row['did'];
+                $fid=$row['fid'];
 				$fname=$row['fname'];
 				$mname=$row['mname'];
 				$lname=$row['lname'];
@@ -38,8 +38,7 @@
 				$contact=$row['contact'];
                 $age=$row['age'];
                 $gender=$row['gender'];
-				$nmc_id=$row['nmc_id'];
-				$specialization=$row['specialization'];
+				$reg_id=$row['reg_id'];
                 $email=$row['email'];
             }
         }
@@ -47,16 +46,15 @@
     <div class="container">
         <table>
             <tr>
-                <h3>Doctor's Personal Information:</h3>
+                <h3>Front-Desk's Personal Information:</h3>
             </tr>
             <tr>
-                <th>Doctor-ID</th>
-                <td class="did"><?= $did?></td>
-            </tr>
+                <th>FrontDesk-ID</th>
+                <td class="fid"><?= $fid?></td>
+            </tr>  
             <tr>
-            <th>NMC ID</th>
-                <td><?= $nmc_id?></td>
-            </tr>   
+                <th>Registration ID</th>
+                <td><?=$reg_id?></td> 
             <tr>
                 <th>Name</th>
                 <td><?= $name?></td>
@@ -72,10 +70,6 @@
             <tr>
                 <th>Contact</th>
                 <td><?= $contact?></td>
-            </tr>
-            <tr>
-                <th>Specialization</th>
-                <td><?= $specialization?></td>
             </tr>
             <tr>
                 <th>Email</th>
