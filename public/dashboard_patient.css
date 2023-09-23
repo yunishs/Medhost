@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  /*user-select : none;*/
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+header {
+  height: 70px;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 100;
+  box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
+  display:block;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(16, 47, 184);
+  margin-left:60px;
+  }
+  
+  .icn {
+  height: 45px;
+  }
+  .menuicn {
+  cursor: pointer;
+  }
+  
+  .message,
+  .logosec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  }
+.logout
+{
+  margin-left: auto;
+}
+.logosec .logout .log
+{
+  align-content: center;
+  padding-left: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  color: rgb(7, 57, 118);
+}
+i
+{
+  
+  font-size:30px;
+}
+body
+{
+    /* padding-left: 10%; */
+    /* font-size: large; */
+    background-image:url('../images/default_background.webp');
+    background-repeat:no-repeat;
+    /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
+    background-attachment:fixed;
+    /* yesle fixed huda chai background chai move hudainaa */
+    background-size:100% 100%;
+    /* background size ma cover garda chai aafai adjust hunxaa but 100% 100% garda chai purai picture nai background ma aauxa */
+}
+.btn{
+  position: absolute;
+  top: 15px;
+  left: 45px;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  background: rgb(16, 47, 184);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: left 0.4s ease;
+}
+.btn.click{
+  left: 260px;
+}
+.btn span{
+  color: white;
+  font-size: 28px;
+  line-height: 45px;
+}
+.btn.click span:before{
+  content: '\f00d';
+}
+.sidebar{
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  left: 0px;
+  background: rgb(16, 47, 184);
+  /* transition: left 0.4s ease; */
+}
+.sidebar.show{
+  left: 250px;
+}
+.sidebar .text{
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 65px;
+  text-align: center;
+  background: rgb(244, 244, 245);
+  letter-spacing: 1px;
+}
+.main {
+    height: calc(100vh);
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-left: 220px;
+    padding-top: 55px;
+    }
+nav ul{
+  background: #ffffff;
+  height: 100%;
+  width: 100%;
+  list-style: none;
+}
+nav ul li{
+  line-height: 60px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+nav ul li:last-child{
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+nav ul li a{
+  position: relative;
+  color: rgb(10, 7, 7);
+  text-decoration: none;
+  font-size: 18px;
+  padding-left: 40px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  border-left: 3px solid transparent;
+}
+nav ul li.active a{
+  color: rgb(3, 3, 3);
+  background: #5e81e4;
+  border-left-color: cyan;
+}
+nav ul li a:hover{
+  background: #29a0be67;
+}
+nav ul ul{
+  position: static;
+  display: none;
+}
+nav ul .feat-show.show{
+  display: block;
+}
+nav ul .serv-show1.show1,.serv-show2.show2{
+  display: block;
+}
+nav ul ul li{
+  line-height: 42px;
+  border-top: none;
+}
+nav ul ul li a{
+  font-size: 17px;
+  color: #020101;
+  padding-left: 80px;
+}
+nav ul li.active ul li a{
+  color: #070505;
+  background: #29a0be67;
+  border-left-color: transparent;
+}
+nav ul ul li a:hover{
+  color: rgb(2, 3, 3)!important;
+  background: #29a0be67!important;
+}
+nav ul li a span{
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: transform 0.4s;
+}
+nav ul li a span.rotate{
+  transform: translateY(-50%) rotate(-180deg);
+}
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #202020;
+  z-index: -1;
+  text-align: center;
+}
+.content .header{
+  font-size: 45px;
+  font-weight: 600;
+}
+.content p{
+  font-size: 30px;
+  font-weight: 500;
+}

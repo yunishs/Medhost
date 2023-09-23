@@ -2,6 +2,7 @@
     margin-top: 0px;
     margin-left: 10px;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 body
 {
@@ -17,6 +18,10 @@ body
     overflow-x: hidden;
     padding-left: 100px;
     
+}
+.view
+{
+    margin-left: 10px;
 }
 .tbl {
   font-family: Arial, Helvetica, sans-serif;

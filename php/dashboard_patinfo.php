@@ -10,7 +10,7 @@
    <head>
       <meta charset="utf-8">
       <title>User Panel</title>
-      <link rel="stylesheet" href="..\public\dashboard.css">
+      <link rel="stylesheet" href="..\public\dashboard_patient.css">
       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
       <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">

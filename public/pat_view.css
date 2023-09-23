@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+    margin-top: 0px;
+    margin-left: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body
+{
+    background-image:url('../images/default_background.webp');
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size:100% 100%;
+    margin-right:0px;
+}
+header 
+{
+  height: 70px;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  position: sticky;
+  z-index: 100;
+  box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
+  display:block;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(16, 47, 184);
+  margin-left:60px;
+  }
+  
+  .icn {
+  height: 45px;
+  }
+  .menuicn {
+  cursor: pointer;
+  }
+  
+  .message,
+  .logosec {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  }
+.logout
+{
+  margin-left: auto;
+}
+.logosec .logout .log
+{
+  align-content: center;
+  padding-left: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  color: rgb(7, 57, 118);
+}
+i
+{
+  
+  font-size:30px;
+}
+
+/* .main {
+    height: calc(100vh);
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-left: 100px;
+    
+} */
+
+/* .view
+{
+    margin-left: 10px;
+} */
+.tbl {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tbl td, .tbl th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tbl tr:nth-child(even){background-color: #f2f2f2;}
+
+.tbl tr:hover {background-color: #ddd;}
+
+.tbl th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #38bc8c;
+  color: white;
+}
+.button1
+{
+  margin-right: 5px;
+  text-align: center;
+  background-color: rgb(14, 57, 173);
+  border-radius: 3px;
+  padding: 3px;
+}
+.button2
+{
+  margin-right: 5px;
+  text-align: center;
+  background-color: rgb(185, 49, 49);
+  border-radius: 5px;
+  padding: 3px;
+}
+.button3
+{
+  margin-right: 5px;
+  text-align: center;
+  background-color: rgb(163, 150, 33);
+  border-radius: 5px;
+  padding: 3px;
+}
+.link1, .link2, .link3
+{
+  margin:0px;
+  text-align: center;
+  cursor: pointer;
+  color:rgb(250, 245, 245);
+  text-decoration: none;
+}
+.button1:hover,.button2:hover,.button3:hover
+{
+  background-color: #38bc8c;
+}
+
+.link1:hover, .link2:hover, .link3:hover
+{
+  color:rgb(100, 16, 13);
+}

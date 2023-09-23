@@ -1,7 +1,6 @@
 <?php
 
-include '..\database\connect.php';
-
+	include '..\database\connect.php';
 ?>
 
 
@@ -13,13 +12,27 @@ include '..\database\connect.php';
 	<meta http-equiv="X-UA-Compatible"content="IE=edge">
 	<meta name="viewport"	content="width=device-width, initial-scale=1.0">
 	<title>Patient view</title>
-	<link rel="stylesheet"  href="..\public\doctorview_admin1.css">
+	<link rel="stylesheet"  href="..\public\pat_view.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
 </head>
 <body>
+	<header>
+        <div class="logosec">
+            <a href="dashboard_doctor.php">
+               <img src="..\images\MedHost.png"
+               class="icn menuicn"
+               id="menuicn"></a>
+               <a href="dashboard_doctor.php" style="text-decoration:none;"><div class="logo">MedHost</div></a>
+            <div class="logout">
+               <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+               <a href="logout.php" style="text-decoration:none;"><span class="log">Logout</span><a>
+            </div>
+        </div>
+    </header>
 	<table class="tbl">
-		<thread>
+		<div class="table">
+			<thread>
 			<tr>
 				<th>S.N.</th>
 				<th>Fname</th>
@@ -27,6 +40,7 @@ include '..\database\connect.php';
 				<th>Lname</th>
 				<th>Contact</th>
                 <th>Bloodgroup</th>
+				<th>Address</th>
 				<th>Email</th>
 				<th>Operation</th>
 			</tr>
@@ -45,6 +59,7 @@ include '..\database\connect.php';
 					$lname=$row['lname'];
 					$contact=$row['contact'];
                     $bloodgroup=$row['bloodgroup'];
+					$address=$row['address'];
 					$email=$row['email'];
 					echo " <tr>
 					<th>$id</th>
@@ -53,11 +68,12 @@ include '..\database\connect.php';
 					<td>$lname</td>
 					<td>$contact</td>
                     <td>$bloodgroup</td>
+					<td>$address</td>
 					<td>$email</td>
 					<td>
-					<button class='button1'><a href='update_pat_frontdesk.php?updateid=$id' class='link1'>Update</a></button>
-					
-					<button class='button2'><a href='delete_patient.php?deleteid=$id' class='link2'>Delete</a></button>
+						<button class='button1'><a href='dashboard_patinfo.php' class='link1'>View</a></button>
+						<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
+						<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
 					</td>
 					</tr>";
 				}
@@ -65,6 +81,7 @@ include '..\database\connect.php';
 			// ".$_SESSION["u_id"].=$id."
 			?>
 		</tbody>
+		</div>
 	</table>
 </body>
 </html>
