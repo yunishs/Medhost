@@ -1,9 +1,18 @@
 <?php
 
     session_start();
-    $id=$_SESSION['pid'];
-    include ("..\database\connect.php");
 
+    include ("..\database\connect.php");
+    if(isset($_GET['searchid']))
+    {
+        $abc=$_GET['searchid'];
+        $_SESSION['searchid']=$abc;
+        $id=$_SESSION['searchid'];
+    }
+    else if(isset($_SESSION['pid']))
+    {
+        $id=$_SESSION['pid'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -26,7 +35,7 @@
     
     <?php
 
-        $sql="SELECT * from patient_info where pid=$id";
+        $sql="SELECT * from patient_info where pid='$id'";
 		$result=mysqli_query($con,$sql);
 		if($result)
 		{

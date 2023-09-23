@@ -1,9 +1,14 @@
-<?php 
+<?php
+   $id='';
    session_start();
    // require_once (realpath(dirname(__FILE__) . '/../php/session_admin.php'));
    // echo( $_SESSION["username"]);
-   $id=$_SESSION['pid'];
-
+   
+   if(isset($_GET['searchid']))
+   {
+      $abc=$_GET['searchid'];
+      $_SESSION['pid']=$abc;
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -73,7 +78,7 @@
       </nav>
 
         <div class="main">
-		    <iframe id="if1" name="iframe_a" style="height:100%; width:100%; border: none;" src="individual_pat_view.php?patient_id='<?= $id ?>'"></iframe>
+		    <iframe id="if1" name="iframe_a" style="height:100%; width:100%; border: none;" src="individual_pat_view.php"></iframe>
         </div>
 
       <script>

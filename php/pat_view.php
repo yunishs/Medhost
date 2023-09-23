@@ -1,9 +1,10 @@
 <?php
 	session_start();
-	include '..\database\connect.php';
+	$_SESSION['searchid']=null;
+	$_SESSION['sid']=$_SESSION['pid'];
+	$_SESSION['pid']=null;
 
-	
- 
+	include '..\database\connect.php';
 ?>
 
 
@@ -72,41 +73,45 @@
 				$search=$_POST['search'];
 				$sql1="SELECT * FROM patient_info WHERE concat(fname,' ',mname,' ',lname) LIKE '%". $search ."%' OR concat(fname,' ',lname) LIKE'%. $search .%'";
 				$result1=mysqli_query($con,$sql1);
-				if($result1)
+				$count= mysqli_num_rows($result1);
+				if($count>=1)
 				{
-					while($row1=mysqli_fetch_assoc($result1)){
-						$id=$row1['pid'];
-						$fname=$row1['fname'];
-						$mname=$row1['mname'];
-						$lname=$row1['lname'];
-						$contact=$row1['contact'];
-						$bloodgroup=$row1['bloodgroup'];
-						$address=$row1['address'];
-						$email=$row1['email'];
-						echo " <tr>
-						<th>$id</th>
-						<td>$fname</td>
-						<td>$mname</td>
-						<td>$lname</td>
-						<td>$contact</td>
-						<td>$bloodgroup</td>
-						<td>$address</td>
-						<td>$email</td>
-						<td>
-							<button class='button1'><a href='dashboard_patinfo.php' class='link1'>View</a></button>
-							<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
-							<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
-						</td>
-						</tr>";
+					if($result1)
+					{
+						while($row1=mysqli_fetch_assoc($result1)){
+							$id=$row1['pid'];
+							$fname=$row1['fname'];
+							$mname=$row1['mname'];
+							$lname=$row1['lname'];
+							$contact=$row1['contact'];
+							$bloodgroup=$row1['bloodgroup'];
+							$address=$row1['address'];
+							$email=$row1['email'];
+							echo " <tr>
+							<th>$id</th>
+							<td>$fname</td>
+							<td>$mname</td>
+							<td>$lname</td>
+							<td>$contact</td>
+							<td>$bloodgroup</td>
+							<td>$address</td>
+							<td>$email</td>
+							<td>
+								<button class='button1'><a href='dashboard_patinfo.php?searchid=$id' class='link1'>View</a></button>
+								<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
+								<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
+							</td>
+							</tr>";
+						}
 					}
 				}
 				else{
 					echo"<script>
         			window.location.href='pat_view.php';
-        			alert('You have been logged out.');</script>";
+        			alert('No record found.');</script>";
 				}
 			}
-			if(empty($_POST['search'])){
+			if(!isset($_POST['search'])){
 				$sql="SELECT * from patient_info";
 				$result=mysqli_query($con,$sql);
 				if($result)
@@ -130,7 +135,7 @@
 						<td>$address</td>
 						<td>$email</td>
 						<td>
-							<button class='button1'><a href='dashboard_patinfo.php' class='link1'>View</a></button>
+							<button class='button1'><a href='dashboard_patinfo.php?searchid=$id' class='link1'>View</a></button>
 							<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
 							<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
 						</td>
