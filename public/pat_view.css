@@ -176,7 +176,7 @@ i
   border-radius: 3px;
   padding: 3px;
 }
-.button2 up
+.button2
 {
   margin-right: 5px;
   text-align: center;
@@ -202,7 +202,7 @@ i
 }
 .button1:hover,.button2:hover,.button3:hover
 {
-  background-color: #2c1cdc;
+  background-color: #38bc8c;
 }
 
 .link1:hover, .link2:hover, .link3:hover
