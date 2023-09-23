@@ -80,15 +80,8 @@
                 <th>Email</th>
                 <td><?= $email?></td>
             </tr>
-<<<<<<< HEAD
     
 	    </table>
     </div>
 </body>
-=======
-    	</table>
-    </div>
-	    
-    </body>
->>>>>>> ee4c9e88221042152a885181869c5502ac38e688
 </html>
