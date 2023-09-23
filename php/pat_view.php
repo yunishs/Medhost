@@ -2,6 +2,7 @@
 	session_start();
 	include '..\database\connect.php';
 
+	
  
 ?>
 
@@ -34,13 +35,15 @@
         </div>
     </header>
 	<br>
-	<div class="top">
-        <div class="search-box">
-            <i class="uil uil-search"></i>
-            <input type="text" placeholder="Search here...">
+	<<form  action="pat_view.php" method="POST">
+        <div class="top">
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here..." name="search" id="search">
+				<!-- <button>enter</button> -->
+            </div>
         </div>
-        <img src="images/profile.jpg" alt="">
-    </div>
+    </form>
 	<br>
 	<table class="tbl">
 		<div class="table">
@@ -64,37 +67,77 @@
 				$_SESSION['update_id']=$up_id;
 				$_SESSION['delete_id']=$dl_id;
 			}
-
-			$sql="SELECT * from patient_info";
-			$result=mysqli_query($con,$sql);
-			if($result)
+			if(isset($_POST['search']))
 			{
-					while($row=mysqli_fetch_assoc($result)){
-					$id=$row['pid'];
-					$fname=$row['fname'];
-					$mname=$row['mname'];
-					$lname=$row['lname'];
-					$contact=$row['contact'];
-                    $bloodgroup=$row['bloodgroup'];
-					$address=$row['address'];
-					$email=$row['email'];
-					echo " <tr>
-					<th>$id</th>
-					<td>$fname</td>
-					<td>$mname</td>
-					<td>$lname</td>
-					<td>$contact</td>
-                    <td>$bloodgroup</td>
-					<td>$address</td>
-					<td>$email</td>
-					<td>
-						<button class='button1'><a href='dashboard_patinfo.php' class='link1'>View</a></button>
-						<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
-						<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
-					</td>
-					</tr>";
+				$search=$_POST['search'];
+				$sql1="SELECT * FROM patient_info WHERE concat(fname,' ',mname,' ',lname) LIKE '%". $search ."%' OR concat(fname,' ',lname) LIKE'%. $search .%'";
+				$result1=mysqli_query($con,$sql1);
+				if($result1)
+				{
+					while($row1=mysqli_fetch_assoc($result1)){
+						$id=$row1['pid'];
+						$fname=$row1['fname'];
+						$mname=$row1['mname'];
+						$lname=$row1['lname'];
+						$contact=$row1['contact'];
+						$bloodgroup=$row1['bloodgroup'];
+						$address=$row1['address'];
+						$email=$row1['email'];
+						echo " <tr>
+						<th>$id</th>
+						<td>$fname</td>
+						<td>$mname</td>
+						<td>$lname</td>
+						<td>$contact</td>
+						<td>$bloodgroup</td>
+						<td>$address</td>
+						<td>$email</td>
+						<td>
+							<button class='button1'><a href='dashboard_patinfo.php' class='link1'>View</a></button>
+							<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
+							<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
+						</td>
+						</tr>";
+					}
 				}
-			}	
+				else{
+					echo"<script>
+        			window.location.href='pat_view.php';
+        			alert('You have been logged out.');</script>";
+				}
+			}
+			if(empty($_POST['search'])){
+				$sql="SELECT * from patient_info";
+				$result=mysqli_query($con,$sql);
+				if($result)
+				{
+						while($row=mysqli_fetch_assoc($result)){
+						$id=$row['pid'];
+						$fname=$row['fname'];
+						$mname=$row['mname'];
+						$lname=$row['lname'];
+						$contact=$row['contact'];
+						$bloodgroup=$row['bloodgroup'];
+						$address=$row['address'];
+						$email=$row['email'];
+						echo " <tr>
+						<th>$id</th>
+						<td>$fname</td>
+						<td>$mname</td>
+						<td>$lname</td>
+						<td>$contact</td>
+						<td>$bloodgroup</td>
+						<td>$address</td>
+						<td>$email</td>
+						<td>
+							<button class='button1'><a href='dashboard_patinfo.php' class='link1'>View</a></button>
+							<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
+							<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
+						</td>
+						</tr>";
+					}
+				}	
+			}
 			//  ".fn_val($id,$id);"
 			//  ".fn_val($id,$id);"
 			//call a function and send data there
