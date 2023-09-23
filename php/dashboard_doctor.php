@@ -43,13 +43,6 @@
         </div>
     </header>
     <section class="dashboard">
-    <div class="top">
-        <div class="search-box">
-            <i class="uil uil-search"></i>
-            <input type="text" placeholder="Search here...">
-        </div>
-        <img src="images/profile.jpg" alt="">
-    </div>
     <div class="float">
         <div class="float1">
             <div class="DAT">
