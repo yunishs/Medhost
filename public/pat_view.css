@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 *{
     margin-top: 0px;
     margin-left: 0px;
@@ -172,7 +172,7 @@ i
 {
   margin-right: 5px;
   text-align: center;
-  background-color: rgb(14, 57, 173);
+  background-color: rgb(115, 142, 216);
   border-radius: 3px;
   padding: 3px;
 }
@@ -180,7 +180,7 @@ i
 {
   margin-right: 5px;
   text-align: center;
-  background-color: rgb(185, 49, 49);
+  background-color: rgb(125, 214, 108);
   border-radius: 5px;
   padding: 3px;
 }
@@ -188,7 +188,7 @@ i
 {
   margin-right: 5px;
   text-align: center;
-  background-color: rgb(163, 150, 33);
+  background-color:rgb(198, 8, 8) ;
   border-radius: 5px;
   padding: 3px;
 }

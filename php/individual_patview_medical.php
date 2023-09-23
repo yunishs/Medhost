@@ -72,7 +72,7 @@
             <tr>
                 <div class="update">
                     <h3>Personal Information's</h3>
-                    <button class="butn"><a href="update_pat_dashboard.php?updateid='<?= $pid?>'" class="link">Update</a></button>
+                    <button class="butn"><a href="update_pat_dashboard_medical.php" class="link">Update</a></button>
                 </div>
             </tr>
             <tr>
@@ -127,7 +127,7 @@
             <tr>
                     <div class="update">
                         <h3>Diagnosis Details</h3>
-                        <button class="butn"><a href="view_diagnosis.php" class="link">View All</a></button>
+                        <button class="butn"><a href="view_diagnosis_medical.php" class="link">View All</a></button>
                     </div>
                 </tr>
 			    <thread>
@@ -170,7 +170,7 @@
                 <tr>
                     <div class="update">
                         <h3>Prognosis Details</h3>
-                        <button class="butn"><a href="view_prognosis.php" class="link">View All</a></button>
+                        <button class="butn"><a href="view_prognosis_medical.php" class="link">View All</a></button>
                     </div>
                 </tr>
 			    <thread>

@@ -20,12 +20,12 @@
             if($count==1)
             {
                 $_SESSION['pid']=$row['pid'];
-                header('Location:dashboard_patinfo.php');
+                header('Location:dashboard_patinfo_medicalstaff.php');
             }
             else
             {
                 echo '<script>
-                    window.location.href="searchpatient.php";
+                    window.location.href="searchpatient_medicalstaff.php";
                     alert("Search failed. Invalid Name or Contact")
                 </script>';
             } 
@@ -47,12 +47,12 @@
 <body>
     <header>
         <div class="logosec">
-                <a href="dashboard_doctor.php">
+                <a href="dashboard_medical.php">
                     <img src="..\images\MedHost.png"
                     class="icn menuicn"
                     id="menuicn">
                 </a>
-                <a href="dashboard_doctor.php" style="text-decoration:none;">
+                <a href="dashboard_medical.php" style="text-decoration:none;">
                     <div class="logo">MedHost</div>
                 </a>
                 <div class="logout">
@@ -63,7 +63,7 @@
     </header>
     <div class="container">
         <h1>SEARCH PATIENT'S INFO</h1>
-        <form action="searchpatient.php" method="POST">
+        <form action="searchpatient_medicalstaff.php" method="POST">
              <div class="row">
                 <div class="col-25">
                     <label for="name">Name:</label>

@@ -11,7 +11,7 @@ if(isset($_GET['deleteid'])){
     if($result)
     {
         // echo "Deleted successfully";
-        header('location:pat_view_doctor.php');
+        header('location:pat_view_medicalstaff.php');
     }
     else{
         die(mysqli_error($con));

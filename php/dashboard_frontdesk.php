@@ -35,17 +35,9 @@
                 <a href="logout.php""><i class="fa-solid fa-right-from-bracket"></i></a>
                 <a href="logout.php" style="text-decoration:none;"><span class="log">Logout</span></a>
             </div>
-
         </div>
-    </header>
+    </header><br>
     <section class="dashboard">
-    <div class="top">
-        <div class="search-box">
-            <i class="uil uil-search"></i>
-            <input type="text" placeholder="Search here...">
-        </div>
-        <img src="images/profile.jpg" alt="">
-    </div>
     <div class="float">
         <div class="float1">
             <div class="DAT2">
@@ -59,13 +51,13 @@
             <div class="dash-content">
                 <div class="overview">
                     <div class="boxes">
-                        <a href="searchpatient.php" class="link">
+                        <a href="searchpatient_frontdesk.php" class="link">
                             <div class="box box1">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <span class="text">Search </span>
                             </div>
                         </a>
-                        <a href="pat_view.php" class="link">
+                        <a href="pat_view_frontdesk.php" class="link">
                             <div class="box box2">
                                 <i class="fa-solid fa-eye"></i>
                                 <span class="text">View Information</span>

@@ -63,7 +63,7 @@
     </header>
     <div class="container">
         <h1>SEARCH PATIENT'S INFO</h1>
-        <form action="searchpatient.php" method="POST">
+        <form action="searchpatient_prognosis.php" method="POST">
              <div class="row">
                 <div class="col-25">
                     <label for="name">Name:</label>

@@ -23,11 +23,11 @@
 <body>
 	<header>
         <div class="logosec">
-            <a href="dashboard_doctor.php">
+            <a href="dashboard_frontdesk.php">
                <img src="..\images\MedHost.png"
                class="icn menuicn"
                id="menuicn"></a>
-               <a href="dashboard_doctor.php" style="text-decoration:none;"><div class="logo">MedHost</div></a>
+               <a href="dashboard_frontdesk.php" style="text-decoration:none;"><div class="logo">MedHost</div></a>
             <div class="logout">
                <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
                <a href="logout.php" style="text-decoration:none;"><span class="log">Logout</span><a>
@@ -35,7 +35,7 @@
         </div>
     </header>
 	<br>
-	<<form  action="pat_view.php" method="POST">
+	<<form  action="pat_view_frontdesk.php" method="POST">
         <div class="top">
             <div class="search-box">
                 <i class="uil uil-search"></i>
@@ -96,9 +96,9 @@
 							<td>$address</td>
 							<td>$email</td>
 							<td>
-								<button class='button1'><a href='dashboard_patinfo.php?searchid=$id' class='link1'>View</a></button>
+								<button class='button1'><a href='dashboard_patinfo_frontdesk.php?searchid=$id' class='link1'>View</a></button>
 								<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
-								<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
+								<button class='button3'><a href='delete_patient_frontdesk.php?deleteid=$id' class='link3'>Delete</a></button>
 							</td>
 							</tr>";
 						}
@@ -106,7 +106,7 @@
 				}
 				else{
 					echo"<script>
-        			window.location.href='pat_view.php';
+        			window.location.href='pat_view_frontdesk.php';
         			alert('No record found.');</script>";
 				}
 			}
@@ -134,9 +134,9 @@
 						<td>$address</td>
 						<td>$email</td>
 						<td>
-							<button class='button1'><a href='dashboard_patinfo.php?searchid=$id' class='link1'>View</a></button>
+							<button class='button1'><a href='dashboard_patinfo_frontdesk.php?searchid=$id' class='link1'>View</a></button>
 							<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
-							<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
+							<button class='button3'><a href='delete_patient_frontdesk.php?deleteid=$id' class='link3'>Delete</a></button>
 						</td>
 						</tr>";
 					}

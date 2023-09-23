@@ -58,13 +58,13 @@
             <div class="dash-content">
                 <div class="overview">
                     <div class="boxes">
-                        <a href="searchpatient.php" class="link">
+                        <a href="searchpatient_doctor.php" class="link">
                             <div class="box box1">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <span class="text">Search Patient</span>
                             </div>
                         </a>
-                        <a href="pat_view.php" class="link">
+                        <a href="pat_view_doctor.php" class="link">
                             <div class="box box2">
                                 <i class="fa-solid fa-eye"></i>
                                 <span class="text">View Patient List</span>

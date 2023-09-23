@@ -39,13 +39,7 @@
         </div>
     </header>
     <section class="dashboard">
-    <div class="top">
-        <div class="search-box">
-            <i class="uil uil-search"></i>
-            <input type="text" placeholder="Search here...">
-        </div>
-        <img src="images/profile.jpg" alt="">
-    </div>
+    
     <div class="float">
         <div class="float1">
             <div class="DAT1">
@@ -60,13 +54,13 @@
                 <div class="overview">
                     <div class="boxes">
                         
-                        <a href="searchpatient.php" class="link">
+                        <a href="searchpatient_medicalstaff.php" class="link">
                             <div class="box box2">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <span class="text">Search Patient</span>
                             </div>
                         </a>
-                        <a href="pat_view.php" class="link">
+                        <a href="pat_view_medical.php" class="link">
                             <div class="box box1">
                                 <i class="fa-solid fa-eye"></i>
                                 <span class="text">View Information</span>
@@ -76,7 +70,7 @@
                             <i class="fa-solid fa-staff-snake"></i>
                             <span class="text">Prescribe Medication</span>
                         </div> -->
-                        <a href="prognosis_form.php" class="link">
+                        <a href="searchpatient_medicalstaff_prognosis.php" class="link">
                             <div class="box box4">
                                 <i class="fa-solid fa-square-pen"></i>
                                 <span class="text">Update Prognosis details</span>

@@ -1,10 +1,36 @@
 <?php
-
+    session_start();
     include '..\database\connect.php';
-    //initializing variables
-    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned="";
-    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admissionErr=$discharge_dateErr=$doctor_assignedErr=null;
-// try{
+    $id=$_GET['updateid'];
+    // $id=$_SESSION['update_id'];
+    // header("update_pat_frontdesk.php","update_pat_frontdesk.php",FALSE);
+
+    $sql="SELECT * from patient_info WHERE pid=$id";
+    $result=mysqli_query($con,$sql);
+    $row=mysqli_fetch_assoc($result);
+
+    $fname=$row['fname'];
+    $mname=$row['mname'];
+    $lname=$row['lname'];
+    $contact=$row['contact'];
+    $age=$row['age'];
+    $gender=$row['gender'];
+    $nationality=$row['nationality'];
+    $bloodgroup=$row['bloodgroup'];
+    $address=$row['address'];
+    $email=$row['email'];
+    $doctor_assigned=$row['doctor_assigned'];
+    $date_of_admission=$row['date_of_admission'];
+    if(empty($row['discharge_date']))
+    {
+        $discharge_date='';
+    }
+    else
+    {
+        $discharge_date=$row['discharge_date'];
+    }
+    $pat_description=$row["pat_description"];
+
     if(isset($_POST['enter']))
     {
         function test_input($data) {
@@ -39,7 +65,7 @@
         else {
             $lname=test_input($_POST['lname']);
             if (!preg_match("/^[a-zA-Z]*$/",$lname)) {
-                $lnameErr = "Only letters are allowed in last name";
+                $lnameErr = "Only letters allowed in last name";
             }    
         }
         
@@ -88,7 +114,7 @@
         {
             $nationality=test_input($_POST['nationality']);
             if (!preg_match("/^[a-zA-Z]*$/",$nationality)) {
-                $nationalityErr = "Only letters and whitespace allowed in nationality";
+                $nationalityErr = "Only letters allowed in nationality";
             }    
         } 
 
@@ -113,8 +139,8 @@
 
         {
             $pat_description=test_input($_POST['pat_description']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$pat_description)) {
-                $pat_descriptionErr = "Only letters and whitespace allowed in specialization";
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$pat_description)) {
+                $pat_descriptionErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed allowed in specialization";
             }    
         }  
 
@@ -126,7 +152,9 @@
         {
             $date_of_admission=test_input($_POST['date_of_admission']);   
         } 
-
+        {
+            $discharge_date=test_input($_POST['discharge_date']);   
+        } 
         if (empty($_POST["doctor_assigned"])) 
         {
             $doctor_assigned = "Doctor assigned is required";
@@ -161,12 +189,11 @@
             // $sec1 = date_create($discharge_date);
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
-
-            $sql="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description,date_of_admission,discharge_date,doctor_assigned) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned')";
+            $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date' WHERE pid=$id";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
-                header('Location: pat_view_frontdesk.php');
+                header('Location: pat_view_doctor.php');
             }
             else
             {
@@ -229,22 +256,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" >
     <link rel="stylesheet" href="..\public\pat_registration.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
-    <title>Patient Registration</title>
+    <title>Update Patient</title>
+    
   </head>
   <body>
   <header>
         <div class="logosec">
-                <a href="dashboard_frontdesk.php">
+                <a href="dashboard_doctor.php">
                     <img src="..\images\MedHost.png"
                     class="icn menuicn"
                     id="menuicn">
                 </a>
-                <a href="dashboard_frontdesk.php" style="text-decoration:none;">
+                <a href="dashboard_doctor.php" style="text-decoration:none;">
                     <div class="logo">MedHost</div>
                 </a>
                 <div class="logout">
@@ -252,10 +280,9 @@
                     <a href="logout.php" style="text-decoration:none;"><span class="log">Logout</span></a>
                 </div>
         </div>
-    </header>
-    <br>
+    </header><br>
     <section class="container">
-      <h1>Registration Form</h1>
+      <h2>Registration Form</h2>
       <form class="form" method="POST">
       <div class="column">
           <div class="input-box">
@@ -278,7 +305,7 @@
           </div>
           <div class="input-box">
             <label>Age</label>
-            <input type="number" id="age" name="age" value=<?php echo $age; ?>>
+            <input type="number" id="age" name="age" value="<?php echo $age; ?>">
           </div>
         </div>
         <div class="column">
@@ -296,7 +323,7 @@
             <div class="input-box">
                 <label>Nationality</label>
                 <!-- <input type="text" placeholder="Enter birth date" required /> -->
-                <input type="stext" id="nationality" name="nationality" value=<?php echo $nationality; ?>>
+                <input type="stext" id="nationality" name="nationality" value="<?php echo $nationality; ?>">
             </div>
         </div>
         <div class="column">
@@ -318,32 +345,32 @@
             </div>
             <div class="input-box">
                 <label>Address</label>
-                <input type="text" id="address" name="address" value=<?php echo $address; ?>>
+                <input type="text" id="address" name="address" value="<?php echo $address; ?>">
             </div>
         </div>
         <div class="column">
             <div class="input-box">
                 <label>Email Address</label>
-                <input type="text" id="email" name="email" value=<?php echo $email; ?>>
+                <input type="text" id="email" name="email" value="<?php echo $email; ?>">
             </div>
             <div class="input-box">
                 <label>Doctor Assigned</label>
-                <input type="text" id="doctor_assigned" name="doctor_assigned" value=<?php echo $doctor_assigned; ?>>
+                <input type="text" id="doctor_assigned" name="doctor_assigned" value="<?php echo $doctor_assigned; ?>">
             </div>
         </div>
         <div class="column">
             <div class="input-box">
                 <label>Date of Admission</label>
-                <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
+                <input type="datetime-local" id="date_of_admission" name="date_of_admission" value="<?php echo $date_of_admission; ?>">
             </div>
             <div class="input-box">
                 <label>Date of Discharge</label>
-                <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
+                <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value="<?php echo $discharge_date; ?>">
             </div>
         </div>
         <div class="input-box">
           <label>Patient description during admission</label><br>
-          <textarea type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value="<?php echo $pat_description; ?>"></textarea>
+          <textarea type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition"><?php echo $pat_description; ?></textarea>
         </div>
         <button type="enter" class="enter-btn" name="enter">ENTER</button>
       </form>

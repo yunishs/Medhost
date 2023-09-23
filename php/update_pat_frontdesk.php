@@ -1,7 +1,6 @@
 <?php
     session_start();
     include '..\database\connect.php';
-    
     $id=$_GET['updateid'];
     // $id=$_SESSION['update_id'];
     // header("update_pat_frontdesk.php","update_pat_frontdesk.php",FALSE);
@@ -22,7 +21,14 @@
     $email=$row['email'];
     $doctor_assigned=$row['doctor_assigned'];
     $date_of_admission=$row['date_of_admission'];
-    $discharge_date=$row['discharged_date'];
+    if(empty($row['discharge_date']))
+    {
+        $discharge_date='';
+    }
+    else
+    {
+        $discharge_date=$row['discharge_date'];
+    }
     $pat_description=$row["pat_description"];
 
     if(isset($_POST['enter']))
@@ -146,7 +152,9 @@
         {
             $date_of_admission=test_input($_POST['date_of_admission']);   
         } 
-
+        {
+            $discharge_date=test_input($_POST['discharge_date']);   
+        } 
         if (empty($_POST["doctor_assigned"])) 
         {
             $doctor_assigned = "Doctor assigned is required";
@@ -181,11 +189,11 @@
             // $sec1 = date_create($discharge_date);
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
-            $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='.$discharge_date.' WHERE pid=$id";
+            $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date' WHERE pid=$id";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
-                header('Location: pat_view.php');
+                header('Location: pat_view_frontdesk.php');
             }
             else
             {
@@ -248,20 +256,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" >
     <link rel="stylesheet" href="..\public\pat_registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
+    <title>Update Patient</title>
+    
   </head>
   <body>
-    <header>
-        <div class="logosec" class="header" id="myHeader">
-            <img src="..\images\MedHost.png"
-                class="icn menuicn"
-                id="menuicn">
-                <div class="logo">MED-Host</div>
+  <header>
+        <div class="logosec">
+                <a href="dashboard_frontdesk.php">
+                    <img src="..\images\MedHost.png"
+                    class="icn menuicn"
+                    id="menuicn">
+                </a>
+                <a href="dashboard_frontdesk.php" style="text-decoration:none;">
+                    <div class="logo">MedHost</div>
+                </a>
+                <div class="logout">
+                    <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    <a href="logout.php" style="text-decoration:none;"><span class="log">Logout</span></a>
+                </div>
         </div>
-    </header>
+    </header><br>
     <section class="container">
       <h2>Registration Form</h2>
       <form class="form" method="POST">
@@ -342,7 +361,7 @@
         <div class="column">
             <div class="input-box">
                 <label>Date of Admission</label>
-                <input type="datetime-local" id="date_of_admission" name="date_of_admission" value="<?php echo $date_of_admission; ?>"s>
+                <input type="datetime-local" id="date_of_admission" name="date_of_admission" value="<?php echo $date_of_admission; ?>">
             </div>
             <div class="input-box">
                 <label>Date of Discharge</label>
@@ -350,8 +369,8 @@
             </div>
         </div>
         <div class="input-box">
-          <label>Patient description during admission</label>
-          <input type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value="<?php echo $pat_description ?>">
+          <label>Patient description during admission</label><br>
+          <textarea type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition"><?php echo $pat_description; ?></textarea>
         </div>
         <button type="enter" class="enter-btn" name="enter">ENTER</button>
       </form>

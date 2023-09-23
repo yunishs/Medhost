@@ -20,13 +20,12 @@
             if($count==1)
             {
                 $_SESSION['pid']=$row['pid'];
-                header('Location:dashboard_patinfo_diagnosis.php');
-            
+                header('Location:dashboard_patinfo.php');
             }
             else
             {
                 echo '<script>
-                    window.location.href="searchpatient_diagnosis.php";
+                    window.location.href="searchpatient_doctor.php";
                     alert("Search failed. Invalid Name or Contact")
                 </script>';
             } 
@@ -64,7 +63,7 @@
     </header>
     <div class="container">
         <h1>SEARCH PATIENT'S INFO</h1>
-        <form action="searchpatient_diagnosis.php" method="POST">
+        <form action="searchpatient_doctor.php" method="POST">
              <div class="row">
                 <div class="col-25">
                     <label for="name">Name:</label>
