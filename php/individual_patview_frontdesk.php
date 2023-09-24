@@ -107,6 +107,10 @@
                 <h3>Admission Details</h3>
             </tr>
             <tr>
+                <th>Doctor Assigned</th>
+                <td><?= $doctor_assigned?></td>
+            </tr>
+            <tr>
                 <th>Date of Admission</th>
                 <td><?= $date_of_admission?></td>
             </tr>
