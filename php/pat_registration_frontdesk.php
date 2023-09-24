@@ -2,7 +2,7 @@
 
     include '..\database\connect.php';
     //initializing variables
-    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned="";
+    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$rel_name=$rel_relation=$rel_contact=$rel_email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned="";
     $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admissionErr=$discharge_dateErr=$doctor_assignedErr=null;
 // try{
     if(isset($_POST['enter']))
@@ -112,6 +112,34 @@
         }
 
         {
+            $rel_name=test_input($_POST['rel_name']);
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$rel_name)) {
+                $rel_nameErr = "Only letters and whitespace allowed in name";
+            }    
+        } 
+
+        {
+            $rel_relation=test_input($_POST['rel_relation']);
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$rel_relation)) {
+                $rel_relationErr = "Only letters and whitespace allowed in relation";
+            }    
+        } 
+
+        {
+            $rel_contact=test_input($_POST['rel_contact']);
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$rel_contact)) {
+                $rel_contactErr = "Only letters and whitespace allowed in contact";
+            }    
+        } 
+
+        {
+            $rel_email=test_input($_POST['rel_email']);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Invalid email format";
+            }    
+        } 
+
+        {
             $pat_description=test_input($_POST['pat_description']);
             if (!preg_match("/^[a-zA-Z-' ]*$/",$pat_description)) {
                 $pat_descriptionErr = "Only letters and whitespace allowed in specialization";
@@ -133,10 +161,7 @@
         } 
         else
         {
-            $doctor_assigned=test_input($_POST['doctor_assigned']);
-            if (!preg_match("/^[a-zA-Z]*$/",$doctor_assigned)) {
-                $doctor_assignedErr = "Only letters allowed in Doctor assigned name";
-            }     
+            $doctor_assigned=test_input($_POST['doctor_assigned']);   
         }
         //for password
         // Has minimum 8 characters in length. {8,}
@@ -152,7 +177,7 @@
         
         
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($contactErr) &&empty($ageErr) 
-            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr) && empty($pat_descriptionErr) && empty($date_of_admissionErr) && empty($discharge_dateErr) && empty($doctor_assignedErr))
+            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr)  && empty($rel_nameErr) && empty($rel_relationErr) && empty($rel_contactErr) && empty($rel_emailErr) && empty($pat_descriptionErr) && empty($date_of_admissionErr) && empty($discharge_dateErr) && empty($doctor_assignedErr))
         {
             
             // $sec = date_create($date_0f_admission);
@@ -162,7 +187,7 @@
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
 
-            $sql="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,pat_description,date_of_admission,discharge_date,doctor_assigned) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned')";
+            $sql="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,discharge_date,doctor_assigned) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned')";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -206,7 +231,19 @@
             }
             if(!empty($emailErr)){
                 function_alert($emailErr);
-            }     
+            }  
+            if(!empty($rel_nameErr)){
+                function_alert($rel_nameErr);
+            } 
+            if(!empty($rel_emailErr)){
+                function_alert($rel_emailErr);
+            } 
+            if(!empty($rel_relationErr)){
+                function_alert($rel_relationErr);
+            } 
+            if(!empty($rel_contactErr)){
+                function_alert($rel_contactErr);
+            }    
             if(!empty($pat_descriptionErr)){
                 function_alert($pat_descriptionErr);
             }         
@@ -326,11 +363,42 @@
                 <label>Email Address</label>
                 <input type="text" id="email" name="email" value=<?php echo $email; ?>>
             </div>
+        </div>
+        <h3>In case of emergency</h3>
+        <div class="column">
             <div class="input-box">
-                <label>Doctor Assigned</label>
-                <input type="text" id="doctor_assigned" name="doctor_assigned" value=<?php echo $doctor_assigned; ?>>
+                <label>Name</label>
+                <input type="text" id="rel_name" name="rel_name" value=<?php echo $rel_name; ?>>
+            </div>
+            <div class="input-box">
+                <label>Relation</label>
+                <input type="text" id="rel_relation" placeholder="Optional" name="rel_relation" value=<?php echo $rel_relation; ?>>
             </div>
         </div>
+        <div class="column">
+            <div class="input-box">
+                <label>Contact</label>
+                <input type="integer" id="rel_contact" name="rel_contact" value=<?php echo $rel_contact; ?>>
+            </div>
+            <div class="input-box">
+                <label>Email</label>
+                <input type="text" id="rel_email" placeholder="Optional" name="rel_email" value=<?php echo $rel_email; ?>>
+            </div>
+        </div>
+        <div class="input-box">
+                <label>Doctor Assigned</label>
+                <div class="input-option">
+                    <select id="doctor_assigned" name="doctor_assigned" type="sty">
+                        <?php
+                            $sql1="SELECT * FROM doctor_info";
+                            $result1=mysqli_query($con,$sql1);
+                            while($get=mysqli_fetch_array($result1)){
+                        ?>
+                        <option value="<?php echo $get['fname']?>" <?php if($doctor_assigned==$get['fname']) echo 'selected="selected"'; ?>><?php echo $get['fname'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
         <div class="column">
             <div class="input-box">
                 <label>Date of Admission</label>

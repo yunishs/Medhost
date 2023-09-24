@@ -161,10 +161,7 @@
         } 
         else
         {
-            $doctor_assigned=test_input($_POST['doctor_assigned']);
-            if (!preg_match("/^[a-zA-Z]*.\s[a-zA-Z]*\s*[a-zA-Z]*$/",$doctor_assigned)) {
-                $doctor_assignedErr = "Only letters,dot and whitespace allowed in Doctor assigned name";
-            }     
+            $doctor_assigned=test_input($_POST['doctor_assigned']);     
         }
         //for password
         // Has minimum 8 characters in length. {8,}
@@ -355,7 +352,17 @@
             </div>
             <div class="input-box">
                 <label>Doctor Assigned</label>
-                <input type="text" id="doctor_assigned" name="doctor_assigned" value="<?php echo $doctor_assigned; ?>">
+                <div class="input-option">
+                    <select id="doctor_assigned" name="doctor_assigned" type="sty">
+                        <?php
+                            $sql1="SELECT * FROM doctor_info";
+                            $result1=mysqli_query($con,$sql1);
+                            while($get=mysqli_fetch_array($result1)){
+                        ?>
+                        <option value="<?php echo $get['fname']?>" <?php if($doctor_assigned==$get['fname']) echo 'selected="selected"'; ?>><?php echo $get['fname'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="column">

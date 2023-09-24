@@ -2,6 +2,7 @@
 
     session_start();
     $id=$_GET['searchid'];
+    
     include ("..\database\connect.php");
 
 ?>
