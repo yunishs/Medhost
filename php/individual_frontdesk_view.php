@@ -43,8 +43,9 @@
             }
         }
     ?>
+    <h3>Front-Desk's Personal Information:</h3>
     <div class="container">
-                <h3>Front-Desk's Personal Information:</h3>
+                
         <table>
             <tr>
                 <th>FrontDesk-ID</th>

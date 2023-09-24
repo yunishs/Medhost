@@ -43,8 +43,9 @@
             }
         }
     ?>
+    <h3>Medical Staff's Personal Information:</h3>
     <div class="container">
-                <h3>Medical Staff's Personal Information:</h3>
+                
         <table>
             <tr>
                 <th>Medical Staff-ID</th>

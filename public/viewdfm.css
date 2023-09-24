@@ -6,7 +6,7 @@
 }
 body
 {
-    
+    margin-top: 90px;
     padding-left: 6%;
     font-size: large;
     background-image:url('../images/default_background.webp');
@@ -17,39 +17,11 @@ body
     background-size:100% 100%;
     /* background size ma cover garda chai aafai adjust hunxaa but 100% 100% garda chai purai picture nai background ma aauxa */
 }
-header{
-  position: fixed;
-  display: flex;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height:30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 40px;
-  background-color: #fafaff;
-}
-.logo {
-  font-size: 30px;
-  font-weight: 600;
-  color: rgb(16, 47, 184);
-  }
-  .icn {
-  height: 45px;
-  }
-  .menuicn {
-  cursor: pointer;
-  }
-
-  .logosec {
+.container
+{
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 60px;
-}
-.cpntainer{
-  align-items: center;
+  justify-content: space-around;
   margin-top:30px;
 }
 .tbl {
