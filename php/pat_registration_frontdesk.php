@@ -434,24 +434,64 @@
                     </select>
                 </div>
         </div>
-        <div id="for_out" class="column" style="display: none">
-            <div class="input-box">
-                <label>Date of Visit</label>
-                <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
-            </div>
-            <div class="input-box">
-                <label>Date of Discharge</label>
-                <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
+        <div id="for_out" style="display: none">
+            <div class="column">
+                <div class="input-box">
+                    <label>Date of Appointment</label>
+                    <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
+                </div>
+                <div class="input-box">
+                    <label>Date of Visit</label>
+                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
+                </div>
             </div>
         </div>
-        <div id="for_in" class="column" style="display: none">
-            <div class="input-box">
-                <label>Date of Admission</label>
-                <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
+        <div id="for_in" style="display: none">
+            <div class="column">
+                <div class="input-box">
+                    <label>Ward</label>
+                    <div class="input-option">
+                        <select id="" name="" type="">
+                            <?php
+                                $ward_id='';
+                                $ward='';
+                                $sql1="SELECT * FROM ward";
+                                $result1=mysqli_query($con,$sql1);
+                                while($get=mysqli_fetch_array($result1)){
+                            ?>
+                            <option value="<?php echo $get['ward_name']?>" <?php if($ward==$get['ward_name']){$ward_id=$get['ward_id']; echo 'selected="selected"' ;} ?>><?php echo $get['ward_name'] ?></option>
+                            <?php } 
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label>Room</label>
+                    <div class="input-option">
+                        <select id="doctor_assigned" name="doctor_assigned" type="sty">
+                            <?php
+                                $roomid_fk='';
+                                $sql2="SELECT * FROM room WHERE alloc_stat='0'";
+                                $result1=mysqli_query($con,$sql2);
+                                while($get=mysqli_fetch_array($result1)){ 
+                            ?>
+                            <option value="<?php echo $get['room_name']?>" <?php if($roomid_fk==$get['room_name']) echo 'selected="selected"'; ?>><?php echo $get['room_name'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="input-box">
-                <label>Date of Discharge</label>
-                <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
+        </div>
+        <div id="for_in" style="display: none">
+            <div class="column">
+                <div class="input-box">
+                    <label>Date of Admission</label>
+                    <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
+                </div>
+                <div class="input-box">
+                    <label>Date of Discharge</label>
+                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
+                </div>
             </div>
         </div>
         <div class="input-box">
