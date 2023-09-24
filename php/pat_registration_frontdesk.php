@@ -385,21 +385,43 @@
                 <input type="text" id="rel_email" placeholder="Optional" name="rel_email" value=<?php echo $rel_email; ?>>
             </div>
         </div>
+        <script type="text/javascript">
+            function ShowHideDiv() {
+                var check_male = document.getElementById("check-male");
+                var for_in = document.getElementById("for_in");
+                for_in.style.display = check_male.checked ? "block" : "none";
+        
+                    
+                var check_female = document.getElementById("check-female");
+                var for_out = document.getElementById("for_out");
+                for_out.style.display = check_female.checked ? "block" : "none";
+            }
+            function ShowHideDiv1() {
+                var check_female = document.getElementById("check-female");
+                var for_out = document.getElementById("for_out");
+                for_out.style.display = check_female.checked ? "block" : "none";
+                
+
+                var check_male = document.getElementById("check-male");
+                var for_in = document.getElementById("for_in");
+                for_in.style.display = check_male.checked ? "block" : "none";
+            }
+        </script>
         <div class="gender-box">
           <h3>Patient Type</h3>
           <div class="gender-option">
             <div class="gender">
-              <input type="radio" id="check-male" name="gender" checked />
+              <input type="radio" id="check-male" name="gender" onclick="ShowHideDiv()" />
               <label for="check-male">In-Patient</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-female" name="gender" />
+              <input type="radio" id="check-female" name="gender" onclick="ShowHideDiv1()" />
               <label for="check-female">Out-Patient</label>
             </div>
           </div>
         </div>
         <div class="input-box">
-                <label>Doctor Assigned</label>
+            <label>Doctor Assigned</label>
                 <div class="input-option">
                     <select id="doctor_assigned" name="doctor_assigned" type="sty">
                         <?php
@@ -411,8 +433,18 @@
                         <?php } ?>
                     </select>
                 </div>
+        </div>
+        <div id="for_out" class="column" style="display: none">
+            <div class="input-box">
+                <label>Date of Visit</label>
+                <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
             </div>
-        <div class="column">
+            <div class="input-box">
+                <label>Date of Discharge</label>
+                <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
+            </div>
+        </div>
+        <div id="for_in" class="column" style="display: none">
             <div class="input-box">
                 <label>Date of Admission</label>
                 <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
