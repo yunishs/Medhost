@@ -385,6 +385,19 @@
                 <input type="text" id="rel_email" placeholder="Optional" name="rel_email" value=<?php echo $rel_email; ?>>
             </div>
         </div>
+        <div class="gender-box">
+          <h3>Patient Type</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" checked />
+              <label for="check-male">In-Patient</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Out-Patient</label>
+            </div>
+          </div>
+        </div>
         <div class="input-box">
                 <label>Doctor Assigned</label>
                 <div class="input-option">
