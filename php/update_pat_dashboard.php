@@ -164,8 +164,8 @@
         else
         {
             $doctor_assigned=test_input($_POST['doctor_assigned']);
-            if (!preg_match("/^[a-zA-Z]*$/",$doctor_assigned)) {
-                $doctor_assignedErr = "Only letters allowed in Doctor assigned name";
+            if (!preg_match("/^[a-zA-Z]*.\s[a-zA-Z]*\s*[a-zA-Z]*$/",$doctor_assigned)) {
+                $doctor_assignedErr = "Only letters,dot and whitespace allowed in Doctor assigned name";
             }     
         }
         //for password
