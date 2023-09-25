@@ -4,8 +4,8 @@
     $id=$_SESSION['pid'];
     include '..\database\connect.php';
     //initializing variables
-    $condition_of_pat=$remarks=$date="";
-    $condition_of_patErr=$remarksErr=$dateErr=null;
+    $condition_of_pat=$remarks=$date=$bp=$sugar_level=$heart_rate=$spo2="";
+    $condition_of_patErr=$remarksErr=$dateErr=$bpErr=$sugar_levelErr=$heart_rateErr=$spo2Err=null;
 
     $sql="SELECT * from patient_info where pid=$id";
 		$result=mysqli_query($con,$sql);
@@ -67,6 +67,37 @@
         {
             $date=test_input($_POST['date']);   
         } 
+        if(isset($_POST['bp']))
+        {
+            $bp=test_input($_POST['bp']);
+            if (!preg_match("/^[0-9]+.[0-9]*\s*[A-Za-z0-9]*\s*$/",$bp)) {
+                $bpErr = "Only number,letter and '/' allowed in blood pressure";
+            }    
+        }
+
+        if (isset($_POST["sugar_level"])) 
+        {
+            $sugar_level=test_input($_POST['sugar_level']);
+            if (!preg_match("/^[A-Za-z0-9]+\s*.*$/",$sugar_level)) {
+                $sugar_levelErr = "Only letters,numbers and fullstop allowed in sugar level";
+            }    
+        }
+
+        if (isset($_POST["heart_rate"])) 
+        {
+            $heart_rate=test_input($_POST['heart_rate']);
+            if (!preg_match("/^[0-9]+\s*[A-Za-z0-9]*$/",$heart_rate)) {
+                $heart_rateErr = "Only '120 bpm' format  allowed in heart rate";
+            }    
+        }
+
+        if (isset($_POST["spo2"])) 
+        {
+            $spo2=test_input($_POST['spo2']);
+            if (!preg_match("/^[0-9]+%$/",$spo2)) {
+                $spo2Err = "Only '95%' format allowed in SPO2";
+            }   
+        }
 
         // (!preg_match("/^[a-zA-Z]*$/",$mname))
         // (!preg_match("/^[0-9]{10,}$/",$contact))
@@ -84,8 +115,7 @@
             echo "<script>alert('$message');</script>";
         }
         
-        
-        if(empty($condition_of_patErr) && empty($remarksErr) && empty($dateErr))
+        if(empty($condition_of_patErr) && empty($remarksErr) && empty($dateErr) && empty($bpErr) && empty($sugar_levelErr) && empty($heart_rateErr) && empty($spo2Err))
         {
             
             // $sec = date_create($date_0f_admission);
@@ -95,7 +125,7 @@
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
 
-            $sql="insert into pat_prognosis(condition_of_pat,remarks,date,pid_fk) values ('$condition_of_pat','$remarks','$date','$pid')";
+            $sql="insert into pat_prognosis(condition_of_pat,remarks,date,bp,sugar_level,heart_rate,spo2,pid_fk) values ('$condition_of_pat','$remarks','$date','$bp','$sugar_level','$heart_rate','$spo2','$pid')";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -119,6 +149,18 @@
             if(!empty($dateErr)){
                 function_alert($dateErr);
             }  
+            if(!empty($bpErr)){
+                function_alert($bpErr);
+            }
+            if(!empty($sugar_levelErr)){
+                function_alert($sugar_levelErr);
+            }
+            if(!empty($heart_rateErr)){
+                function_alert($heart_rateErr);
+            }  
+            if(!empty($spo2Err)){
+                function_alert($spo2Err);
+            }  
         }
     }
 ?>
@@ -129,7 +171,7 @@
 	<meta http-equiv="X-UA-Compatible"content="IE=edge">
 	<meta name="viewport"	content="width=device-width, initial-scale=1.0">
 	<title>Update Prognosis</title>
-	<link rel="stylesheet"  href="..\public\update_diag_prog.css">
+	<link rel="stylesheet"  href="..\public\aaaaaaaaaaa.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
 </head>
@@ -147,6 +189,26 @@
             <div class="input-box">
                 <label>Date</label><br>
                 <input type="datetime-local" id="date" name="date" value="<?php echo $date; ?>">
+            </div>
+            <div class="column" >
+                <div class="input-box">
+                <label>Blood Pressure</label>
+                <input type="text" id="bp" name="bp" size="10px" value="<?php echo $bp; ?>">
+                </div>
+                <div class="input-box">
+                <label>Sugar level</label>
+                <input type="text" id="sugar_level" name="sugar_level" size="10px" value="<?php echo $sugar_level; ?>">
+                </div>
+            </div>
+            <div class="column" >
+                <div class="input-box">
+                <label>Heart Rate</label>
+                <input type="text" id="heart_rate" name="heart_rate" size="10px" value="<?php echo $heart_rate; ?>">
+            </div>
+            <div class="input-box">
+                <label>SPO2</label>
+                <input type="text" id="spo2" name="spo2" size="10px" value="<?php echo $spo2; ?>">
+            </div>
             </div>
             <div class="input-box">
                 <label>Condition of Patient</label><br>

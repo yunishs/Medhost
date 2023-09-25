@@ -4,8 +4,8 @@
     $id=$_SESSION['pid'];
     include '..\database\connect.php';
     //initializing variables
-    $condition_of_pat=$remarks=$date="";
-    $condition_of_patErr=$remarksErr=$dateErr=null;
+    $condition_of_pat=$remarks=$date=$bp=$sugar_level=$heart_rate=$spo2="";
+    $condition_of_patErr=$remarksErr=$dateErr=$bpErr=$sugar_levelErr=$heart_rateErr=$spo2Err=null;
 
     $sql="SELECT * from patient_info where pid=$id";
 		$result=mysqli_query($con,$sql);
@@ -67,48 +67,35 @@
         {
             $date=test_input($_POST['date']);   
         } 
-        if (empty($_POST['bp'])) 
+        if(isset($_POST['bp']))
         {
-            $bpErr = "Blood Pressure is required";
-        } 
-        else
-        {
-            $bp=test_input($_POST['bp']); 
-            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$bp)) {
-                $bpErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in remarks";
-            }   
+            $bp=test_input($_POST['bp']);
+            if (!preg_match("/^[0-9]+.[0-9]*\s*[A-Za-z0-9]*\s*$/",$bp)) {
+                $bpErr = "Only number,letter and '/' allowed in blood pressure";
+            }    
         }
-        if (empty($_POST['sl'])) 
+
+        if (isset($_POST["sugar_level"])) 
         {
-            $slErr = "Sugar level is required";
-        } 
-        else
-        {
-            $sl=test_input($_POST['sl']); 
-            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$sl)) {
-                $slErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in remarks";
-            }   
+            $sugar_level=test_input($_POST['sugar_level']);
+            if (!preg_match("/^[A-Za-z0-9]+\s*.*$/",$sugar_level)) {
+                $sugar_levelErr = "Only letters,numbers and fullstop allowed in sugar level";
+            }    
         }
-        if (empty($_POST['hr'])) 
+
+        if (isset($_POST["heart_rate"])) 
         {
-            $hrErr = "Heart Rate is required";
-        } 
-        else
-        {
-            $hr=test_input($_POST['hr']); 
-            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$hr)) {
-                $hrErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in remarks";
-            }   
+            $heart_rate=test_input($_POST['heart_rate']);
+            if (!preg_match("/^[0-9]+\s*[A-Za-z0-9]*$/",$heart_rate)) {
+                $heart_rateErr = "Only '120 bpm' format  allowed in heart rate";
+            }    
         }
-        if (empty($_POST['SPO2'])) 
+
+        if (isset($_POST["spo2"])) 
         {
-            $SPO2Err = "SPO2 is required";
-        } 
-        else
-        {
-            $SPO2=test_input($_POST['SPO2']); 
-            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$SPO2)) {
-                $SPO2Err = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in remarks";
+            $spo2=test_input($_POST['spo2']);
+            if (!preg_match("/^[0-9]+%$/",$spo2)) {
+                $spo2Err = "Only '95%' format allowed in SPO2";
             }   
         }
 
@@ -128,8 +115,7 @@
             echo "<script>alert('$message');</script>";
         }
         
-        
-        if(empty($condition_of_patErr) && empty($remarksErr) && empty($dateErr) && empty($bpErr) && empty($slErr) && empty($hrErr) && empty($SPO2Err))
+        if(empty($condition_of_patErr) && empty($remarksErr) && empty($dateErr) && empty($bpErr) && empty($sugar_levelErr) && empty($heart_rateErr) && empty($spo2Err))
         {
             
             // $sec = date_create($date_0f_admission);
@@ -139,7 +125,7 @@
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
 
-            $sql="insert into pat_prognosis(condition_of_pat,remarks,date,pid_fk,bp,sl,hr,SPO2) values ('$condition_of_pat','$remarks','$date','$pid','$bp','$hr','$sl','$SPO2')";
+            $sql="insert into pat_prognosis(condition_of_pat,remarks,date,bp,sugar_level,heart_rate,spo2,pid_fk) values ('$condition_of_pat','$remarks','$date','$bp','$sugar_level','$heart_rate','$spo2','$pid')";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -166,15 +152,15 @@
             if(!empty($bpErr)){
                 function_alert($bpErr);
             }
-            if(!empty($slErr)){
-                function_alert($slErr);
+            if(!empty($sugar_levelErr)){
+                function_alert($sugar_levelErr);
             }
-            if(!empty($hrErr)){
-                function_alert($hrErr);
-            }
-            if(!empty($SPO2Err)){
-                function_alert($SPO2Err);
-            }
+            if(!empty($heart_rateErr)){
+                function_alert($heart_rateErr);
+            }  
+            if(!empty($spo2Err)){
+                function_alert($spo2Err);
+            }  
         }
     }
 ?>
@@ -211,17 +197,17 @@
                 </div>
                 <div class="input-box">
                 <label>Sugar level</label>
-                <input type="text" id="sl" name="sl" size="10px" value="<?php echo $sl; ?>">
+                <input type="text" id="sugar_level" name="sugar_level" size="10px" value="<?php echo $sugar_level; ?>">
                 </div>
             </div>
             <div class="column" >
                 <div class="input-box">
                 <label>Heart Rate</label>
-                <input type="text" id="hr" name="hr" size="10px" value="<?php echo $hr; ?>">
+                <input type="text" id="heart_rate" name="heart_rate" size="10px" value="<?php echo $heart_rate; ?>">
             </div>
             <div class="input-box">
                 <label>SPO2</label>
-                <input type="text" id="SPO2" name="SPO" size="10px" value="<?php echo $SPO2; ?>">
+                <input type="text" id="spo2" name="spo2" size="10px" value="<?php echo $spo2; ?>">
             </div>
             </div>
             <div class="input-box">
