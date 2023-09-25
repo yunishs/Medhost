@@ -64,6 +64,12 @@
                 $discharge_date=$row['discharge_date'];
                 $pat_description=$row['pat_description'];
                 $doctor_assigned=$row['doctor_assigned'];
+                $rel_name=$row['rel_name'];
+                $rel_relation=$row['rel_relation'];
+                $rel_contact=$row['rel_contact'];
+                $rel_email=$row['rel_email'];
+                $pat_type=$row['pat_type'];
+                $roomid_fk=$row['roomid_fk'];
             }
         }
     ?>
@@ -103,29 +109,85 @@
             </tr>
             <tr>
         </table>
-
-        <table class="admission_details">
-            <tr>
-                <h3>Admission Details</h3>
-            </tr>
-            <tr>
-                <th>Doctor Assigned</th>
-                <td><?= $doctor_assigned?></td>
-            </tr>
-            <tr>
-                <th>Date of Admission</th>
-                <td><?= $date_of_admission?></td>
-            </tr>
-            <tr>
-                <th>Date of discharge</th>
-                <td><?= $discharge_date?></td>
-            </tr> 
-            <tr>
-                <th>Patient Description During Admission</th>
-                <td><?= $pat_description ?></td>
-            </tr>  
-        </table>
-
+        <?php
+        if($pat_type=='inpatient')
+        {
+            $sql1="SELECT * FROM `room` as r JOIN ward as w ON r.ward_id_fk=w.ward_id where room_id='$roomid_fk'";
+            $result1=mysqli_query($con,$sql1);
+            if($result1)
+            {
+                $room_name=$ward_name='';
+                while($row1=mysqli_fetch_assoc($result1))
+                {
+                    $room_name=$row1['room_name'];
+                    $ward_name=$row1['ward_name'];
+                }
+            }
+            echo"
+                <table class='admission_details'>
+                    <tr>
+                        <h3>Admission Details</h3>
+                    </tr>
+                    <tr>
+                        <th>Patient Type</th>
+                        <td>$pat_type</td>
+                    </tr>
+                    <tr>
+                        <th>Doctor Assigned</th>
+                        <td>$doctor_assigned</td>
+                    </tr>
+                    <tr>
+                        <th>Ward Assigned</th>
+                        <td>$ward_name</td>
+                    </tr>
+                    <tr>
+                        <th>Room Assigned</th>
+                        <td> $room_name</td>
+                    </tr>
+                    <tr>
+                        <th>Date of Admission</th>
+                        <td> $date_of_admission</td>
+                    </tr>
+                    <tr>
+                        <th>Date of discharge</th>
+                        <td> $discharge_date</td>
+                    </tr> 
+                    <tr>
+                        <th>Patient Description During Admission</th>
+                        <td> $pat_description </td>
+                    </tr>  
+                </table>";
+        }
+        if($pat_type=='outpatient')
+        {
+                echo"
+                <table class='admission_details'>
+                    <tr>
+                        <h3>Appointment Details</h3>
+                    </tr>
+                    <tr>
+                    <th>Patient Type</th>
+                        <td>$pat_type</td>
+                    </tr>
+                    <tr>
+                        <th>Doctor Assigned</th>
+                        <td> $doctor_assigned</td>
+                    </tr>
+                    <tr>
+                        <th>Date of Visit</th>
+                        <td> $date_of_admission</td>
+                    </tr>
+                    <tr>
+                        <th>Date of next visit</th>
+                        <td> $discharge_date</td>
+                    </tr> 
+                    <tr>
+                        <th>Patient Description </th>
+                        <td> $pat_description </td>
+                    </tr>  
+                </table>";
+        }
+        ?>
         <table class="tbl">
 		    <div class="table">
             <tr>
@@ -178,12 +240,13 @@
                     </div>
                 </tr>
 			    <thread>
-			        <tr>
-        				<th>S.N.</th>
-	        			<th>Date</th>
-		        		<th>Conditin of Patient</th>
-			        	<th>Remarks</th>
-	    		    </tr>
+                <tr>
+                <th>Prog_id</th>
+				<th>Date</th>
+				<th>Condition of Patient</th>
+				
+				<th>Remarks</th>
+			</tr>
 		        </thread>
     		    <tbody>
     	    		<?php
@@ -193,14 +256,23 @@
 			            {
 				    	    while($row=mysqli_fetch_assoc($result)){
     				    	    $prog_id=$row['prog_id'];
-	    				        $date=$row['date'];
-    		    			    $condition_of_pat=$row['condition_of_pat'];
-	    		    		    $remarks=$row['remarks'];
+					$date=$row['date'];
+					$condition_of_pat=$row['condition_of_pat'];
+					$bp=$row['bp'];
+					$sugar_level=$row['sugar_level'];
+					$heart_rate=$row['heart_rate'];
+					$spo2=$row['spo2'];
+				    $remarks=$row['remarks'];
+
 			    		        echo " <tr>
 				    	        <th>$prog_id</th>
-    				    	    <td>$date</td>
-	    				        <td>$condition_of_pat</td>
-		    			        <td>$remarks</td>
+					    <td>$date</td>
+					    <td>$condition_of_pat</td>
+						<td>$bp</td>
+						<td>$sugar_level</td>
+						<td>$heart_rate</td>
+						<td>$spo2</td>
+					    <td>$remarks</td>
         			    		</tr>";
 	        			    }
 		        	    }
@@ -208,7 +280,27 @@
 		        </tbody>
     		</div>
 	    </table>
-
+        <table>
+                    <tr>
+                        <h3>In case of emergency</h3>  
+                    </tr>
+                    <tr>
+                    <th>Name</th>
+                        <td><?= $rel_name?></td>
+                    </tr>
+                    <tr>
+                        <th>Relation</th>
+                        <td><?=$rel_relation?></td>
+                    </tr>
+                    <tr>
+                        <th>Contact</th>
+                        <td><?= $rel_contact?></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td><?= $rel_email?></td>
+                    </tr> 
+                </table>
 
     </div>
 </body>
