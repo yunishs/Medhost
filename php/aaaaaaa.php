@@ -67,6 +67,50 @@
         {
             $date=test_input($_POST['date']);   
         } 
+        if (empty($_POST['bp'])) 
+        {
+            $bpErr = "Blood Pressure is required";
+        } 
+        else
+        {
+            $bp=test_input($_POST['bp']); 
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$bp)) {
+                $bpErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in remarks";
+            }   
+        }
+        if (empty($_POST['sl'])) 
+        {
+            $slErr = "Sugar level is required";
+        } 
+        else
+        {
+            $sl=test_input($_POST['sl']); 
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$sl)) {
+                $slErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in remarks";
+            }   
+        }
+        if (empty($_POST['hr'])) 
+        {
+            $hrErr = "Heart Rate is required";
+        } 
+        else
+        {
+            $hr=test_input($_POST['hr']); 
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$hr)) {
+                $hrErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in remarks";
+            }   
+        }
+        if (empty($_POST['SPO2'])) 
+        {
+            $SPO2Err = "SPO2 is required";
+        } 
+        else
+        {
+            $SPO2=test_input($_POST['SPO2']); 
+            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$SPO2)) {
+                $SPO2Err = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in remarks";
+            }   
+        }
 
         // (!preg_match("/^[a-zA-Z]*$/",$mname))
         // (!preg_match("/^[0-9]{10,}$/",$contact))
@@ -85,7 +129,7 @@
         }
         
         
-        if(empty($condition_of_patErr) && empty($remarksErr) && empty($dateErr))
+        if(empty($condition_of_patErr) && empty($remarksErr) && empty($dateErr) && empty($bpErr) && empty($slErr) && empty($hrErr) && empty($SPO2Err))
         {
             
             // $sec = date_create($date_0f_admission);
@@ -95,7 +139,7 @@
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
 
-            $sql="insert into pat_prognosis(condition_of_pat,remarks,date,pid_fk) values ('$condition_of_pat','$remarks','$date','$pid')";
+            $sql="insert into pat_prognosis(condition_of_pat,remarks,date,pid_fk,bp,sl,hr,SPO2) values ('$condition_of_pat','$remarks','$date','$pid','$bp','$hr','$sl','$SPO2')";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -119,6 +163,18 @@
             if(!empty($dateErr)){
                 function_alert($dateErr);
             }  
+            if(!empty($bpErr)){
+                function_alert($bpErr);
+            }
+            if(!empty($slErr)){
+                function_alert($slErr);
+            }
+            if(!empty($hrErr)){
+                function_alert($hrErr);
+            }
+            if(!empty($SPO2Err)){
+                function_alert($SPO2Err);
+            }
         }
     }
 ?>
@@ -147,6 +203,26 @@
             <div class="input-box">
                 <label>Date</label><br>
                 <input type="datetime-local" id="date" name="date" value="<?php echo $date; ?>">
+            </div>
+            <div class="column" >
+                <div class="input-box">
+                <label>Blood Pressure</label>
+                <input type="text" id="bp" name="bp" size="10px" value="<?php echo $bp; ?>">
+                </div>
+                <div class="input-box">
+                <label>Sugar level</label>
+                <input type="text" id="sl" name="sl" size="10px" value="<?php echo $sl; ?>">
+                </div>
+            </div>
+            <div class="column" >
+                <div class="input-box">
+                <label>Heart Rate</label>
+                <input type="text" id="hr" name="hr" size="10px" value="<?php echo $hr; ?>">
+            </div>
+            <div class="input-box">
+                <label>SPO2</label>
+                <input type="text" id="SPO2" name="SPO" size="10px" value="<?php echo $SPO2; ?>">
+            </div>
             </div>
             <div class="input-box">
                 <label>Condition of Patient</label><br>
