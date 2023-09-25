@@ -2,7 +2,7 @@
 
     include '..\database\connect.php';
     //initializing variables
-    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$rel_name=$rel_relation=$rel_contact=$rel_email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned="";
+    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$rel_name=$rel_relation=$rel_contact=$rel_email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned=$roomid_fk="";
     $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admissionErr=$discharge_dateErr=$doctor_assignedErr=null;
 // try{
     if(isset($_POST['enter']))
@@ -76,13 +76,13 @@
             $bloodgroup=test_input($_POST['bloodgroup']);   
         }
 
-        if (empty($_POST["gender"])) 
+        if (empty($_POST["genderx"])) 
         {
             $genderErr = "Gender is required";
         } 
         else
         {
-            $gender=test_input($_POST['gender']);   
+            $gender=test_input($_POST['genderx']);   
         } 
 
         {
@@ -98,6 +98,8 @@
                 $addressErr = "Only letters and whitespace allowed in address";
             }    
         } 
+
+
 
         //alternate for email '/^\\S+@\\S+\\.\\S+$/'
         if (empty($_POST["email"])) 
@@ -126,10 +128,7 @@
         } 
 
         {
-            $rel_contact=test_input($_POST['rel_contact']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$rel_contact)) {
-                $rel_contactErr = "Only letters and whitespace allowed in contact";
-            }    
+            $rel_contact=test_input($_POST['rel_contact']);  
         } 
 
         {
@@ -145,12 +144,15 @@
                 $pat_descriptionErr = "Only letters and whitespace allowed in specialization";
             }    
         }  
-
-        if (empty($_POST['date_of_admission'])) 
+        if (empty($_POST['date_of_admission']) && empty($_POST['date_of_admission1'])) 
         {
             $date_of_admissionErr = "Date of admission is required";
         } 
-        else
+        else if (empty($_POST['date_of_admission'])) 
+        {
+            $date_of_admission=test_input($_POST['date_of_admission1']);   
+        } 
+        else if (empty($_POST['date_of_admission1'])) 
         {
             $date_of_admission=test_input($_POST['date_of_admission']);   
         } 
@@ -163,6 +165,12 @@
         {
             $doctor_assigned=test_input($_POST['doctor_assigned']);   
         }
+
+
+        {
+            $roomid_fk=test_input($_POST['room_idfk']);   
+        } 
+
         //for password
         // Has minimum 8 characters in length. {8,}
         // At least one uppercase English letter.(?=.*?[A-Z])
@@ -186,19 +194,41 @@
             // $sec1 = date_create($discharge_date);
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
-
-            $sql="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,discharge_date,doctor_assigned) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned')";
-            $result=mysqli_query($con,$sql);
-            if($result){
+            if(!empty($roomid_fk))
+            {
+                $sql="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,discharge_date,doctor_assigned,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned','$roomid_fk')";
+                
+                $result=mysqli_query($con,$sql);
+                if($result){
+                    $sql1="UPDATE room SET alloc_stat='1' WHERE room_id='$roomid_fk'";
+                    $result1=mysqli_query($con,$sql1);
                 // function_alert("Data inserted successfully");
-                header('Location: pat_view_frontdesk.php');
+                    header('Location: pat_view_frontdesk.php');
+                }
+                else
+                {
+                    // function_alert("Data couldn't be inserted successfully");
+                    die(mysqli_error($con));
+                }
             }
             else
             {
-                // function_alert("Data couldn't be inserted successfully");
-                die(mysqli_error($con));
+
+                $sql2="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,discharge_date,doctor_assigned,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned',NULL)";
+                $result2=mysqli_query($con,$sql2);
+                if($result2){
                 
+                    // function_alert("Data inserted successfully");
+                        header('Location: pat_view_frontdesk.php');
+                }
+                else
+                {
+                        // function_alert("Data couldn't be inserted successfully");
+                    die(mysqli_error($con));
+                }
             }
+            
+            
         }
         else
         {
@@ -293,8 +323,9 @@
     <br>
     <section class="container">
       <h1>Registration Form</h1>
-      <form class="form" method="POST">
-      <div class="column">
+      <form id="multi" method="POST"></form> 
+      <form class="form" id="all" method="POST">
+      <div class="column" >
           <div class="input-box">
             <label>First-name</label>
             <input type="text" id="fname" name="fname" size="10px" value=<?php echo $fname; ?>>
@@ -322,7 +353,7 @@
             <div class="input-box">
                 <label>Gender</label>
                 <div class="input-option">
-                    <select name="gender" id="gender" type="sty">
+                    <select name="genderx" id="gender" type="sty">
                         <option>---</option>
                         <option VALUE="Male" <?php if($gender=="Male") echo 'selected="selected"'; ?>>Male</option>
                         <option VALUE="Female" <?php if($gender=="Female") echo 'selected="selected"'; ?>>Female</option>
@@ -411,11 +442,11 @@
           <h3>Patient Type</h3>
           <div class="gender-option">
             <div class="gender">
-              <input type="radio" id="check-male" name="gender" onclick="ShowHideDiv()" />
+              <input type="radio" id="check-male" name="gender1" onclick="ShowHideDiv()" />
               <label for="check-male">In-Patient</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-female" name="gender" onclick="ShowHideDiv1()" />
+              <input type="radio" id="check-female" name="gender1" onclick="ShowHideDiv1()" />
               <label for="check-female">Out-Patient</label>
             </div>
           </div>
@@ -438,47 +469,11 @@
             <div class="column">
                 <div class="input-box">
                     <label>Date of Appointment</label>
-                    <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
+                    <input type="datetime-local" id="date_of_admission1" name="date_of_admission1" value=<?php echo $date_of_admission; ?>>
                 </div>
                 <div class="input-box">
                     <label>Date of Visit</label>
                     <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
-                </div>
-            </div>
-        </div>
-        <div id="for_in" style="display: none">
-            <div class="column">
-                <div class="input-box">
-                    <label>Ward</label>
-                    <div class="input-option">
-                        <select id="" name="" type="">
-                            <?php
-                                $ward_id='';
-                                $ward='';
-                                $sql1="SELECT * FROM ward";
-                                $result1=mysqli_query($con,$sql1);
-                                while($get=mysqli_fetch_array($result1)){
-                            ?>
-                            <option value="<?php echo $get['ward_name']?>" <?php if($ward==$get['ward_name']){$ward_id=$get['ward_id']; echo 'selected="selected"' ;} ?>><?php echo $get['ward_name'] ?></option>
-                            <?php } 
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="input-box">
-                    <label>Room</label>
-                    <div class="input-option">
-                        <select id="doctor_assigned" name="doctor_assigned" type="sty">
-                            <?php
-                                $roomid_fk='';
-                                $sql2="SELECT * FROM room WHERE alloc_stat='0'";
-                                $result1=mysqli_query($con,$sql2);
-                                while($get=mysqli_fetch_array($result1)){ 
-                            ?>
-                            <option value="<?php echo $get['room_name']?>" <?php if($roomid_fk==$get['room_name']) echo 'selected="selected"'; ?>><?php echo $get['room_name'] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
                 </div>
             </div>
         </div>
@@ -493,14 +488,74 @@
                     <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
                 </div>
             </div>
+            <div class="column">
+                    <div class="input-box">
+                        <label>Ward</label>
+                        <div class="input-option">
+                            <select id="ward">
+                                <option value="" form="multi">Select Ward</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Room</label>
+                        <div class="input-option">
+                            <select id="room" name="room_idfk" form="all">
+                                <option value="" form="multi"></option>
+                            </select>
+                        </div>
+                    </div>
+            </div>
         </div>
+        <?php 
+            if(isset($_POST['roomid_fk']))
+            {
+                $roomid_fk=$_POST['roomid_fk'];
+            }
+        ?>
         <div class="input-box">
           <label>Patient description during admission</label><br>
-          <textarea type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition" value="<?php echo $pat_description; ?>"></textarea>
+          <textarea type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition"><?php echo $pat_description; ?></textarea>
         </div>
+        
         <button type="enter" class="enter-btn" name="enter">ENTER</button>
-      </form>
+    </form>
     </section>
+    <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+  	function loadData(type, category_id){
+  		$.ajax({
+  			url : "load-cs.php",
+  			type : "POST",
+  			data: {type : type, id : category_id},
+  			success : function(data){
+  				if(type == "roomData"){
+  					$("#room").html(data);
+  				}else{
+  					$("#ward").append(data);
+  				}
+  			}
+  		});
+  	}
+
+  	loadData();
+
+  	$("#ward").on("change",function(){
+  		var ward = $("#ward").val();
+
+  		if(ward != ""){
+  			loadData("roomData", ward);
+  		}else{
+  			$("#room").html("");
+  		}
+        
+  		
+  	})
+  });
+  
+</script>
     <script>
         Window.addEventaListener("scroll",function(){
         var header= document.querySelector("header");
