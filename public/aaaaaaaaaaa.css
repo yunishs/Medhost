@@ -9,8 +9,8 @@
 body {
     min-height: 100vh;
     /* display: flex; */
-    align-items:normal;
-    justify-content: left;
+    /* align-items:normal;
+    justify-content: left; */
     padding: 20px;
     text-align: left;
     padding-left: 10%;
@@ -75,7 +75,7 @@ i
 
 table
 {    
-    
+    margin-top: 15px;
     border-collapse:initial;
     width: 98%;
     padding:15px 15px 0px 15px;
@@ -85,7 +85,7 @@ th
     text-align: left;
     padding: 8px 8px 8px 8px;
     border-bottom: 1px solid #8f8c8c;
-    ;background-color: #dddddd;
+    background-color: #dddddd;
 
 }
 td {
@@ -102,7 +102,7 @@ h1{
 
 .container {
   width:100%;
-  margin-top: 85px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -115,7 +115,7 @@ h1{
 }
 .container .form {
   margin-top: 30px;
-  width:60%;
+  width:70%;
 }
 .form .input-box {
   width: 100%;

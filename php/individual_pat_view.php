@@ -244,7 +244,10 @@
                 <th>Prog_id</th>
 				<th>Date</th>
 				<th>Condition of Patient</th>
-				
+				<th>BP</th>
+				<th>Sugar</th>
+				<th>Heart Rate</th>
+				<th>SPO2</th>
 				<th>Remarks</th>
 			</tr>
 		        </thread>

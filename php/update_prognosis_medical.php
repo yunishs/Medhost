@@ -197,21 +197,25 @@
                 <label>Date</label><br>
                 <input type="datetime-local" id="date" name="date" value="<?php echo $date; ?>">
             </div>
-            <div class="input-box">
-                <label>Blood Pressure</label><br>
-                <textarea type="text" class="bp" id="bp" name="bp" placeholder="Enter the blood pressure.." ><?php echo $bp; ?></textarea>
+            <div class="column" >
+                <div class="input-box">
+                <label>Blood Pressure</label>
+                <input type="text" id="bp" name="bp" size="10px" value="<?php echo $bp; ?>">
+                </div>
+                <div class="input-box">
+                <label>Sugar level</label>
+                <input type="text" id="sugar_level" name="sugar_level" size="10px" value="<?php echo $sugar_level; ?>">
+                </div>
+            </div>
+            <div class="column" >
+                <div class="input-box">
+                <label>Heart Rate</label>
+                <input type="text" id="heart_rate" name="heart_rate" size="10px" value="<?php echo $heart_rate; ?>">
             </div>
             <div class="input-box">
-                <label>Sugar Level</label><br>
-                <textarea type="text" class="sugar_level" id="sugar_level" name="sugar_level" placeholder="Enter the sugar level.." ><?php echo $sugar_level; ?></textarea>
+                <label>SPO2</label>
+                <input type="text" id="spo2" name="spo2" size="10px" value="<?php echo $spo2; ?>">
             </div>
-            <div class="input-box">
-                <label>Heart Rate</label><br>
-                <textarea type="text" class="heart_rate" id="heart_rate" name="heart_rate" placeholder="Enter the heart rate.." ><?php echo $heart_rate; ?></textarea>
-            </div>
-            <div class="input-box">
-                <label>SPO2</label><br>
-                <textarea type="text" class="spo2" id="spo2" name="spo2" placeholder="Enter the spo2.." ><?php echo $spo2; ?></textarea>
             </div>
             <div class="input-box">
                 <label>Condition of Patient</label><br>

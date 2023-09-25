@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -6,23 +7,75 @@
 }
 
 body {
-  min-height: 100vh;
-  /* display: flex; */
-  align-items:normal;
-  justify-content: left;
-  padding: 20px;
-  text-align: left;
-  padding-left: 10%;
-  background-image:url('../images/default_background.webp');
-  background-repeat:no-repeat;
-  /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
-  background-attachment:fixed;
-  /* yesle fixed huda chai background chai move hudainaa */
-  background-size:100% 100%;
+    min-height: 100vh;
+    /* display: flex; */
+    /* align-items:normal;
+    justify-content: left; */
+    padding: 20px;
+    text-align: left;
+    padding-left: 10%;
+    background-image:url('../images/default_background.webp');
+    background-repeat:no-repeat;
+    /* normally picture ko size anusar web page ma pic repeat bhayera aauxa 2 3 4 5 ota tara yo garda aauta matra aauxa */
+    background-attachment:fixed;
+    /* yesle fixed huda chai background chai move hudainaa */
+    background-size:100% 100%;
 }
+header {
+  height: 70px;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 100;
+  box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
+  display:block;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(16, 47, 184);
+  }
+  
+  .icn {
+  height: 45px;
+  }
+  .menuicn {
+  cursor: pointer;
+  }
+  
+  .message,
+  .logosec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  .logosec {
+    gap: 60px;
+    }
+.logout
+{
+  margin-left: auto;
+}
+.logosec .logout .log
+{
+  align-content: center;
+  padding-left: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  color: rgb(7, 57, 118);
+}
+i
+{
+  
+  font-size:30px;
+}
+
 table
 {    
-    
+    margin-top: 15px;
     border-collapse:initial;
     width: 98%;
     padding:15px 15px 0px 15px;
@@ -32,7 +85,7 @@ th
     text-align: left;
     padding: 8px 8px 8px 8px;
     border-bottom: 1px solid #8f8c8c;
-    ;background-color: #dddddd;
+    background-color: #dddddd;
 
 }
 td {
@@ -42,38 +95,17 @@ td {
     background-color: #f2f2f2
 }
 tr:nth-child(even){background-color: #96f08a;}
-
-header{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  left: 0;
-  height:20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 40px;
-  background-color: #fafaff;
-  }
-  .logo {
-  font-size: 30px;
-  font-weight: 600;
-  color: rgb(16, 47, 184);
-  }
-  .icn {
-  height: 45px;
-  }
-  .menuicn {
-  cursor: pointer;
-  }
-  .logosec {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
+h1{
+ text-align: center;
+ color:rgb(29, 36, 112);
 }
+
 .container {
+  width:100%;
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .container header {
   font-size: 1.5rem;
@@ -83,20 +115,27 @@ header{
 }
 .container .form {
   margin-top: 30px;
+  width:70%;
 }
 .form .input-box {
-  width: 75%;
+  width: 100%;
   margin-top: 20px;
 }
 .input-box label {
   color: #333;
-  margin-bottom:50px;
 }
+/*.container .form .input{
+  width: 100%;
+  margin-top: 20px;
+  height: 100px;
+  padding: 50px;
+  
+}*/
 .form :where(.input-box textarea) {
   /* position: relative; */
   
-  height: 90px;
-  width: 90%;
+  height: 100px;
+  width: 100%;
   outline: none;
   font-size: 1rem;
   color: #707070;
@@ -106,20 +145,19 @@ header{
   padding: 20px 20px 20px 20px;
   text-wrap:wrap;
 }
-.form :where(.input-box input) 
-{
+.form :where(.input-box input, .select-box, .input-option select) {
   /* position: relative; */
-  height: 30px;
-  width: 30%;
+  height: 50px;
+  width: 100%;
   outline: none;
   font-size: 1rem;
   color: #707070;
   margin-top: 8px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  padding: 20px 20px 20px 20px;
-  text-wrap:wrap;
+  padding: 0 15px;
 }
+
 textarea
 {
   resize: none;
@@ -128,9 +166,51 @@ textarea
 .input-box textarea:focus,input:focus {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
 .form button {
-  height: 45px;
-  width: 50%;
+  height: 55px;
+  width: 100%;
   color: #fff;
   font-size: 1rem;
   font-weight: 400;
@@ -138,18 +218,21 @@ textarea
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: rgb(130, 106, 251);
-  align-items: center;
+  background: rgb(95, 185, 100);
 }
 .form button:hover {
-  background: rgb(88, 56, 250);
+  background: rgb(95, 185, 100);
 }
 /*Responsive*/
-@media screen and (max-width:500px) {
+@media screen and (max-width:700px) {
   .form .column {
     flex-wrap: wrap;
   }
   .form :where(.gender-option, .gender) {
     row-gap: 15px;
   }
+}
+h3
+{
+  margin-top:30px;
 }
