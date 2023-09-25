@@ -39,7 +39,7 @@
     
     $pat_description=$row["pat_description"];
     $roomid_fk=$row['roomid_fk'];
-    if($pat_type='inpatient')
+    if($pat_type=='inpatient')
     {
         $ward_name='';
         $room_name='';
@@ -48,9 +48,9 @@
         $rowi=mysqli_fetch_assoc($resulti);
         $ward_name=$rowi['ward_name'];
         $room_name=$rowi['room_name'];
-    }
-    $sqlx="UPDATE room SET alloc_stat='0' WHERE room_id='$roomid_fk'";
+        $sqlx="UPDATE room SET alloc_stat='0' WHERE room_id='$roomid_fk'";
     $resultx=mysqli_query($con,$sqlx);
+    }
     if(isset($_POST['enter']))
     {
         function test_input($data) {
@@ -139,10 +139,7 @@
         } 
 
         {
-            $address=test_input($_POST['address']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$address)) {
-                $addressErr = "Only letters and whitespace allowed in address";
-            }    
+            $address=test_input($_POST['address']);  
         }
         
         // if (empty($_POST["gender1"])) 
@@ -251,15 +248,16 @@
             // $sec1 = date_create($discharge_date);
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
-            if(isset($roomid_fk)){
+            if(!empty($roomid_fk)){
                 $_SESSION['ward_up']=$roomid_fk;
                 // $sqlx="UPDATE room SET alloc_stat='0' WHERE room_id='$roomid_fk'";
                 // $resultx=mysqli_query($con,$sqlx);
                 $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date',pat_type='$pat_type',roomid_fk='$roomid_fk' WHERE pid=$id";
                 $result=mysqli_query($con,$sql);
+                $sql1="UPDATE room SET alloc_stat='1' WHERE room_id='$roomid_fk'";
+                $result1=mysqli_query($con,$sql1);
                 if($result){
-                    $sql1="UPDATE room SET alloc_stat='1' WHERE room_id='$roomid_fk'";
-                    $result1=mysqli_query($con,$sql1);
+                    
                 // function_alert("Data inserted successfully");
                     header('Location: pat_view_medical.php');
                 }
@@ -271,7 +269,7 @@
             }
             else
             {
-                $sql2="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date',pat_type='$pat_type',roomid_fk='$roomid_fk' WHERE pid=$id";
+                $sql2="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date',pat_type='$pat_type',roomid_fk=NULL WHERE pid=$id";
                 $result2=mysqli_query($con,$sql2);
                 if($result2){
                 
@@ -567,12 +565,6 @@
                     </div>
             </div>
         </div>
-        <!-- <?php 
-            if(isset($_POST['roomid_fk']))
-            {
-                $roomid_fk=$_POST['roomid_fk'];
-            }
-        ?> -->
         <div class="input-box">
           <label>Patient description during admission</label><br>
           <textarea type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition"><?php echo $pat_description; ?></textarea>
