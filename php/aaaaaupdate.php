@@ -1,10 +1,56 @@
 <?php
-
+    session_start();
+    $_SESSION['ward_up']='';
     include '..\database\connect.php';
-    //initializing variables
-    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$rel_name=$rel_relation=$rel_contact=$rel_email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned=$roomid_fk="";
-    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admissionErr=$discharge_dateErr=$doctor_assignedErr=null;
-// try{
+    $id=$_GET['updateid'];
+    // $id=$_SESSION['update_id'];
+    // header("update_pat_frontdesk.php","update_pat_frontdesk.php",FALSE);
+
+    $sql="SELECT * from patient_info WHERE pid=$id";
+    $result=mysqli_query($con,$sql);
+    $row=mysqli_fetch_assoc($result);
+
+    $fname=$row['fname'];
+    $mname=$row['mname'];
+    $lname=$row['lname'];
+    $contact=$row['contact'];
+    $age=$row['age'];
+    $gender=$row['gender'];
+    $nationality=$row['nationality'];
+    $bloodgroup=$row['bloodgroup'];
+    $address=$row['address'];
+    $email=$row['email'];
+    $rel_name=$row['rel_name'];
+    $rel_relation=$row['rel_relation'];
+    $rel_contact=$row['rel_contact'];
+    $rel_email=$row['rel_email'];
+    $doctor_assigned=$row['doctor_assigned'];
+    $date_of_admission=$row['date_of_admission'];
+    $pat_type=$row['pat_type'];
+    if(empty($row['discharge_date']))
+    {
+        $discharge_date='';
+    }
+    else
+    {
+        $discharge_date=$row['discharge_date'];
+    }
+    $date_of_admission=$row['date_of_admission'];
+    
+    $pat_description=$row["pat_description"];
+    $roomid_fk=$row['roomid_fk'];
+    if($pat_type='inpatient')
+    {
+        $ward_name='';
+        $room_name='';
+        $sqli="SELECT * FROM room as r JOIN ward as w on r.ward_id_fk=w.ward_id WHERE r.room_id=$roomid_fk";
+        $resulti=mysqli_query($con,$sqli);
+        $rowi=mysqli_fetch_assoc($resulti);
+        $ward_name=$rowi['ward_name'];
+        $room_name=$rowi['room_name'];
+    }
+    $sqlx="UPDATE room SET alloc_stat='0' WHERE room_id='$roomid_fk'";
+    $resultx=mysqli_query($con,$sqlx);
     if(isset($_POST['enter']))
     {
         function test_input($data) {
@@ -162,6 +208,10 @@
         else if (empty($_POST['date_of_admission1'])) 
         {
             $date_of_admission=test_input($_POST['date_of_admission']);   
+        }
+
+        {
+            $discharge_date=test_input($_POST['discharge_date']);   
         } 
 
         if (empty($_POST["doctor_assigned"])) 
@@ -201,9 +251,11 @@
             // $sec1 = date_create($discharge_date);
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
-            if(!empty($roomid_fk))
-            {
-                $sql="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,discharge_date,doctor_assigned,pat_type,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned','inpatient','$roomid_fk')";
+            if(isset($roomid_fk)){
+                $_SESSION['ward_up']=$roomid_fk;
+                // $sqlx="UPDATE room SET alloc_stat='0' WHERE room_id='$roomid_fk'";
+                // $resultx=mysqli_query($con,$sqlx);
+                $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date',pat_type='$pat_type',roomid_fk='$roomid_fk' WHERE pid=$id";
                 $result=mysqli_query($con,$sql);
                 if($result){
                     $sql1="UPDATE room SET alloc_stat='1' WHERE room_id='$roomid_fk'";
@@ -219,7 +271,7 @@
             }
             else
             {
-                $sql2="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,discharge_date,doctor_assigned,pat_type,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned','outpatient',NULL)";
+                $sql2="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date',pat_type='$pat_type',roomid_fk='$roomid_fk' WHERE pid=$id";
                 $result2=mysqli_query($con,$sql2);
                 if($result2){
                 
@@ -309,7 +361,7 @@
     <link rel="stylesheet" href="..\public\pat_registration.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="..\images\MedHost.png">
-    <title>Patient Registration</title>
+    <title>Update Patient</title>
   </head>
   <body>
   <header>
@@ -477,11 +529,11 @@
             <div class="column">
                 <div class="input-box">
                     <label>Date of Appointment</label>
-                    <input type="datetime-local" id="date_of_admission1" name="date_of_admission1" value=<?php echo $date_of_admission; ?>>
+                    <input type="datetime-local" id="date_of_admission1" name="date_of_admission1" value="<?php echo $date_of_admission; ?>">
                 </div>
                 <div class="input-box">
                     <label>Date of Visit</label>
-                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
+                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value="<?php echo $discharge_date; ?>">
                 </div>
             </div>
         </div>
@@ -489,11 +541,11 @@
             <div class="column">
                 <div class="input-box">
                     <label>Date of Admission</label>
-                    <input type="datetime-local" id="date_of_admission" name="date_of_admission" value=<?php echo $date_of_admission; ?>>
+                    <input type="datetime-local" id="date_of_admission" name="date_of_admission" value="<?php echo $date_of_admission; ?>">
                 </div>
                 <div class="input-box">
                     <label>Date of Discharge</label>
-                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
+                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value="<?php echo $discharge_date; ?>">
                 </div>
             </div>
             <div class="column">
@@ -501,7 +553,7 @@
                         <label>Ward</label>
                         <div class="input-option">
                             <select id="ward">
-                                <option value="" form="multi">Select Ward</option>
+                                <option value="" form="multi"><?php echo $ward_name;?></option>
                             </select>
                         </div>
                     </div>
@@ -509,18 +561,18 @@
                         <label>Room</label>
                         <div class="input-option">
                             <select id="room" name="room_idfk" form="all">
-                                <option value="" form="multi"></option>
+                                <option value="" form="multi"><?php echo $room_name;?></option>
                             </select>
                         </div>
                     </div>
             </div>
         </div>
-        <?php 
+        <!-- <?php 
             if(isset($_POST['roomid_fk']))
             {
                 $roomid_fk=$_POST['roomid_fk'];
             }
-        ?>
+        ?> -->
         <div class="input-box">
           <label>Patient description during admission</label><br>
           <textarea type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition"><?php echo $pat_description; ?></textarea>
@@ -535,7 +587,7 @@
   $(document).ready(function(){
   	function loadData(type, category_id){
   		$.ajax({
-  			url : "load-cs.php",
+  			url : "load-cs-update.php",
   			type : "POST",
   			data: {type : type, id : category_id},
   			success : function(data){

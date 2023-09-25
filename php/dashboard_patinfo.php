@@ -59,7 +59,7 @@
                </a>
                <ul class="serv-show1">
                   <li><a href="#" onclick="document.getElementById('if1').src = 'view_prognosis.php'">View</a></li>
-                  <li><a href="#" onclick="document.getElementById('if1').src = 'prognosis_form.php'">Add</a></li>  
+                  <li><a href="#" onclick="document.getElementById('if1').src = 'aaaaaaa.php'">Add</a></li>  
                </ul>
             </li>
             
