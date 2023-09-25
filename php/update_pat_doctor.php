@@ -446,7 +446,7 @@
             </div>
             <div class="input-box">
                 <label>Address</label>
-                <input type="text" id="address" name="address" value=<?php echo $address; ?>>
+                <input type="text" id="address" name="address" value="<?php echo $address; ?>">
             </div>
         </div>
         <div class="column">

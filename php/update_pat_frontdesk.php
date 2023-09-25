@@ -382,7 +382,7 @@
     </header>
     <br>
     <section class="container">
-      <h1>Registration Form</h1>
+      <h1>Patient Update Form</h1>
       <form id="multi" method="POST"></form> 
       <form class="form" id="all" method="POST">
       <div class="column" >
@@ -446,7 +446,7 @@
             </div>
             <div class="input-box">
                 <label>Address</label>
-                <input type="text" id="address" name="address" value=<?php echo $address; ?>>
+                <input type="text" id="address" name="address" value="<?php echo $address; ?>">
             </div>
         </div>
         <div class="column">
@@ -567,12 +567,7 @@
                     </div>
             </div>
         </div>
-        <!-- <?php 
-            if(isset($_POST['roomid_fk']))
-            {
-                $roomid_fk=$_POST['roomid_fk'];
-            }
-        ?> -->
+        
         <div class="input-box">
           <label>Patient description during admission</label><br>
           <textarea type="text" class="pat_description" id="pat_description" name="pat_description" placeholder="Enter the patient's initial condition"><?php echo $pat_description; ?></textarea>
