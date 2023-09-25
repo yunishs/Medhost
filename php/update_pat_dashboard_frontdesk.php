@@ -2,7 +2,7 @@
     session_start();
     $_SESSION['ward_up']='';
     include '..\database\connect.php';
-    $id=$_GET['updateid'];
+    $id=$_SESSION['pid'];
     // $id=$_SESSION['update_id'];
     // header("update_pat_frontdesk.php","update_pat_frontdesk.php",FALSE);
 
@@ -139,10 +139,7 @@
         } 
 
         {
-            $address=test_input($_POST['address']);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$address)) {
-                $addressErr = "Only letters and whitespace allowed in address";
-            }    
+            $address=test_input($_POST['address']);  
         }
         
         // if (empty($_POST["gender1"])) 
@@ -261,7 +258,7 @@
                     $sql1="UPDATE room SET alloc_stat='1' WHERE room_id='$roomid_fk'";
                     $result1=mysqli_query($con,$sql1);
                 // function_alert("Data inserted successfully");
-                    header('Location: pat_view_frontdesk.php');
+                    header('Location: individual_patview_frontdesk.php');
                 }
                 else
                 {
@@ -276,7 +273,7 @@
                 if($result2){
                 
                     // function_alert("Data inserted successfully");
-                        header('Location: pat_view_frontdesk.php');
+                        header('Location: individual_patview_frontdesk.php');
                 }
                 else
                 {
@@ -364,7 +361,7 @@
     <title>Update Patient</title>
   </head>
   <body>
-  <header>
+  <!-- <header>
         <div class="logosec">
                 <a href="dashboard_frontdesk.php">
                     <img src="..\images\MedHost.png"
@@ -379,7 +376,7 @@
                     <a href="logout.php" style="text-decoration:none;"><span class="log">Logout</span></a>
                 </div>
         </div>
-    </header>
+    </header>-->
     <br>
     <section class="container">
       <h1>Registration Form</h1>
@@ -446,7 +443,7 @@
             </div>
             <div class="input-box">
                 <label>Address</label>
-                <input type="text" id="address" name="address" value=<?php echo $address; ?>>
+                <input type="text" id="address" name="address" value="<?php echo $address; ?>">
             </div>
         </div>
         <div class="column">
@@ -616,12 +613,12 @@
   });
   
 </script>
-    <script>
+    <!-- <script>
         Window.addEventaListener("scroll",function(){
         var header= document.querySelector("header");
         header.classList.toggle("sticky",window.scrollY>0);
         })
-    </script>
+    </script> -->
   </body>
 </html>
         

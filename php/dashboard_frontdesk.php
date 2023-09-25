@@ -54,7 +54,7 @@
                         <a href="searchpatient_frontdesk.php" class="link">
                             <div class="box box1">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <span class="text">Search </span>
+                                <span class="text">Search Patient</span>
                             </div>
                         </a>
                         <a href="pat_view_frontdesk.php" class="link">
