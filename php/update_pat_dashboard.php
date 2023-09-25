@@ -380,7 +380,7 @@
     </header>-->
     <br>
     <section class="container">
-      <h1>Registration Form</h1>
+      <h1>Update Patient Form</h1>
       <form id="multi" method="POST"></form> 
       <form class="form" id="all" method="POST">
       <div class="column" >

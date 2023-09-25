@@ -380,7 +380,7 @@
     </header>-->
     <br>
     <section class="container">
-      <h1>Registration Form</h1>
+      <h1>Update Patient Form</h1>
       <form id="multi" method="POST"></form> 
       <form class="form" id="all" method="POST">
       <div class="column" >
@@ -457,7 +457,7 @@
         <div class="column">
             <div class="input-box">
                 <label>Name</label>
-                <input type="text" id="rel_name" name="rel_name" value=<?php echo $rel_name; ?>>
+                <input type="text" id="rel_name" name="rel_name" value="<?php echo $rel_name; ?>">
             </div>
             <div class="input-box">
                 <label>Relation</label>
