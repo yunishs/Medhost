@@ -39,7 +39,7 @@
     
     $pat_description=$row["pat_description"];
     $roomid_fk=$row['roomid_fk'];
-    if($pat_type='inpatient')
+    if($pat_type=='inpatient')
     {
         $ward_name='';
         $room_name='';
