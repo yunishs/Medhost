@@ -64,6 +64,12 @@
                 $discharge_date=$row['discharge_date'];
                 $pat_description=$row['pat_description'];
                 $doctor_assigned=$row['doctor_assigned'];
+                $rel_name=$row['rel_name'];
+                $rel_relation=$row['rel_relation'];
+                $rel_contact=$row['rel_contact'];
+                $rel_email=$row['rel_email'];
+                $pat_type=$row['pat_type'];
+                $roomid_fk=$row['roomid_fk'];
             }
         }
     ?>
@@ -101,28 +107,76 @@
             </tr>
             <tr>
         </table>
-
-        <table class="admission_details">
-            <tr>
-                <h3>Admission Details</h3>
-            </tr>
-            <tr>
-                <th>Doctor Assigned</th>
-                <td><?= $doctor_assigned?></td>
-            </tr>
-            <tr>
-                <th>Date of Admission</th>
-                <td><?= $date_of_admission?></td>
-            </tr>
-            <tr>
-                <th>Date of discharge</th>
-                <td><?= $discharge_date?></td>
-            </tr> 
-            <tr>
-                <th>Patient Description During Admission</th>
-                <td><?= $pat_description ?></td>
-            </tr>  
-        </table>
+        <?php
+        if($pat_type='inpatient')
+        {
+            $sql1="SELECT * FROM `room` as r JOIN ward as w ON r.ward_id_fk=w.ward_id where room_id='$roomid_fk'";
+            $result1=mysqli_query($con,$sql1);
+            if($result1)
+            {
+                while($row1=mysqli_fetch_assoc($result1))
+                {
+                    $room_name=$row1['room_name'];
+                    $ward_name=$row1['ward_name'];
+                }
+                    echo"
+                <table class='admission_details'>
+                    <tr>
+                        <h3>Admission Details</h3>
+                    </tr>
+                    <tr>
+                        <th>Doctor Assigned</th>
+                        <td><?= $doctor_assigned?></td>
+                    </tr>
+                    <tr>
+                        <th>Ward Assigned</th>
+                        <td><?= $ward_name?></td>
+                    </tr>
+                    <tr>
+                        <th>Room Assigned</th>
+                        <td><?= $room_name?></td>
+                    </tr>
+                    <tr>
+                        <th>Date of Admission</th>
+                        <td><?= $date_of_admission?></td>
+                    </tr>
+                    <tr>
+                        <th>Date of discharge</th>
+                        <td><?= $discharge_date?></td>
+                    </tr> 
+                    <tr>
+                        <th>Patient Description During Admission</th>
+                        <td><?= $pat_description ?></td>
+                    </tr>  
+                </table>";
+            }
+        }
+        elseif($pat_type='outpatient')
+        {
+                echo"
+                <table class='admission_details'>
+                    <tr>
+                        <h3>Appointment Details</h3>
+                    </tr>
+                    <tr>
+                        <th>Doctor Assigned</th>
+                        <td><?= $doctor_assigned?></td>
+                    </tr>
+                    <tr>
+                        <th>Date of Visit</th>
+                        <td><?= $date_of_admission?></td>
+                    </tr>
+                    <tr>
+                        <th>Date of next visit</th>
+                        <td><?= $discharge_date?></td>
+                    </tr> 
+                    <tr>
+                        <th>Patient Description </th>
+                        <td><?= $pat_description ?></td>
+                    </tr>  
+                </table>";
+        }
+        ?>
 
     </div>
 </body>
