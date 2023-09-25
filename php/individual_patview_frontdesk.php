@@ -126,27 +126,27 @@
                     </tr>
                     <tr>
                         <th>Doctor Assigned</th>
-                        <td><?= $doctor_assigned?></td>
+                        <td>$doctor_assigned</td>
                     </tr>
                     <tr>
                         <th>Ward Assigned</th>
-                        <td><?= $ward_name?></td>
+                        <td>$ward_name</td>
                     </tr>
                     <tr>
                         <th>Room Assigned</th>
-                        <td><?= $room_name?></td>
+                        <td> $room_name</td>
                     </tr>
                     <tr>
                         <th>Date of Admission</th>
-                        <td><?= $date_of_admission?></td>
+                        <td> $date_of_admission</td>
                     </tr>
                     <tr>
                         <th>Date of discharge</th>
-                        <td><?= $discharge_date?></td>
+                        <td> $discharge_date</td>
                     </tr> 
                     <tr>
                         <th>Patient Description During Admission</th>
-                        <td><?= $pat_description ?></td>
+                        <td> $pat_description </td>
                     </tr>  
                 </table>";
             }
@@ -160,19 +160,19 @@
                     </tr>
                     <tr>
                         <th>Doctor Assigned</th>
-                        <td><?= $doctor_assigned?></td>
+                        <td> $doctor_assigned</td>
                     </tr>
                     <tr>
                         <th>Date of Visit</th>
-                        <td><?= $date_of_admission?></td>
+                        <td> $date_of_admission</td>
                     </tr>
                     <tr>
                         <th>Date of next visit</th>
-                        <td><?= $discharge_date?></td>
+                        <td> $discharge_date</td>
                     </tr> 
                     <tr>
                         <th>Patient Description </th>
-                        <td><?= $pat_description ?></td>
+                        <td> $pat_description </td>
                     </tr>  
                 </table>";
         }
