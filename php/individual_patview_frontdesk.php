@@ -108,21 +108,27 @@
             <tr>
         </table>
         <?php
-        if($pat_type='inpatient')
+        if($pat_type=='inpatient')
         {
             $sql1="SELECT * FROM `room` as r JOIN ward as w ON r.ward_id_fk=w.ward_id where room_id='$roomid_fk'";
             $result1=mysqli_query($con,$sql1);
             if($result1)
             {
+                $room_name=$ward_name='';
                 while($row1=mysqli_fetch_assoc($result1))
                 {
                     $room_name=$row1['room_name'];
                     $ward_name=$row1['ward_name'];
                 }
+            }
                     echo"
                 <table class='admission_details'>
                     <tr>
                         <h3>Admission Details</h3>
+                    </tr>
+                    <tr>
+                        <th>Patient Type</th>
+                        <td>$pat_type</td>
                     </tr>
                     <tr>
                         <th>Doctor Assigned</th>
@@ -149,14 +155,19 @@
                         <td> $pat_description </td>
                     </tr>  
                 </table>";
-            }
         }
-        elseif($pat_type='outpatient')
+        ?>
+        <?php
+        if($pat_type=='outpatient')
         {
                 echo"
                 <table class='admission_details'>
                     <tr>
                         <h3>Appointment Details</h3>
+                    </tr>
+                    <tr>
+                    <th>Patient Type</th>
+                        <td>$pat_type</td>
                     </tr>
                     <tr>
                         <th>Doctor Assigned</th>
