@@ -186,7 +186,27 @@
                 </table>";
         }
         ?>
-
+ <table>
+                    <tr>
+                        <h3>In case of emergency</h3>  
+                    </tr>
+                    <tr>
+                    <th>Name</th>
+                        <td>$rel_name</td>
+                    </tr>
+                    <tr>
+                        <th>Relation</th>
+                        <td>$rel_relation</td>
+                    </tr>
+                    <tr>
+                        <th>Contact</th>
+                        <td> $rel_contact</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td> $rel_email</td>
+                    </tr> 
+                </table>
     </div>
 </body>
 </html>
