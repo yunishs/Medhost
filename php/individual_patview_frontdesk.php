@@ -121,7 +121,7 @@
                     $ward_name=$row1['ward_name'];
                 }
             }
-                    echo"
+            echo"
                 <table class='admission_details'>
                     <tr>
                         <h3>Admission Details</h3>
@@ -156,8 +156,6 @@
                     </tr>  
                 </table>";
         }
-        ?>
-        <?php
         if($pat_type=='outpatient')
         {
                 echo"
