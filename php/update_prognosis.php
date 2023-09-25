@@ -10,6 +10,10 @@
     $condition_of_pat=$row['condition_of_pat'];
     $remarks=$row['remarks'];
     $date=$row['date'];
+    $bp=$row['bp'];
+    $sugar_level=$row['sugar_level'];
+    $heart_rate=$row['heart_rate'];
+    $spo2=$row['spo2'];
     $pid_fk=$row['pid_fk'];
 
     $sql1="SELECT * from patient_info as p JOIN pat_prognosis as d on d.pid_fk=p.pid WHERE p.pid=$pid_fk";
@@ -69,6 +73,37 @@
         {
             $date=test_input($_POST['date']);   
         } 
+        if(isset($_POST['bp']))
+        {
+            $bp=test_input($_POST['bp']);
+            if (!preg_match("/^[0-9]+.[0-9]*\s*[A-Za-z0-9]*\s*$/",$bp)) {
+                $bpErr = "Only number,letter and '/' allowed in blood pressure";
+            }    
+        }
+
+        if (isset($_POST["sugar_level"])) 
+        {
+            $sugar_level=test_input($_POST['sugar_level']);
+            if (!preg_match("/^[A-Za-z0-9]+\s*.*$/",$sugar_level)) {
+                $sugar_levelErr = "Only letters,numbers and fullstop allowed in sugar level";
+            }    
+        }
+
+        if (isset($_POST["heart_rate"])) 
+        {
+            $heart_rate=test_input($_POST['heart_rate']);
+            if (!preg_match("/^[0-9]+\s*[A-Za-z0-9]*$/",$heart_rate)) {
+                $heart_rateErr = "Only '120 bpm' format  allowed in heart rate";
+            }    
+        }
+
+        if (isset($_POST["spo2"])) 
+        {
+            $spo2=test_input($_POST['spo2']);
+            if (!preg_match("/^[0-9]+%$/",$spo2)) {
+                $spo2Err = "Only '95%' format allowed in SPO2";
+            }    
+        } 
 
         // (!preg_match("/^[a-zA-Z]*$/",$mname))
         // (!preg_match("/^[0-9]{10,}$/",$contact))
@@ -87,7 +122,7 @@
         }
         
         
-        if(empty($condition_of_patErr) && empty($remarksErr) && empty($dateErr))
+        if(empty($condition_of_patErr) && empty($remarksErr) && empty($dateErr) && empty($bpErr) && empty($sugar_levelErr) && empty($heart_rateErr) && empty($spo2Err))
         {
             
             // $sec = date_create($date_0f_admission);
@@ -97,7 +132,7 @@
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
 
-            $sql="UPDATE pat_prognosis SET prog_id=$id,condition_of_pat='$condition_of_pat',remarks='$remarks',date='$date' WHERE prog_id=$id";
+            $sql="UPDATE pat_prognosis SET prog_id=$id,condition_of_pat='$condition_of_pat',remarks='$remarks',date='$date',bp='$bp',sugar_level='$sugar_level',heart_rate='$heart_rate',spo2='$spo2' WHERE prog_id=$id";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -120,6 +155,18 @@
             }
             if(!empty($dateErr)){
                 function_alert($dateErr);
+            }  
+            if(!empty($bpErr)){
+                function_alert($bpErr);
+            }
+            if(!empty($sugar_levelErr)){
+                function_alert($sugar_levelErr);
+            }
+            if(!empty($heart_rateErr)){
+                function_alert($heart_rateErr);
+            }  
+            if(!empty($spo2Err)){
+                function_alert($spo2Err);
             }  
         }
     }
@@ -149,6 +196,22 @@
             <div class="input-box">
                 <label>Date</label><br>
                 <input type="datetime-local" id="date" name="date" value="<?php echo $date; ?>">
+            </div>
+            <div class="input-box">
+                <label>Blood Pressure</label><br>
+                <textarea type="text" class="bp" id="bp" name="bp" placeholder="Enter the blood pressure.." ><?php echo $bp; ?></textarea>
+            </div>
+            <div class="input-box">
+                <label>Sugar Level</label><br>
+                <textarea type="text" class="sugar_level" id="sugar_level" name="sugar_level" placeholder="Enter the sugar level.." ><?php echo $sugar_level; ?></textarea>
+            </div>
+            <div class="input-box">
+                <label>Heart Rate</label><br>
+                <textarea type="text" class="heart_rate" id="heart_rate" name="heart_rate" placeholder="Enter the heart rate.." ><?php echo $heart_rate; ?></textarea>
+            </div>
+            <div class="input-box">
+                <label>SPO2</label><br>
+                <textarea type="text" class="spo2" id="spo2" name="spo2" placeholder="Enter the spo2.." ><?php echo $spo2; ?></textarea>
             </div>
             <div class="input-box">
                 <label>Condition of Patient</label><br>
