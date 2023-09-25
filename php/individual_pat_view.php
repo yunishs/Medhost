@@ -240,12 +240,13 @@
                     </div>
                 </tr>
 			    <thread>
-			        <tr>
-        				<th>S.N.</th>
-	        			<th>Date</th>
-		        		<th>Conditin of Patient</th>
-			        	<th>Remarks</th>
-	    		    </tr>
+                <tr>
+                <th>Prog_id</th>
+				<th>Date</th>
+				<th>Condition of Patient</th>
+				
+				<th>Remarks</th>
+			</tr>
 		        </thread>
     		    <tbody>
     	    		<?php
@@ -255,14 +256,23 @@
 			            {
 				    	    while($row=mysqli_fetch_assoc($result)){
     				    	    $prog_id=$row['prog_id'];
-	    				        $date=$row['date'];
-    		    			    $condition_of_pat=$row['condition_of_pat'];
-	    		    		    $remarks=$row['remarks'];
+					$date=$row['date'];
+					$condition_of_pat=$row['condition_of_pat'];
+					$bp=$row['bp'];
+					$sugar_level=$row['sugar_level'];
+					$heart_rate=$row['heart_rate'];
+					$spo2=$row['spo2'];
+				    $remarks=$row['remarks'];
+
 			    		        echo " <tr>
 				    	        <th>$prog_id</th>
-    				    	    <td>$date</td>
-	    				        <td>$condition_of_pat</td>
-		    			        <td>$remarks</td>
+					    <td>$date</td>
+					    <td>$condition_of_pat</td>
+						<td>$bp</td>
+						<td>$sugar_level</td>
+						<td>$heart_rate</td>
+						<td>$spo2</td>
+					    <td>$remarks</td>
         			    		</tr>";
 	        			    }
 		        	    }

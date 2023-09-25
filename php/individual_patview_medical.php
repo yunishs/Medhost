@@ -244,29 +244,42 @@
         				<th>S.N.</th>
 	        			<th>Date</th>
 		        		<th>Conditin of Patient</th>
+                        <th>BP</th>
+				<th>Sugar</th>
+				<th>Heart Rate</th>
+				<th>SPO2</th>
 			        	<th>Remarks</th>
 	    		    </tr>
 		        </thread>
     		    <tbody>
-    	    		<?php
+                <?php
     	    		    $sql="SELECT * FROM pat_prognosis WHERE pid_fk=$id ORDER BY prog_id DESC LIMIT 5";
 	    	    	    $result=mysqli_query($con,$sql);
 		    	        if($result)
 			            {
 				    	    while($row=mysqli_fetch_assoc($result)){
     				    	    $prog_id=$row['prog_id'];
-	    				        $date=$row['date'];
-    		    			    $condition_of_pat=$row['condition_of_pat'];
-	    		    		    $remarks=$row['remarks'];
+					$date=$row['date'];
+					$condition_of_pat=$row['condition_of_pat'];
+					$bp=$row['bp'];
+					$sugar_level=$row['sugar_level'];
+					$heart_rate=$row['heart_rate'];
+					$spo2=$row['spo2'];
+				    $remarks=$row['remarks'];
+
 			    		        echo " <tr>
 				    	        <th>$prog_id</th>
-    				    	    <td>$date</td>
-	    				        <td>$condition_of_pat</td>
-		    			        <td>$remarks</td>
+					    <td>$date</td>
+					    <td>$condition_of_pat</td>
+						<td>$bp</td>
+						<td>$sugar_level</td>
+						<td>$heart_rate</td>
+						<td>$spo2</td>
+					    <td>$remarks</td>
         			    		</tr>";
 	        			    }
 		        	    }
-                    ?>	
+                    ?>		
 		        </tbody>
     		</div>
 	    </table>

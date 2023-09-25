@@ -66,6 +66,10 @@
                 <th>Prog_id</th>
 				<th>Date</th>
 				<th>Condition of Patient</th>
+				<th>BP</th>
+				<th>Sugar</th>
+				<th>Heart Rate</th>
+				<th>SPO2</th>
 				<th>Remarks</th>
 				<th>Operation</th>
 			</tr>
@@ -81,12 +85,20 @@
 					$prog_id=$row['prog_id'];
 					$date=$row['date'];
 					$condition_of_pat=$row['condition_of_pat'];
+					$bp=$row['bp'];
+					$sugar_level=$row['sugar_level'];
+					$heart_rate=$row['heart_rate'];
+					$spo2=$row['spo2'];
 				    $remarks=$row['remarks'];
 
 					echo '<tr>
 					    <th>'.$prog_id.'</th>
 					    <td>'.$date.'</td>
 					    <td>'.$condition_of_pat.'</td>
+						<td>'.$bp.'</td>
+						<td>'.$sugar_level.'</td>
+						<td>'.$heart_rate.'</td>
+						<td>'.$spo2.'</td>
 					    <td>'.$remarks.'</td>
 					    <td>
 					        <button class="button1"><a href="update_prognosis.php?updateid='.$prog_id.'" class="link1">Update</a></button>
