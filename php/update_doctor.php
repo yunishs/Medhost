@@ -205,59 +205,71 @@
     <link rel="icon" type="image/png" href="..\images\MedHost.png">
 </head>
 <body>
-    <form method="post">
-        <div class="input-box">
-            <h1 class="h1">Doctors Information</h1>
-            <!-- <form action="/action_page.css"></form> -->
-            <div class="row">
-                <div class="col-25">
-                    <label class="fname">First name:</label>
-                        <input type="stext" id="fname" name="fname" value=<?php echo $fname; ?>>
-                    <label class="mname">Middle name:</label>
-                        <input type="stext" id="mname" name="mname" value=<?php echo $mname; ?>>
-                    <label class="lname">Last name:</label>
-                        <input type="stext" id="lname" name="lname" value=<?php echo $lname; ?>>
+    <!--<section class="container">-->
+    <h1>Registration Form</h1>
+     <form id="multi" method="POST"></form>
+      <form class="form" id="all" method="POST">  
+      <div class="input-box">
+      <div class="column" >
+          <div class="input">
+            <label>First-name</label>
+            <input type="text" id="fname" name="fname" size="10px" value=<?php echo $fname; ?>>
+          </div>
+          <div class="input">
+            <label>Middle-Name</label>
+            <input type="text" id="mname" name="mname" size="10px" value=<?php echo $mname; ?>>
+          </div>
+          <div class="input">
+            <label>Last-Name</label>
+            <input type="text" id="lname" name="lname" size="10px" value=<?php echo $lname; ?>>
+          </div>
+        </div>
+        <div class="column">
+          <div class="input">
+            <label>Contact</label>
+            <input type="integer" id="contact" name="contact" value=<?php echo $contact; ?>>
+          </div>
+          <div class="input">
+            <label>Age</label>
+            <input type="number" id="age" name="age" value=<?php echo $age; ?>>
+          </div>
+        </div>
+        <div class="column">
+          <div class="input">
+                    <label>NMC ID: </label>
+                    <input type="integer" id="nmc_id" name="nmc_id" value=<?php echo $nmc_id; ?> >
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label class="nmc_id">NMC ID: </label>
-                        <input type="inti" id="nmc_id" name="nmc_id" value=<?php echo $nmc_id; ?>>
-                    <label class="specialization">Specialization: </label>
-                        <input type="stext" id="specialization" name="specialization" value=<?php echo $specialization; ?>>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label class="gender">Gender:</label>
+                <div class="input"> 
+                <label>Gender</label>
+                <div class="input-option">
                     <select name="gender" id="gender" type="sty">
                         <option>---</option>
                         <option VALUE="Male" <?php if($gender=="Male") echo 'selected="selected"'; ?>>Male</option>
                         <option VALUE="Female" <?php if($gender=="Female") echo 'selected="selected"'; ?>>Female</option>
                         <option VALUE="Others" <?php if($gender=="Others") echo 'selected="selected"'; ?>>Others</option>
-                    </select> 
-                    <label class="age">Age:</label>
-                        <input type="integer" id="age" name="age" value=<?php echo $age; ?>>
+                    </select>
+</div>
+        </div>
+</div>               
+        <div class="column">
+        <div class="input">
+                    <label>Specialization: </label>
+                        <input type="text" id="specialization" name="specialization" value=<?php echo $specialization; ?>>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label for="contact">Contact: </label>
-                    <input type="ini" id="contact" name="contact" value=<?php echo $contact; ?>>
-                    <label class="email">Email: </label>
-                    <input type="text" id="email" name="email" value=<?php echo $email; ?>>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label for="password">Password: </label>
-                    <input type="stext" id="password" name="password" value=<?php echo $password; ?>>
-                </div>
-            </div>
-            <div class="row">
-                <button type="enter" class="enter-btn" name="enter">ENTER</button>
+            </div>  
+        <div class="column">
+            <div class="input">
+                <label>Email Address</label>
+                <input type="text" id="email" name="email" value=<?php echo $email; ?>>
+</div>
+                <div class="input">
+                <label>Password</label>
+                <input type="text" id="password" name="password" value=<?php echo $password; ?>>
             </div>
         </div>
+       <div class="column">
+        <button type="submit" class="enter-btn" name="enter">ENTER</button>
+    </div>
     </form>
     
     <!-- <script>

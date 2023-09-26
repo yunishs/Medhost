@@ -1,10 +1,23 @@
 <?php
 
     include '..\database\connect.php';
-    //initializing variables
-    $fname=$mname=$lname=$age=$gender=$specialization=$nmc_id=$contact=$email=$password='';
-    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$specializationErr=$nmc_idErr=$contactErr=$emailErr=$passwordErr=null;
-// try{
+
+    $id=$_GET['updateid'];
+    $sql="SELECT * from doctor_info WHERE did=$id";
+    $result=mysqli_query($con,$sql);
+    $row=mysqli_fetch_assoc($result);
+
+    $fname=$row['fname'];
+    $mname=$row['mname'];
+    $lname=$row['lname'];
+    $nmc_id=$row['nmc_id'];
+    $specialization=$row['specialization'];
+    $gender=$row['gender'];
+    $age=$row['age'];
+    $contact=$row['contact'];
+    $email=$row['email'];
+    $password=$row['password'];
+
     if(isset($_POST['enter']))
     {
         function test_input($data) {
@@ -65,13 +78,13 @@
                 $ageErr = "Only numbers and not starting with zero allowed in age";
             }    
         }
-        if (empty($_POST["genderx"])) 
+        if (empty($_POST["gender"])) 
         {
             $genderErr = "Gender is required";
         } 
         else
         {
-            $gender=test_input($_POST['genderx']);   
+            $gender=test_input($_POST['gender']);   
         } 
         if (empty($_POST["nmc_id"])) 
         {
@@ -116,10 +129,10 @@
             if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($contactErr) &&empty($ageErr) 
             &&empty($genderErr) &&empty($specializationErr) &&empty($nmc_idErr) && empty($emailErr) && empty($passwordErr))
         {
-            $sql="insert into doctor_info(fname,mname,lname,nmc_id,specialization,gender,age,contact,email,password) values ('$fname','$mname','$lname','$nmc_id','$specialization','$gender','$age','$contact','$email','$password')";
+            $sql="UPDATE doctor_info SET did=$id,fname='$fname',mname='$mname',lname='$lname',nmc_id='$nmc_id',specialization='$specialization',gender='$gender',age='$age',contact='$contact',email='$email',password='$password' WHERE did=$id";
             $result=mysqli_query($con,$sql);
             if($result){
-                function_alert("Data inserted successfully");
+                // function_alert("Data inserted successfully");
                 header('Location: doctorview_admin.php');
             }
             else
@@ -128,13 +141,6 @@
                 die(mysqli_error($con));
                 
             }
-
-            $sql2="SELECT MAX(did) FROM doctor_info";
-            $result2=mysqli_query($con,$sql2);
-            $did_fk=mysqli_fetch_array($result2);
-            
-            $sql1="insert into login_information(email,password,role,did_fk) values ('$email','$password','1','$did_fk[0]')";
-            $result1=mysqli_query($con,$sql1);
         }
         else
         {
