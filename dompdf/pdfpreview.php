@@ -3,7 +3,7 @@
     // session_start();
 
     include ("..\database\connect.php");
-    $id=3;
+    $id=9;
     // $id=$_SESSION['pid'];
 
 
@@ -74,7 +74,7 @@ $html='<!DOCTYPE html>
     }
     
     .tbl td, .tbl th {
-      border: 1px solid #ddd;
+      border: 1px solid black;
       padding: 8px;
     }
     
@@ -84,8 +84,8 @@ $html='<!DOCTYPE html>
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      background-color: #38bc8c;
-      color: white;
+      background-color: white;
+      color: black;
     }
     h3
     {
@@ -137,7 +137,7 @@ $html='<!DOCTYPE html>
     }
     .pid,.did,.mid,.fid
     {
-        background-color: aliceblue;
+        background-color: white;
     }
       th{
         text-align: left;
@@ -202,7 +202,7 @@ $html='<!DOCTYPE html>
             </tr>
             <tr>
                 <th>Patient-ID</th>
-                <td class="pid">.'. $pid. '</td>
+                <td class="pid">'. $pid. '</td>
             </tr>
             <tr>
                 <th>Name</th>
@@ -211,21 +211,26 @@ $html='<!DOCTYPE html>
             <tr>
                 <th>Age</th>
                 <td>'. $age .'</td>
+            </tr>
+            <tr>
                 <th>Bloodgroup</th>
                 <td>'. $bloodgroup .'</td>
             </tr>
             <tr>
                 <th>Gender</th>
                 <td>'. $gender .'</td>
+            </tr>
+            <tr>
                 <th>Address</th>
                 <td>'. $address .'</td>
             </tr>
             <tr>
                 <th>Contact</th>
                 <td>'. $contact .'</td>
+            </tr>
+            <tr>
                 <th>Email</th>
-                <td>
-                '. $email .'</td>
+                <td>'. $email .'</td>
             </tr>
             <tr>
         </table>';
@@ -304,13 +309,10 @@ $html='<!DOCTYPE html>
                     </tr>  
                 </table>';
         }
-        $html .='
+        $html .='<p style="page-break-before: always">
+        <h3>Diagnosis Details</h3>
         <table class="tbl">
-                <tr>
-                
-                        <h3>Diagnosis Details</h3>
         
-                </tr>
 			    <tr>
         				<th>S.N.</th>
 	        			<th>Date</th>
@@ -340,11 +342,11 @@ $html='<!DOCTYPE html>
 		        	    }
                         $html .='</tbody>
 	    </table>
-
+        <h3>Prognosis Details</h3>
         <table class="tbl">
-                <tr>
-                        <h3>Prognosis Details</h3>
-                </tr>
+                
+                        
+                
                 <tr>
                 <th>Prog_id</th>
 				<th>Date</th>
@@ -419,7 +421,7 @@ $dompdf = new Dompdf();
 $dompdf->loadHtml($html); 
  
 // (Optional) Setup the paper size and orientation 
-$dompdf->setPaper('A4', 'landscape'); 
+$dompdf->setPaper('A4', 'portrait'); 
  
 // Render the HTML as PDF 
 $dompdf->render(); 
