@@ -9,7 +9,6 @@
     $row=mysqli_fetch_assoc($result);
     $symptoms=$row['symptoms'];
     $test_conducted=$row['test_conducted'];
-    $medication=$row['medication'];
     $date=$row['date'];
     $pid_fk=$row['pid_fk'];
 
@@ -59,17 +58,6 @@
             }    
         }
 
-        if (empty($_POST["medication"])) 
-        {
-            $medicationErr = "medication is required";
-        } 
-        else {
-            $medication=test_input($_POST['medication']);
-            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$medication)) {
-                $medicationErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in medication";
-            }    
-        }
-
         if (empty($_POST['date'])) 
         {
             $dateErr = "Date is required";
@@ -96,7 +84,7 @@
         }
         
         
-        if(empty($symptomsErr) && empty($test_conductedErr) && empty($medicationErr) && empty($dateErr))
+        if(empty($symptomsErr) && empty($test_conductedErr) && empty($dateErr))
         {
             
             // $sec = date_create($date_0f_admission);
@@ -105,7 +93,7 @@
             // $sec1 = date_create($discharge_date);
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
-            $sql="UPDATE pat_diagnosis SET diag_id=$id,symptoms='$symptoms',test_conducted='$test_conducted',medication='$medication',date='$date' WHERE diag_id=$id";
+            $sql="UPDATE pat_diagnosis SET diag_id=$id,symptoms='$symptoms',test_conducted='$test_conducted',date='$date' WHERE diag_id=$id";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -125,9 +113,6 @@
             }
             if(!empty($test_conductedErr)){
                 function_alert($test_conductedErr);
-            }
-            if(!empty($medicationErr)){
-                function_alert($medicationErr);
             }
             if(!empty($dateErr)){
                 function_alert($dateErr);
@@ -170,10 +155,6 @@
                 <div class="input-box">
                     <label>Test Conducted</label><br>
                     <textarea type="text" class="test_conducted" id="test_conducted" name="test_conducted" placeholder="Enter the tests conducted.." ><?php echo $test_conducted;?></textarea>
-                </div>
-                <div class="input-box">
-                    <label>Medication</label><br>
-                    <textarea type="text" class="medication" id="medication" name="medication" placeholder="Enter the prescribe medications.." ><?php echo $medication;?></textarea>
                 </div>
                 <button type="enter" class="enter-btn" name="enter">ENTER</button>
             </form>

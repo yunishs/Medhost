@@ -4,8 +4,8 @@
 
     include '..\database\connect.php';
     //initializing variables
-    $symptoms=$test_conducted=$medication=$date="";
-    $symptomsErr=$test_conductedErr=$medicationErr=$dateErr=null;
+    $symptoms=$test_conducte=$date="";
+    $symptomsErr=$test_conductedErr=$dateErr=null;
 
     $sql="SELECT * from patient_info where pid=$id";
 		$result=mysqli_query($con,$sql);
@@ -59,16 +59,6 @@
             }    
         }
 
-        if (empty($_POST["medication"])) 
-        {
-            $medicationErr = "medication is required";
-        } 
-        else {
-            $medication=test_input($_POST['medication']);
-            if (!preg_match("/^[A-Za-z0-9]*\s*,*.*'*$/",$medication)) {
-                $medicationErr = "Only letters,numbers,whitespace,comma,fullstop and apostrophe allowed in medication";
-            }    
-        }
 
         if (empty($_POST['date'])) 
         {
@@ -96,7 +86,7 @@
         }
         
         
-        if(empty($symptomsErr) && empty($test_conductedErr) && empty($medicationErr) && empty($dateErr))
+        if(empty($symptomsErr) && empty($test_conductedErr)  && empty($dateErr))
         {
             
             // $sec = date_create($date_0f_admission);
@@ -106,7 +96,7 @@
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
 
-            $sql="insert into pat_diagnosis(symptoms,test_conducted,medication,date,pid_fk) values ('$symptoms','$test_conducted','$medication','$date','$pid')";
+            $sql="insert into pat_diagnosis(symptoms,test_conducted,date,pid_fk) values ('$symptoms','$test_conducted','$date','$pid')";
             $result=mysqli_query($con,$sql);
             if($result){
                 // function_alert("Data inserted successfully");
@@ -126,9 +116,6 @@
             }
             if(!empty($test_conductedErr)){
                 function_alert($test_conductedErr);
-            }
-            if(!empty($medicationErr)){
-                function_alert($medicationErr);
             }
             if(!empty($dateErr)){
                 function_alert($dateErr);
@@ -169,10 +156,6 @@
                 <div class="input-box">
                     <label>Test Conducted</label><br>
                     <textarea type="text" class="test_conducted" id="test_conducted" name="test_conducted" placeholder="Enter the tests conducted.." value="<?php echo $test_conducted; ?>"></textarea>
-                </div>
-                <div class="input-box">
-                    <label>Medication</label><br>
-                    <textarea type="text" class="medication" id="medication" name="medication" placeholder="Enter the prescribe medications.." value="<?php echo $medication; ?>"></textarea>
                 </div>
                 <button type="enter" class="enter-btn" name="enter">ENTER</button>
             </form>

@@ -202,7 +202,6 @@
 	        			<th>Date</th>
 		        		<th>Symptoms</th>
 			        	<th>Test Conducted</th>
-    			    	<th>Medication</th>
 	    		    </tr>
 		        </thread>
     		    <tbody>
@@ -216,13 +215,11 @@
 	    				        $date=$row['date'];
     		    			    $symptoms=$row['symptoms'];
 	    		    		    $test_conducted=$row['test_conducted'];
-		    		    	    $medication=$row['medication'];
 			    		        echo " <tr>
 				    	        <th>$diag_id</th>
     				    	    <td>$date</td>
 	    				        <td>$symptoms</td>
 		    			        <td>$test_conducted</td>
-        		    			<td>$medication</td>
         			    		</tr>";
 	        			    }
 		        	    }
@@ -283,6 +280,52 @@
 		        </tbody>
     		</div>
 	    </table>
+        <table class="tbl">
+            <tr>
+                    <div class="update">
+                        <h3>Medication Details</h3>
+                        <button class="butn"><a href="view_medication.php" class="link">View All</a></button>
+                    </div>
+                </tr>
+            <thread>
+                <tr>
+                    <th>Med_id</th>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Purpose</th>
+                    <th>Dosage</th>
+                    <th>Frequency</th>
+                </tr>
+            </thread>
+            <tbody>
+                <?php
+                    $sql="SELECT * FROM medication WHERE pid_fk=$id ORDER BY med_id DESC LIMIT 5";
+                    $result=mysqli_query($con,$sql);
+                    if($result)
+                    {
+                            while($row=mysqli_fetch_assoc($result)){
+                            $med_id=$row['med_id'];
+                            $date=$row['date'];
+                            $name=$row['name'];
+                            $purpose=$row['purpose'];
+                            $dosage=$row['dosage'];
+                            $frequency=$row['frequency'];
+
+                            echo '<tr>
+                                <th>'.$med_id.'</th>
+                                <td>'.$date.'</td>
+                                <td>'.$name.'</td>
+                                <td>'.$purpose.'</td>
+                                <td>'.$dosage.'</td>
+                                <td>'.$frequency.'</td>
+                            </tr>';
+                        }
+                    }	
+                
+                ?>
+            </tbody>
+	    </table>
+
         <table>
                     <tr>
                         <h3>In case of emergency</h3>  

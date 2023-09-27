@@ -67,7 +67,6 @@
 				<th>Date</th>
 				<th>Symptoms</th>
 				<th>Tests Conducted</th>
-				<th>Medication</th>
 				<th>Operation</th>
 			</tr>
 		</thread>
@@ -83,14 +82,12 @@
 					$date=$row['date'];
 					$symptoms=$row['symptoms'];
 					$test_conducted=$row['test_conducted'];
-					$medication=$row['medication'];
 
 					echo '<tr>
 					    <th>'.$diag_id.'</th>
 					    <td>'.$date.'</td>
 					    <td>'.$symptoms.'</td>
 					    <td>'.$test_conducted.'</td>
-					    <td>'.$medication.'</td>
 					    <td>
 					        <button class="button1"><a href="update_diagnosis.php?updateid='.$diag_id.'" class="link1">Update</a></button>
 					        <button class="button2"><a href="delete_diagnosis.php?deleteid='.$diag_id.'" class="link2">Delete</a></button>
