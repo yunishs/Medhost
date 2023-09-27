@@ -193,7 +193,10 @@ $html='<!DOCTYPE html>
                 $roomid_fk=$row["roomid_fk"];
             }
         }
-    $html .='<div class="container">
+        $date= date("d/m/Y");
+        $html .='<h1 style=" margin-top: 50px;margin-bottom: 0px;">MED-Host</h1>
+            <h5>'.$date.'</h5>
+            <div class="container">
         <table>
             <tr>
                 <div class="update">
@@ -318,7 +321,6 @@ $html='<!DOCTYPE html>
 	        			<th>Date</th>
 		        		<th>Symptoms</th>
 			        	<th>Test Conducted</th>
-    			    	<th>Medication</th>
 	    		</tr>
     		    <tbody>';
     	    		    $sql="SELECT * FROM pat_diagnosis WHERE pid_fk='$id'";
@@ -330,13 +332,11 @@ $html='<!DOCTYPE html>
 	    				        $date=$row["date"];
     		    			    $symptoms=$row["symptoms"];
 	    		    		    $test_conducted=$row["test_conducted"];
-		    		    	    $medication=$row["medication"];
 			    		        $html .=' <tr>
 				    	        <th>'. $diag_id .'</th>
     				    	    <td>'. $date .'</td>
 	    				        <td>'. $symptoms .'</td>
 		    			        <td>'. $test_conducted .'</td>
-        		    			<td>'. $medication .'</td>
         			    		</tr>';
 	        			    }
 		        	    }
@@ -344,9 +344,6 @@ $html='<!DOCTYPE html>
 	    </table>
         <h3>Prognosis Details</h3>
         <table class="tbl">
-                
-                        
-                
                 <tr>
                 <th>Prog_id</th>
 				<th>Date</th>
@@ -385,6 +382,43 @@ $html='<!DOCTYPE html>
 	        			    }
 		        	    }
                         $html .='</tbody>
+                        </table>
+        <h3>Medication Details</h3>
+        <table class="tbl">
+			<tr>
+                <th>Med_id</th>
+				<th>Date</th>
+				<th>Name</th>
+				<th>Purpose</th>
+				<th>Dosage</th>
+                <th>Frequency</th>
+			</tr>
+		<tbody>';
+
+            $sql="SELECT * from medication as d JOIN patient_info as p on p.pid=d.pid_fk where p.pid=$pid";
+                $result=mysqli_query($con,$sql);
+                if($result)
+                {
+                        while($row=mysqli_fetch_assoc($result)){
+                        $med_id=$row["med_id"];
+                        $date=$row["date"];
+                        $name=$row["name"];
+                        $purpose=$row["purpose"];
+                        $dosage=$row["dosage"];
+                        $frequency=$row["frequency"];
+
+                        $html .='<tr>
+                            <th>'.$med_id.'</th>
+                            <td>'.$date.'</td>
+                            <td>'.$name.'</td>
+                            <td>'.$purpose.'</td>
+                            <td>'.$dosage.'</td>
+                            <td>'.$frequency.'</td>
+                        </tr>';
+                    }
+                }
+        $html .='
+        </tbody>
 	    </table>
         <table>
                     <tr>
