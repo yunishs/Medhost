@@ -252,6 +252,7 @@
         <button type="submit" class="enter-btn" name="enter">ENTER</button>
     </div>
     </form>
+</div>
    <!-- </section>-->
 </body>
 </html>
