@@ -1,10 +1,10 @@
 <?php
     $pid='';
-    // session_start();
+    session_start();
 
     include ("..\database\connect.php");
-    $id=9;
-    // $id=$_SESSION['pid'];
+
+    $id=$_SESSION['pid'];
 
 
 // Include autoloader 

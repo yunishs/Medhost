@@ -106,7 +106,7 @@
 				}
 				else{
 					echo"<script>
-        			window.location.href='pat_view.php';
+        			window.location.href='pat_view_doctor.php';
         			alert('No record found.');</script>";
 				}
 			}

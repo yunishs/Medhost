@@ -45,7 +45,7 @@
          </div>
          <ul>
             <li class="active"><a href="#" onclick="document.getElementById('if1').src = 'individual_patview_medical.php'">User Info</a></li>
-            <li class="active"><a href="#" onclick="document.getElementById('if1').src = 'view_diagnosis_medical.php'">Diagnosis</a></li>
+            <li><a href="#" onclick="document.getElementById('if1').src = 'view_diagnosis_medical.php'">Diagnosis</a></li>
             <li>
                <a href="#" class="serv-btn1">Prognosis
                <span class="fas fa-caret-down second"></span>
@@ -55,6 +55,16 @@
                   <li><a href="#" onclick="document.getElementById('if1').src = 'prognosis_form.php'">Add</a></li>  
                </ul>
             </li>
+            <li>
+               <a href="#" class="serv-btn1">Medication
+               <span class="fas fa-caret-down second"></span>
+               </a>
+               <ul class="serv-show1">
+                  <li><a href="#" onclick="document.getElementById('if1').src = 'view_medication_medical.php'">View</a></li>
+                  <li><a href="#" onclick="document.getElementById('if1').src = 'medication_form_medical.php'">Add</a></li>  
+               </ul>
+            </li>
+            <li><a href="../dompdf/pdfpreview.php" target="_blank">Print Info</a></li>
             
             <!-- <li><a href="#" onclick="document.getElementById('if1').src = 'pat_view.php'">Patient</a></li>
             <li>

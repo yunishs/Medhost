@@ -45,7 +45,7 @@
          </div>
          <ul>
             <li class="active"><a href="#" onclick="document.getElementById('if1').src = 'individual_patview_frontdesk.php'">User Info</a></li>
-            <li class="active"><a href="#" onclick="document.getElementById('if1').src = 'update_pat_dashboard_frontdesk.php'">Update</a></li>
+            <li><a href="#" onclick="document.getElementById('if1').src = 'update_pat_dashboard_frontdesk.php'">Update</a></li>
             <!-- <li>
                <a href="#" class="feat-btn">Diagnosis
                <span class="fas fa-caret-down first"></span>
