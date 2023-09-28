@@ -93,7 +93,7 @@
         {
             $heart_rate=test_input($_POST['heart_rate']);
             if (!preg_match("/^[0-9]+\s*[A-Za-z0-9]*$/",$heart_rate)) {
-                $heart_rateErr = "Only '120 bpm' format  allowed in heart rate";
+                $heart_rateErr = "Only 120 bpm format  allowed in heart rate";
             }    
         }
 
@@ -101,7 +101,7 @@
         {
             $spo2=test_input($_POST['spo2']);
             if (!preg_match("/^[0-9]+%$/",$spo2)) {
-                $spo2Err = "Only '95%' format allowed in SPO2";
+                $spo2Err = "Only 95% format allowed in SPO2";
             }    
         } 
 

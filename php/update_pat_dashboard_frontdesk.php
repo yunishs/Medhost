@@ -202,15 +202,20 @@
         {
             $date_of_admission=test_input($_POST['date_of_admission1']);   
         } 
-        else if (empty($_POST['date_of_admission1'])) 
+        else
         {
             $date_of_admission=test_input($_POST['date_of_admission']);   
         }
 
+        if (empty($_POST['discharge_date1']))  
         {
             $discharge_date=test_input($_POST['discharge_date']);   
         } 
-
+        else
+        {
+            $discharge_date=test_input($_POST['discharge_date1']);   
+        }
+        
         if (empty($_POST["doctor_assigned"])) 
         {
             $doctor_assigned = "Doctor assigned is required";
@@ -527,11 +532,11 @@
             <div class="column">
                 <div class="input-box">
                     <label>Date of Appointment</label>
-                    <input type="datetime-local" id="date_of_admission1" name="date_of_admission1" value="<?php echo $date_of_admission; ?>">
+                    <input type="datetime-local" id="date_of_admission" name="date_of_admission1" value="<?php echo $date_of_admission; ?>">
                 </div>
                 <div class="input-box">
                     <label>Date of Visit</label>
-                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value="<?php echo $discharge_date; ?>">
+                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date1" value="<?php echo $discharge_date; ?>">
                 </div>
             </div>
         </div>

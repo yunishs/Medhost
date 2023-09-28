@@ -10,10 +10,10 @@
 
     if(isset($_POST['enter']))
     {
-            $name= $_POST['name'];
+            $pid= $_POST['pid'];
             $contact= $_POST['contact'];
 
-            $sql="SELECT * FROM patient_info WHERE contact='$contact' AND  (concat(fname,' ',mname,' ',lname)='$name' OR concat(fname,' ',lname)='$name')";
+            $sql="SELECT * FROM patient_info WHERE contact='$contact' OR pid='$pid'";
             $result = mysqli_query($con,$sql);
             $row=mysqli_fetch_array($result,  MYSQLI_ASSOC);
             $count= mysqli_num_rows($result);
@@ -26,7 +26,7 @@
             {
                 echo '<script>
                     window.location.href="searchpatient_medicalstaff.php";
-                    alert("Search failed. Invalid Name or Contact")
+                    alert("Search failed. Invalid Id or Contact")
                 </script>';
             } 
         
@@ -66,10 +66,10 @@
         <form action="searchpatient_medicalstaff.php" method="POST">
              <div class="row">
                 <div class="col-25">
-                    <label for="name">Name:</label>
+                    <label for="name">Patient Id:</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="name" name="name">
+                    <input type="text" id="name" name="pid">
                 </div>
              </div>
              <div class="row">
