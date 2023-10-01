@@ -65,7 +65,8 @@
                 $ageErr = "Only numbers and not starting with zero allowed in age";
             }    
         }
-        if (empty($_POST["gender"])) 
+
+        if (empty($_POST['gender'])) 
         {
             $genderErr = "Gender is required";
         } 
@@ -73,6 +74,7 @@
         {
             $gender=test_input($_POST['gender']);   
         } 
+
         if (empty($_POST["nmc_id"])) 
         {
             $nmc_idErr = "nmc id is required";
@@ -217,10 +219,10 @@
         </div>
         <div class="column">
           <div class="input">
-                    <label>NMC ID: </label>
-                    <input type="integer" id="nmc_id" name="nmc_id" value=<?php echo $nmc_id; ?> >
-                </div>
-                <div class="input"> 
+                <label>NMC ID: </label>
+                <input type="integer" id="nmc_id" name="nmc_id" value=<?php echo $nmc_id; ?> >
+            </div>
+            <div class="input"> 
                 <label>Gender</label>
                 <div class="input-option">
                     <select name="gender" id="gender" type="sty">
@@ -229,9 +231,9 @@
                         <option VALUE="Female" <?php if($gender=="Female") echo 'selected="selected"'; ?>>Female</option>
                         <option VALUE="Others" <?php if($gender=="Others") echo 'selected="selected"'; ?>>Others</option>
                     </select>
-</div>
-        </div>
-</div>               
+                </div>
+            </div>
+        </div>               
         <div class="column">
         <div class="input">
                     <label>Specialization: </label>
