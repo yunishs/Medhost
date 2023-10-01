@@ -5,8 +5,9 @@
     $_Session['room_name']='';
     include '..\database\connect.php';
 
-    $id=$_GET['updateid'];
+    // $id=$_SESSION['pid'];
     $ward_name='';
+    $id=8;
     // header("update_pat_frontdesk.php","update_pat_frontdesk.php",FALSE);
 
     $sql="SELECT * from patient_info WHERE pid=$id";
@@ -30,7 +31,7 @@
     $doctor_assigned=$row['doctor_assigned'];
     $date_of_admission=$row['date_of_admission'];
     $pat_type=$row['pat_type'];
-    if(($row['discharge_date'])=="0000-00-00 00:00:00")
+    if(empty($row['discharge_date']))
     {
         $discharge_date=null;
     }
@@ -78,7 +79,7 @@
         $rowi=mysqli_fetch_assoc($resulti);
         $ward_name=$rowi['ward_name'];
         $room_name=$rowi['room_name'];
-        $_SESSION['roomid_fk']=$roomid_fk;
+        $_SESSION['roomid_fk']=$roomid_fk;echo $date_of_visit;
         
 
     }
@@ -227,16 +228,6 @@
         }  
 
         if($pat_type=='inpatient'){
-
-            if(empty($_POST['discharge_date']))
-            {
-                $discharge_date=NULL;
-            }
-             else
-            {
-                $discharge_date=test_input($_POST['discharge_date']);
-            }
-
             if (empty($_POST['date_of_admission']))
             {
                 $date_of_admissionErr = "Date of admission is required";
@@ -250,17 +241,11 @@
                 $date_of_admission=test_input($_POST['date_of_admission']);   
             }
 
+            {
+                $discharge_date=test_input($_POST['discharge_date']);   
+            } 
         }
         else{
-if(empty($_POST['next_date_of_visit']))
-            {
-                $next_date_of_visit=NULL;
-            }
-             else
-            {
-                $next_date_of_visit=test_input($_POST['next_date_of_visit']);
-            }
-
             if (empty($_POST['date_of_visit']))
             {
                 $date_of_visitErr = "Date of visit is required";
@@ -274,6 +259,10 @@ if(empty($_POST['next_date_of_visit']))
                 $date_of_visit=test_input($_POST['date_of_visit']);   
             }
             
+
+            {
+                $next_date_of_visit=test_input($_POST['next_date_of_visit']);   
+            } 
         }
 
         if (empty($_POST["doctor_assigned"])) 
@@ -318,25 +307,15 @@ if(empty($_POST['next_date_of_visit']))
                 $rid=$_SESSION['roomid_fk'];
                 $sqlx="UPDATE room SET alloc_stat='0' WHERE room_id=$rid";
                 $resultx=mysqli_query($con,$sqlx);
-if(isset($discharge_date))
-                {
                 $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date',pat_type='$pat_type',roomid_fk='$roomid_fk' WHERE pid=$id";
-$result=mysqli_query($con,$sql);
-                    $sql1="UPDATE room SET alloc_stat='0' WHERE room_id='$roomid_fk'";
-                    $result1=mysqli_query($con,$sql1);
-                }
-                else
-                {
-                    $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',pat_type='$pat_type',roomid_fk='$roomid_fk' WHERE pid=$id";
                 $result=mysqli_query($con,$sql);
                 $sql1="UPDATE room SET alloc_stat='1' WHERE room_id='$roomid_fk'";
                 $result1=mysqli_query($con,$sql1);
-}
                 $_SESSION['roomid_fk']=$roomid_fk;
                 if($result){
                     
                 // function_alert("Data inserted successfully");
-                    header('Location: pat_view_medical.php');
+                    header('Location: pat_view_frontdesk.php');
                 }
                 else
                 {
@@ -346,20 +325,12 @@ $result=mysqli_query($con,$sql);
             }
             else
             {
-if(isset($next_date_of_visit))
-                {
                 $sql2="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_visit='$date_of_visit',next_date_of_visit='$next_date_of_visit',pat_type='$pat_type',roomid_fk=NULL WHERE pid=$id";
                 $result2=mysqli_query($con,$sql2);
-}
-                else
-                {
-                    $sql2="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_visit='$date_of_visit',pat_type='$pat_type',roomid_fk=NULL WHERE pid=$id";
-                    $result2=mysqli_query($con,$sql2);
-                }
                 if($result2){
                 
                     // function_alert("Data inserted successfully");
-                        header('Location: pat_view_medical.php');
+                        header('Location: pat_view_frontdesk.php');
                 }
                 else
                 {
@@ -650,6 +621,49 @@ if(isset($next_date_of_visit))
         <button type="submit" class="enter-btn" name="enter">ENTER</button>
     </form>
     </section>
+    <!-- <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+  	function loadData(type, category_id){
+  		$.ajax({
+  			url : "load-cs-update.php",
+  			type : "POST",
+  			data: {type : type, id : category_id},
+  			success : function(data){
+  				if(type == "roomData"){
+  					$("#room").html(data);
+  				}
+                else-if(type== "wardData"){
+  					$("#ward").html(data);
+  				}
+                else{
+                    $("#ward").append(data);
+                }
+  			}
+  		});
+  	}
+
+  	loadData();
+
+  	$("#ward").on("change",function(){
+  		var ward = $("#ward").val();
+
+  		if(ward != ""){
+  			loadData("roomData", ward);
+  		}
+        else if(){
+            loadData("")
+        }
+        else{
+  			$("#room").html("");
+  		}
+        
+  		
+  	})
+  });
+  
+</script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 

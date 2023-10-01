@@ -62,6 +62,8 @@
                 $email=$row['email'];
                 $date_of_admission=$row['date_of_admission'];
                 $discharge_date=$row['discharge_date'];
+                $date_of_visit=$row['date_of_visit'];
+                $next_date_of_visit=$row['next_date_of_visit'];
                 $pat_description=$row['pat_description'];
                 $doctor_assigned=$row['doctor_assigned'];
                 $rel_name=$row['rel_name'];
@@ -175,11 +177,11 @@
                     </tr>
                     <tr>
                         <th>Date of Visit</th>
-                        <td> $date_of_admission</td>
+                        <td> $date_of_visit</td>
                     </tr>
                     <tr>
                         <th>Date of next visit</th>
-                        <td> $discharge_date</td>
+                        <td> $next_date_of_visit</td>
                     </tr> 
                     <tr>
                         <th>Patient Description </th>
@@ -238,9 +240,9 @@
                 </tr>
 			    <thread>
 			        <tr>
-        				<th>S.N.</th>
+        				<th>Prog_id</th>
 	        			<th>Date</th>
-		        		<th>Conditin of Patient</th>
+		        		<th>Condition of Patient</th>
                         <th>BP</th>
 				<th>Sugar</th>
 				<th>Heart Rate</th>

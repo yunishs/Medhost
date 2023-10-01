@@ -67,7 +67,7 @@
         }//for nmc_id"/^[1-9][0-9]*$/"
          
 
-        if (empty($_POST["genderx"])) 
+        if (empty($_POST["gender"])) 
         {
             $genderErr = "Gender is required";
         } 
@@ -231,7 +231,7 @@
                 <div class="input"> 
                 <label>Gender</label>
                 <div class="input-option">
-                    <select name="genderx" id="gender" type="sty">
+                    <select name="gender" id="gender" type="sty">
                         <option>---</option>
                         <option VALUE="Male" <?php if($gender=="Male") echo 'selected="selected"'; ?>>Male</option>
                         <option VALUE="Female" <?php if($gender=="Female") echo 'selected="selected"'; ?>>Female</option>

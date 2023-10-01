@@ -2,8 +2,8 @@
 
     include '..\database\connect.php';
     //initializing variables
-    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$rel_name=$rel_relation=$rel_contact=$rel_email=$pat_description=$date_of_admission=$discharge_date=$doctor_assigned=$roomid_fk="";
-    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admissionErr=$discharge_dateErr=$doctor_assignedErr=null;
+    $fname=$mname=$lname=$age=$gender=$nationality=$bloodgroup=$address=$contact=$email=$rel_name=$rel_relation=$rel_contact=$rel_email=$pat_description=$date_of_admission=$discharge_date=$date_of_visit=$next_date_of_visit=$doctor_assigned=$roomid_fk="";
+    $fnameErr=$mnameErr=$lnameErr=$ageErr=$genderErr=$nationalityErr=$bloodgroupErr=$addressErr=$contactErr=$emailErr=$pat_descriptionErr=$date_of_admissionErr=$discharge_dateErr=$date_of_visitErr=$next_date_of_visitErr=$doctor_assignedErr=null;
 // try{
     if(isset($_POST['enter']))
     {
@@ -151,18 +151,59 @@
                 $pat_descriptionErr = "Only letters and whitespace allowed in specialization";
             }    
         }  
-        if (empty($_POST['date_of_admission']) && empty($_POST['date_of_admission1'])) 
-        {
-            $date_of_admissionErr = "Date of admission is required";
-        } 
-        else if (empty($_POST['date_of_admission'])) 
-        {
-            $date_of_admission=test_input($_POST['date_of_admission1']);   
-        } 
-        else if (empty($_POST['date_of_admission1'])) 
-        {
-            $date_of_admission=test_input($_POST['date_of_admission']);   
-        } 
+        if($_POST['pat_type']=='inpatient'){
+            
+            if(empty($_POST['discharge_date']))
+            {
+                $discharge_date=NULL;
+            }
+             else
+            {
+                $discharge_date=test_input($_POST['discharge_date']);
+            }
+
+            if (empty($_POST['date_of_admission']))
+            {
+                $date_of_admissionErr = "Date of admission is required";
+            } 
+            else if( $discharge_date!=null && ($_POST['date_of_admission'] > $_POST['discharge_date']))
+            {
+                $date_of_admissionErr="Invalid date";
+            }
+            else
+            {
+                $date_of_admission=test_input($_POST['date_of_admission']);   
+            }
+            
+        }
+        else{
+            if(empty($_POST['next_date_of_visit']))
+            {
+                $next_date_of_visit=NULL;
+            }
+             else
+            {
+                $next_date_of_visit=test_input($_POST['next_date_of_visit']);
+            }
+
+            if (empty($_POST['date_of_visit']))
+            {
+                $date_of_visitErr = "Date of visit is required";
+            } 
+            else if($next_date_of_visit!=null && ($_POST['next_date_of_visit'] < $_POST['date_of_visit']))
+            {
+                $date_of_visitErr="Invalid date";
+            }
+            else
+            {
+                $date_of_visit=test_input($_POST['date_of_visit']);   
+            }
+            
+
+            {
+                $next_date_of_visit=test_input($_POST['next_date_of_visit']);   
+            } 
+        }
 
         if (empty($_POST["doctor_assigned"])) 
         {
@@ -173,7 +214,7 @@
             $doctor_assigned=test_input($_POST['doctor_assigned']);   
         }
 
-
+        if($pat_type=="inpatient")
         {
             $roomid_fk=test_input($_POST['room_idfk']);   
         } 
@@ -192,7 +233,7 @@
         
         
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($contactErr) &&empty($ageErr) 
-            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr)  && empty($rel_nameErr) && empty($rel_relationErr) && empty($rel_contactErr) && empty($rel_emailErr) && empty($pat_descriptionErr) && empty($date_of_admissionErr) && empty($discharge_dateErr) && empty($doctor_assignedErr) && empty($gender1))
+            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr)  && empty($rel_nameErr) && empty($rel_relationErr) && empty($rel_contactErr) && empty($rel_emailErr) && empty($pat_descriptionErr) && empty($date_of_admissionErr) && empty($discharge_dateErr) && empty($date_of_visitErr) && empty($next_date_of_visitErr) && empty($doctor_assignedErr) && empty($gender1))
         {
             
             // $sec = date_create($date_0f_admission);
@@ -203,8 +244,17 @@
 
             if(!empty($roomid_fk))
             {
-                $sql="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,discharge_date,doctor_assigned,pat_type,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned','inpatient','$roomid_fk')";
-                $result=mysqli_query($con,$sql);
+                if(isset($discharge_date))
+                {
+                    $sql="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,discharge_date,doctor_assigned,pat_type,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned','inpatient','$roomid_fk')";
+                    $result=mysqli_query($con,$sql);
+                }
+                else
+                {
+                    $sql="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,doctor_assigned,pat_type,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$doctor_assigned','inpatient','$roomid_fk')";
+                    $result=mysqli_query($con,$sql);
+
+                }
                 if($result){
                     $sql1="UPDATE room SET alloc_stat='1' WHERE room_id='$roomid_fk'";
                     $result1=mysqli_query($con,$sql1);
@@ -219,8 +269,16 @@
             }
             else
             {
-                $sql2="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_admission,discharge_date,doctor_assigned,pat_type,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_admission','$discharge_date','$doctor_assigned','outpatient',NULL)";
-                $result2=mysqli_query($con,$sql2);
+                if(isset($next_date_of_visit))
+                {
+                    $sql2="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_visit,next_date_of_visit,doctor_assigned,pat_type,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_visit','$next_date_of_visit','$doctor_assigned','outpatient',NULL)";
+                    $result2=mysqli_query($con,$sql2);
+                }
+                else
+                {
+                    $sql2="INSERT into patient_info(fname,mname,lname,contact,age,gender,nationality,bloodgroup,address,email,rel_name,rel_relation,rel_contact,rel_email,pat_description,date_of_visit,doctor_assigned,pat_type,roomid_fk) values ('$fname','$mname','$lname',$contact,$age,'$gender','$nationality','$bloodgroup','$address','$email','$rel_name','$rel_relation','$rel_contact','$rel_email','$pat_description','$date_of_visit','$doctor_assigned','outpatient',NULL)";
+                    $result2=mysqli_query($con,$sql2);
+                }
                 if($result2){
                 
                     // function_alert("Data inserted successfully");
@@ -287,6 +345,12 @@
             }  
             if(!empty($discharge_dateErr)){
                 function_alert($discharge_dateErr);
+            } 
+            if(!empty($date_of_visitErr)){
+                function_alert($date_of_visitErr);
+            }  
+            if(!empty($next_date_of_visitErr)){
+                function_alert($next_date_of_visitErr);
             } 
             // if(!empty($gender1Err)){
             //     function_alert($gender1Err);
@@ -450,11 +514,11 @@
           <h3>Patient Type</h3>
           <div class="gender-option">
             <div class="gender">
-              <input type="radio" id="check-male" name="gender1" onclick="ShowHideDiv()" />
+              <input type="radio" id="check-male" name="pat_type" value="inpatient" onclick="ShowHideDiv()" />
               <label for="check-male">In-Patient</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-female" name="gender1" onclick="ShowHideDiv1()" />
+              <input type="radio" id="check-female" name="pat_type" value="outpatient" onclick="ShowHideDiv1()" />
               <label for="check-female">Out-Patient</label>
             </div>
           </div>
@@ -477,11 +541,11 @@
             <div class="column">
                 <div class="input-box">
                     <label>Date of Appointment</label>
-                    <input type="datetime-local" id="date_of_admission1" name="date_of_admission1" value=<?php echo $date_of_admission; ?>>
+                    <input type="datetime-local" id="date_of_visit" name="date_of_visit" value=<?php echo $date_of_visit; ?>>
                 </div>
                 <div class="input-box">
                     <label>Date of Visit</label>
-                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value=<?php echo $discharge_date; ?>>
+                    <input type="datetime-local" id="next_date_of_visit" placeholder="Optional" name="next_date_of_visit" value=<?php echo $next_date_of_visit; ?>>
                 </div>
             </div>
         </div>

@@ -1,9 +1,12 @@
 <?php
     session_start();
     $_SESSION['ward_up']='';
+    $_Session['ward_name']='';
+    $_Session['room_name']='';
     include '..\database\connect.php';
+
     $id=$_SESSION['pid'];
-    // $id=$_SESSION['update_id'];
+    $ward_name='';
     // header("update_pat_frontdesk.php","update_pat_frontdesk.php",FALSE);
 
     $sql="SELECT * from patient_info WHERE pid=$id";
@@ -27,15 +30,42 @@
     $doctor_assigned=$row['doctor_assigned'];
     $date_of_admission=$row['date_of_admission'];
     $pat_type=$row['pat_type'];
-    if(empty($row['discharge_date']))
+    if(($row['discharge_date'])=="0000-00-00 00:00:00")
     {
-        $discharge_date='';
+        $discharge_date=null;
     }
     else
     {
         $discharge_date=$row['discharge_date'];
     }
-    $date_of_admission=$row['date_of_admission'];
+    
+    if(empty($row['date_of_admission']))
+    {
+        $date_of_admission=null;
+    }
+    else
+    {
+        $date_of_admission=$row['date_of_admission'];
+    }
+
+    if(empty($row['next_date_of_visit']))
+    {
+        $next_date_of_visit=null;
+    }
+    else
+    {
+        $next_date_of_visit=$row['next_date_of_visit'];
+    }
+
+    if(empty($row['date_of_visit']))
+    {
+        $date_of_visit=null;
+    }
+    else
+    {
+        $date_of_visit=$row['date_of_visit'];
+    }
+    // $date_of_admission=$row['date_of_admission'];
     
     $pat_description=$row["pat_description"];
     $roomid_fk=$row['roomid_fk'];
@@ -48,8 +78,9 @@
         $rowi=mysqli_fetch_assoc($resulti);
         $ward_name=$rowi['ward_name'];
         $room_name=$rowi['room_name'];
-        $sqlx="UPDATE room SET alloc_stat='0' WHERE room_id='$roomid_fk'";
-        $resultx=mysqli_query($con,$sqlx);
+        $_SESSION['roomid_fk']=$roomid_fk;echo $date_of_visit;
+        
+
     }
     if(isset($_POST['enter']))
     {
@@ -194,22 +225,55 @@
                 $pat_descriptionErr = "Only letters and whitespace allowed in specialization";
             }    
         }  
-        if (empty($_POST['date_of_admission']) && empty($_POST['date_of_admission1'])) 
-        {
-            $date_of_admissionErr = "Date of admission is required";
-        } 
-        else if (empty($_POST['date_of_admission'])) 
-        {
-            $date_of_admission=test_input($_POST['date_of_admission1']);   
-        } 
-        else if (empty($_POST['date_of_admission1'])) 
-        {
-            $date_of_admission=test_input($_POST['date_of_admission']);   
-        }
 
-        {
-            $discharge_date=test_input($_POST['discharge_date']);   
-        } 
+        if($pat_type=='inpatient'){
+            
+            if(empty($_POST['discharge_date']))
+            {
+                $discharge_date=NULL;
+            }
+             else
+            {
+                $discharge_date=test_input($_POST['discharge_date']);
+            }
+
+            if (empty($_POST['date_of_admission']))
+            {
+                $date_of_admissionErr = "Date of admission is required";
+            } 
+            else if( $discharge_date!=null && ($_POST['date_of_admission'] > $_POST['discharge_date']))
+            {
+                $date_of_admissionErr="Invalid date";
+            }
+            else
+            {
+                $date_of_admission=test_input($_POST['date_of_admission']);   
+            }
+            
+        }
+        else{
+            if(empty($_POST['next_date_of_visit']))
+            {
+                $next_date_of_visit=NULL;
+            }
+             else
+            {
+                $next_date_of_visit=test_input($_POST['next_date_of_visit']);
+            }
+
+            if (empty($_POST['date_of_visit']))
+            {
+                $date_of_visitErr = "Date of visit is required";
+            } 
+            else if($next_date_of_visit!=null && ($_POST['next_date_of_visit'] < $_POST['date_of_visit']))
+            {
+                $date_of_visitErr="Invalid date";
+            }
+            else
+            {
+                $date_of_visit=test_input($_POST['date_of_visit']);   
+            }
+        }
 
         if (empty($_POST["doctor_assigned"])) 
         {
@@ -220,7 +284,7 @@
             $doctor_assigned=test_input($_POST['doctor_assigned']);   
         }
 
-
+        if($pat_type=="inpatient")
         {
             $roomid_fk=test_input($_POST['room_idfk']);   
         } 
@@ -239,7 +303,7 @@
         
         
         if(empty($fnameErr) && empty($mnameErr) &&empty($lnameErr) &&empty($contactErr) &&empty($ageErr) 
-            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr)  && empty($rel_nameErr) && empty($rel_relationErr) && empty($rel_contactErr) && empty($rel_emailErr) && empty($pat_descriptionErr) && empty($date_of_admissionErr) && empty($discharge_dateErr) && empty($doctor_assignedErr) && empty($gender1))
+            &&empty($genderErr) &&empty($nationalityErr) &&empty($bloodgroupErr) && empty($addressErr) && empty($emailErr)  && empty($rel_nameErr) && empty($rel_relationErr) && empty($rel_contactErr) && empty($rel_emailErr) && empty($pat_descriptionErr) && empty($date_of_admissionErr) && empty($discharge_dateErr) && empty($doctor_assignedErr) && empty($gender1) && empty($date_of_visitErr) && empty($next_date_of_visitErr))
         {
             
             // $sec = date_create($date_0f_admission);
@@ -249,13 +313,24 @@
             // $newdate1 = date_format($sec,"Y-m-d H:i");
 
             if(!empty($roomid_fk)){
-                $_SESSION['ward_up']=$roomid_fk;
-                // $sqlx="UPDATE room SET alloc_stat='0' WHERE room_id='$roomid_fk'";
-                // $resultx=mysqli_query($con,$sqlx);
-                $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date',pat_type='$pat_type',roomid_fk='$roomid_fk' WHERE pid=$id";
-                $result=mysqli_query($con,$sql);
-                $sql1="UPDATE room SET alloc_stat='1' WHERE room_id='$roomid_fk'";
-                $result1=mysqli_query($con,$sql1);
+                $rid=$_SESSION['roomid_fk'];
+                $sqlx="UPDATE room SET alloc_stat='0' WHERE room_id=$rid";
+                $resultx=mysqli_query($con,$sqlx);
+                if(isset($discharge_date))
+                {
+                    $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date',pat_type='$pat_type',roomid_fk='$roomid_fk' WHERE pid=$id";
+                    $result=mysqli_query($con,$sql);
+                    $sql1="UPDATE room SET alloc_stat='0' WHERE room_id='$roomid_fk'";
+                    $result1=mysqli_query($con,$sql1);
+                }
+                else
+                {
+                    $sql="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',pat_type='$pat_type',roomid_fk='$roomid_fk' WHERE pid=$id";
+                    $result=mysqli_query($con,$sql);
+                    $sql1="UPDATE room SET alloc_stat='1' WHERE room_id='$roomid_fk'";
+                    $result1=mysqli_query($con,$sql1);
+                }
+                $_SESSION['roomid_fk']=$roomid_fk;
                 if($result){
                     
                 // function_alert("Data inserted successfully");
@@ -269,8 +344,16 @@
             }
             else
             {
-                $sql2="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_admission='$date_of_admission',discharge_date='$discharge_date',pat_type='$pat_type',roomid_fk=NULL WHERE pid=$id";
-                $result2=mysqli_query($con,$sql2);
+                if(isset($next_date_of_visit))
+                {
+                    $sql2="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_visit='$date_of_visit',next_date_of_visit='$next_date_of_visit',pat_type='$pat_type',roomid_fk=NULL WHERE pid=$id";
+                    $result2=mysqli_query($con,$sql2);
+                }
+                else
+                {
+                    $sql2="UPDATE patient_info SET pid='$id',fname='$fname',mname='$mname',lname='$lname',contact='$contact',age='$age',gender='$gender',nationality='$nationality',bloodgroup='$bloodgroup',address='$address',email='$email',rel_name='$rel_name',rel_relation='$rel_relation',rel_contact='$rel_contact',rel_email='$rel_email',doctor_assigned='$doctor_assigned',pat_description='$pat_description',date_of_visit='$date_of_visit',pat_type='$pat_type',roomid_fk=NULL WHERE pid=$id";
+                    $result2=mysqli_query($con,$sql2);
+                }
                 if($result2){
                 
                     // function_alert("Data inserted successfully");
@@ -337,6 +420,12 @@
             }  
             if(!empty($discharge_dateErr)){
                 function_alert($discharge_dateErr);
+            }
+            if(!empty($date_of_visitErr)){
+                function_alert($date_of_visitErr);
+            } 
+            if(!empty($next_date_of_visitErr)){
+                function_alert($next_date_of_visitErr);
             } 
             // if(!empty($gender1Err)){
             //     function_alert($gender1Err);
@@ -380,7 +469,7 @@
     </header>-->
     <br>
     <section class="container">
-      <h1>Update Patient Form</h1>
+      <h1>Patient Update Form</h1>
       <form id="multi" method="POST"></form> 
       <form class="form" id="all" method="POST">
       <div class="column" >
@@ -474,37 +563,15 @@
                 <input type="text" id="rel_email" placeholder="Optional" name="rel_email" value=<?php echo $rel_email; ?>>
             </div>
         </div>
-        <script type="text/javascript">
-            function ShowHideDiv() {
-                var check_male = document.getElementById("check-male");
-                var for_in = document.getElementById("for_in");
-                for_in.style.display = check_male.checked ? "block" : "none";
-        
-                    
-                var check_female = document.getElementById("check-female");
-                var for_out = document.getElementById("for_out");
-                for_out.style.display = check_female.checked ? "block" : "none";
-            }
-            function ShowHideDiv1() {
-                var check_female = document.getElementById("check-female");
-                var for_out = document.getElementById("for_out");
-                for_out.style.display = check_female.checked ? "block" : "none";
-                
-
-                var check_male = document.getElementById("check-male");
-                var for_in = document.getElementById("for_in");
-                for_in.style.display = check_male.checked ? "block" : "none";
-            }
-        </script>
         <div class="gender-box">
           <h3>Patient Type</h3>
           <div class="gender-option">
             <div class="gender">
-              <input type="radio" id="check-male" name="gender1" onclick="ShowHideDiv()" />
+              <input type="radio" id="check-male" name="gender1" <?php if (isset($pat_type) && $pat_type=="inpatient"){ echo "checked";}?>/>
               <label for="check-male">In-Patient</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-female" name="gender1" onclick="ShowHideDiv1()" />
+              <input type="radio" id="check-female" name="gender1" <?php if (isset($pat_type) && $pat_type=="outpatient"){ echo "checked";}?>/>
               <label for="check-female">Out-Patient</label>
             </div>
           </div>
@@ -518,52 +585,60 @@
                             $result1=mysqli_query($con,$sql1);
                             while($get=mysqli_fetch_array($result1)){
                         ?>
-                        <option value="<?php echo $get['fname']?>" <?php if($doctor_assigned==$get['fname']) echo 'selected="selected"'; ?>><?php echo $get['fname'] ?></option>
+                        <option value="<?php echo $get['fname']?>" <?php if($doctor_assigned==$get['fname']) echo 'selected="selected"'; ?>><?php echo $get['fname'] ?></option>                        
                         <?php } ?>
                     </select>
                 </div>
         </div>
-        <div id="for_out" style="display: none">
-            <div class="column">
-                <div class="input-box">
-                    <label>Date of Appointment</label>
-                    <input type="datetime-local" id="date_of_admission1" name="date_of_admission1" value="<?php echo $date_of_admission; ?>">
-                </div>
-                <div class="input-box">
-                    <label>Date of Visit</label>
-                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value="<?php echo $discharge_date; ?>">
-                </div>
-            </div>
-        </div>
-        <div id="for_in" style="display: none">
-            <div class="column">
-                <div class="input-box">
-                    <label>Date of Admission</label>
-                    <input type="datetime-local" id="date_of_admission" name="date_of_admission" value="<?php echo $date_of_admission; ?>">
-                </div>
-                <div class="input-box">
-                    <label>Date of Discharge</label>
-                    <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value="<?php echo $discharge_date; ?>">
-                </div>
-            </div>
-            <div class="column">
-                    <div class="input-box">
-                        <label>Ward</label>
-                        <div class="input-option">
-                            <select id="ward">
-                                <option value="" form="multi"><?php echo $ward_name;?></option>
-                            </select>
-                        </div>
+        <?php if (isset($pat_type) && $pat_type=="inpatient"){?>
+                    <div class="column">
+                    <div class="input-box"date_of_visit>
+                        <label>Date of Admission</label>
+                        <input type="datetime-local" id="date_of_admission" name="date_of_admission" value="<?php echo $date_of_admission ?>">
                     </div>
                     <div class="input-box">
-                        <label>Room</label>
-                        <div class="input-option">
-                            <select id="room" name="room_idfk" form="all">
-                                <option value="" form="multi"><?php echo $room_name;?></option>
-                            </select>
-                        </div>
+                        <label>Date of Discharge</label>
+                        <input type="datetime-local" id="discharge_date" placeholder="Optional" name="discharge_date" value="<?php echo $discharge_date ?>">
                     </div>
-            </div>
+                </div>
+                <div class="column">
+                        <div class="input-box">
+                            <label>Ward</label>
+                            <div class="input-option">
+                            <select id="ward" name="ward" class="ward" type="sty">
+                            <!-- <option value="0">Select Ward<option> -->
+                            <?php
+                             $sql2="SELECT * FROM ward";
+                            $result2=mysqli_query($con,$sql2);
+                            while($get1=mysqli_fetch_array($result2)){ $ward_id=$get1['ward_id'];?>
+                                <option value="<?php echo $get1['ward_id'] ?>" <?php if($ward_name==$get1['ward_name']){ echo 'selected="selected"';}?>><?php echo $get1['ward_name'] ?></option>
+                        <?php } ?>
+                    </select>
+                        </div>
+                        </div>
+                        <div class="input-box">
+                            <label>Room</label>
+                            <div class="input-option">
+                                <select id="room" name="room_idfk" class="room">
+                                    <option value="<?php echo $roomid_fk ?>"><?php echo $room_name ?></option>
+                                </select>
+                            </div>
+                        </div>
+                </div>
+                <?php } ?>
+                <?php if (isset($pat_type) && $pat_type=="outpatient")
+                { ?>  
+                    <div class="column">
+                    <div class="input-box">
+                        <label>Date of Appointment</label>
+                        <input type="datetime-local" id="date_of_visit" name="date_of_visit" value="<?php echo $date_of_visit ?>">
+                    </div>
+                    <div class="input-box">
+                        <label>Date of Visit</label>
+                        <input type="datetime-local" id="next_date_of_visit" placeholder="Optional" name="next_date_of_visit" value="<?php echo $next_date_of_visit ?>">
+                    </div>
+                </div>
+                <?php } ?>
         </div>
         <div class="input-box">
           <label>Patient description during admission</label><br>
@@ -573,40 +648,29 @@
         <button type="submit" class="enter-btn" name="enter">ENTER</button>
     </form>
     </section>
-    <script type="text/javascript" src="jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
 <script type="text/javascript">
-
-  $(document).ready(function(){
-  	function loadData(type, category_id){
-  		$.ajax({
-  			url : "load-cs-update.php",
-  			type : "POST",
-  			data: {type : type, id : category_id},
-  			success : function(data){
-  				if(type == "roomData"){
-  					$("#room").html(data);
-  				}else{
-  					$("#ward").append(data);
-  				}
-  			}
-  		});
-  	}
-
-  	loadData();
-
-  	$("#ward").on("change",function(){
-  		var ward = $("#ward").val();
-
-  		if(ward != ""){
-  			loadData("roomData", ward);
-  		}else{
-  			$("#room").html("");
-  		}
-        
-  		
-  	})
-  });
-  
+    $(document).ready(function()
+    {
+        $(".ward").change(function()
+        {
+            var ward_id=$(this).val();
+            var post_id = 'id='+ward_id;
+            $.ajax
+            ({
+                type: "POST",
+                url: "a-load.php",
+                data: post_id,
+                cache:false,
+                success: function(rooms)
+                {
+                    $(".room").html(rooms);
+                } 
+            });
+        });
+    });
 </script>
     <!-- <script>
         Window.addEventaListener("scroll",function(){
@@ -616,4 +680,3 @@
     </script> -->
   </body>
 </html>
-        
