@@ -364,17 +364,14 @@
     
 </head>
 <body>
-    <header>
-        
+<header>
         <div class="logosec">
-			<img src="..\images\MedHost.png"
-				class="icn menuicn"
-				id="menuicn">
-                <div class="logo">MED-Host</div>
-            
-		</div>
+            <img src="..\images\MedHost.png"
+            class="icn menuicn"
+            id="menuicn">
+            <div class="logo">MED-Host</div>
+        </div>
     </header>
-    
     <form name="form" action="loginpage.php" method="POST" onsubmit="return isvalid()">
          <div class="form-box">
             <h2>LOGIN</h2>
