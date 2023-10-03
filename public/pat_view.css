@@ -209,3 +209,21 @@ i
 {
   color:rgb(100, 16, 13);
 }
+.buttonx
+{
+  margin-left: 20px;
+  text-align: center;
+  background-color: rgb(18, 52, 174);
+  border-radius: 16px;
+  padding: 5px;
+  color:rgb(250, 245, 245);
+}
+.buttony
+{
+  margin-left: 20px;
+  text-align: center;
+  background-color: rgb(44, 137, 61);
+  border-radius: 16px;
+  padding: 5px;
+  color:rgb(250, 245, 245);
+}

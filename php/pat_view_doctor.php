@@ -4,6 +4,7 @@
 	$_SESSION['pid']=null;
 
 	include '..\database\connect.php';
+	$name='';
 ?>
 
 
@@ -49,14 +50,13 @@
 		<div class="table">
 			<thread>
 			<tr>
-				<th>S.N.</th>
-				<th>Fname</th>
-				<th>Mname</th>
-				<th>Lname</th>
+				<th>Pid</th>
+				<th>Name</th>
 				<th>Contact</th>
                 <th>Bloodgroup</th>
 				<th>Address</th>
 				<th>Email</th>
+				<th>Type</th>
 				<th>Operation</th>
 			</tr>
 		</thread>
@@ -70,7 +70,7 @@
 			if(isset($_POST['search']))
 			{
 				$search=$_POST['search'];
-				$sql1="SELECT * FROM patient_info WHERE concat(fname,' ',mname,' ',lname) LIKE '%". $search ."%' OR concat(fname,' ',lname) LIKE'%. $search .%'";
+				$sql1="SELECT * FROM patient_info WHERE (concat(fname,' ',mname,' ',lname) LIKE '%". $search ."%') OR (concat(fname,' ',lname) LIKE '%. $search .%') OR (pat_type LIKE '". $search ."%') OR pid='$search'";
 				$result1=mysqli_query($con,$sql1);
 				$count= mysqli_num_rows($result1);
 				if($count>=1)
@@ -82,19 +82,48 @@
 							$fname=$row1['fname'];
 							$mname=$row1['mname'];
 							$lname=$row1['lname'];
+							if($mname=="")
+							{
+								$name=$fname." ".$lname;
+							}
+							else
+							{
+								$name=$fname." ".$mname." ".$lname;
+							}
 							$contact=$row1['contact'];
 							$bloodgroup=$row1['bloodgroup'];
 							$address=$row1['address'];
 							$email=$row1['email'];
+							$pat_type=$row1['pat_type'];
 							echo " <tr>
 							<th>$id</th>
-							<td>$fname</td>
-							<td>$mname</td>
-							<td>$lname</td>
+							<td>$name</td>
 							<td>$contact</td>
 							<td>$bloodgroup</td>
 							<td>$address</td>
 							<td>$email</td>
+							<td> ";
+							if($pat_type=="inpatient")
+							{
+								$discharge_date=$row1['discharge_date'];
+								$pat_type="Inpatient";
+								echo "$pat_type";
+								if(isset($discharge_date))
+								{
+									echo "<button class='buttonx'>Discharged</button>";
+								}
+								else
+								{
+									echo "<button class='buttony'>Active</button>";
+								}
+
+							}
+							else
+							{
+								$pat_type="Outpatient";
+								echo "$pat_type";
+							}
+							echo "</td>
 							<td>
 								<button class='button1'><a href='dashboard_patinfo.php?searchid=$id' class='link1'>View</a></button>
 								<button class='button2'><a href='update_pat_doctor.php?updateid=$id' class='link2'>Update</a></button>
@@ -120,19 +149,48 @@
 						$fname=$row['fname'];
 						$mname=$row['mname'];
 						$lname=$row['lname'];
+						if($mname=="")
+						{
+							$name=$fname." ".$lname;
+						}
+						else
+						{
+							$name=$fname." ".$mname." ".$lname;
+						}
 						$contact=$row['contact'];
 						$bloodgroup=$row['bloodgroup'];
 						$address=$row['address'];
 						$email=$row['email'];
+						$pat_type=$row['pat_type'];
 						echo " <tr>
 						<th>$id</th>
-						<td>$fname</td>
-						<td>$mname</td>
-						<td>$lname</td>
+						<td>$name</td>
 						<td>$contact</td>
 						<td>$bloodgroup</td>
 						<td>$address</td>
 						<td>$email</td>
+						<td> ";
+							if($pat_type=='inpatient')
+							{
+								$discharge_date=$row['discharge_date'];
+								$pat_type="Inpatient";
+								echo "$pat_type";
+								if(isset($discharge_date))
+								{
+									echo "<button class='buttonx'>Discharged</button>";
+								}
+								else
+								{
+									echo "<button class='buttony'>Active</button>";
+								}
+
+							}
+							else
+							{
+								$pat_type="Outpatient";
+								echo "$pat_type";
+							}
+							echo "</td>
 						<td>
 							<button class='button1'><a href='dashboard_patinfo.php?searchid=$id' class='link1'>View</a></button>
 							<button class='button2'><a href='update_pat_doctor.php?updateid=$id' class='link2'>Update</a></button>

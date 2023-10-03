@@ -1,7 +1,7 @@
 <?php
 
 include '..\database\connect.php';
-
+$name='';
 ?>
 
 
@@ -22,14 +22,13 @@ include '..\database\connect.php';
         <table class="tbl">
 		    <thread>
 			    <tr>
-				    <th>S.N.</th>
-				    <th>Fname</th>
-				    <th>Mname</th>
-				    <th>Lname</th>
+				    <th>Pid</th>
+				    <th>Name</th>
     				<th>Contact</th>
                     <th>Bloodgroup</th>
                     <th>Address</th>
 			    	<th>Email</th>
+					<th>Type</th>
     			</tr>
 	    	</thread>
 		    <tbody>
@@ -39,27 +38,53 @@ include '..\database\connect.php';
 		        	$result=mysqli_query($con,$sql);
     		    	if($result)
     	    		{
-	    				while($row=mysqli_fetch_assoc($result))
-                        {
+	    				while($row=mysqli_fetch_assoc($result)){
 			    		    $id=$row['pid'];
 				    	    $fname=$row['fname'];
 					        $mname=$row['mname'];
 					        $lname=$row['lname'];
+							if($mname=="")
+							{
+							$name=$fname." ".$lname;
+							}
+						else
+						{
+							$name=$fname." ".$mname." ".$lname;
+						}
     					    $contact=$row['contact'];
                             $bloodgroup=$row['bloodgroup'];
-		    			    $email=$row['email'];
-                            $address=$row['address'];
-				    	    echo " 
-                            <tr>
+		    			                                $address=$row['address'];
+				    	    $email=$row['email'];
+						$pat_type=$row['pat_type'];
+						echo " <tr>
 					            <th>$id</th>
-					            <td>$fname</td>
-    					        <td>$mname</td>
-	    				        <td>$lname</td>
+					            <td>$name</td>
 		    			        <td>$contact</td>
                                 <td>$bloodgroup</td>
                                 <td>$address</td>
 					            <td>$email</td>
-					            <td>
+					            <td> ";
+							if($pat_type=='inpatient')
+							{
+								$discharge_date=$row['discharge_date'];
+								$pat_type="Inpatient";
+								echo "$pat_type";
+								if(isset($discharge_date))
+								{
+									echo "<button class='buttonx'>Discharged</button>";
+								}
+								else
+								{
+									echo "<button class='buttony'>Active</button>";
+								}
+
+							}
+							else
+							{
+								$pat_type="Outpatient";
+								echo "$pat_type";
+							}
+							echo "</td>
 					    </tr>";
     				    }
 	    		    }	

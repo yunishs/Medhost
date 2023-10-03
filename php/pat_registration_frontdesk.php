@@ -198,11 +198,6 @@
             {
                 $date_of_visit=test_input($_POST['date_of_visit']);   
             }
-            
-
-            {
-                $next_date_of_visit=test_input($_POST['next_date_of_visit']);   
-            } 
         }
 
         if (empty($_POST["doctor_assigned"])) 
@@ -214,7 +209,7 @@
             $doctor_assigned=test_input($_POST['doctor_assigned']);   
         }
 
-        if($pat_type=="inpatient")
+        if($_POST['pat_type']=="inpatient")
         {
             $roomid_fk=test_input($_POST['room_idfk']);   
         } 
