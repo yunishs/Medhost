@@ -21,14 +21,13 @@ include '..\database\connect.php';
 	<table class="tbl">
 		<thread>
 			<tr>
-				<th scope="col">S.N.</th>
+				<th scope="col">F-ID</th>
 				<th scope="col">Fname</th>
 				<th scope="col">Mname</th>
 				<th scope="col">Lname</th>
 				<th scope="col">REG ID</th>
 				<th scope="col">Contact</th>
 				<th scope="col">Email</th>
-				<th scope="col">Password</th>
 				<th scope="col">Operation</th>
 			</tr>
 		</thread>
@@ -47,7 +46,6 @@ include '..\database\connect.php';
 					$reg_id=$row['reg_id'];
 					$contact=$row['contact'];
 					$email=$row['email'];
-					$password=$row['password'];
 					echo ' <tr>
 					<th>'.$id.'</th>
 					<td>'.$fname.'</td>
@@ -56,7 +54,6 @@ include '..\database\connect.php';
 					<td>'.$reg_id.'</td>
 					<td>'.$contact.'</td>
 					<td>'.$email.'</td>
-					<td>'.$password.'</td>
 					<td>
 						<button class="button1"><a href="individual_frontdesk_view.php?searchid='.$id.'" class="link1">View</a></button>
 						<button class="button2"><a href="update_frontdesk.php?updateid='.$id.'" class="link2">Update</a></button>

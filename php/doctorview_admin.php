@@ -21,14 +21,13 @@ include '..\database\connect.php';
 	<table class="tbl">
 		<thread>
 			<tr>
-				<th>S.N.</th>
+				<th>D-ID</th>
 				<th>Fname</th>
 				<th>Mname</th>
 				<th>Lname</th>
 				<th>NMC ID</th>
 				<th>Contact</th>
 				<th>Email</th>
-				<th>Password</th>
 				<th>Operation</th>
 			</tr>
 		</thread>
@@ -47,7 +46,6 @@ include '..\database\connect.php';
 					$nmc_id=$row['nmc_id'];
 					$contact=$row['contact'];
 					$email=$row['email'];
-					$password=$row['password'];
 					echo ' <tr>
 					<th>'.$id.'</th>
 					<td>'.$fname.'</td>
@@ -56,7 +54,6 @@ include '..\database\connect.php';
 					<td>'.$nmc_id.'</td>
 					<td>'.$contact.'</td>
 					<td>'.$email.'</td>
-					<td>'.$password.'</td>
 					<td>
 						<button class="button1"><a href="individual_doc_view.php?searchid='.$id.'" class="link1">View</a></button>
 						<button class="button2"><a href="update_doctor.php?updateid='.$id.'" class="link2">Update</a></button>
