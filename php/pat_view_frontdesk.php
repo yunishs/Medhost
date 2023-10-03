@@ -192,8 +192,8 @@ $pat_type=$row['pat_type'];
 							}
 							echo "</td>
 						<td>
-							<button class='button1'><a href='dashboard_patinfo.php?searchid=$id' class='link1'>View</a></button>
-							<button class='button2'><a href='update_pat_doctor.php?updateid=$id' class='link2'>Update</a></button>
+							<button class='button1'><a href='dashboard_patinfo_frontdesk.php?searchid=$id' class='link1'>View</a></button>
+							<button class='button2'><a href='update_pat_frontdesk.php?updateid=$id' class='link2'>Update</a></button>
 							<button class='button3'><a href='delete_patient.php?deleteid=$id' class='link3'>Delete</a></button>
 						</td>
 						</tr>";
