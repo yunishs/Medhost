@@ -30,7 +30,7 @@
         }
     </script>
     <?php
- 
+ $nameErr=$dateErr=$purposeErr=$dosageErr=$frequencyErr='';
         session_start();
         $id=$_SESSION['pid'];
         $frequency=$dosage=$purpose=$name='';
@@ -38,7 +38,75 @@
 
         if (isset($_POST['addInvoice']))
         {
-            $date=$_POST['date'];
+            function test_input($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+            }
+            for ($a = 0; $a < count($_POST['itemName']); $a++)
+            {
+                
+                
+                  if (empty($_POST['date'])) 
+                  {
+                      $dateErr = "Date is required";
+                  } 
+                  else
+                  {
+                      $date=test_input($_POST['date']);   
+                  } 
+                  if (empty($_POST["itemName"][$a])) 
+                {
+                    $nameErr = "Item Name is required";
+                } 
+                else {
+                    $name=test_input($_POST['itemName'][$a]);
+                    if (!preg_match("/^[A-Za-z0-9]+\s*.*$/",$name)) {
+                        $nameErr = "Only letters,numbers and spaces allowed in item name";
+                    }    
+                }
+                if (empty($_POST["itemPurpose"][$a])) 
+                {
+                    $purposeErr = "Item purpose is required";
+                } 
+                else {
+                    $purpose=test_input($_POST['itemPurpose'][$a]);
+                    if (!preg_match("/^[A-Za-z0-9]+\s*.*$/",$purpose)) {
+                        $purposeErr = "Only letters,numbers and spaces allowed in item purpose";
+                    }    
+                }
+                if (empty($_POST["itemDosage"][$a])) 
+                {
+                    $dosageErr = "Item dosage is required";
+                } 
+                else {
+                    $dosage=test_input($_POST['itemDosage'][$a]);
+                    if (!preg_match("/^[A-Za-z0-9]+\s*.*$/",$dosage)) {
+                        $dosageErr = "Only letters,numbers and spaces allowed in item dosage";
+                    }    
+                }
+                if (empty($_POST["itemFrequency"][$a])) 
+                {
+                    $frequencyErr = "Item frequency is required";
+                } 
+                else {
+                    $frequency=test_input($_POST['itemFrequency'][$a]);
+                    if (!preg_match("/^[A-Za-z0-9]+\s*.*$/",$frequency)) {
+                        $frequencyErr = "Only letters,numbers and spaces allowed in item frequency";
+                    }    
+                }
+
+            }
+            function function_alert($message) {
+                echo "<script>alert('$message');</script>";
+            }
+            
+            if(empty($nameErr) && empty($dateErr) && empty($purposeErr) && empty($dosageErr) && empty($frequencyErr))
+            {
+
+
+                // $date=$_POST['date'];
             for ($a = 0; $a < count($_POST['itemName']); $a++)
             {
                 $name = $_POST['itemName'][$a];
@@ -49,6 +117,25 @@
                 mysqli_query($con, $sql);
             }
             header('Location: view_medication_medical.php');
+}
+            else
+                {
+                    if (!empty($nameErr)){
+                        function_alert($nameErr);
+                    }
+                    if (!empty($dateErr)){
+                        function_alert($dateErr);
+                    }
+                    if (!empty($purposeErr)){
+                        function_alert($purposeErr);
+                    }
+                    if (!empty($dosageErr)){
+                        function_alert($dosageErr);
+                    }
+                    if (!empty($frequencyErr)){
+                        function_alert($frequencyErr);
+                    }
+                }
         }
 
     ?>
