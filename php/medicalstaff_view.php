@@ -22,9 +22,7 @@ include '..\database\connect.php';
 		<thread>
 			<tr>
 				<th scope="col">M-ID</th>
-				<th scope="col">Fname</th>
-				<th scope="col">Mname</th>
-				<th scope="col">Lname</th>
+				<th scope="col">Name</th>
 				<th scope="col">REG ID</th>
 				<th scope="col">Contact</th>
 				<th scope="col">Email</th>
@@ -33,7 +31,7 @@ include '..\database\connect.php';
 		</thread>
 		<tbody>
 			<?php
-
+			$name='';
 			$sql="Select * from medicalstaff_info";
 			$result=mysqli_query($con,$sql);
 			if($result)
@@ -43,14 +41,20 @@ include '..\database\connect.php';
 					$fname=$row['fname'];
 					$mname=$row['mname'];
 					$lname=$row['lname'];
+					if($mname=="")
+							{
+							$name=$fname." ".$lname;
+							}
+						else
+						{
+							$name=$fname." ".$mname." ".$lname;
+						}
 					$reg_id=$row['reg_id'];
 					$contact=$row['contact'];
 					$email=$row['email'];
 					echo ' <tr>
 					<th>'.$id.'</th>
-					<td>'.$fname.'</td>
-					<td>'.$mname.'</td>
-					<td>'.$lname.'</td>
+					<td>'.$name.'</td>
 					<td>'.$reg_id.'</td>
 					<td>'.$contact.'</td>
 					<td>'.$email.'</td>

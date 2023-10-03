@@ -22,10 +22,9 @@ include '..\database\connect.php';
 		<thread>
 			<tr>
 				<th>D-ID</th>
-				<th>Fname</th>
-				<th>Mname</th>
-				<th>Lname</th>
+				<th>Name</th>
 				<th>NMC ID</th>
+				<th>Specialization</th>
 				<th>Contact</th>
 				<th>Email</th>
 				<th>Operation</th>
@@ -33,7 +32,7 @@ include '..\database\connect.php';
 		</thread>
 		<tbody>
 			<?php
-
+			$name='';
 			$sql="Select * from doctor_info";
 			$result=mysqli_query($con,$sql);
 			if($result)
@@ -43,15 +42,23 @@ include '..\database\connect.php';
 					$fname=$row['fname'];
 					$mname=$row['mname'];
 					$lname=$row['lname'];
+					if($mname=="")
+							{
+							$name=$fname." ".$lname;
+							}
+						else
+						{
+							$name=$fname." ".$mname." ".$lname;
+						}
 					$nmc_id=$row['nmc_id'];
+					$specialization=$row['specialization'];
 					$contact=$row['contact'];
-					$email=$row['email'];
+					$email=$row['email'];					
 					echo ' <tr>
 					<th>'.$id.'</th>
-					<td>'.$fname.'</td>
-					<td>'.$mname.'</td>
-					<td>'.$lname.'</td>
+					<td>'.$name.'</td>
 					<td>'.$nmc_id.'</td>
+					<td>'.$specialization.'</td>
 					<td>'.$contact.'</td>
 					<td>'.$email.'</td>
 					<td>
