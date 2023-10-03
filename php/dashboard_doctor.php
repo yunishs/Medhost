@@ -34,7 +34,7 @@
             <img src="..\images\MedHost.png"
             class="icn menuicn"
             id="menuicn" onclick="dashboard_doctor.php">
-            <div class="logo">MedHost</div>
+            <div class="logo">MED-Host</div>
             <div class="logout">
                 <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
                 <a href="logout.php" style="text-decoration:none;"><span class="log">Logout</span></a>

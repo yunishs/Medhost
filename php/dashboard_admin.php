@@ -22,7 +22,7 @@
             <img src="..\images\MedHost.png"
             class="icn menuicn"
             id="menuicn">
-            <div class="logo">MedHost</div>
+            <div class="logo">MED-Host</div>
         </div>
     </header>
 

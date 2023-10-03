@@ -53,7 +53,7 @@
                     id="menuicn">
                 </a>
                 <a href="dashboard_doctor.php" style="text-decoration:none;">
-                    <div class="logo">MedHost</div>
+                    <div class="logo">MED-Host</div>
                 </a>
                 <div class="logout">
                     <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
